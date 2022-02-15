@@ -1,6 +1,6 @@
 # gasolina-project
 
-Alunos | Funções
+Alunos 	:frog: | Funções :horse:
 --- | ---
 Carlos | Programador HTML/CSS
 Gustavo | Sub. CEO

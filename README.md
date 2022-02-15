@@ -2,10 +2,10 @@
 
 Alunos|
 ------|
-Carlos|
-Gustavo|
-Jairo|
-Felipe|
-Kalebe|
+Carlos| Programador HTML/CSS
+Gustavo| Sub. CEO
+Jairo| Programador canva
+Felipe| Diagramador
+Kalebe| Programador markdown
 
 

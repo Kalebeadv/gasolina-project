@@ -1,8 +1,11 @@
 # gasolina-project
 
-## Alunos:
-* Kalebe .....
-* Carlos .....
-* Gustavo ....
-* Jairo ......
-* Felipe .....
+Alunos|
+------|
+Carlos|
+Gustavo|
+Jairo|
+Felipe|
+Kalebe|
+
+

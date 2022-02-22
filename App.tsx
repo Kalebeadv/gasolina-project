@@ -4,12 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
 import MenuPrincipal from "./screens/MenuPrincipal";
+import Entrar from "./screens/Entrar";
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen name="Entar" component={Entrar}/>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />
     </Stack.Navigator>

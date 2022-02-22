@@ -1,7 +1,7 @@
 import React from "react";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 
-export default function () {
+export default function Login() {
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>

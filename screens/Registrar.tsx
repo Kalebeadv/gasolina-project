@@ -13,6 +13,18 @@ export default function Login() {
       <View style={styles.loginContainer}>
         <TextInput 
           style={styles.imputs}
+          placeholder="Nome"
+          autoCorrect={false}
+          onChangeText={()=>{}}
+        />
+        <TextInput 
+          style={styles.imputs}
+          placeholder="Sobrenome"
+          autoCorrect={false}
+          onChangeText={()=>{}}
+        />
+        <TextInput 
+          style={styles.imputs}
           placeholder="Email"
           autoCorrect={false}
           onChangeText={()=>{}}
@@ -24,7 +36,7 @@ export default function Login() {
           onChangeText={()=>{}}
         />
         <TouchableOpacity style={styles.btnEntrar}>
-          <Text style={styles.btnEntrar_texto}>Entrar</Text>
+          <Text style={styles.btnEntrar_texto}>Registrar</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -39,16 +51,16 @@ const styles = StyleSheet.create({
     backgroundColor:'cyan'
   },
   imagemLogo:{
-    width:150,
-    height:150,
+    width:100,
+    height:100,
   },
   viewLogo:{
-    flex:1,
+    flex: 0.5,
     justifyContent:'center',
     alignItems:'center',
   },
   viewLogo_text:{
-    fontSize:50
+    fontSize:30
   },
   loginContainer:{
     flex:1,
@@ -58,6 +70,7 @@ const styles = StyleSheet.create({
   imputs:{
     backgroundColor:'#fff',
     width:'90%',
+    marginTop: 0,
     marginBottom: 20,
     color:'black',
     fontSize: 30,

@@ -1,7 +1,7 @@
 import React from "react";
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Button } from "react-native";
 
-export default function Login() {
+export default function Inicio({navigation}) {
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>
@@ -10,21 +10,19 @@ export default function Login() {
         />
         <Text style={styles.viewLogo_text}>Ga$olina</Text>
       </View>
-      <View style={styles.loginContainer}>
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Email"
-          autoCorrect={false}
-          onChangeText={()=>{}}
-        />
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Senha"
-          autoCorrect={false}
-          onChangeText={()=>{}}
-        />
-        <TouchableOpacity style={styles.btnEntrar}>
-          <Text style={styles.btnEntrar_texto}>Entrar</Text>
+      <View style={styles.viewBtn}>
+        <TouchableOpacity style={styles.entrar}>
+          <Text 
+            style={styles.entrar_text}
+            onPress={() => navigation.navigate("Login")}
+          >Entrar</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.entrar}>
+          <Text 
+            style={styles.registrar_text} 
+            onPress={() => navigation.navigate("Registrar")}
+            >Registrar</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -50,29 +48,32 @@ const styles = StyleSheet.create({
   viewLogo_text:{
     fontSize:50
   },
-  loginContainer:{
+  viewBtn:{
     flex:1,
     alignItems:'center',
     width:'90%'
   },
-  imputs:{
-    backgroundColor:'#fff',
-    width:'90%',
-    marginBottom: 20,
-    color:'black',
-    fontSize: 30,
-    borderRadius:7
-  },
-  btnEntrar:{
+  entrar:{
     backgroundColor:'#35aaff',
     width:'90%',
     marginBottom: 20,
     borderRadius:7
   },
-  btnEntrar_texto:{
+  entrar_text:{
+    textAlign:'center',
     color:'black',
     fontSize: 30,
-    textAlign:'center'
+  },
+  registrar:{
+    backgroundColor:'#35aaff',
+    width:'90%',
+    marginBottom: 20,
+    borderRadius:7
+  },
+  registrar_text:{
+    textAlign:'center',
+    color:'black',
+    fontSize: 30,
   }
 
 });

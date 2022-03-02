@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Inicio" component={Inicio}/>
+      <Stack.Screen name="Bem Vindo" component={Inicio}/>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Registrar" component={Registrar} />
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />

@@ -4,55 +4,67 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 export default function Inicio({navigation}) {
   return(
     <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.quadrado}>
-        <View style={styles.viewLogo}>
+      <View style={styles.container}>
+        <View style={styles.img_logo}>
           <Image style={styles.imagemLogo}
-          source={require("../assets/images/logo2.png")}
+          source={require("../assets/images/Logo.png")}
           />
+          <Text style={styles.nome_startup}>
+            GASOLINA
+          </Text>
         </View>
-        
         <View style={styles.viewBtn}>
           <TouchableOpacity style={styles.entrar}>
             <Text 
               style={styles.entrar_text}
               onPress={() => navigation.navigate("Login")}
-            >Entrar</Text>
+            >ENTRAR</Text>
           </TouchableOpacity>
           
           <TouchableOpacity style={styles.entrar}>
             <Text 
               style={styles.registrar_text} 
               onPress={() => navigation.navigate("Registrar")}
-              >Registrar</Text>
+              >REGISTRAR</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.nome_empresa}> 
-        <Text>Phantom Price™</Text>
-      </View>
-      </View>
+        <View style={styles.view_nome_empresa}> 
+        <Text style={styles.nome_empresa}>Phantom Price™</Text>
+      </View> 
+    </View>
     </KeyboardAvoidingView>
     
   );
 }
+
+// arruma tela inicial e tela de splash
 
 const styles = StyleSheet.create({
   background:{
     flex:1,
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor:'#365992',
+    backgroundColor:'#064C4D',
   },
-  quadrado:{
+  container:{
     flex: 1,
-    alignItems:'center',
+    flexDirection: 'column'
+  },
+  img_logo:{
+    flex:1,
     justifyContent:'center',
-    width: 355, 
-    backgroundColor:'#FFFFFF', 
+    alignItems:'center',
+    marginTop: 50
+  },
+  nome_startup:{
+    color: 'white',
+    fontSize: 40,
+    marginTop: 20
   },
   imagemLogo:{
-    width:100,
-    height:140,
-    marginTop:50,
+    width:140,
+    height:200,
+    marginTop:250,
   },
   viewLogo:{
     flex:1,
@@ -62,36 +74,38 @@ const styles = StyleSheet.create({
   viewBtn:{
     flex:1,
     alignItems:'center',
-    width:'90%',
-    flexDirection: 'row'
+    width:'80%',
+    flexDirection: 'row',
+    marginTop: 375,
   },
   entrar:{
-    backgroundColor:'#35aaff',
+    backgroundColor:'#fff',
     width:'45%',
     marginLeft: 13,
     borderRadius:7,
     paddingBottom: 5,
     paddingTop: 5,
-    marginTop: 110,
   },
   entrar_text:{
     textAlign:'center',
     color:'black',
-    fontSize: 25,
+    fontSize: 20,
   },
   registrar:{
     backgroundColor:'#35aaff',
     width:'50%',
-    marginBottom: 10,
     borderRadius:7
   },
   registrar_text:{
     textAlign:'center',
     color:'black',
-    fontSize: 25
+    fontSize: 20
+  },
+  view_nome_empresa:{
+    marginBottom: 10,
+    alignItems:'center',
   },
   nome_empresa:{
-    marginBottom: 10,
-    
+    color: 'white'
   }
 });

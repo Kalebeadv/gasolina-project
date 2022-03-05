@@ -8,7 +8,6 @@ export default function Login() {
         <Image style={styles.imagemLogo}
         source={require("../assets/images/Logo.png")}
         />
-        <Text style={styles.viewLogo_text}>Ga$olina</Text>
       </View>
       <View style={styles.loginContainer}>
         <TextInput 
@@ -24,8 +23,11 @@ export default function Login() {
           onChangeText={()=>{}}
         />
         <TouchableOpacity style={styles.btnEntrar}>
-          <Text style={styles.btnEntrar_texto}>Entrar</Text>
+          <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
         </TouchableOpacity>
+        <View style={styles.view_nome_empresa}>
+          <Text style={styles.nome_empresa}>Phantom Price™</Text>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );
@@ -36,11 +38,12 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor:'cyan'
+    backgroundColor:'#064C4D'
   },
   imagemLogo:{
-    width:150,
-    height:150,
+    width: 110,
+    height: 150,
+    marginBottom: 40
   },
   viewLogo:{
     flex:1,
@@ -56,23 +59,32 @@ const styles = StyleSheet.create({
     width:'90%'
   },
   imputs:{
-    backgroundColor:'#fff',
     width:'90%',
     marginBottom: 20,
-    color:'black',
-    fontSize: 30,
-    borderRadius:7
+    fontSize: 25,
+    borderStyle: 'solid',
+    borderColor: 'white',
+    borderBottomWidth: 2,
+    color: 'white'
   },
   btnEntrar:{
-    backgroundColor:'#35aaff',
-    width:'90%',
+    backgroundColor:'white',
+    width:'35%',
+    height:34,
     marginBottom: 20,
-    borderRadius:7
+    borderRadius:7,
+    paddingTop: 3
   },
   btnEntrar_texto:{
+    textAlign:'center',
     color:'black',
-    fontSize: 30,
-    textAlign:'center'
+    fontSize: 20
+  },
+  view_nome_empresa:{
+    marginTop: 90,
+    alignItems:'center',
+  },
+  nome_empresa:{
+    color: 'white'
   }
-
 });

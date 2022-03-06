@@ -2,10 +2,10 @@ import React from "react";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from "./screens/Login";
-import MenuPrincipal from "./screens/Inicio";
-import Inicio from "./screens/Inicio";
-import Registrar from "./screens/Registrar";
+import Login from "./screens/login_register/Login";
+import MenuPrincipal from "./screens/inicio_menuPrincipal/Inicio";
+import Inicio from "./screens/inicio_menuPrincipal/Inicio";
+import Registrar from "./screens/login_register/Registrar";
 
 const Stack = createStackNavigator();
 

@@ -6,22 +6,10 @@ export default function Login() {
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>
         <Image style={styles.imagemLogo}
-        source={require("../assets/images/Logo.png")}
+        source={require("../../assets/images/Logo.png")}
         />
       </View>
       <View style={styles.loginContainer}>
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Nome"
-          autoCorrect={false}
-          onChangeText={()=>{}}
-        />
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Sobrenome"
-          autoCorrect={false}
-          onChangeText={()=>{}}
-        />
         <TextInput 
           style={styles.imputs}
           placeholder="Email"
@@ -35,9 +23,9 @@ export default function Login() {
           onChangeText={()=>{}}
         />
         <TouchableOpacity style={styles.btnEntrar}>
-          <Text style={styles.btnEntrar_texto}>REGISTRAR</Text>
+          <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
         </TouchableOpacity>
-        <View>
+        <View style={styles.view_nome_empresa}>
           <Text style={styles.nome_empresa}>Phantom Price™</Text>
         </View>
       </View>
@@ -62,11 +50,13 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
   },
+  viewLogo_text:{
+    fontSize:50
+  },
   loginContainer:{
     flex:1,
     alignItems:'center',
-    width:'90%',
-    marginBottom: 70
+    width:'90%'
   },
   imputs:{
     width:'90%',
@@ -90,8 +80,11 @@ const styles = StyleSheet.create({
     color:'black',
     fontSize: 20
   },
+  view_nome_empresa:{
+    marginTop: 90,
+    alignItems:'center',
+  },
   nome_empresa:{
-    marginTop: 22,
     color: 'white'
   }
 });

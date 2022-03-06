@@ -1,13 +1,14 @@
 import React from "react";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Button, ImageBackground } from "react-native";
 
+
 export default function Inicio({navigation}) {
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.container}>
         <View style={styles.img_logo}>
           <Image style={styles.imagemLogo}
-          source={require("../assets/images/Logo.png")}
+          source={require("../../assets/images/logo.png")}
           />
           <Text style={styles.nome_startup}>
             GASOLINA

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import config from "../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 
-export default function Login() {
+export default function Registrar() {
   var text = "teste";
   const [nome,setNome]=useState(text);
   const [sobrenome,setSobrenome]=useState(text);

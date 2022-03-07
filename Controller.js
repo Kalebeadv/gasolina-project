@@ -13,7 +13,14 @@ app.use(bodyParser.json());
 
 //Rotas
 app.post('/registrar',async(req,res)=>{
-    console.log(req.body.stNameUser);
+    let reqs = await model.User.create({
+        'stName' : req.body.stNameUser,
+        'lsName' : req.body.lsNameUser,
+        'email' : req.body.emailUser,
+        'password' : req.body.passwordUser,
+        'createdAt' : new Date(),
+        'updatedAt' : new Date()
+    })
 });
 
 let port=process.env.PORT || 3000;

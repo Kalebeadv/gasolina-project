@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import config from "../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 export default function Login() {
+  var text = "teste";
+  const [nome,setNome]=useState(text);
+  const [sobrenome,setSobrenome]=useState(text);
+  const [email,setEmail]=useState(text);
+  const [password,setPassword]=useState(text);
+
+  async function registerUser() {
+    let reqs = await fetch(config.urlRootNode + 'registrar',{
+      method: 'POST',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({
+        stNameUser: nome,
+        lsNameUser: sobrenome,
+        emailUser: email,
+        passwordUser: password,
+      })
+    });
+  }
+
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>
@@ -14,27 +37,27 @@ export default function Login() {
           style={styles.imputs}
           placeholder="Nome"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setNome(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Sobrenome"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setSobrenome(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Email"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setEmail(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Senha"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setPassword(text)}
         />
-        <TouchableOpacity style={styles.btnEntrar}>
+        <TouchableOpacity style={styles.btnEntrar} onPress={registerUser}>
           <Text style={styles.btnEntrar_texto}>REGISTRAR</Text>
         </TouchableOpacity>
         <View>

@@ -1,0 +1,22 @@
+//constantes
+const express=require('express');
+const bodyParser=require('body-parser');
+const cors=require('cors');
+const model=require('./models');
+
+//iniciar o servidor
+let app=express();
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+//Rotas
+app.post('/registrar',async(req,res)=>{
+    console.log(req.body.stNameUser);
+});
+
+let port=process.env.PORT || 3000;
+app.listen(port,(req,res)=>{
+    console.log("servidor rodando")
+})

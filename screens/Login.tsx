@@ -1,5 +1,6 @@
 import React from "react";
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Keyboard } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export default function Login() {
   return(

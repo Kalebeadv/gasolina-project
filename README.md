@@ -9,8 +9,7 @@ Jairo | Programador canva
 Felipe | Diagramador
 Kalebe | Programador markdown
 
-
-===
+---
 
 #  COMO RODAR O PROJETO!!
 

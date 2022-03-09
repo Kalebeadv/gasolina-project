@@ -5,13 +5,14 @@ const cors=require('cors');
 const model=require('./models');
 
 //iniciar o servidor
-let app=express();
+const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
 //Rotas
+
 app.post('/registrar',async(req,res)=>{
     let reqs = await model.User.create({
         'stName' : req.body.stNameUser,
@@ -21,9 +22,13 @@ app.post('/registrar',async(req,res)=>{
         'createdAt' : new Date(),
         'updatedAt' : new Date()
     })
+    if(reqs){
+        res.send(JSON.stringify('O usuário foi cadastrado com sucesso!'));
+    }
 });
 
-let port=process.env.PORT || 3000;
+let port = 3000;
+
 app.listen(port,(req,res)=>{
     console.log("servidor rodando")
 })

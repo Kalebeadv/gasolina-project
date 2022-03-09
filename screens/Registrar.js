@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import config from "../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
-
 export default function Registrar() {
-  var text = "teste";
-  const [nome,setNome]=useState(text);
-  const [sobrenome,setSobrenome]=useState(text);
-  const [email,setEmail]=useState(text);
-  const [password,setPassword]=useState(text);
+  const [nome,setNome]=useState(null);
+  const [sobrenome,setSobrenome]=useState(null);
+  const [email,setEmail]=useState(null);
+  const [password,setPassword]=useState(null);
+  const [message,setMessage]=useState(null);
 
   async function registerUser() {
-    let reqs = await fetch(config.urlRootNode + 'registrar',{
+    var reqs = await fetch(config.urlRootNode+'registrar',{
       method: 'POST',
       headers:{
         'Accept':'application/json',
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
       },
       body: JSON.stringify({
         stNameUser: nome,
         lsNameUser: sobrenome,
         emailUser: email,
-        passwordUser: password,
+        passwordUser: password
       })
     });
+    let ress=await reqs.json();
+    setMessage(ress);
   }
 
   return(
@@ -33,6 +34,9 @@ export default function Registrar() {
         />
       </View>
       <View style={styles.loginContainer}>
+        {message && (
+          <Text>{message}</Text>
+        )}
         <TextInput 
           style={styles.imputs}
           placeholder="Nome"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import config from "../config/config.json";
+import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 export default function Registrar() {
   const [nome,setNome]=useState(null);

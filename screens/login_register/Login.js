@@ -1,12 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import config from "../../config/config.json";
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity,
-   Text, StyleSheet, Keyboard } from "react-native";
+import {
+  View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity,
+  Text, StyleSheet, Keyboard
+} from "react-native";
 
 
 export default function Login({ navigation }) {
 
-  const [user, setEmail] = useState(null);
+  const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -29,7 +31,7 @@ export default function Login({ navigation }) {
 
     Keyboard.dismiss();
     if (ress) {
-      navigation.navigate('Home');
+      navigation.navigate('MenuPrincipal');
     } else {
       setMessage('Usuário ou senha inválidos');
       setTimeout(() => {
@@ -45,6 +47,10 @@ export default function Login({ navigation }) {
         />
       </View>
       <View style={styles.loginContainer}>
+
+        {message && (
+          <Text>{message}</Text>
+        )}
         <TextInput
           style={styles.imputs}
           placeholder="Email"

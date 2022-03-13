@@ -1,12 +1,46 @@
 import React from "react";
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
+import config from "../../config/config.json";
+import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Keyboard } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Login() {
+export default function Login({navigation}) {
+
+    const [user,setUser]=useState(null);
+    const [password,setPassword]=useState(null);
+    const [message,setMessage]=useState(null);
+
+    //Fazer Login
+    async function doLogin()
+    {
+        let reqs = await fetch(config.urlRootPhp+'Controller.js',{
+            method: 'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+                nameUser: user,
+                passwordUser: password
+            })
+        });
+        let ress = await reqs.json();
+        Keyboard.dismiss();
+       if(ress){
+           navigation.navigate('Home');
+       }else{
+            setMessage('Usuário ou senha inválidos');
+            setTimeout(()=>{
+                setMessage(null);
+            },3000);
+       }
+    }
+    
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>
         <Image style={styles.imagemLogo}
-        source={require("../assets/images/Logo.png")}
+        source={require("../../assets/images/Logo.png")}
         />
       </View>
       <View style={styles.loginContainer}>
@@ -22,10 +56,16 @@ export default function Login() {
           autoCorrect={false}
           onChangeText={()=>{}}
         />
+
         <TouchableOpacity style={styles.btnEntrar}>
           <Text 
             style={styles.btnEntrar_texto}
           >ENTRAR</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.btnEntrar} onpress={doLogin}>
+          <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
+
         </TouchableOpacity>
         <View style={styles.view_nome_empresa}>
           <Text style={styles.nome_empresa}>Phantom Price™</Text>

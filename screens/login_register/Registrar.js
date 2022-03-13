@@ -1,40 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
+export default function Registrar() {
+  const [nome,setNome]=useState(null);
+  const [sobrenome,setSobrenome]=useState(null);
+  const [email,setEmail]=useState(null);
+  const [password,setPassword]=useState(null);
+  const [message,setMessage]=useState(null);
 
-export default function Login() {
+  async function registerUser() {
+    var reqs = await fetch(config.urlRootNode+'registrar',{
+      method: 'POST',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify({
+        stNameUser: nome,
+        lsNameUser: sobrenome,
+        emailUser: email,
+        passwordUser: password
+      })
+    });
+    let ress=await reqs.json();
+    setMessage(ress);
+  }
+
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>
         <Image style={styles.imagemLogo}
-        source={require("../assets/images/Logo.png")}
+        source={require("../../assets/images/Logo.png")}
         />
       </View>
       <View style={styles.loginContainer}>
+        {message && (
+          <Text>{message}</Text>
+        )}
         <TextInput 
           style={styles.imputs}
           placeholder="Nome"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setNome(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Sobrenome"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setSobrenome(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Email"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setEmail(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Senha"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setPassword(text)}
         />
-        <TouchableOpacity style={styles.btnEntrar}>
+        <TouchableOpacity style={styles.btnEntrar} onPress={registerUser}>
           <Text style={styles.btnEntrar_texto}>REGISTRAR</Text>
         </TouchableOpacity>
         <View>

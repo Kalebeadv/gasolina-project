@@ -23,7 +23,9 @@ export default function Login() {
           onChangeText={()=>{}}
         />
         <TouchableOpacity style={styles.btnEntrar}>
-          <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
+          <Text 
+            style={styles.btnEntrar_texto}
+          >ENTRAR</Text>
         </TouchableOpacity>
         <View style={styles.view_nome_empresa}>
           <Text style={styles.nome_empresa}>Phantom Price™</Text>

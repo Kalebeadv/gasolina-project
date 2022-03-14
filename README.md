@@ -40,4 +40,4 @@ a uma ou a forma mais fácil com o
 npm install
 ```
 
-Apenas certifique-se de esta no diretorio do projeto!! 
+Apenas certifique-se de esta no diretorio do projeto onde esta o package.json!! 

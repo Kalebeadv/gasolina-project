@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import config from "../../config/config.json";
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Keyboard } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import {
   View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity,
   Text, StyleSheet, Keyboard
@@ -10,11 +8,9 @@ import {
 
 
 
-  const [email,setEmail]=useState(null);
-  const [password,setPassword]=useState(null);
-  const [message,setMessage]=useState(null);
 
-  //Fazer Login
+
+//Fazer Login
 export default function Login({ navigation }) {
 
   const [email, setEmail] = useState(null);
@@ -23,28 +19,27 @@ export default function Login({ navigation }) {
 
   //Fazer login
 
-  async function fazLogin()
-  {
-    let reqs = await fetch(config.urlRootPhp+'Controller.php',{
-        method: 'POST',
-        headers:{
-            'Accept':'application/json',
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify({
-            emailUser: email,
-            passwordUser: password
-        })
+  async function fazLogin() {
+    let reqs = await fetch(config.urlRootPhp + 'Controller.php', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        emailUser: email,
+        passwordUser: password
+      })
     });
     let ress = await reqs.json();
     Keyboard.dismiss();
-    if(ress || ress == null){
-        navigation.navigate('MenuPrincipal');
-    }else{
-        setMessage('Usuário ou senha inválidos');
-        setTimeout(()=>{
-            setMessage(null);
-        },3000);
+    if (ress || ress == null) {
+      navigation.navigate('MenuPrincipal');
+    } else {
+      setMessage('Usuário ou senha inválidos');
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
     }
   }
   return (
@@ -98,10 +93,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  loginContainer:{
-    flex:1,
-    alignItems:'center',
-    width:'90%',
+  loginContainer: {
+    flex: 1,
+    alignItems: 'center',
+    width: '90%',
     marginBottom: 70,
     fontSize: 50
   },
@@ -132,14 +127,14 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20
   },
-  nome_empresa:{
-    marginTop: 22,
-  view_nome_empresa: {
-    marginTop: 90,
-    alignItems: 'center',
-  },
   nome_empresa: {
-    color: 'white'
-  }
+    marginTop: 22,
+    view_nome_empresa: {
+      marginTop: 90,
+      alignItems: 'center',
+    },
+    nome_empresa: {
+      color: 'white'
+    }
   }
 })

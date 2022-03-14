@@ -6,6 +6,7 @@ import Login from "./screens/login_register/Login";
 import MenuPrincipal from "./screens/inicio_menuPrincipal/Inicio";
 import Inicio from "./screens/inicio_menuPrincipal/Inicio";
 import Registrar from "./screens/login_register/Registrar";
+import Mapa from "./screens/mapa/mapa";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ function MyStack() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Registrar" component={Registrar} />
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />
+      <Stack.Screen name="Mapa" component={Mapa}  />
     </Stack.Navigator>
   );
 }

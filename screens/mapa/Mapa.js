@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 import MapView from 'react-native-maps';
-export function Mapa() {
+
+export default function Mapa() {
 
 
     return(

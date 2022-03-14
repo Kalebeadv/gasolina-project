@@ -1,41 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Keyboard } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Login({navigation}) {
 
-    const [user,setUser]=useState(null);
-    const [password,setPassword]=useState(null);
-    const [message,setMessage]=useState(null);
+  const [email,setEmail]=useState(null);
+  const [password,setPassword]=useState(null);
+  const [message,setMessage]=useState(null);
 
-    //Fazer Login
-    async function doLogin()
-    {
-        let reqs = await fetch(config.urlRootPhp+'Controller.js',{
-            method: 'POST',
-            headers:{
-                'Accept':'application/json',
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({
-                nameUser: user,
-                passwordUser: password
-            })
-        });
-        let ress = await reqs.json();
-        Keyboard.dismiss();
-       if(ress){
-           navigation.navigate('Home');
-       }else{
-            setMessage('Usuário ou senha inválidos');
-            setTimeout(()=>{
-                setMessage(null);
-            },3000);
-       }
+  //Fazer Login
+  async function fazLogin()
+  {
+    let reqs = await fetch(config.urlRootPhp+'Controller.php',{
+        method: 'POST',
+        headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+            emailUser: email,
+            passwordUser: password
+        })
+    });
+    let ress = await reqs.json();
+    Keyboard.dismiss();
+    if(ress || ress == null){
+        navigation.navigate('MenuPrincipal');
+    }else{
+        setMessage('Usuário ou senha inválidos');
+        setTimeout(()=>{
+            setMessage(null);
+        },3000);
     }
-    
+  }
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>
@@ -44,22 +43,25 @@ export default function Login({navigation}) {
         />
       </View>
       <View style={styles.loginContainer}>
+        {message && (
+          <Text>{message}</Text>
+        )}
         <TextInput 
           style={styles.imputs}
           placeholder="Email"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setEmail(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Senha"
           autoCorrect={false}
-          onChangeText={()=>{}}
+          onChangeText={(text)=>setPassword(text)}
         />
-        <TouchableOpacity style={styles.btnEntrar} onpress={doLogin}>
+        <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
           <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
         </TouchableOpacity>
-        <View style={styles.view_nome_empresa}>
+        <View>
           <Text style={styles.nome_empresa}>Phantom Price™</Text>
         </View>
       </View>
@@ -84,13 +86,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
   },
-  viewLogo_text:{
-    fontSize:50
-  },
   loginContainer:{
     flex:1,
     alignItems:'center',
-    width:'90%'
+    width:'90%',
+    marginBottom: 70
   },
   imputs:{
     width:'90%',
@@ -114,11 +114,8 @@ const styles = StyleSheet.create({
     color:'black',
     fontSize: 20
   },
-  view_nome_empresa:{
-    marginTop: 90,
-    alignItems:'center',
-  },
   nome_empresa:{
+    marginTop: 22,
     color: 'white'
   }
 });

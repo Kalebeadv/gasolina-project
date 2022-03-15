@@ -7,6 +7,9 @@ import * as Permissions from 'expo-permissions';
 
 export default function Mapa() {
 
+  const [origin,setOrigin]=useState(null);
+  const [destination,setDestination]=useState(null);
+
   useEffect(() => {
     (async function () {
       const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
@@ -31,7 +34,6 @@ export default function Mapa() {
         showsUserLocation={true}
         zoomEnabled={false}
         loadingEnabled={true}
-      
       >
 
       </MapView>

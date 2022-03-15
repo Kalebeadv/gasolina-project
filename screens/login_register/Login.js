@@ -127,14 +127,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20
   },
-  nome_empresa: {
+  nome_empresa:{
     marginTop: 22,
-    view_nome_empresa: {
-      marginTop: 90,
-      alignItems: 'center',
-    },
-    nome_empresa: {
-      color: 'white'
-    }
+    color: 'white'
   }
 })

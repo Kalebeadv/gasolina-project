@@ -36,6 +36,7 @@
     "express": "^4.17.3",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.15",
+    "package.json": "^2.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",

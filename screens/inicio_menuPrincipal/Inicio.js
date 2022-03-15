@@ -8,7 +8,7 @@ export default function Inicio({navigation}) {
       <View style={styles.container}>
         <View style={styles.img_logo}>
           <Image style={styles.imagemLogo}
-          source={require("../../assets/images/logo.png")}
+          source={require("../../assets/images/Logo.png")}
           />
           <Text style={styles.nome_startup}>
             GASOLINA

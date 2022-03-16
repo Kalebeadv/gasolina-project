@@ -63,6 +63,7 @@ export default function Login({ navigation }) {
           style={styles.imputs}
           placeholder="Senha"
           autoCorrect={false}
+          secureTextEntry={true}
           onChangeText={(text) => setPassword(text)}
         />
         <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>

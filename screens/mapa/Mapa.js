@@ -37,9 +37,6 @@ export default function Mapa() {
       >
 
       </MapView>
-      <View style={styleMapa.search}>
-
-      </View>
     </View>
 
   )

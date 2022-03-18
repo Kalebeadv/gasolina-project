@@ -6,6 +6,11 @@ import {
 } from "react-native";
 
 
+
+
+
+
+//Fazer Login
 export default function Login({ navigation }) {
 
   const [email, setEmail] = useState(null);
@@ -14,7 +19,7 @@ export default function Login({ navigation }) {
 
   //Fazer login
 
-  async function doLogin() {
+  async function fazLogin() {
     let reqs = await fetch(config.urlRootPhp + 'Controller.php', {
       method: 'POST',
       headers: {
@@ -27,10 +32,8 @@ export default function Login({ navigation }) {
       })
     });
     let ress = await reqs.json();
-    console.log(ress);
-
     Keyboard.dismiss();
-    if (ress) {
+    if (ress || ress == null) {
       navigation.navigate('MenuPrincipal');
     } else {
       setMessage('Usuário ou senha inválidos');
@@ -47,7 +50,6 @@ export default function Login({ navigation }) {
         />
       </View>
       <View style={styles.loginContainer}>
-
         {message && (
           <Text>{message}</Text>
         )}
@@ -61,8 +63,10 @@ export default function Login({ navigation }) {
           style={styles.imputs}
           placeholder="Senha"
           autoCorrect={false}
+          secureTextEntry={true}
           onChangeText={(text) => setPassword(text)}
         />
+
 
         <TouchableOpacity style={styles.btnEntrar}>
           <Text 
@@ -71,15 +75,15 @@ export default function Login({ navigation }) {
         </TouchableOpacity>
         
         <TouchableOpacity style={styles.btnEntrar} onpress={doLogin}>
-          <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
 
+        <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
+          <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
         </TouchableOpacity>
-        <View style={styles.view_nome_empresa}>
+        <View>
           <Text style={styles.nome_empresa}>Phantom Price™</Text>
         </View>
       </View>
     </KeyboardAvoidingView>
-
   );
 }
 
@@ -100,7 +104,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  viewLogo_text: {
+  loginContainer: {
+    flex: 1,
+    alignItems: 'center',
+    width: '90%',
+    marginBottom: 70,
     fontSize: 50
   },
   loginContainer: {
@@ -130,11 +138,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20
   },
-  view_nome_empresa: {
-    marginTop: 90,
-    alignItems: 'center',
-  },
-  nome_empresa: {
+  nome_empresa:{
+    marginTop: 22,
     color: 'white'
   }
-});
+})

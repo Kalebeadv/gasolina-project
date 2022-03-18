@@ -14,6 +14,28 @@ app.use(bodyParser.json());
 //Rotas
 
 app.post('/registrar',async(req,res)=>{
+    let reqs = await model.User.findAll({
+        where: {
+            email: req.body.emailUser,
+        }
+    });
+    if(reqs == ''){
+        reqs = await model.User.create({
+            'stName' : req.body.stNameUser,
+            'lsName' : req.body.lsNameUser,
+            'email' : req.body.emailUser,
+            'password' : req.body.passwordUser,
+            'createdAt' : new Date(),
+            'updatedAt' : new Date()
+        })
+        res.send(JSON.stringify('true'));
+    }else{
+        res.send(JSON.stringify('false'));
+    }
+});
+
+/*
+app.post('/registrar',async(req,res)=>{
     let reqs = await model.User.create({
         'stName' : req.body.stNameUser,
         'lsName' : req.body.lsNameUser,
@@ -22,10 +44,9 @@ app.post('/registrar',async(req,res)=>{
         'createdAt' : new Date(),
         'updatedAt' : new Date()
     })
-    if(reqs){
-        res.send(JSON.stringify('O usuário foi cadastrado com sucesso!'));
-    }
+
 });
+*/
 
 let port = 3000;
 

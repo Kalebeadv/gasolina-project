@@ -3,9 +3,10 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from "./screens/login_register/Login";
-import MenuPrincipal from "./screens/inicio_menuPrincipal/Inicio";
+import MenuPrincipal from "./screens/inicio_menuPrincipal/MenuPrincipal";
 import Inicio from "./screens/inicio_menuPrincipal/Inicio";
 import Registrar from "./screens/login_register/Registrar";
+import Mapa from "./screens/mapa/Mapa";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ function MyStack() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Registrar" component={Registrar} />
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />
+      <Stack.Screen name="Mapa" component={Mapa}  />
     </Stack.Navigator>
   );
 }

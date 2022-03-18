@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
-export default function Registrar() {
+export default function Registrar({navigation}) {
   const [nome,setNome]=useState(null);
   const [sobrenome,setSobrenome]=useState(null);
   const [email,setEmail]=useState(null);
@@ -24,6 +24,11 @@ export default function Registrar() {
     });
     let ress=await reqs.json();
     setMessage(ress);
+    if (ress == 'true'){
+      navigation.navigate('MenuPrincipal');
+    }else{
+      setMessage("usuario já existe")
+    }
   }
 
   return(
@@ -59,6 +64,7 @@ export default function Registrar() {
           style={styles.imputs}
           placeholder="Senha"
           autoCorrect={false}
+          secureTextEntry={true}
           onChangeText={(text)=>setPassword(text)}
         />
         <TouchableOpacity style={styles.btnEntrar} onPress={registerUser}>

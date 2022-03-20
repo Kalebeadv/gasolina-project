@@ -6,18 +6,12 @@ import {
 } from "react-native";
 
 
-
-
-
-
 //Fazer Login
 export default function Login({ navigation }) {
 
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [message, setMessage] = useState(null);
-
-  //Fazer login
 
   async function fazLogin() {
     let reqs = await fetch(config.urlRootPhp + 'Controller.php', {
@@ -42,6 +36,10 @@ export default function Login({ navigation }) {
       }, 3000);
     }
   }
+  function registrar(){
+    navigation.navigate('Registrar');
+  }
+
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.viewLogo}>
@@ -66,9 +64,14 @@ export default function Login({ navigation }) {
           secureTextEntry={true}
           onChangeText={(text) => setPassword(text)}
         />
+        <Text>
+          Não possui uma conta? <Text onPress={registrar}>Registrar</Text>
+        </Text>
+
         <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
           <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
         </TouchableOpacity>
+
         <View>
           <Text style={styles.nome_empresa}>Phantom Price™</Text>
         </View>

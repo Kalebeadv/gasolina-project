@@ -5,16 +5,28 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 export default function Inicio({navigation}) {
   return(
     <KeyboardAvoidingView style={styles.background}>
+
       <View style={styles.container}>
         <View style={styles.img_logo}>
+
+
+        <Image style={styles.imagemLogo}
+          source={require("../../assets/images/Logo.png")}
+        />
+
+
           <Image style={styles.imagemLogo}
           source={require("../../assets/images/Logo.png")}
           />
+
           <Text style={styles.nome_startup}>
             GASOLINA
           </Text>
+          
         </View>
+
         <View style={styles.viewBtn}>
+
           <TouchableOpacity style={styles.entrar}>
             <Text 
               style={styles.entrar_text}
@@ -29,16 +41,14 @@ export default function Inicio({navigation}) {
               >REGISTRAR</Text>
           </TouchableOpacity>
         </View>
+        
         <View style={styles.view_nome_empresa}> 
         <Text style={styles.nome_empresa}>Phantom Price™</Text>
       </View> 
     </View>
     </KeyboardAvoidingView>
-    
   );
 }
-
-// arruma tela inicial e tela de splash
 
 const styles = StyleSheet.create({
   background:{
@@ -67,17 +77,12 @@ const styles = StyleSheet.create({
     height:200,
     marginTop:250,
   },
-  viewLogo:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center',
-  },
   viewBtn:{
     flex:1,
     alignItems:'center',
-    width:'80%',
+    width:'70%',
     flexDirection: 'row',
-    marginTop: 375,
+    marginTop: 370,
   },
   entrar:{
     backgroundColor:'#fff',

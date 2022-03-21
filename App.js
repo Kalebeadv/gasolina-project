@@ -6,6 +6,8 @@ import MenuPrincipal from "./screens/inicio_menuPrincipal/MenuPrincipal";
 import Inicio from "./screens/inicio_menuPrincipal/Inicio";
 import Registrar from "./screens/login_register/Registrar";
 import Mapa from "./screens/mapa/Mapa";
+import EsqueciSenha from "./screens/login_register/Esqueci_senha";
+import { ScreenStackHeaderConfig } from "react-native-screens";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +18,7 @@ function MyStack() {
       <Stack.Screen name="Registrar" component={Registrar} />
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />
       <Stack.Screen name="Mapa" component={Mapa}  />
+      <Stack.Screen name="EsqueciSenha" component={EsqueciSenha}/>
     </Stack.Navigator>
   );
 }

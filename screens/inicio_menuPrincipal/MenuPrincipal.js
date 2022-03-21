@@ -3,13 +3,13 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 
 export default function MenuPrincipal({navigation}) {
   return (
-    
-      <TouchableOpacity style={styles.entrar}>
-        <Text
-          onPress={() => navigation.navigate("Mapa")}
-        >Buscar rota</Text>
+    <View style={styles.background}>
+      <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("Mapa")}>
+        <Text style={styles.nome_rota}>
+          Buscar rota
+        </Text>
       </TouchableOpacity>
- 
+    </View>
   );
 }
 
@@ -18,18 +18,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'cyan'
+    backgroundColor: '#073535'
   },
-  imagemLogo: {
-    width: 150,
-    height: 150,
+  rota: {
+    backgroundColor: 'white',
+    width: '50%',
+    height: 50,
+    marginBottom: 50,
+    borderRadius: 13,
+    paddingTop: 10,
+    marginTop: 20
   },
-  viewLogo: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  viewLogo_text: {
-    fontSize: 50
+  nome_rota: {
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 20
   }
 });

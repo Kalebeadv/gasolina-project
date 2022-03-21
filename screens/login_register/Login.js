@@ -43,6 +43,9 @@ export default function Login({ navigation }) {
   function registrar(){
     navigation.navigate('Registrar');
   }
+  function esqueci_senha(){
+    navigation.navigate('EsqueciSenha');
+  }
 
   return (
     <KeyboardAvoidingView style={styles.background}>
@@ -71,7 +74,7 @@ export default function Login({ navigation }) {
           secureTextEntry={true}
           onChangeText={(text) => setPassword(text)}
         />
-        <Text style={styles.esqueci_senha}>
+        <Text style={styles.esqueci_senha} onPress={esqueci_senha}>
           Esqueci minha senha
         </Text>
 

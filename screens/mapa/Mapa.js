@@ -3,12 +3,14 @@ import { View, StyleSheet } from "react-native";
 import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+
 
 
 export default function Mapa() {
 
-  const [origin,setOrigin]=useState(null);
-  const [destination,setDestination]=useState(null);
+  const [origin, setOrigin] = useState(null);
+  const [destination, setDestination] = useState(null);
 
   useEffect(() => {
     (async function () {
@@ -37,7 +39,26 @@ export default function Mapa() {
       >
 
       </MapView>
+      <View style={StyleSheet.search}>
+
+        <GooglePlacesAutocomplete
+          placeholder='Para onde vamos?'
+          onPress={(data, details = null) => {
+            // 'details' is provided when fetchDetails = true
+            console.log(data, details);
+          }}
+          query={{
+            key: 'AIzaSyAUarrhs2FGX77hu_Eq1qWNavwAFKkq64k',
+            language: 'pt-br',
+          }}
+
+          enablePoweredByContainer={false}
+          fetchDetails={true}
+          styles={{ listView: { height: 100 } }}
+        />
+      </View>
     </View>
+
 
   )
 }

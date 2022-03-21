@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import config from "../../config/config.json";
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 export default function Registrar({navigation}) {
   const [nome,setNome]=useState(null);
   const [sobrenome,setSobrenome]=useState(null);
@@ -23,20 +23,23 @@ export default function Registrar({navigation}) {
       })
     });
     let ress=await reqs.json();
-    setMessage(ress);
+    
     if (ress == 'true'){
       navigation.navigate('MenuPrincipal');
     }else{
-      setMessage("usuario já existe")
+      Alert.alert(
+        "Algo inesperado",
+        "Usuário já existe"
+      )
     }
   }
 
   return(
     <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.viewLogo}>
-        <Image style={styles.imagemLogo}
-        source={require("../../assets/images/Logo.png")}
-        />
+      <View>
+        <Text style={styles.texto_registro}>
+          Registre-se para comece a economizar
+        </Text>
       </View>
       <View style={styles.loginContainer}>
         {message && (
@@ -45,24 +48,28 @@ export default function Registrar({navigation}) {
         <TextInput 
           style={styles.imputs}
           placeholder="Nome"
+          placeholderTextColor={'white'}
           autoCorrect={false}
           onChangeText={(text)=>setNome(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Sobrenome"
+          placeholderTextColor={'white'}
           autoCorrect={false}
           onChangeText={(text)=>setSobrenome(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Email"
+          placeholderTextColor={'white'}
           autoCorrect={false}
           onChangeText={(text)=>setEmail(text)}
         />
         <TextInput 
           style={styles.imputs}
           placeholder="Senha"
+          placeholderTextColor={'white'}
           autoCorrect={false}
           secureTextEntry={true}
           onChangeText={(text)=>setPassword(text)}
@@ -70,9 +77,6 @@ export default function Registrar({navigation}) {
         <TouchableOpacity style={styles.btnEntrar} onPress={registerUser}>
           <Text style={styles.btnEntrar_texto}>REGISTRAR</Text>
         </TouchableOpacity>
-        <View>
-          <Text style={styles.nome_empresa}>Phantom Price™</Text>
-        </View>
       </View>
     </KeyboardAvoidingView>
   );
@@ -83,48 +87,42 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor:'#064C4D'
+    backgroundColor:'#073535'
   },
-  imagemLogo:{
-    width: 110,
-    height: 150,
-    marginBottom: 40
-  },
-  viewLogo:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center',
-  },
+  texto_registro: {
+    fontSize: 50,
+    color: 'white',
+    marginTop: 30
+  },  
   loginContainer:{
     flex:1,
     alignItems:'center',
     width:'90%',
     marginBottom: 70
   },
-  imputs:{
-    width:'90%',
-    marginBottom: 20,
-    fontSize: 25,
+  imputs: {
+    width: '90%',
+    height: 50,
+    marginTop: 20,
+    fontSize: 20,
     borderStyle: 'solid',
     borderColor: 'white',
-    borderBottomWidth: 2,
+    borderWidth: 2,
+    borderRadius: 13,
+    padding: 10,
     color: 'white'
   },
   btnEntrar:{
     backgroundColor:'white',
-    width:'35%',
-    height:34,
-    marginBottom: 20,
-    borderRadius:7,
-    paddingTop: 3
+    width:'90%',
+    height:50,
+    marginTop: 20,
+    borderRadius: 13,
+    paddingTop: 10
   },
   btnEntrar_texto:{
     textAlign:'center',
     color:'black',
     fontSize: 20
   },
-  nome_empresa:{
-    marginTop: 22,
-    color: 'white'
-  }
 });

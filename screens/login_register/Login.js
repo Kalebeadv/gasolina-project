@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import config from "../../config/config.json";
 import {
   View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity,
-  Text, StyleSheet, Keyboard
+  Text, StyleSheet, Keyboard, Alert
 } from "react-native";
 
 
@@ -30,10 +30,14 @@ export default function Login({ navigation }) {
     if (ress || ress == null) {
       navigation.navigate('MenuPrincipal');
     } else {
-      setMessage('Usuário ou senha inválidos');
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
+      //setMessage('Usuário ou senha inválidos');
+      //setTimeout(() => {
+        //setMessage(null);
+      //}, 3000);
+      Alert.alert(
+        "Algo inesperado",
+        "Email ou Senha invalido"
+      )
     }
   }
   function registrar(){
@@ -42,11 +46,12 @@ export default function Login({ navigation }) {
 
   return (
     <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.viewLogo}>
-        <Image style={styles.imagemLogo}
-          source={require("../../assets/images/Logo.png")}
-        />
+      <View>
+        <Text style={styles.nome_inicio}>
+          Bem Vindo ao Gasolina 
+        </Text>
       </View>
+
       <View style={styles.loginContainer}>
         {message && (
           <Text>{message}</Text>
@@ -54,27 +59,31 @@ export default function Login({ navigation }) {
         <TextInput
           style={styles.imputs}
           placeholder="Email"
+          placeholderTextColor={'white'}
           autoCorrect={false}
           onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           style={styles.imputs}
           placeholder="Senha"
+          placeholderTextColor={'white'}
           autoCorrect={false}
           secureTextEntry={true}
           onChangeText={(text) => setPassword(text)}
         />
-        <Text>
-          Não possui uma conta? <Text onPress={registrar}>Registrar</Text>
+        <Text style={styles.esqueci_senha}>
+          Esqueci minha senha
+        </Text>
+
+        <Text style={styles.registro}>
+          Não possui uma conta? <Text onPress={registrar} style={styles.nome_registro}>Registrar</Text>
         </Text>
 
         <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
           <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
         </TouchableOpacity>
 
-        <View>
-          <Text style={styles.nome_empresa}>Phantom Price™</Text>
-        </View>
+        
       </View>
     </KeyboardAvoidingView>
   );
@@ -85,17 +94,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#064C4D'
+    backgroundColor: '#073535'
   },
-  imagemLogo: {
-    width: 110,
-    height: 150,
-    marginBottom: 40
-  },
-  viewLogo: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  nome_inicio: {
+    fontSize: 50,
+    marginTop: 30,
+    marginBottom: 75,
+    color: 'white',
+    flexDirection: 'row',
   },
   loginContainer: {
     flex: 1,
@@ -111,28 +117,41 @@ const styles = StyleSheet.create({
   },
   imputs: {
     width: '90%',
-    marginBottom: 20,
-    fontSize: 25,
+    height: 50,
+    marginTop: 20,
+    fontSize: 20,
     borderStyle: 'solid',
     borderColor: 'white',
-    borderBottomWidth: 2,
+    borderWidth: 2,
+    borderRadius: 13,
+    padding: 10,
     color: 'white'
+  },
+  esqueci_senha: {
+    color: '#2178B6',
+    marginLeft: 180,
+    marginTop: 4,
+  },
+  registro: {
+    color: 'white',
+    fontSize: 15,
+    marginTop: 100,
+  },
+  nome_registro: {
+    color: '#2178B6', 
   },
   btnEntrar: {
     backgroundColor: 'white',
-    width: '35%',
-    height: 34,
-    marginBottom: 20,
-    borderRadius: 7,
-    paddingTop: 3
+    width: '90%',
+    height: 50,
+    marginBottom: 50,
+    borderRadius: 13,
+    paddingTop: 10,
+    marginTop: 20
   },
   btnEntrar_texto: {
     textAlign: 'center',
     color: 'black',
     fontSize: 20
-  },
-  nome_empresa:{
-    marginTop: 22,
-    color: 'white'
-  }
+  }, 
 })

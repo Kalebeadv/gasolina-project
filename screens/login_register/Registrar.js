@@ -26,10 +26,15 @@ export default function Registrar({navigation}) {
     
     if (ress == 'true'){
       navigation.navigate('MenuPrincipal');
-    }else{
+    }else if(ress == 'false'){
       Alert.alert(
         "Algo inesperado",
         "Usuário já existe"
+      )
+    }else if(ress == 'Email Invalido'){
+      Alert.alert(
+        "Algo inesperado",
+        "Email Invalido"
       )
     }
   }

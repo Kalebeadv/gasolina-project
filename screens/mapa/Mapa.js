@@ -4,6 +4,7 @@ import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import {googleKey} from "../../config/googleConfig.json"
 
 
 
@@ -48,7 +49,7 @@ export default function Mapa() {
             console.log(data, details);
           }}
           query={{
-            key: 'AIzaSyAUarrhs2FGX77hu_Eq1qWNavwAFKkq64k',
+            key: googleKey,
             language: 'pt-br',
           }}
 

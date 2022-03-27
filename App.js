@@ -11,6 +11,7 @@ import { ScreenStackHeaderConfig } from "react-native-screens";
 
 const Stack = createStackNavigator();
 
+
 function MyStack() {
   return (
     <Stack.Navigator>

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 export default function Registrar({navigation}) {
   const [nome,setNome]=useState(null);
-  const [sobrenome,setSobrenome]=useState(null);
+  const [passwordConfirm,setPasswordConfirm]=useState(null);
   const [email,setEmail]=useState(null);
   const [password,setPassword]=useState(null);
   const [message,setMessage]=useState(null);
-
+  function forLogin() {
+    navigation.navigate('Login');
+  }
   async function registerUser() {
     var reqs = await fetch(config.urlRootNode+'registrar',{
       method: 'POST',
@@ -17,9 +21,9 @@ export default function Registrar({navigation}) {
       },
       body: JSON.stringify({
         stNameUser: nome,
-        lsNameUser: sobrenome,
         emailUser: email,
-        passwordUser: password
+        passwordUser: password,
+        passwordConfirmUser: passwordConfirm
       })
     });
     let ress=await reqs.json();
@@ -30,58 +34,87 @@ export default function Registrar({navigation}) {
       Alert.alert(
         "Algo inesperado",
         "Usuário já existe"
-      )
+      );
     }else if(ress == 'Email Invalido'){
       Alert.alert(
         "Algo inesperado",
         "Email Invalido"
-      )
+      );
+    }else if(ress == 'Senha Divergente'){
+      Alert.alert(
+        "Algo inesperado",
+        "As senhas estão diferentes"
+      );
     }
   }
 
   return(
     <KeyboardAvoidingView style={styles.background}>
-      <View>
+      <View style={styles.logoContainer}>
+        <Image style={styles.imagemLogo}
+          source={require("../../assets/images/LogoVerde.png")}
+        />
         <Text style={styles.texto_registro}>
-          Registre-se para comece a economizar
+          Ga$olina
         </Text>
       </View>
       <View style={styles.loginContainer}>
         {message && (
           <Text>{message}</Text>
         )}
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Nome"
-          placeholderTextColor={'white'}
-          autoCorrect={false}
-          onChangeText={(text)=>setNome(text)}
-        />
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Sobrenome"
-          placeholderTextColor={'white'}
-          autoCorrect={false}
-          onChangeText={(text)=>setSobrenome(text)}
-        />
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Email"
-          placeholderTextColor={'white'}
-          autoCorrect={false}
-          onChangeText={(text)=>setEmail(text)}
-        />
-        <TextInput 
-          style={styles.imputs}
-          placeholder="Senha"
-          placeholderTextColor={'white'}
-          autoCorrect={false}
-          secureTextEntry={true}
-          onChangeText={(text)=>setPassword(text)}
-        />
+        <View style={styles.inputIcon}>
+          <Icon name="user" size={25} color="#107878" />
+          <TextInput 
+            style={styles.imputs}
+            placeholder=" Nome"
+            placeholderTextColor={'#107878'}
+            autoCorrect={false}
+            onChangeText={(text)=>setNome(text)}
+          />
+        </View>
+        
+        <View style={styles.inputIcon}>
+          <Icon name="envelope" size={25} color="#107878" />
+          <TextInput 
+            style={styles.imputs}
+            placeholder=" Email"
+            placeholderTextColor={'#107878'}
+            autoCorrect={false}
+            onChangeText={(text)=>setEmail(text)}
+          />
+        </View>
+        
+        <View style={styles.inputIcon}>
+          <Icon name="lock" size={25} color="#107878" />
+          <TextInput 
+            style={styles.imputs}
+            placeholder=" Senha"
+            placeholderTextColor={'#107878'}
+            autoCorrect={false}
+            secureTextEntry={true}
+            onChangeText={(text)=>setPassword(text)}
+          />
+        </View>
+        
+        <View style={styles.inputIcon}>
+          <Icon name="expeditedssl" size={25} color="#107878"/>
+          <TextInput 
+            style={styles.imputs}
+            placeholder=" Confirmar senha"
+            placeholderTextColor={'#107878'}
+            autoCorrect={false}
+            secureTextEntry={true}
+            onChangeText={(text)=>setPasswordConfirm(text)}
+          />
+        </View>
+        
         <TouchableOpacity style={styles.btnEntrar} onPress={registerUser}>
           <Text style={styles.btnEntrar_texto}>REGISTRAR</Text>
         </TouchableOpacity>
+
+        <Text style={styles.login}>
+          Já possui uma conta? <Text onPress={forLogin} style={styles.nome_Login}>Entrar</Text>
+        </Text>
       </View>
     </KeyboardAvoidingView>
   );
@@ -89,45 +122,69 @@ export default function Registrar({navigation}) {
 
 const styles = StyleSheet.create({
   background:{
-    flex:1,
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor:'#073535'
+    backgroundColor:'#ffffff'
   },
   texto_registro: {
-    fontSize: 50,
-    color: 'white',
-    marginTop: 30
+    fontSize: 35,
+    color: '#107878',
   },  
   loginContainer:{
-    flex:1,
     alignItems:'center',
     width:'90%',
     marginBottom: 70
   },
   imputs: {
-    width: '90%',
-    height: 50,
-    marginTop: 20,
-    fontSize: 20,
-    borderStyle: 'solid',
-    borderColor: 'white',
-    borderWidth: 2,
-    borderRadius: 13,
-    padding: 10,
-    color: 'white'
+    fontSize: 17,
+    marginLeft:"2%",
+    width:'90%',
+    color:'#107878'
   },
   btnEntrar:{
-    backgroundColor:'white',
+    backgroundColor:'#107878',
     width:'90%',
     height:50,
     marginTop: 20,
-    borderRadius: 13,
+    marginBottom: 10,
+    borderRadius: 8,
     paddingTop: 10
   },
   btnEntrar_texto:{
     textAlign:'center',
-    color:'black',
+    color:'#ffffff',
     fontSize: 20
   },
+  imagemLogo: {
+    width:84,
+    height:120,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    alignContent: "center",
+    paddingBottom: "5%",
+  },
+  login: {
+    color: '#107878',
+    fontSize: 15,
+    marginTop: 10,
+  },
+  nome_Login: {
+    color: '#2178B6',
+  },
+  inputIcon:{
+    width: '90%',
+    height: 50,
+    fontSize: 20,
+    marginBottom:"3%",
+    borderStyle: 'solid',
+    borderColor: '#107878',
+    borderWidth: 2,
+    borderRadius: 8,
+    borderRightWidth: 5,
+    borderBottomWidth: 5,
+    padding: 10,
+    color: '#107878',
+    flexDirection: "row"
+  }
 });

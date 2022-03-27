@@ -4,6 +4,7 @@ import {
   View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity,
   Text, StyleSheet, Keyboard, Alert
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 
 //Fazer Login
@@ -28,65 +29,75 @@ export default function Login({ navigation }) {
     let ress = await reqs.json();
     Keyboard.dismiss();
     if (ress || ress == null) {
-      navigation.navigate('MenuPrincipal');
+      navigation.navigate("MenuPrincipal")
     } else {
-      //setMessage('Usuário ou senha inválidos');
-      //setTimeout(() => {
-        //setMessage(null);
-      //}, 3000);
       Alert.alert(
         "Algo inesperado",
         "Email ou Senha invalido"
       )
     }
   }
-  function registrar(){
+  function registrar() {
     navigation.navigate('Registrar');
   }
-  function esqueci_senha(){
+  function esqueci_senha() {
     navigation.navigate('EsqueciSenha');
   }
 
   return (
     <KeyboardAvoidingView style={styles.background}>
-      <View>
-        <Text style={styles.nome_inicio}>
-          Bem Vindo ao Gasolina 
-        </Text>
+
+      <View style={styles.logoContainer}>
+        <Image style={styles.imagemLogo}
+          source={require("../../assets/images/LogoVerde.png")}
+        />
+        <Text style={styles.gasolina}>Ga$olina</Text>
       </View>
 
-      <View style={styles.loginContainer}>
+      <View style={styles.inputContainer}>
+
         {message && (
           <Text>{message}</Text>
         )}
-        <TextInput
-          style={styles.imputs}
-          placeholder="Email"
-          placeholderTextColor={'white'}
-          autoCorrect={false}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <TextInput
-          style={styles.imputs}
-          placeholder="Senha"
-          placeholderTextColor={'white'}
-          autoCorrect={false}
-          secureTextEntry={true}
-          onChangeText={(text) => setPassword(text)}
-        />
+        <Text style={styles.textoES}>E-Mail</Text>
+        <View style={styles.loginEmail}>
+          <Icon name="envelope-o" size={25} color="#107878" />
+          <TextInput
+            style={styles.textInput}
+            autoCorrect={false}
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
+
+        <Text style={styles.textoES}>Senha</Text>
+        <View style={styles.loginPass}>
+          <Icon name="lock" size={25} color="#107878" />
+          <TextInput
+            style={styles.textInput}
+            autoCorrect={false}
+            secureTextEntry={true}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </View>
+
         <Text style={styles.esqueci_senha} onPress={esqueci_senha}>
           Esqueci minha senha
         </Text>
 
+        <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
+          <Text style={styles.btnTexto}>Login</Text>
+        </TouchableOpacity>
+        
+        <Text style={styles.ou}>───────────── Ou ─────────────</Text>
+        
+        <TouchableOpacity style={styles.btnGoogle}>
+          <Icon name="google" size={30} color="#ffffff"/>
+          <Text style={styles.btnTexto}>  Login com o Google</Text>
+        </TouchableOpacity>
+
         <Text style={styles.registro}>
           Não possui uma conta? <Text onPress={registrar} style={styles.nome_registro}>Registrar</Text>
         </Text>
-
-        <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
-          <Text style={styles.btnEntrar_texto}>ENTRAR</Text>
-        </TouchableOpacity>
-
-        
       </View>
     </KeyboardAvoidingView>
   );
@@ -97,64 +108,110 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#073535'
+    backgroundColor: '#ffffff'
   },
-  nome_inicio: {
-    fontSize: 50,
-    marginTop: 30,
-    marginBottom: 75,
-    color: 'white',
-    flexDirection: 'row',
-  },
-  loginContainer: {
-    flex: 1,
+  inputContainer: {
     alignItems: 'center',
-    width: '90%',
-    marginBottom: 70,
+    width:"90%",
+    marginBottom: "20%",
     fontSize: 50
-  },
-  loginContainer: {
-    flex: 1,
-    alignItems: 'center',
-    width: '90%'
-  },
-  imputs: {
-    width: '90%',
-    height: 50,
-    marginTop: 20,
-    fontSize: 20,
-    borderStyle: 'solid',
-    borderColor: 'white',
-    borderWidth: 2,
-    borderRadius: 13,
-    padding: 10,
-    color: 'white'
   },
   esqueci_senha: {
     color: '#2178B6',
-    marginLeft: 180,
+    marginLeft: "40%",
     marginTop: 4,
   },
   registro: {
-    color: 'white',
+    color: '#107878',
     fontSize: 15,
-    marginTop: 100,
+    marginTop: 20,
   },
   nome_registro: {
-    color: '#2178B6', 
+    color: '#2178B6',
   },
   btnEntrar: {
-    backgroundColor: 'white',
+    backgroundColor: '#107878',
+    borderStyle: 'solid',
     width: '90%',
     height: 50,
-    marginBottom: 50,
-    borderRadius: 13,
+    marginBottom: "5%",
+    marginTop:"8%",
+    borderRadius: 8,
     paddingTop: 10,
-    marginTop: 20
   },
-  btnEntrar_texto: {
+  btnTexto: {
     textAlign: 'center',
-    color: 'black',
+    color: '#ffffff',
     fontSize: 20
-  }, 
+  },
+  loginEmail: {
+    width: '90%',
+    height: 50,
+    fontSize: 20,
+    borderStyle: 'solid',
+    borderColor: '#107878',
+    borderWidth: 2,
+    borderRadius: 8,
+    borderRightWidth: 5,
+    borderBottomWidth: 5,
+    padding: 10,
+    color: '#107878',
+    flexDirection: "row",
+    marginBottom: "5%"
+  },
+  loginPass: {
+    width: '90%',
+    height: 50,
+    fontSize: 20,
+    borderStyle: 'solid',
+    borderColor: '#107878',
+    borderWidth: 2,
+    borderRadius: 8,
+    borderRightWidth: 5,
+    borderBottomWidth: 5,
+    padding: 10,
+    color: '#107878',
+    flexDirection: "row"
+  },
+  logoContainer: {
+    alignItems: 'center',
+    alignContent: "center",
+    paddingBottom: "5%"
+  },
+  imagemLogo: {
+    width:84,
+    height:120,
+    marginTop: "10%",
+  },
+  gasolina: {
+    textAlign: "center",
+    fontSize: 30,
+    color: '#107878'
+  },
+  btnGoogle:{
+    justifyContent:"center",
+    backgroundColor: '#107878',
+    borderStyle: 'solid',
+    width: '90%',
+    height: 50,
+    borderRadius: 8,
+    flexDirection: "row",
+    paddingTop: 10,
+  },
+  ou:{
+    fontSize:15,
+    color:'#107878',
+    marginBottom:"5%"
+  },
+  textoES:{
+    color:'#107878',
+    fontSize:15,
+    marginRight:"75%",
+  },
+  textInput:{
+    fontSize:17,
+    width:"100%",
+    color:'#107878',
+    marginLeft:"2%"
+  },
 })

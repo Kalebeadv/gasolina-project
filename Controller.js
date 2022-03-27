@@ -27,15 +27,18 @@ app.post('/registrar',async(req,res)=>{
     x = validateEmail(req.body.emailUser);
     if (x){
         if(reqs == ''){
-            reqs = await model.User.create({
-                'stName' : req.body.stNameUser,
-                'lsName' : req.body.lsNameUser,
-                'email' : req.body.emailUser,
-                'password' : req.body.passwordUser,
-                'createdAt' : new Date(),
-                'updatedAt' : new Date()
-            })
-            res.send(JSON.stringify('true'));
+            if(req.body.passwordUser == req.body.passwordConfirmUser){
+                reqs = await model.User.create({
+                    'stName' : req.body.stNameUser,
+                    'email' : req.body.emailUser,
+                    'password' : req.body.passwordUser,
+                    'createdAt' : new Date(),
+                    'updatedAt' : new Date()
+                })
+                res.send(JSON.stringify('true'));
+            }else{
+                res.send(JSON.stringify('Senha Divergente'));
+            }
         }else{
             res.send(JSON.stringify('false'));
         }

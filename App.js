@@ -8,7 +8,7 @@ import Registrar from "./screens/login_register/Registrar";
 import Mapa from "./screens/mapa/Mapa";
 import EsqueciSenha from "./screens/login_register/Esqueci_senha";
 import { ScreenStackHeaderConfig } from "react-native-screens";
-
+import LoginComGoogle from "./screens/login_register/LoginComGoogle";
 const Stack = createStackNavigator();
 
 
@@ -20,6 +20,7 @@ function MyStack() {
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />
       <Stack.Screen name="Mapa" component={Mapa}  />
       <Stack.Screen name="EsqueciSenha" component={EsqueciSenha}/>
+      <Stack.Screen name="LoginComGoogle" component={LoginComGoogle}/>
     </Stack.Navigator>
   );
 }

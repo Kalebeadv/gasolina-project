@@ -44,6 +44,10 @@ export default function Login({ navigation }) {
     navigation.navigate('EsqueciSenha');
   }
 
+  function login_com_o_google()
+  {
+    navigation.navigate('LoginComGoogle')
+  }
   return (
     <KeyboardAvoidingView style={styles.background}>
 
@@ -90,7 +94,7 @@ export default function Login({ navigation }) {
         
         <Text style={styles.ou}>───────────── Ou ─────────────</Text>
         
-        <TouchableOpacity style={styles.btnGoogle}>
+        <TouchableOpacity style={styles.btnGoogle} onPress={login_com_o_google}>
           <Icon name="google" size={30} color="#ffffff"/>
           <Text style={styles.btnTexto}>  Login com o Google</Text>
         </TouchableOpacity>
@@ -100,6 +104,19 @@ export default function Login({ navigation }) {
         </Text>
       </View>
     </KeyboardAvoidingView>
+
+    /*
+    return (
+    <View style={styles.container}>
+      {showUserInfo()}
+      <Button 
+        title={accessToken ? "Get User Data" : "Login"}
+        onPress={accessToken ? getUserData : () => { promptAsync({useProxy: false, showInRecents: true}) }}
+      />
+      <StatusBar style="auto" />
+    </View>
+  );
+    */
   );
 }
 

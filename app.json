@@ -22,6 +22,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.gasolina",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"

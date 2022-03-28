@@ -89,7 +89,7 @@ export default function Login({ navigation }) {
         </Text>
 
         <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
-          <Text style={styles.btnTexto}>Login</Text>
+          <Text style={styles.btnTexto}>Entrar</Text>
         </TouchableOpacity>
         
         <Text style={styles.ou}>───────────── Ou ─────────────</Text>
@@ -167,10 +167,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderStyle: 'solid',
     borderColor: '#107878',
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 8,
-    borderRightWidth: 5,
-    borderBottomWidth: 5,
+    borderRightWidth: 1,
+    borderBottomWidth: 3,
     padding: 10,
     color: '#107878',
     flexDirection: "row",
@@ -182,10 +182,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderStyle: 'solid',
     borderColor: '#107878',
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 8,
-    borderRightWidth: 5,
-    borderBottomWidth: 5,
+    borderRightWidth: 1,
+    borderBottomWidth: 3,
     padding: 10,
     color: '#107878',
     flexDirection: "row"

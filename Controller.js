@@ -48,6 +48,19 @@ app.post('/registrar',async(req,res)=>{
     
 });
 
+app.post('/cadastrarVeiculo',async(req,res)=>{
+    reqs = await model.Vehicle.create({
+        'model' : req.body.modeloVeiculo,
+        'brand' : req.body.marcaVeiculo,
+        'consumo' : req.body.consumoVeiculo,
+        'typefuel': req.body.combustivelVeiculo,
+        'year': req.body.anoVeiculo,
+        'createdAt' : new Date(),
+        'updatedAt' : new Date()
+    })
+    res.send(JSON.stringify('sucesso'))
+});
+
 /*
 app.post('/registrar',async(req,res)=>{
     let reqs = await model.User.create({

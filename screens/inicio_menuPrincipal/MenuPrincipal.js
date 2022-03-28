@@ -9,6 +9,11 @@ export default function MenuPrincipal({navigation}) {
           Buscar rota
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("CadastroVeiculo")}>
+        <Text style={styles.nome_rota}>
+          Cadastrar Veículo
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }

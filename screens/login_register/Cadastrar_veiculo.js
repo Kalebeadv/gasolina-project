@@ -3,51 +3,41 @@ import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export default function Registrar({navigation}) {
-  const [nome,setNome]=useState(null);
-  const [passwordConfirm,setPasswordConfirm]=useState(null);
-  const [email,setEmail]=useState(null);
-  const [password,setPassword]=useState(null);
-  const [message,setMessage]=useState(null);
-  function forLogin() {
-    navigation.navigate('Login');
-  }
-  async function registerUser() {
-    var reqs = await fetch(config.urlRootNode+'registrar',{
+export default function CadastrarVeiculo({navigation}) {
+  const [modelo,setModelo]=useState(null);
+  const [marca,setMarca]=useState(null);
+  const [consumo,setConsumo]=useState(null);
+  const [combustivel,setCombustivel]=useState(null);
+  const [ano,setAno]=useState(null);
+  
+  async function Cadastrar() {
+    var reqs = await fetch(config.urlRootNode+'cadastrarVeiculo',{
       method: 'POST',
       headers:{
         'Accept':'application/json',
         'Content-Type':'application/json',
       },
       body: JSON.stringify({
-        stNameUser: nome,
-        emailUser: email,
-        passwordUser: password,
-        passwordConfirmUser: passwordConfirm
+        modeloVeiculo: modelo,
+        marcaVeiculo: marca,
+        consumoVeiculo: consumo,
+        combustivelVeiculo: combustivel,
+        anoVeiculo : ano
       })
     });
+
     let ress=await reqs.json();
     
-    if (ress == 'true'){
-      navigation.navigate('MenuPrincipal');
-    }else if(ress == 'false'){
-      Alert.alert(
-        "Algo inesperado",
-        "Usuário já existe"
-      );
-    }else if(ress == 'Email Invalido'){
-      Alert.alert(
-        "Algo inesperado",
-        "Email Invalido"
-      );
-    }else if(ress == 'Senha Divergente'){
-      Alert.alert(
-        "Algo inesperado",
-        "As senhas estão diferentes"
-      );
+    if(ress == 'sucesso'){
+        Alert.alert(
+            "Concluido",
+            "O cadastro do veiculo foi concluido com sucesso"
+        )
+        navigation.navigate('MenuPrincipal')
     }
-  }
 
+
+  }
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.logoContainer}>
@@ -59,62 +49,68 @@ export default function Registrar({navigation}) {
         </Text>
       </View>
       <View style={styles.loginContainer}>
-        {message && (
-          <Text>{message}</Text>
-        )}
         <View style={styles.inputIcon}>
-          <Icon name="user" size={25} color="#107878" />
+          <Icon name="car" size={25} color="#107878" />
           <TextInput 
             style={styles.imputs}
-            placeholder=" Nome"
+            placeholder="Modelo"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
-            onChangeText={(text)=>setNome(text)}
+            onChangeText={(text)=>setModelo(text)}
           />
         </View>
         
         <View style={styles.inputIcon}>
-          <Icon name="envelope" size={25} color="#107878" />
+          <Icon name="star" size={25} color="#107878" />
           <TextInput 
             style={styles.imputs}
-            placeholder=" Email"
+            placeholder="Marca"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
-            onChangeText={(text)=>setEmail(text)}
+            onChangeText={(text)=>setMarca(text)}
           />
         </View>
         
         <View style={styles.inputIcon}>
-          <Icon name="lock" size={25} color="#107878" />
+          <Icon name="road" size={25} color="#107878" />
           <TextInput 
             style={styles.imputs}
-            placeholder=" Senha"
+            placeholder="Consumo médio"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
-            secureTextEntry={true}
-            onChangeText={(text)=>setPassword(text)}
+            
+            onChangeText={(text)=>setConsumo(text)}
           />
         </View>
         
         <View style={styles.inputIcon}>
-          <Icon name="expeditedssl" size={25} color="#107878"/>
+          <Icon name="tint" size={25} color="#107878"/>
           <TextInput 
             style={styles.imputs}
-            placeholder=" Confirmar senha"
+            placeholder="Tipo do Combustivel"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
-            secureTextEntry={true}
-            onChangeText={(text)=>setPasswordConfirm(text)}
+            
+            onChangeText={(text)=>setCombustivel(text)}
+          />
+        </View>
+
+        <View style={styles.inputIcon}>
+          <Icon name="calendar" size={25} color="#107878"/>
+          <TextInput 
+            style={styles.imputs}
+            placeholder="Ano"
+            placeholderTextColor={'#107878'}
+            autoCorrect={false}
+            
+            onChangeText={(text)=>setAno(text)}
           />
         </View>
         
-        <TouchableOpacity style={styles.btnEntrar} onPress={registerUser}>
-          <Text style={styles.btnEntrar_texto}>REGISTRAR</Text>
+        <TouchableOpacity style={styles.btnEntrar} onPress={Cadastrar}>
+          <Text style={styles.btnEntrar_texto}>Cadastrar Novo Veículo</Text>
         </TouchableOpacity>
 
-        <Text style={styles.login}>
-          Já possui uma conta? <Text onPress={forLogin} style={styles.nome_Login}>Entrar</Text>
-        </Text>
       </View>
     </KeyboardAvoidingView>
   );
@@ -125,10 +121,6 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     backgroundColor:'#ffffff'
-  },
-  texto_registro: {
-    fontSize: 35,
-    color: '#107878',
   },  
   loginContainer:{
     alignItems:'center',
@@ -163,14 +155,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: "center",
     paddingBottom: "5%",
-  },
-  login: {
-    color: '#107878',
-    fontSize: 15,
-    marginTop: 10,
-  },
-  nome_Login: {
-    color: '#2178B6',
   },
   inputIcon:{
     width: '90%',

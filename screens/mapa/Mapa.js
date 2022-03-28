@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import {googleKey} from "../../config/googleConfig.json"
+import config from "../../config/googleConfig.json";
 
 
 
@@ -15,7 +15,7 @@ export default function Mapa() {
 
   useEffect(() => {
     (async function () {
-      const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
+      const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
       if (status === 'granted') {
         let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
         setOrigin({
@@ -38,10 +38,8 @@ export default function Mapa() {
         zoomEnabled={false}
         loadingEnabled={true}
       >
-
       </MapView>
       <View style={StyleSheet.search}>
-
         <GooglePlacesAutocomplete
           placeholder='Para onde vamos?'
           onPress={(data, details = null) => {
@@ -49,7 +47,7 @@ export default function Mapa() {
             console.log(data, details);
           }}
           query={{
-            key: googleKey,
+            key: config.googleMapKey,
             language: 'pt-br',
           }}
 
@@ -59,23 +57,21 @@ export default function Mapa() {
         />
       </View>
     </View>
-
-
   )
 }
-
 
 
 const styleMapa = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
     backgroundColor: '#fff',
-    justifyContent: 'center',
+    justifyContent: "flex-start",
   },
   map: {
-    height: '100%'
+    height: "70%"
   },
   search: {
-    height: '100%'
+    height: 50
   }
 });

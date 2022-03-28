@@ -54,7 +54,7 @@ export default function Registrar({navigation}) {
         <Image style={styles.imagemLogo}
           source={require("../../assets/images/LogoVerde.png")}
         />
-        <Text style={styles.texto_registro}>
+        <Text style={styles.texto_logo}>
           Ga$olina
         </Text>
       </View>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     backgroundColor:'#ffffff'
   },
-  texto_registro: {
+  texto_logo: {
     fontSize: 35,
     color: '#107878',
   },  

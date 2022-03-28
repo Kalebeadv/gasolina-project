@@ -41,11 +41,8 @@ export default function CadastrarVeiculo({navigation}) {
   return(
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.logoContainer}>
-        <Image style={styles.imagemLogo}
-          source={require("../../assets/images/LogoVerde.png")}
-        />
-        <Text style={styles.texto_registro}>
-          Ga$olina
+        <Text style={styles.texto_logo}>
+          Cadastro de Veículos
         </Text>
       </View>
       <View style={styles.loginContainer}>
@@ -170,5 +167,10 @@ const styles = StyleSheet.create({
     padding: 10,
     color: '#107878',
     flexDirection: "row"
-  }
+  },
+  texto_logo: {
+    fontSize: 30,
+    color: '#107878',
+    marginTop:"20%"
+  },  
 });

@@ -41,7 +41,7 @@ export default function Login({ navigation }) {
     navigation.navigate('Registrar');
   }
   function esqueci_senha() {
-    navigation.navigate('EsqueciSenha');
+    navigation.navigate('EsqueciMinhaSenha');
   }
 
   function login_com_o_google()
@@ -98,7 +98,7 @@ export default function Login({ navigation }) {
         
         <TouchableOpacity style={styles.btnGoogle} onPress={login_com_o_google}>
           <Icon name="google" size={30} color="#ffffff"/>
-          <Text style={styles.btnTexto}>  Login com o Google</Text>
+          <Text style={styles.btnTexto}>  Entrar com o Google</Text>
         </TouchableOpacity>
 
         <Text style={styles.registro}>
@@ -195,10 +195,11 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: 'center',
     alignContent: "center",
-    paddingBottom: "5%"
+    marginBottom: "2%",
+    marginTop: "2%"
   },
   imagemLogo: {
-    width:84,
+    width:80,
     height:120,
     marginTop: "10%",
   },
@@ -229,7 +230,7 @@ const styles = StyleSheet.create({
   },
   textInput:{
     fontSize:17,
-    width:"100%",
+    width:"90%",
     color:'#107878',
     marginLeft:"2%"
   },

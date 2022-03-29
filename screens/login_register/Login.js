@@ -96,7 +96,7 @@ export default function Login({ navigation }) {
         
         <TouchableOpacity style={styles.btnGoogle} onPress={login_com_o_google}>
           <Icon name="google" size={30} color="#ffffff"/>
-          <Text style={styles.btnTexto}>  Login com o Google</Text>
+          <Text style={styles.btnTexto}>  Entrar com o Google</Text>
         </TouchableOpacity>
 
         <Text style={styles.registro}>

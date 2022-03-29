@@ -193,10 +193,11 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: 'center',
     alignContent: "center",
-    paddingBottom: "5%"
+    marginBottom: "2%",
+    marginTop: "2%"
   },
   imagemLogo: {
-    width:84,
+    width:80,
     height:120,
     marginTop: "10%",
   },
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
   },
   textInput:{
     fontSize:17,
-    width:"100%",
+    width:"90%",
     color:'#107878',
     marginLeft:"2%"
   },

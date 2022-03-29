@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export default function EsqueciSenha(){
+export default function EsqueciMinhaSenha(){
     return(
         
         <KeyboardAvoidingView style={styles.background}>
@@ -17,13 +17,12 @@ export default function EsqueciSenha(){
                 <Text style={styles.textRecuperacao}>Recuperação de conta</Text>
 
                 <Text style={styles.textIntroducao}>Para ajudar a proteger sua conta, precisamos 
-                    confirmar se é realmente você que está tentando fazer login
+                    confirmar se é realmente você que está tentando fazer login.
                 </Text>
 
-                <Text style={styles.textCodRecuperacao}>Receber um código de verificação</Text>
+                <Text style={styles.textCodRecuperacao}>Receba um código de verificação</Text>
 
-                <Text style={styles.textIntroducao}>Para receber um código de verificação, primeiro confirme o endereço de e-mail 
-                    de recuperação que você adicionou à sua conta
+                <Text style={styles.textIntroducao}>Informe o seu e-mail para que possamos lhe enviar um código de verificação, mas pode ficar tranquilo, é 99.999999% seguro.
                 </Text>
             </View>
 
@@ -40,9 +39,6 @@ export default function EsqueciSenha(){
                     <Text style={styles.btnTexto}>Enviar</Text>
                 </TouchableOpacity>
             </View>
-            
-            
-
         </KeyboardAvoidingView>
     );
 }

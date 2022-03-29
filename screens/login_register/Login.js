@@ -41,7 +41,7 @@ export default function Login({ navigation }) {
     navigation.navigate('Registrar');
   }
   function esqueci_senha() {
-    navigation.navigate('EsqueciSenha');
+    navigation.navigate('EsqueciMinhaSenha');
   }
 
   function login_com_o_google()

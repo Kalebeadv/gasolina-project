@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={Login} options={{title: ""}}/>
       <Stack.Screen name="Registrar" component={Registrar} />
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />
       <Stack.Screen name="Mapa" component={Mapa}  />

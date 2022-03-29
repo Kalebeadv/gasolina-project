@@ -1,15 +1,16 @@
 import React from "react";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 
-export default function MenuPrincipal({navigation}) {
+export default function MenuPrincipal({navigation, route}) {
+  const {emailUser} = route.params;
   return (
     <View style={styles.background}>
-      <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("Mapa")}>
+      <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("Mapa", {email : emailUser})}>
         <Text style={styles.nome_rota}>
           Buscar rota
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("CadastroVeiculo")}>
+      <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("CadastroVeiculo" , {email : emailUser})}>
         <Text style={styles.nome_rota}>
           Cadastrar Veículo
         </Text>
@@ -38,5 +39,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
     fontSize: 20
-  }
+  },
 });

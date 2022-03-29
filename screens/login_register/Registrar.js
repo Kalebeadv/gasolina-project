@@ -29,7 +29,7 @@ export default function Registrar({navigation}) {
     let ress=await reqs.json();
     
     if (ress == 'true'){
-      navigation.navigate('MenuPrincipal');
+      navigation.navigate('MenuPrincipal', email);
     }else if(ress == 'false'){
       Alert.alert(
         "Algo inesperado",
@@ -80,6 +80,7 @@ export default function Registrar({navigation}) {
             placeholder=" Email"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
+            autoCapitalize={"none"}
             onChangeText={(text)=>setEmail(text)}
           />
         </View>
@@ -91,6 +92,7 @@ export default function Registrar({navigation}) {
             placeholder=" Senha"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
+            autoCapitalize={"none"}
             secureTextEntry={true}
             onChangeText={(text)=>setPassword(text)}
           />
@@ -104,6 +106,7 @@ export default function Registrar({navigation}) {
             placeholderTextColor={'#107878'}
             autoCorrect={false}
             secureTextEntry={true}
+            autoCapitalize={"none"}
             onChangeText={(text)=>setPasswordConfirm(text)}
           />
         </View>

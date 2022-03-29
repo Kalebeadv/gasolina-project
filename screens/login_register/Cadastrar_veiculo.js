@@ -3,13 +3,15 @@ import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export default function CadastrarVeiculo({navigation}) {
+export default function CadastrarVeiculo({navigation, route}) {
   const [modelo,setModelo]=useState(null);
   const [marca,setMarca]=useState(null);
   const [consumo,setConsumo]=useState(null);
   const [combustivel,setCombustivel]=useState(null);
   const [ano,setAno]=useState(null);
+  const {email} = route.params;
   
+
   async function Cadastrar() {
     var reqs = await fetch(config.urlRootNode+'cadastrarVeiculo',{
       method: 'POST',
@@ -22,7 +24,8 @@ export default function CadastrarVeiculo({navigation}) {
         marcaVeiculo: marca,
         consumoVeiculo: consumo,
         combustivelVeiculo: combustivel,
-        anoVeiculo : ano
+        anoVeiculo : ano,
+        emailUser : email
       })
     });
 
@@ -33,7 +36,7 @@ export default function CadastrarVeiculo({navigation}) {
             "Concluido",
             "O cadastro do veiculo foi concluido com sucesso"
         )
-        navigation.navigate('MenuPrincipal')
+        navigation.navigate('MenuPrincipal', {emailUser : email})
     }
 
 
@@ -60,7 +63,7 @@ export default function CadastrarVeiculo({navigation}) {
         <View style={styles.inputIcon}>
           <Icon name="star" size={25} color="#107878" />
           <TextInput 
-            style={styles.imputs}
+            style={styles.inputs}
             placeholder="Marca"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
@@ -71,7 +74,7 @@ export default function CadastrarVeiculo({navigation}) {
         <View style={styles.inputIcon}>
           <Icon name="road" size={25} color="#107878" />
           <TextInput 
-            style={styles.imputs}
+            style={styles.inputs}
             placeholder="Consumo médio"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
@@ -83,7 +86,7 @@ export default function CadastrarVeiculo({navigation}) {
         <View style={styles.inputIcon}>
           <Icon name="tint" size={25} color="#107878"/>
           <TextInput 
-            style={styles.imputs}
+            style={styles.inputs}
             placeholder="Tipo do Combustivel"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
@@ -95,11 +98,11 @@ export default function CadastrarVeiculo({navigation}) {
         <View style={styles.inputIcon}>
           <Icon name="calendar" size={25} color="#107878"/>
           <TextInput 
-            style={styles.imputs}
+            style={styles.inputs}
             placeholder="Ano"
             placeholderTextColor={'#107878'}
             autoCorrect={false}
-            
+            keyboardType="numeric"
             onChangeText={(text)=>setAno(text)}
           />
         </View>
@@ -124,7 +127,7 @@ const styles = StyleSheet.create({
     width:'90%',
     marginBottom: 70
   },
-  imputs: {
+  inputs: {
     fontSize: 17,
     marginLeft:"2%",
     width:'90%',

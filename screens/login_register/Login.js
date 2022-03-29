@@ -29,7 +29,7 @@ export default function Login({ navigation }) {
     let ress = await reqs.json();
     Keyboard.dismiss();
     if (ress || ress == null) {
-      navigation.navigate("MenuPrincipal")
+      navigation.navigate("MenuPrincipal", {emailUser : email})
     } else {
       Alert.alert(
         "Algo inesperado",
@@ -69,6 +69,7 @@ export default function Login({ navigation }) {
           <TextInput
             style={styles.textInput}
             autoCorrect={false}
+            autoCapitalize={"none"}
             onChangeText={(text) => setEmail(text)}
           />
         </View>
@@ -80,6 +81,7 @@ export default function Login({ navigation }) {
             style={styles.textInput}
             autoCorrect={false}
             secureTextEntry={true}
+            autoCapitalize={"none"}
             onChangeText={(text) => setPassword(text)}
           />
         </View>

@@ -16,13 +16,41 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} options={{title: ""}}/>
-      <Stack.Screen name="Registrar" component={Registrar} />
-      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{headerShown: false}}/>
-      <Stack.Screen name="Mapa" component={Mapa} options={{headerShown: false}}/>
-      <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha}/>
-      <Stack.Screen name="LoginComGoogle" component={LoginComGoogle}/>
-      <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{title : ""}}/>
+      <Stack.Screen name="Login" component={Login} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="Registrar" component={Registrar} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="Mapa" component={Mapa} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="LoginComGoogle" component={LoginComGoogle} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
     </Stack.Navigator>
   );
 }

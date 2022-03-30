@@ -136,7 +136,8 @@ const styles = StyleSheet.create({
   loginContainer:{
     alignItems:'center',
     width:'90%',
-    marginBottom: 70
+    marginBottom: 70,
+    marginTop: "10%"
   },
   imputs: {
     fontSize: 17,
@@ -166,6 +167,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: "center",
     paddingBottom: "5%",
+    marginTop: "10%"
   },
   login: {
     color: '#107878',

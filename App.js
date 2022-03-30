@@ -16,17 +16,13 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-<<<<<<< HEAD
-      <Stack.Screen name="Login" component={Login} options={{title: ""}}/>
-=======
-      <Stack.Screen name="Entrar" component={Login} />
->>>>>>> 785e2d165a480464463d768ec0880244dda6dfe0
-      <Stack.Screen name="Registrar" component={Registrar} />
-      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} />
+      <Stack.Screen name="Entrar" component={Login} options={{title: ""}}/>  
+      <Stack.Screen name="Registrar" component={Registrar} options={{title: ""}}  />
+      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{title: ""}} />
       <Stack.Screen name="Mapa" component={Mapa}  />
-      <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha}/>
-      <Stack.Screen name="LoginComGoogle" component={LoginComGoogle}/>
-      <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} />
+      <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} options={{title: ""}}/>
+      <Stack.Screen name="LoginComGoogle" component={LoginComGoogle} options={{title: ""}}/>
+      <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{title: ""}} />
     </Stack.Navigator>
   );
 }

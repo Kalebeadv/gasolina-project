@@ -52,7 +52,7 @@ export default function CadastrarVeiculo({navigation, route}) {
         <View style={styles.inputIcon}>
           <Icon name="car" size={25} color="#107878" />
           <TextInput 
-            style={styles.imputs}
+            style={styles.inputs}
             placeholder="Modelo"
             placeholderTextColor={'#107878'}
             autoCorrect={false}

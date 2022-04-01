@@ -3,7 +3,7 @@
 Alunos 	:frog: | Funções :horse:
 --- | ---
 Carlos | Programador HTML/CSS
-Gustavo | Sub. CEO
+Gustavo | Desenvolvedor de png
 Jairo | Programador canva
 Felipe | Diagramador
 Kalebe | Programador markdown

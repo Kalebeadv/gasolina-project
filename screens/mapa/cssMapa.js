@@ -11,7 +11,7 @@ const cssMapa = StyleSheet.create({
         backgroundColor: 'black'
     },
     search:{
-        height: '40%',
+        height: '30%',
         backgroundColor: 'gray'
     }
 });

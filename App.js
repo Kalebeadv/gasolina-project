@@ -23,6 +23,7 @@ function MyStack() {
       <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} options={{title: ""}}/>
       <Stack.Screen name="LoginComGoogle" component={LoginComGoogle} options={{title: ""}}/>
       <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{title: ""}} />
+
     </Stack.Navigator>
   );
 }

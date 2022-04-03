@@ -1,93 +1,95 @@
 import { StatusBar } from "expo-status-bar";
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Text, View } from 'react-native';
 import { cssMapa } from "./cssMapa";
-import MapView from 'react-native-maps';
+import MapView, { Callout, Circle, Marker } from "react-native-maps"
 import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import keys from '../../config/googleConfig.json';
 import MapViewDirections from 'react-native-maps-directions';
 
-export default function Mapa(){
-	
-	const mapEl=useRef(null);
-	const [origem, setOrigem]=useState(null);
-	const [destino, setDestino]=useState(null);
-	const [distance, setDistance]=useState(null);
+export default function Mapa() {
+
+	const mapEl = useRef(null);
+	const [origin, setOrigin] = useState(null);
+	const [distance, setDistance] = useState(null);
+	const [region, setRegion] = React.useState({
+		latitude: 0,
+		longitude: 0,
+		latitudeDelta: 0,
+		longitudeDelta: 0
+	})
+	const [location, setLocation] = useState(null)
 
 	useEffect(() => {
-		(async function(){
-			const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION_BACKGROUND);
-			if( status === "granted")
-			{
-				let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
-				setOrigem( {
+		(async function () {
+			const { status } = await Location.requestForegroundPermissionsAsync();
+			if (status === 'granted') {
+				let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
+				setOrigin({
 					latitude: location.coords.latitude,
-					longitude: location.coords.latitude,
-					latitudeDelta: 0.00922,
-					longitudeDelta: 0.00421
+					longitude: location.coords.longitude,
+					latitudeDelta: 0.000922,
+					longitudeDelta: 0.000421
 				})
-			} else{
-				throw new Error("Location permission not granted");
+			} else {
+				throw new Error('Location permission not granted');
 			}
-		
-		})()
-	}, [])
+		})();
+	}, []);
 
-	return(
+
+	return (
 		<View style={cssMapa.container}>
-
-			<MapView style={cssMapa.map}
-			initialRegion={origem}
-			showsUserLocation={true}
-			loadingEnabled={true}
-			ref={mapEl}
-
+			<MapView
+				style={cssMapa.map}
+				initialRegion={origin}
+				provider="google"
+				showsUserLocation={true}
 			>
-				{destino &&
-					<MapViewDirections 
-					origin={origem}
-					destination={destino}
-					apikey = {keys.googleMapKey}
-					strokeWidth={3}
-					onReady={result => {
-						setDistance(result.distance)
-						mapEl.current.fitToCoordinates(
-							result.coordinates, {
-								edgePadding:{
-									top:50,
-									bottom:50,
-									left:50,
-									right:50
-								}
-							}
-						)
-					}}
-				/>
-
-				}
-				
+				<Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
+				{region &&
+					<MapViewDirections
+						origin={origin}
+						destination={region}
+						apikey={keys.googleMapKey}
+						strokeWidth={3}
+						onReady={result => {
+							setDistance(result.distance);
+						}
+						}
+					/>}
 			</MapView>
 
 			<View style={cssMapa.search}>
 				<GooglePlacesAutocomplete
-				placeholder="Para onde vamos?"
-				onPress={( data , details = null) => {
-					setDestino = ( {
-						latitude: details.geometry.location.lat,
-						longitude: details.geometry.location.lng,
-						latitudeDelta: 0.000922,
-						longitudeDelta: 0.000421
-					})
-				}}
-				query = {{
-					key: keys.googleMapKey,
-					language: 'pt-br',
-				}}
-				fetchDetails={ true }
-				styles={ { listView: { height:100} } }
-
+					placeholder="Search"
+					fetchDetails={true}
+					GooglePlacesSearchQuery={{
+						rankby: "distance"
+					}}
+					onPress={(data, details = null) => {
+						// 'details' is provided when fetchDetails = true
+						console.log(data, details)
+						setRegion({
+							latitude: details.geometry.location.lat,
+							longitude: details.geometry.location.lng,
+							latitudeDelta: 0.0922,
+							longitudeDelta: 0.0421
+						})
+					}}
+					query={{
+						key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
+						language: "pt-br",
+						components: "country:br",
+						types: "establishment",
+						radius: 30000,
+						location: `${region.latitude}, ${region.longitude}`
+					}}
+					styles={{
+						container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
+						listView: { backgroundColor: "white" }
+					}}
 				/>
 			</View>
 			<View>

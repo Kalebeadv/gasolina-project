@@ -1,98 +1,99 @@
-import * as React from "react"
-import { Dimensions, StyleSheet, Text, View } from "react-native"
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"
-import MapView, { Callout, Circle, Marker } from "react-native-maps"
+import { StatusBar } from "expo-status-bar";
+import React, {useState, useEffect, useRef} from 'react';
+import { Text, View } from 'react-native';
+import { cssMapa } from "./cssMapa";
+import MapView from 'react-native-maps';
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import keys from '../../config/googleConfig.json';
+import MapViewDirections from 'react-native-maps-directions';
 
+export default function Mapa(){
+	
+	const mapEl=useRef(null);
+	const [origem, setOrigem]=useState(null);
+	const [destino, setDestino]=useState(null);
+	const [distance, setDistance]=useState(null);
 
+	useEffect(() => {
+		(async function(){
+			const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION_BACKGROUND);
+			if( status === "granted")
+			{
+				let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
+				setOrigem( {
+					latitude: location.coords.latitude,
+					longitude: location.coords.latitude,
+					latitudeDelta: 0.00922,
+					longitudeDelta: 0.00421
+				})
+			} else{
+				throw new Error("Location permission not granted");
+			}
+		
+		})()
+	}, [])
 
-export default function Mapa() {
+	return(
+		<View style={cssMapa.container}>
 
-  const [ pin, setPin ] = React.useState({
-		latitude: 37.78825,
-		longitude: -122.4324
-	})
-	const [ region, setRegion ] = React.useState({
-		latitude: 37.78825,
-		longitude: -122.4324,
-		latitudeDelta: 0.0922,
-		longitudeDelta: 0.0421
-	})
+			<MapView style={cssMapa.map}
+			initialRegion={origem}
+			showsUserLocation={true}
+			loadingEnabled={true}
+			ref={mapEl}
 
-	return (
-		<View style={{ marginTop: 50, flex: 1 }}>
-			<GooglePlacesAutocomplete
-				placeholder="Search"
-				fetchDetails={true}
-				GooglePlacesSearchQuery={{
-					rankby: "distance"
-				}}
-				onPress={(data, details = null) => {
-					// 'details' is provided when fetchDetails = true
-					console.log(data, details)
-					setRegion({
+			>
+				{destino &&
+					<MapViewDirections 
+					origin={origem}
+					destination={destino}
+					apikey = {keys.googleMapKey}
+					strokeWidth={3}
+					onReady={result => {
+						setDistance(result.distance)
+						mapEl.current.fitToCoordinates(
+							result.coordinates, {
+								edgePadding:{
+									top:50,
+									bottom:50,
+									left:50,
+									right:50
+								}
+							}
+						)
+					}}
+				/>
+
+				}
+				
+			</MapView>
+
+			<View style={cssMapa.search}>
+				<GooglePlacesAutocomplete
+				placeholder="Para onde vamos?"
+				onPress={( data , details = null) => {
+					setDestino = ( {
 						latitude: details.geometry.location.lat,
 						longitude: details.geometry.location.lng,
-						latitudeDelta: 0.0922,
-						longitudeDelta: 0.0421
+						latitudeDelta: 0.000922,
+						longitudeDelta: 0.000421
 					})
 				}}
-				query={{
-					key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
-					language: "pt-br",
-					components: "country:br",
-					types: "establishment",
-					radius: 30000,
-					location: `${region.latitude}, ${region.longitude}`
+				query = {{
+					key: keys.googleMapKey,
+					language: 'pt-br',
 				}}
-				styles={{
-					container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
-					listView: { backgroundColor: "white" }
-				}}
-			/>
-			<MapView
-				style={styles.map}
-				initialRegion={{
-					latitude: 37.78825,
-					longitude: -122.4324,
-					latitudeDelta: 0.0922,
-					longitudeDelta: 0.0421
-				}}
-				provider="google"
-			>
-				<Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
-				<Marker
-					coordinate={pin}
-					pinColor="black"
-					draggable={true}
-					onDragStart={(e) => {
-						console.log("Drag start", e.nativeEvent.coordinates)
-					}}
-					onDragEnd={(e) => {
-						setPin({
-							latitude: e.nativeEvent.coordinate.latitude,
-							longitude: e.nativeEvent.coordinate.longitude
-						})
-					}}
-				>
-					<Callout>
-						<Text>I'm here</Text>
-					</Callout>
-				</Marker>
-				<Circle center={pin} radius={1000} />
-			</MapView>
+				fetchDetails={ true }
+				styles={ { listView: { height:100} } }
+
+				/>
+			</View>
+			<View>
+				<Text>Distancia: {distance}</Text>
+			</View>
 		</View>
+
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center"
-	},
-	map: {
-		width: Dimensions.get("window").width,
-		height: Dimensions.get("window").height
-	}
-})

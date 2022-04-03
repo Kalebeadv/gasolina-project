@@ -93,7 +93,7 @@ export default function Login({ navigation }) {
         <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
           <Text style={styles.btnTexto}>Entrar</Text>
         </TouchableOpacity>
-        
+      
         <Text style={styles.ou}>────── Ou ──────</Text>
         
         <TouchableOpacity style={styles.btnGoogle} onPress={login_com_o_google}>

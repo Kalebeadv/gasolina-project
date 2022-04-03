@@ -1,0 +1,9 @@
+atualizar tabela veiculos para ja colocar o id de usuario 
+
+implementar o login com o google 
+
+implementar o `esqueci minha senha`
+
+arrumar tela inicial
+
+automatizar o cadastro do carros com api de placas

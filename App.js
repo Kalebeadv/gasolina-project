@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from "./screens/login_register/Login";
 import MenuPrincipal from "./screens/inicio_menuPrincipal/MenuPrincipal";
-import Inicio from "./screens/inicio_menuPrincipal/Inicio";
 import Registrar from "./screens/login_register/Registrar";
 import Mapa from "./screens/mapa/Mapa";
 import EsqueciMinhaSenha from "./screens/login_register/Esqueci_senha";

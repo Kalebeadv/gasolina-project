@@ -1,33 +1,25 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('User_Vehicles', {
+    await queryInterface.createTable('Fuel', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idUser: {
+      idGasstation: {
         type: Sequelize.INTEGER,
         references:{
-          model:'users',
+          model:'gasstations',
           key:'id'
         },
-        onUpdate:'cascade',
-        onDelete:'cascade'
-
       },
-      idVehicle: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:'vehicles',
-          key:'id'
-        }
+      type: {
+        type: Sequelize.STRING
       },
-      placa: {
-        type: Sequelize.STRING,
-        unique: true
+      valor: {
+        type: Sequelize.FLOAT
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('User_Vehicles');
+    await queryInterface.dropTable('Fuel');
   }
 };

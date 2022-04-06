@@ -63,7 +63,7 @@ export default function Mapa() {
 
 			<View style={cssMapa.search}>
 				<GooglePlacesAutocomplete
-					placeholder="Search"
+					placeholder="Buscar"
 					fetchDetails={true}
 					GooglePlacesSearchQuery={{
 						rankby: "distance"
@@ -79,12 +79,14 @@ export default function Mapa() {
 						})
 					}}
 					query={{
+						useEffect,
 						key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
 						language: "pt-br",
 						components: "country:br",
 						types: "establishment",
 						radius: 30000,
 						location: `${region.latitude}, ${region.longitude}`
+						
 					}}
 					styles={{
 						container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },

@@ -9,6 +9,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import keys from '../../config/googleConfig.json';
 import MapViewDirections from 'react-native-maps-directions';
 
+
 export default function Mapa(){
 	
 	const mapEl=useRef(null);
@@ -93,6 +94,7 @@ export default function Mapa(){
 			<View>
 				<Text>Distancia: {distance}</Text>
 			</View>
+  			
 		</View>
 
 	)

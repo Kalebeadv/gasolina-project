@@ -1,36 +1,24 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Vehicles', {
+    await queryInterface.createTable('Gasstations', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      model: {
-        type: Sequelize.STRING
-      },
-      brand: {
-        type: Sequelize.STRING
-      },
-      consumo: {
-        type: Sequelize.FLOAT
-      },
-      typefuel: {
-        type: Sequelize.STRING
-      },
-      year: {
+      cnpj: {
         type: Sequelize.INTEGER
       },
-      idUser: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:'users',
-          key:'id'
-        },
-        onUpdate:'cascade',
-        onDelete:'cascade'
+      name: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      coordenades: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Vehicles');
+    await queryInterface.dropTable('Gasstations');
   }
 };

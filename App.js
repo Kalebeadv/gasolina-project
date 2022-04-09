@@ -21,7 +21,7 @@ function MyStack() {
       <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{title: ""}} />
       <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} options={{title: ""}}/>
       <Stack.Screen name="LoginComGoogle" component={LoginComGoogle} options={{title: ""}}/>
-
+      
       <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{title: ""}} />
     </Stack.Navigator>
   );

@@ -10,6 +10,11 @@ import MapViewDirections from 'react-native-maps-directions';
 
 export default function Mapa() {
 
+	const [posto_isaurao, setPonto_isaurao] = useState({
+		latitude: -9.968422105011024,
+		longitude: -67.8053766143921
+	})
+
 	const mapEl = useRef(null);
 	const [origin, setOrigin] = useState(null);
 	const [distance, setDistance] = useState(null);
@@ -47,9 +52,6 @@ export default function Mapa() {
 				provider="google"
 				showsUserLocation={true}
 			>
-				<Marker coordinate={{ 
-					latitude: -9.968422105011024,
-					 longitude: -67.80537661439213}} />
 				{region &&
 					<MapViewDirections
 						origin={origin}
@@ -61,6 +63,30 @@ export default function Mapa() {
 						}
 						}
 					/>}
+				
+
+				<Marker coordinate={{
+					latitude: -9.96381794670852,
+					longitude:  -67.826919587418,
+					latitudeDelta: 0.000922,
+					longitudeDelta: 0.000421
+				}}
+				title="Posto Petrobras Isaurão"
+				description="Av. Nações Unidas, 2123 - Estacao Experimental"
+				>
+				</Marker>
+				
+				<Marker coordinate={{
+					latitude: -9.965560070532558, 
+					longitude:  -67.83312823666452,
+					latitudeDelta: 0.000922,
+					longitudeDelta: 0.000421
+				}}
+				title="Posto Petrobras"
+				description="R.Isaura Parente, 1412-Estacao Experimental"
+				>
+				</Marker>
+
 			</MapView>
 
 			<View style={cssMapa.search}>
@@ -88,7 +114,7 @@ export default function Mapa() {
 						types: "establishment",
 						radius: 30000,
 						location: `${region.latitude}, ${region.longitude}`
-						
+
 					}}
 					styles={{
 						container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },

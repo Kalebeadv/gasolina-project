@@ -19,6 +19,7 @@ export default function Mapa() {
 		latitudeDelta: 0,
 		longitudeDelta: 0
 	})
+	const [location, setLocation] = useState(null)
 
 
 	useEffect(() => {
@@ -37,9 +38,6 @@ export default function Mapa() {
 			}
 		})();
 	}, []);
-	
-
-	setInterval(setLocation, 1000);
 
 
 	return (
@@ -66,7 +64,7 @@ export default function Mapa() {
 
 			<View style={cssMapa.search}>
 				<GooglePlacesAutocomplete
-					placeholder="Search"
+					placeholder="Buscar"
 					fetchDetails={true}
 					GooglePlacesSearchQuery={{
 						rankby: "distance"
@@ -82,12 +80,14 @@ export default function Mapa() {
 						})
 					}}
 					query={{
+						useEffect,
 						key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
 						language: "pt-br",
 						components: "country:br",
 						types: "establishment",
 						radius: 30000,
 						location: `${region.latitude}, ${region.longitude}`
+						
 					}}
 					styles={{
 						container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },

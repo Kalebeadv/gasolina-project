@@ -47,7 +47,9 @@ export default function Mapa() {
 				provider="google"
 				showsUserLocation={true}
 			>
-				<Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
+				<Marker coordinate={{ 
+					latitude: -9.968422105011024,
+					 longitude: -67.80537661439213}} />
 				{region &&
 					<MapViewDirections
 						origin={origin}

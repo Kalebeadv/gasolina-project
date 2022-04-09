@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     cnpj: DataTypes.INTEGER,
     name: DataTypes.STRING,
     address: DataTypes.STRING,
-    coordenades: DataTypes.STRING
+    latitude: DataTypes.STRING,
+    longitude: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Gasstation',

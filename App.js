@@ -1,26 +1,28 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from "./screens/login_register/Login";
-import MenuPrincipal from "./screens/inicio_menuPrincipal/MenuPrincipal";
-import Registrar from "./screens/login_register/Registrar";
+import Login from "./screens/Usuario/Login";
+import MenuPrincipal from "./screens/Principais/MenuPrincipal";
+import Registrar from "./screens/Usuario/Registrar";
 import Mapa from "./screens/mapa/Mapa";
-import EsqueciMinhaSenha from "./screens/login_register/Esqueci_senha";
+import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
 import { ScreenStackHeaderConfig } from "react-native-screens";
-import LoginComGoogle from "./screens/login_register/LoginComGoogle";
-import CadastrarVeiculo from "./screens/login_register/Cadastrar_veiculo";
+import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
+import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
+import Inicio from "./screens/Principais/Inicio";
 const Stack = createStackNavigator();
 
 
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Entrar" component={Login} options={{title: ""}}/>  
+      <Stack.Screen name="Inicio" component={Inicio} options={{headerShown: false}}/>
+      <Stack.Screen name="Entrar" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Registrar" component={Registrar} options={{title: ""}}  />
-      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{title: ""}} />
+      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{headerShown: false}} />
       <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} options={{title: ""}}/>
       <Stack.Screen name="LoginComGoogle" component={LoginComGoogle} options={{title: ""}}/>
-      <Stack.Screen name="Mapa" component={Mapa}  />
+      <Stack.Screen name="Mapa" component={Mapa} options={{headerShown: false}}/>
       <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{title: ""}} />
     </Stack.Navigator>
   );

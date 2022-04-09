@@ -29,7 +29,10 @@ export default function Registrar({navigation}) {
     let ress=await reqs.json();
     
     if (ress == 'true'){
-      navigation.navigate('MenuPrincipal', email);
+      await AsyncStorage.setItem( 'email', email);
+      await AsyncStorage.setItem( 'pass', password);
+      navigation.navigate('MenuPrincipal');
+      
     }else if(ress == 'false'){
       Alert.alert(
         "Algo inesperado",

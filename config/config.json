@@ -20,12 +20,7 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-<<<<<<< HEAD
   "urlRootNode":"http://192.168.1.8:3000/",
   "urlRootPhp": "http://192.168.1.8:8080/"
-=======
-  "urlRootNode":"http://192.168.1.7:3000/",
-  "urlRootPhp": "http://192.168.1.7:80/"
->>>>>>> bf5de154c802a05dde4684543e95a75f42b8afed
 
 }

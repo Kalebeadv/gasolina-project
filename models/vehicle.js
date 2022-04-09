@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Vehicle.belongsTo(models.User_Vehicle);
+      Vehicle.belongsTo(models.User);
     }
   }
   Vehicle.init({
@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     brand: DataTypes.STRING,
     consumo: DataTypes.FLOAT,
     typefuel: DataTypes.STRING,
+    idUser:DataTypes.INTEGER,
     year: DataTypes.BIGINT
   }, {
     sequelize,

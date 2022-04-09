@@ -19,6 +19,7 @@ export default function Mapa() {
 		latitudeDelta: 0,
 		longitudeDelta: 0
 	})
+	const [location, setLocation] = useState(null)
 
 	useEffect(() => {
 		(async function () {
@@ -36,9 +37,6 @@ export default function Mapa() {
 			}
 		})();
 	}, []);
-	
-
-	setInterval(setLocation, 1000);
 
 
 	return (

@@ -56,6 +56,7 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
         'consumo' : req.body.consumoVeiculo,
         'typefuel': req.body.combustivelVeiculo,
         'year': req.body.anoVeiculo,
+        'idUser' : 1,
         'createdAt' : new Date(),
         'updatedAt' : new Date()
     })

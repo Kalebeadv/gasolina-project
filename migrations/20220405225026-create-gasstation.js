@@ -17,7 +17,10 @@ module.exports = {
       address: {
         type: Sequelize.STRING
       },
-      coordenades: {
+      latitude: {
+        type: Sequelize.STRING
+      },
+      longitude: {
         type: Sequelize.STRING
       },
       createdAt: {

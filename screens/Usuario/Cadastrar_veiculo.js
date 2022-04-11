@@ -3,13 +3,12 @@ import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export default function CadastrarVeiculo({navigation, route}) {
+export default function CadastrarVeiculo({navigation}) {
   const [modelo,setModelo]=useState(null);
   const [marca,setMarca]=useState(null);
   const [consumo,setConsumo]=useState(null);
   const [combustivel,setCombustivel]=useState(null);
   const [ano,setAno]=useState(null);
-  const {email} = route.params;
   
 
   async function Cadastrar() {
@@ -36,7 +35,7 @@ export default function CadastrarVeiculo({navigation, route}) {
             "Concluido",
             "O cadastro do veiculo foi concluido com sucesso"
         )
-        navigation.navigate('MenuPrincipal', {emailUser : email})
+        navigation.navigate('MenuPrincipal')
     }
 
 

@@ -5,6 +5,7 @@ import {
   Text, StyleSheet, Keyboard, Alert
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 //Fazer Login
@@ -13,6 +14,9 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [message, setMessage] = useState(null);
+
+
+// função de login -----------------------------------------------
 
   async function fazLogin() {
     let reqs = await fetch(config.urlRootPhp + 'Controller.php', {
@@ -29,7 +33,9 @@ export default function Login({ navigation }) {
     let ress = await reqs.json();
     Keyboard.dismiss();
     if (ress || ress == null) {
-      navigation.navigate("MenuPrincipal", {emailUser : email})
+      await AsyncStorage.setItem( 'email', email);
+      await AsyncStorage.setItem( 'pass', password);
+      navigation.navigate("MenuPrincipal");
     } else {
       Alert.alert(
         "Algo inesperado",
@@ -37,6 +43,12 @@ export default function Login({ navigation }) {
       )
     }
   }
+
+//fim ----------------------------------------------------------------------
+
+
+
+// paginas do navigate  *****************************************************
   function registrar() {
     navigation.navigate('Registrar');
   }
@@ -48,6 +60,9 @@ export default function Login({ navigation }) {
   {
     navigation.navigate('LoginComGoogle')
   }
+//fim ***********************************************************************
+
+
   return (
     <KeyboardAvoidingView style={styles.background}>
 
@@ -106,19 +121,6 @@ export default function Login({ navigation }) {
         </Text>
       </View>
     </KeyboardAvoidingView>
-
-    /*
-    return (
-    <View style={styles.container}>
-      {showUserInfo()}
-      <Button 
-        title={accessToken ? "Get User Data" : "Login"}
-        onPress={accessToken ? getUserData : () => { promptAsync({useProxy: false, showInRecents: true}) }}
-      />
-      <StatusBar style="auto" />
-    </View>
-  );
-    */
   );
 }
 

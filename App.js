@@ -16,11 +16,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-       <Stack.Screen name="Mapa" component={Mapa} options={{
-        title: "",
-        headerTransparent: true,
-        headerShown: false
-        }}/>
+       
       <Stack.Screen name="Login" component={Login} options={{
         title: "",
         headerTransparent: true,
@@ -36,7 +32,11 @@ function MyStack() {
         headerTransparent: true,
         headerShown: false
         }}/>
-     
+      <Stack.Screen name="Mapa" component={Mapa} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
       <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} options={{
         title: "",
         headerTransparent: true,

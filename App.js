@@ -7,7 +7,6 @@ import MenuPrincipal from "./screens/Principais/MenuPrincipal";
 import Registrar from "./screens/Usuario/Registrar";
 import Mapa from "./screens/mapa/Mapa";
 import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
-import { ScreenStackHeaderConfig } from "react-native-screens";
 import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
 import Inicio from "./screens/Principais/Inicio";

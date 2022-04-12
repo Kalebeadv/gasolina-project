@@ -23,20 +23,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#073535'
+    backgroundColor: '#fff'
   },
   rota: {
-    backgroundColor: 'white',
-    width: '50%',
+    backgroundColor: '#107878',
+    width: '90%',
     height: 50,
-    marginBottom: 50,
+    marginBottom: 10,
     borderRadius: 13,
     paddingTop: 10,
-    marginTop: 20
+    marginTop: 20,
   },
   nome_rota: {
     textAlign: 'center',
-    color: 'black',
+    color: 'white',
     fontSize: 20
   },
 });

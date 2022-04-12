@@ -108,8 +108,8 @@ export default function Login({ navigation }) {
         <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>
           <Text style={styles.btnTexto}>Entrar</Text>
         </TouchableOpacity>
-        
-        <Text style={styles.ou}>───────── Ou ─────────</Text>
+      
+        <Text style={styles.ou}>────── Ou ──────</Text>
         
         <TouchableOpacity style={styles.btnGoogle} onPress={login_com_o_google}>
           <Icon name="google" size={30} color="#ffffff"/>
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: "center",
     marginBottom: "2%",
-    marginTop: "2%"
+    marginTop: "8%"
   },
   imagemLogo: {
     width:80,

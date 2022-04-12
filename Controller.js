@@ -50,6 +50,14 @@ app.post('/registrar',async(req,res)=>{
 
 app.post('/cadastrarVeiculo',async(req,res)=>{
 
+    let id = await model.User.findAll({
+        where: {
+            email: req.body.emailUser,
+        }
+    });
+    id = JSON.stringify(id, ['id']);
+
+    console.log(id.stName)
     let reqs = await model.Vehicle.create({
         'model' : req.body.modeloVeiculo,
         'brand' : req.body.marcaVeiculo,

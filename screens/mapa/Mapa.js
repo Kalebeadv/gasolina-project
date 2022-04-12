@@ -49,7 +49,7 @@ export default function Mapa() {
 			>
 				<Marker coordinate={{ 
 					latitude: -9.968422105011024,
-					 longitude: -67.80537661439213}} />
+					longitude: -67.80537661439213}} />
 				{region &&
 					<MapViewDirections
 						origin={origin}

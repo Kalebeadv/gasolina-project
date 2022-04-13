@@ -55,16 +55,15 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
             email: req.body.emailUser,
         }
     });
-    id = JSON.stringify(id, ['id']);
-
-    console.log(id.stName)
+    id = JSON.stringify(id, "id");
+    
     let reqs = await model.Vehicle.create({
         'model' : req.body.modeloVeiculo,
         'brand' : req.body.marcaVeiculo,
         'consumo' : req.body.consumoVeiculo,
         'typefuel': req.body.combustivelVeiculo,
         'year': req.body.anoVeiculo,
-        'idUser' : 1,
+        'idUser' : id[7],
         'createdAt' : new Date(),
         'updatedAt' : new Date()
     })

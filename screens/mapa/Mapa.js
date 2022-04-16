@@ -7,8 +7,12 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import keys from '../../config/googleConfig.json';
 import MapViewDirections from 'react-native-maps-directions';
 
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-export default function Mapa() {
+
+
+
+export default function Mapa({navigation}) {
 
 	const [posto_isaurao, setPonto_isaurao] = useState({
 		latitude: -9.968422105011024,
@@ -75,9 +79,9 @@ export default function Mapa() {
 						}}
 						styles={{
 							container: { 
-								width: "80%", 
+								width: "100%", 
 								zIndex: 1,
-								marginTop: '10%'	
+								marginTop: '5%'	
 							},
 							listView: { 
 							},
@@ -87,7 +91,7 @@ export default function Mapa() {
 								borderStyle: 'solid',
     							borderColor: '#107878',
     							borderWidth: 1,
-    							borderRadius: 8,
+    							
     							borderRightWidth: 1,
     							borderBottomWidth: 3,
 								
@@ -97,12 +101,12 @@ export default function Mapa() {
 						}}
 					/>
 				<View style={cssMapa.btnViewContainer}> 
-					<TouchableOpacity style={cssMapa.btnContainer}>
-          				<Text style={cssMapa.textContainer}>Ranking</Text>
+					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => {navigation.navigate('Rank')}}>
+          				<Text><Icon name="trophy" style={cssMapa.iconContainer} size={35} color="#fff"/></Text>
        				</TouchableOpacity>
 						
-					<TouchableOpacity style={cssMapa.btnContainer}>
-          				<Text style={cssMapa.textContainer}>Carros</Text>
+					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => {navigation.navigate('Carros')}}>
+          				<Text><Icon name="car" style={cssMapa.iconContainer} size={35} color="#fff"/></Text>
        				</TouchableOpacity>	
 				</View>	
 			</View>

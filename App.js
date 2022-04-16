@@ -9,7 +9,9 @@ import Mapa from "./screens/mapa/Mapa";
 import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
 import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
-import Inicio from "./screens/Principais/Inicio";
+
+import Carros from "./screens/carros_e_rank/Carros";
+import Rank from "./screens/carros_e_rank/Rank";
 
 const Stack = createStackNavigator();
 
@@ -17,11 +19,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-       <Stack.Screen name="Inicio" component={Inicio} options={{
-        title: "",
-        headerTransparent: true,
-        headerShown: false
-        }}/>
+      
       <Stack.Screen name="Entrar" component={Login} options={{
         title: "",
         headerTransparent: true,
@@ -53,6 +51,16 @@ function MyStack() {
         headerShown: false
         }}/>
       <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="Carros" component={Carros} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="Rank" component={Rank} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

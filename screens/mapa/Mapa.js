@@ -187,7 +187,7 @@ export default function Mapa() {
 				/>
 			</View>
 			<View>
-				<Text>Distancia: {distance}</Text>
+				<Text>Distancia: {(distance * 1000)}</Text>
 			</View>
 		</View>
 

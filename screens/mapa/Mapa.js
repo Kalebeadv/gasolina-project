@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import { cssMapa } from "./cssMapa";
@@ -192,7 +191,7 @@ export default function Mapa({navigation}) {
 				/>
 			</View>
 			<View>
-				<Text>Distancia: {distance}</Text>
+				<Text>Distancia: {(distance * 1000)}</Text>
 			</View>
 		</View>
 

@@ -7,7 +7,6 @@ import MenuPrincipal from "./screens/Principais/MenuPrincipal";
 import Registrar from "./screens/Usuario/Registrar";
 import Mapa from "./screens/mapa/Mapa";
 import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
-import { ScreenStackHeaderConfig } from "react-native-screens";
 import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
 
@@ -20,8 +19,12 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-       
-      <Stack.Screen name="Login" component={Login} options={{
+       <Stack.Screen name="Inicio" component={Inicio} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="Entrar" component={Login} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

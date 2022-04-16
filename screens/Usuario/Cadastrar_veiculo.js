@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CadastrarVeiculo({navigation}) {
+
   const [modelo,setModelo]=useState(null);
   const [marca,setMarca]=useState(null);
   const [consumo,setConsumo]=useState(null);
   const [combustivel,setCombustivel]=useState(null);
   const [ano,setAno]=useState(null);
-  
+  const [email, setEmail] = useState(null);
+
+
+  useEffect(() => {
+    async function getUser() {
+      let email = await AsyncStorage.getItem('email');
+      setEmail(email);
+    }
+    getUser();
+  }, []);
+
+
 
   async function Cadastrar() {
     var reqs = await fetch(config.urlRootNode+'cadastrarVeiculo',{

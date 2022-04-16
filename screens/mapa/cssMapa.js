@@ -7,9 +7,9 @@ const cssMapa = StyleSheet.create({
     },
     map:{
         width: '100%',
-        height: "100%",
+        height: "90%",
         backgroundColor: '#fff',
-        
+        marginTop: '15%'
     },
     placeholderArea:{
         display: 'flex',
@@ -28,18 +28,19 @@ const cssMapa = StyleSheet.create({
         height: '7%',
         width: '100%',
         justifyContent: 'space-around',
-        marginBottom: '7%'
+        marginBottom: '25%'
     },
     btnContainer:{
-       width: '35%',
+       width: '25%',
+       height: 100,
        backgroundColor: '#107878',
-       borderRadius: 8, 
+       borderRadius: 50,
+       alignContent: 'center',
+       alignItems: 'center',
+       justifyContent: 'center', 
     },
-    textContainer: {
-        textAlign: 'center',
-        marginTop: '6%',
-        fontSize: 20,
-        color: 'white'
+    iconContainer: {
+
     },
 });
 export {cssMapa};

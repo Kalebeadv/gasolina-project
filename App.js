@@ -10,7 +10,9 @@ import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
 import { ScreenStackHeaderConfig } from "react-native-screens";
 import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
-import Inicio from "./screens/Principais/Inicio";
+
+import Carros from "./screens/carros_e_rank/Carros";
+import Rank from "./screens/carros_e_rank/Rank";
 
 const Stack = createStackNavigator();
 
@@ -50,6 +52,16 @@ function MyStack() {
         headerShown: false
         }}/>
       <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="Carros" component={Carros} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
+      <Stack.Screen name="Rank" component={Rank} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

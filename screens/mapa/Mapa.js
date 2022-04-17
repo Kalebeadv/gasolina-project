@@ -9,9 +9,6 @@ import MapViewDirections from 'react-native-maps-directions';
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-
-
-
 export default function Mapa({navigation}) {
 
 	const [posto_isaurao, setPonto_isaurao] = useState({
@@ -81,7 +78,7 @@ export default function Mapa({navigation}) {
 							container: { 
 								width: "100%", 
 								zIndex: 1,
-								marginTop: '5%'	
+								marginTop: '7%'	
 							},
 							listView: { 
 							},
@@ -90,11 +87,10 @@ export default function Mapa({navigation}) {
 								fontSize: 20,
 								borderStyle: 'solid',
     							borderColor: '#107878',
+								borderRadius: 8,
     							borderWidth: 1,
-    							
     							borderRightWidth: 1,
     							borderBottomWidth: 3,
-								
 							},
 							textInputContainer: {
 							},
@@ -128,7 +124,7 @@ export default function Mapa({navigation}) {
 						onReady={result => {
 							setDistance(result.distance);
 						}
-						}
+					}
 
 				/>}
 
@@ -156,43 +152,6 @@ export default function Mapa({navigation}) {
 				</Marker>
 
 			</MapView>
-
-			<View style={cssMapa.search}>
-				<GooglePlacesAutocomplete
-					placeholder="Buscar"
-					fetchDetails={true}
-					GooglePlacesSearchQuery={{
-						rankby: "distance"
-					}}
-					onPress={(data, details = null) => {
-						// 'details' is provided when fetchDetails = true
-						console.log(data, details)
-						setRegion({
-							latitude: details.geometry.location.lat,
-							longitude: details.geometry.location.lng,
-							latitudeDelta: 0.0922,
-							longitudeDelta: 0.0421
-						})
-					}}
-					query={{
-						useEffect,
-						key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
-						language: "pt-br",
-						components: "country:br",
-						types: "establishment",
-						radius: 30000,
-						location: `${region.latitude}, ${region.longitude}`
-
-					}}
-					styles={{
-						container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
-						listView: { backgroundColor: "white" }
-					}}
-				/>
-			</View>
-			<View>
-				<Text>Distancia: {(distance * 1000)}</Text>
-			</View>
 		</View>
 
 	)

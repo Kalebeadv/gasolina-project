@@ -9,7 +9,7 @@ const cssMapa = StyleSheet.create({
         width: '100%',
         height: "90%",
         backgroundColor: '#fff',
-        marginTop: '15%'
+        marginTop: '17%',
     },
     placeholderArea:{
         display: 'flex',
@@ -25,16 +25,15 @@ const cssMapa = StyleSheet.create({
         display: 'flex',
         flexDirection:'row',
         zIndex: 9,
-        height: '7%',
         width: '100%',
         justifyContent: 'space-around',
-        marginBottom: '25%'
+        marginBottom: '10%'
     },
     btnContainer:{
        width: '25%',
        height: 100,
        backgroundColor: '#107878',
-       borderRadius: 50,
+       borderRadius: 30,
        alignContent: 'center',
        alignItems: 'center',
        justifyContent: 'center', 

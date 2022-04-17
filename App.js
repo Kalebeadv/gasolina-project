@@ -9,7 +9,7 @@ import Mapa from "./screens/mapa/Mapa";
 import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
 import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
-
+import CalcularRota from "./screens/calcular-rota/Calculo-rota";
 import Carros from "./screens/carros_e_rank/Carros";
 import Rank from "./screens/carros_e_rank/Rank";
 
@@ -19,7 +19,6 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      
       <Stack.Screen name="Entrar" component={Login} options={{
         title: "",
         headerTransparent: true,

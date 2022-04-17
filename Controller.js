@@ -56,6 +56,10 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
         }
     });
     id = JSON.stringify(id, ["id"]);
+    id = id.split(':');
+    id = id[1]
+    id = id.split("}")
+    id = id[0]
     
     let reqs = await model.Vehicle.create({
         'model' : req.body.modeloVeiculo,
@@ -63,7 +67,7 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
         'consumo' : req.body.consumoVeiculo,
         'typefuel': req.body.combustivelVeiculo,
         'year': req.body.anoVeiculo,
-        'idUser' : id[7],
+        'idUser' : id,
         'createdAt' : new Date(),
         'updatedAt' : new Date()
     })
@@ -85,6 +89,7 @@ app.post('/registrar',async(req,res)=>{
 */
 
 let port = 3000;
+
 
 app.listen(port,(req,res)=>{
     console.log("servidor rodando")

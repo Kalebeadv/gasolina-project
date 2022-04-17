@@ -1,11 +1,11 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import Login from "./screens/Usuario/Login";
 import MenuPrincipal from "./screens/Principais/MenuPrincipal";
 import Registrar from "./screens/Usuario/Registrar";
 import Mapa from "./screens/mapa/Mapa";
+import 'react-native-gesture-handler';
 import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
 import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet,} from "react-native";
 import {Picker} from '@react-native-picker/picker';
-import Icon from "react-native-vector-icons/FontAwesome";
 
 
 export default class FuelTypeButton extends Component {

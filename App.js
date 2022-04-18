@@ -9,16 +9,21 @@ import 'react-native-gesture-handler';
 import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
 import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
-import CalcularRota from "./screens/calcular-rota/Calculo-rota";
 import Carros from "./screens/carros_e_rank/Carros";
 import Rank from "./screens/carros_e_rank/Rank";
+import Inicio from "./screens/Principais/Inicio";
 
 const Stack = createStackNavigator();
 
-
+// CARLOS PARA DE DELETAR A STACK DE INICIO PELO AMOR DE DEUS
 function MyStack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen name="Inicio" component={Inicio} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+        }}/>
       <Stack.Screen name="Entrar" component={Login} options={{
         title: "",
         headerTransparent: true,

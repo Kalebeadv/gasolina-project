@@ -74,12 +74,8 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
     res.send(JSON.stringify('sucesso'))
 });
 
-app.post('/GasStation',async(req,res)=>{
-
-    let objetoGasStation = await model.Gasstation.findAll({
-       
-    });
-    
+app.post('/station',async(req,res)=>{
+    let objetoGasStation = await model.Gasstation.findAll({})
     res.send(JSON.stringify(objetoGasStation))
 });
 
@@ -98,8 +94,6 @@ app.post('/registrar',async(req,res)=>{
 */
 
 let port = 3000;
-
-
 app.listen(port,(req,res)=>{
     console.log("servidor rodando")
 })

@@ -1,13 +1,30 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { TEXT } from 'sequelize/types';
 
-export default function CalcularRota() {
 
-    const [selectedLanguage, setSelectedLanguage] = useState();
+export default function GasStation() {
 
+
+   var gasStation 
+
+    async function RetornaGasStation() {
+        var reqs = await fetch(config.urlRootNode + 'GasStation', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          
+        });
+    
+        let ress = await reqs.json();
+    
+        gasStation = JSON.parse(ress);
+        return gasStation;
+    
+      }
+      
     return (
-       <Text>Fzao</Text>
+        {RetornaGasStation}
     )
 }

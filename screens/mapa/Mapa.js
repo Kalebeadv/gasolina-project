@@ -6,8 +6,9 @@ import * as Location from 'expo-location';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import keys from '../../config/googleConfig.json';
 import MapViewDirections from 'react-native-maps-directions';
-
+import GasStation from '../calcular-rota/Calculo-rota';
 import Icon from 'react-native-vector-icons/FontAwesome'
+
 
 export default function Mapa({navigation}) {
 
@@ -27,7 +28,24 @@ export default function Mapa({navigation}) {
 	})
 	const [location, setLocation] = useState(null)
 
+	var objGasStation =  GasStation;
 
+	function InserePinsNoMapa()
+	{
+		for(i = 0; i < objGasStation.size(); i++)
+		{
+			<Marker coordinate={{
+				latitude: objGasStation[i].latitude,
+				longitude:  objGasStation[i].longitude,
+				latitudeDelta: 0.000922,
+				longitudeDelta: 0.000421
+			}}
+			title= {objGasStation[i].name}
+			description={objGasStation[i].address}
+			>
+			</Marker>
+		}
+	}
 	useEffect(() => {
 		(async function () {
 			const { status } = await Location.requestForegroundPermissionsAsync();
@@ -128,30 +146,10 @@ export default function Mapa({navigation}) {
 
 				/>}
 
-
-				<Marker coordinate={{
-					latitude: -9.96381794670852,
-					longitude:  -67.826919587418,
-					latitudeDelta: 0.000922,
-					longitudeDelta: 0.000421
-				}}
-				title="Posto Petrobras Isaurão"
-				description="Av. Nações Unidas, 2123 - Estacao Experimental"
-				>
-				</Marker>
-				
-				<Marker coordinate={{
-					latitude: -9.965560070532558, 
-					longitude:  -67.83312823666452,
-					latitudeDelta: 0.000922,
-					longitudeDelta: 0.000421
-				}}
-				title="Posto Petrobras"
-				description="R.Isaura Parente, 1412-Estacao Experimental"
-				>
-				</Marker>
+				{InserePinsNoMapa()}
 
 			</MapView>
+		
 		</View>
 
 	)

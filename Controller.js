@@ -74,6 +74,15 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
     res.send(JSON.stringify('sucesso'))
 });
 
+app.post('/GasStation',async(req,res)=>{
+
+    let objetoGasStation = await model.Gasstation.findAll({
+       
+    });
+    
+    res.send(JSON.stringify(objetoGasStation))
+});
+
 /*
 app.post('/registrar',async(req,res)=>{
     let reqs = await model.User.create({

@@ -50,7 +50,7 @@ const cssMapa = StyleSheet.create({
        marginTop: '2%'
     },
     textoRota:{
-        fontSize: 25,
+        fontSize: 20,
         color: '#000'
     },
 });

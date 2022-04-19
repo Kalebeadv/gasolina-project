@@ -11,10 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /*
 export default function AreaRestrita() {
-
   const [email, setEmail] = useState(null);
   const [pass, setPass] = useState(null);
-
   useEffect(() => {
     async function getUser() {
       let response = await AsyncStorage.getItem('userData');

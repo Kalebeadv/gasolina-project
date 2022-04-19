@@ -5,11 +5,13 @@ import MapView, { Callout, Circle, Marker } from "react-native-maps"
 import * as Location from 'expo-location';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import keys from '../../config/googleConfig.json';
+import { urlRootNode } from '../../config/config.json'
 import MapViewDirections from 'react-native-maps-directions';
-
 import Icon from 'react-native-vector-icons/FontAwesome'
+import SetPins from '../../src/components/SetPins';
 
-export default function Mapa({navigation}) {
+
+export default function Mapa({ navigation }) {
 
 	const [posto_isaurao, setPonto_isaurao] = useState({
 		latitude: -9.968422105011024,
@@ -26,8 +28,22 @@ export default function Mapa({navigation}) {
 		longitudeDelta: 0
 	})
 	const [location, setLocation] = useState(null)
+	const [postos, setPostos] = useState([])
 
 
+	async function getPosto() {
+		var reqs = await fetch(urlRootNode + 'station', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+		});
+		let ress = await reqs.json();
+		console.log(ress)
+		setPostos(ress);
+	}
+	
 	useEffect(() => {
 		(async function () {
 			const { status } = await Location.requestForegroundPermissionsAsync();
@@ -42,8 +58,10 @@ export default function Mapa({navigation}) {
 			} else {
 				throw new Error('Location permission not granted');
 			}
-		})();
+		}
+		)(getPosto());
 	}, []);
+
 
 
 	return (
@@ -102,7 +120,7 @@ export default function Mapa({navigation}) {
        				</TouchableOpacity>
 						
 					<TouchableOpacity style={cssMapa.btnRotaContainer}>
-						<Text style={cssMapa.textoRota}>Rota <Icon name="dollar" size={25} color="#000"></Icon></Text>
+						<Text style={cssMapa.textoRota}>Rota <Icon name="dollar" size={25} color="#107878"></Icon></Text>
 					</TouchableOpacity>
 						
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => {navigation.navigate('Carros')}}>
@@ -111,7 +129,7 @@ export default function Mapa({navigation}) {
 				</View>	
 			</View>
 
-					
+
 			<MapView
 				style={cssMapa.map}
 				initialRegion={origin}
@@ -128,33 +146,23 @@ export default function Mapa({navigation}) {
 						onReady={result => {
 							setDistance(result.distance);
 						}
-					}
-
-				/>}
-
-
-				<Marker coordinate={{
-					latitude: -9.96381794670852,
-					longitude:  -67.826919587418,
-					latitudeDelta: 0.000922,
-					longitudeDelta: 0.000421
-				}}
-				title="Posto Petrobras Isaurão"
-				description="Av. Nações Unidas, 2123 - Estacao Experimental"
-				>
-				</Marker>
-				
-				<Marker coordinate={{
-					latitude: -9.965560070532558, 
-					longitude:  -67.83312823666452,
-					latitudeDelta: 0.000922,
-					longitudeDelta: 0.000421
-				}}
-				title="Posto Petrobras"
-				description="R.Isaura Parente, 1412-Estacao Experimental"
-				>
-				</Marker>
-
+						}
+					/>}
+				{postos.length > 0 &&
+					postos.map((m) => {
+						return (
+							<Marker coordinate={{
+								latitude: Number(m.latitude),
+								longitude: Number(m.longitude),
+								latitudeDelta: 0.000922,
+								longitudeDelta: 0.000421
+							}}
+								key={m.id}
+								title={m.name}
+								description={m.adress}
+							/>
+						);
+					})}
 			</MapView>
 		</View>
 

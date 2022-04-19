@@ -19,18 +19,13 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      
+    
       <Stack.Screen name="Entrar" component={Login} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
         }}/>
       <Stack.Screen name="Registrar" component={Registrar} options={{
-        title: "",
-        headerTransparent: true,
-        headerShown: false
-        }}/>
-      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

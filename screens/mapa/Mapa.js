@@ -98,11 +98,15 @@ export default function Mapa({navigation}) {
 					/>
 				<View style={cssMapa.btnViewContainer}> 
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => {navigation.navigate('Rank')}}>
-          				<Text><Icon name="trophy" style={cssMapa.iconContainer} size={35} color="#fff"/></Text>
+          				<Text><Icon name="trophy" size={25} color="#fff"/></Text>
        				</TouchableOpacity>
 						
+					<TouchableOpacity style={cssMapa.btnRotaContainer}>
+						<Text style={cssMapa.textoRota}>Rota <Icon name="dollar" size={25} color="#000"></Icon></Text>
+					</TouchableOpacity>
+						
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => {navigation.navigate('Carros')}}>
-          				<Text><Icon name="car" style={cssMapa.iconContainer} size={35} color="#fff"/></Text>
+          				<Text><Icon name="car" style={cssMapa.iconContainer} size={25} color="#fff"/></Text>
        				</TouchableOpacity>	
 				</View>	
 			</View>

@@ -6,7 +6,7 @@ export default function Carros({navigation}){
     return(
         <View style={styles.container}>
             <Text style={styles.texto}>
-                Carros
+                Nenhum carro adicionado!
             </Text>
             <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("CadastroVeiculo")}>
                 <Text style={styles.nome_rota}>
@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff'
+    },
+    texto: {
+        fontSize: 15,
+        color: '#107878',
+        marginBottom: "5%"
     },
     rota: {
         backgroundColor: '#107878',

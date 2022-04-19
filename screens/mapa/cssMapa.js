@@ -25,21 +25,33 @@ const cssMapa = StyleSheet.create({
         display: 'flex',
         flexDirection:'row',
         zIndex: 9,
-        width: '100%',
+        width: '90%',
+        height: '10%',
         justifyContent: 'space-around',
-        marginBottom: '10%'
+        marginBottom: '6%',
+        backgroundColor: '#107878',
+        borderRadius: 30,
     },
     btnContainer:{
        width: '25%',
-       height: 100,
-       backgroundColor: '#107878',
        borderRadius: 30,
        alignContent: 'center',
        alignItems: 'center',
        justifyContent: 'center', 
     },
-    iconContainer: {
-
+    btnRotaContainer:{
+       width: '45%',
+       height: '80%',
+       backgroundColor: '#fff',
+       borderRadius: 30,
+       alignContent: 'center',
+       alignItems: 'center',
+       justifyContent: 'center',
+       marginTop: '2%'
+    },
+    textoRota:{
+        fontSize: 25,
+        color: '#000'
     },
 });
 export {cssMapa};

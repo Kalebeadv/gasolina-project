@@ -29,8 +29,25 @@ export default function Mapa({ navigation }) {
 	})
 	const [location, setLocation] = useState(null)
 	const [postos, setPostos] = useState([])
+	const [distanciaOriginPosto, setDistanciaOriginPosto] = useState([])
 
-
+	async function comparaDistancia() {
+		let postoLatitude;
+		let postoLongitude;
+		let salvaMaior;
+		for (let i = 0; i < postos.length; i++) {
+			postoLatitude = origin.latitude - postos[i].latitude;
+			postoLongitude = origin.longitude - postos[i].longitude;
+			if (i === 0) {
+				salvaMaior = postos[i];
+			}
+			else if ((postoLatitude > salvaMaior.latitude) && (postoLongitude > salvaMaior.longitude)) {
+				salvaMaior = postos[i];
+			}
+		}
+		console.log(salvaMaior);
+		setDistanciaOriginPosto(salvaMaior);
+	}
 	async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
 			method: 'POST',
@@ -43,7 +60,8 @@ export default function Mapa({ navigation }) {
 		console.log(ress)
 		setPostos(ress);
 	}
-	
+
+
 	useEffect(() => {
 		(async function () {
 			const { status } = await Location.requestForegroundPermissionsAsync();
@@ -122,6 +140,10 @@ export default function Mapa({ navigation }) {
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Carros') }}>
 						<Text><Icon name="car" style={cssMapa.iconContainer} size={35} color="#fff" /></Text>
 					</TouchableOpacity>
+
+					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { comparaDistancia() }}>
+						<Text><Icon name="distancia" style={cssMapa.iconContainer} size={35} color="#fff" /></Text>
+					</TouchableOpacity>
 				</View>
 			</View>
 
@@ -156,9 +178,23 @@ export default function Mapa({ navigation }) {
 								key={m.id}
 								title={m.name}
 								description={m.adress}
+
+
 							/>
 						);
 					})}
+
+				{distanciaOriginPosto &&
+					<MapViewDirections
+						origin={origin}
+						destination={distanciaOriginPosto}
+						apikey={keys.googleMapKey}
+						strokeWidth={4}
+						onReady={result => {
+							setDistance(result.distance);
+						}
+						}
+					/>}
 			</MapView>
 		</View>
 

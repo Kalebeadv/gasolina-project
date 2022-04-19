@@ -8,6 +8,7 @@ import keys from '../../config/googleConfig.json';
 import { urlRootNode } from '../../config/config.json'
 import MapViewDirections from 'react-native-maps-directions';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import SetPins from '../../src/components/SetPins';
 
 
 export default function Mapa({ navigation }) {
@@ -27,9 +28,10 @@ export default function Mapa({ navigation }) {
 		longitudeDelta: 0
 	})
 	const [location, setLocation] = useState(null)
-	const[postos, setPostos] = useState(null)
+	const [postos, setPostos] = useState([])
 
-	async function GetPosto() {
+
+	async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
 			method: 'POST',
 			headers: {
@@ -37,28 +39,11 @@ export default function Mapa({ navigation }) {
 				'Content-Type': 'application/json',
 			},
 		});
-
 		let ress = await reqs.json();
-		return ress;
+		console.log(ress)
+		setPostos(ress);
 	}
-
-
-	function InserePinsNoMapa(obj) {
-		if (typeof(obj) == "object"){
-			for (let i = 0; i < obj.length; i++) {
-				<Marker coordinate={{
-					latitude: Number(obj[i].latitude),
-					longitude: Number(obj[i].longitude),
-					latitudeDelta: 0.000922,
-					longitudeDelta: 0.000421
-				}}
-					title={obj[i].name}
-					description={obj[i].address}
-				>
-				</Marker>
-			}
-		}
-	}
+	
 	useEffect(() => {
 		(async function () {
 			const { status } = await Location.requestForegroundPermissionsAsync();
@@ -74,7 +59,7 @@ export default function Mapa({ navigation }) {
 				throw new Error('Location permission not granted');
 			}
 		}
-		)();
+		)(getPosto());
 	}, []);
 
 
@@ -158,10 +143,22 @@ export default function Mapa({ navigation }) {
 							setDistance(result.distance);
 						}
 						}
-
 					/>}
-
-				{InserePinsNoMapa(GetPosto())}
+				{postos.length > 0 &&
+					postos.map((m) => {
+						return (
+							<Marker coordinate={{
+								latitude: Number(m.latitude),
+								longitude: Number(m.longitude),
+								latitudeDelta: 0.000922,
+								longitudeDelta: 0.000421
+							}}
+								key={m.id}
+								title={m.name}
+								description={m.adress}
+							/>
+						);
+					})}
 			</MapView>
 		</View>
 

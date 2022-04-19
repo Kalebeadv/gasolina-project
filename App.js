@@ -2,7 +2,6 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from "./screens/Usuario/Login";
-import MenuPrincipal from "./screens/Principais/MenuPrincipal";
 import Registrar from "./screens/Usuario/Registrar";
 import Mapa from "./screens/mapa/Mapa";
 import 'react-native-gesture-handler';
@@ -30,11 +29,6 @@ function MyStack() {
         headerShown: false
         }}/>
       <Stack.Screen name="Registrar" component={Registrar} options={{
-        title: "",
-        headerTransparent: true,
-        headerShown: false
-        }}/>
-      <Stack.Screen name="MenuPrincipal" component={MenuPrincipal} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

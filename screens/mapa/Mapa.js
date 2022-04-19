@@ -85,66 +85,66 @@ export default function Mapa({ navigation }) {
 	return (
 		<View style={cssMapa.container}>
 			<View style={cssMapa.placeholderArea}>
-				<GooglePlacesAutocomplete
-					placeholder="Buscar"
-					fetchDetails={true}
-					GooglePlacesSearchQuery={{
-						rankby: "distance"
-					}}
-					onPress={(data, details = null) => {
-						// 'details' is provided when fetchDetails = true
-						console.log(data, details)
-						setRegion({
-							latitude: details.geometry.location.lat,
-							longitude: details.geometry.location.lng,
-							latitudeDelta: 0.0922,
-							longitudeDelta: 0.0421
-						})
-					}}
-					query={{
-						useEffect,
-						key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
-						language: "pt-br",
-						components: "country:br",
-						types: "establishment",
-						radius: 30000,
-						location: `${region.latitude}, ${region.longitude}`
-					}}
-					styles={{
-						container: {
-							width: "100%",
-							zIndex: 1,
-							marginTop: '7%'
-						},
-						listView: {
-						},
-						textInput: {
-							backgroundColor: "#fff",
-							fontSize: 20,
-							borderStyle: 'solid',
-							borderColor: '#107878',
-							borderRadius: 8,
-							borderWidth: 1,
-							borderRightWidth: 1,
-							borderBottomWidth: 3,
-						},
-						textInputContainer: {
-						},
-					}}
-				/>
-				<View style={cssMapa.btnViewContainer}>
-					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Rank') }}>
-						<Text><Icon name="trophy" style={cssMapa.iconContainer} size={35} color="#fff" /></Text>
+				<GooglePlacesAutocomplete 
+						placeholder="Buscar"
+						fetchDetails={true}
+						GooglePlacesSearchQuery={{
+							rankby: "distance"
+						}}
+						onPress={(data, details = null) => {
+							// 'details' is provided when fetchDetails = true
+							console.log(data, details)
+							setRegion({
+								latitude: details.geometry.location.lat,
+								longitude: details.geometry.location.lng,
+								latitudeDelta: 0.0922,
+								longitudeDelta: 0.0421
+							})
+						}}
+						query={{
+							useEffect,
+							key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
+							language: "pt-br",
+							components: "country:br",
+							types: "establishment",
+							radius: 30000,
+							location: `${region.latitude}, ${region.longitude}`
+						}}
+						styles={{
+							container: { 
+								width: "100%", 
+								zIndex: 1,
+								marginTop: '7%'	
+							},
+							listView: { 
+							},
+							textInput: { 
+								backgroundColor: "#fff", 
+								fontSize: 20,
+								borderStyle: 'solid',
+    							borderColor: '#107878',
+								borderRadius: 8,
+    							borderWidth: 1,
+    							borderRightWidth: 1,
+    							borderBottomWidth: 3,
+							},
+							textInputContainer: {
+							},
+						}}
+					/>
+				<View style={cssMapa.btnViewContainer}> 
+					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => {navigation.navigate('Rank')}}>
+          				<Text><Icon name="trophy" size={25} color="#fff"/></Text>
+       				</TouchableOpacity>
+						
+					<TouchableOpacity style={cssMapa.btnRotaContainer} onPress={() => { comparaDistancia() }}>
+						<Text style={cssMapa.textoRota}>Rota <Icon name="dollar" size={25} color="#107878"></Icon></Text>
 					</TouchableOpacity>
-
-					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Carros') }}>
-						<Text><Icon name="car" style={cssMapa.iconContainer} size={35} color="#fff" /></Text>
-					</TouchableOpacity>
-
-					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { comparaDistancia() }}>
-						<Text><Icon name="distancia" style={cssMapa.iconContainer} size={35} color="#fff" /></Text>
-					</TouchableOpacity>
-				</View>
+						
+					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => {navigation.navigate('Carros')}}>
+          				<Text><Icon name="car" style={cssMapa.iconContainer} size={25} color="#fff"/></Text>
+       				</TouchableOpacity>	
+				</View>	
 			</View>
 
 

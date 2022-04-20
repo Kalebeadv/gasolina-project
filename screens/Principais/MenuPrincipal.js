@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 
@@ -40,3 +41,4 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 });
+*/

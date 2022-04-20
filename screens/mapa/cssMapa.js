@@ -3,13 +3,13 @@ import {StyleSheet} from "react-native";
 const cssMapa = StyleSheet.create({
     container: {
         flex: 0,
-        position: 'relative'
+        position: 'relative',
     },
     map:{
+        
         width: '100%',
-        height: "90%",
+        height: "100%",
         backgroundColor: '#fff',
-        marginTop: '17%',
     },
     placeholderArea:{
         display: 'flex',
@@ -53,5 +53,8 @@ const cssMapa = StyleSheet.create({
         fontSize: 20,
         color: '#000'
     },
+    teste:{
+        zIndex: 9
+    }
 });
 export {cssMapa};

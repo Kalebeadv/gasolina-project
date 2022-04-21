@@ -1,46 +1,102 @@
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet } from "react-native";
 import React from "react";
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 export default function Carros({navigation}){
     return(
         <View style={styles.container}>
+            
             <Text style={styles.texto}>
                 Nenhum carro adicionado!
             </Text>
+            
             <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("CadastroVeiculo")}>
                 <Text style={styles.nome_rota}>
                   Cadastrar Veículo
                 </Text>
             </TouchableOpacity>
+
+            <View style={styles.btnViewContainer}>
+                <TouchableOpacity style={styles.btnContainer} onPress={() => {navigation.navigate('Rank')}}>
+          			<Text><Icon name="trophy" size={25} color="#fff"/></Text>
+       			</TouchableOpacity>
+    
+				<TouchableOpacity style={styles.btnContainer} onPress={() => { navigation.navigate('Mapa') }}>
+					<Text style={styles.textoRota}>Rota <Icon name="dollar" size={25} color="#fff"></Icon></Text>
+				</TouchableOpacity>
+    
+				<TouchableOpacity style={styles.btnRotaContainer} onPress={() => {navigation.navigate('Carros')}}>
+          			<Text><Icon name="car" style={styles.iconContainer} size={25} color="#000"/></Text>
+       			</TouchableOpacity>	
+            </View>
+            
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        position: 'relative',
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent:'space-between',
+        alignContent:'center',
+        alignItems:'center'
     },
-    texto: {
+    texto: { // trocar o nome quando colocar o select de carros
         fontSize: 15,
         color: '#107878',
-        marginBottom: "5%"
+        marginTop: '50%' // mudar apenas aqui para emplementar o select dos carros
     },
     rota: {
         backgroundColor: '#107878',
         width: '90%',
         height: 50,
-        marginBottom: 10,
+        marginBottom: '50%',
         borderRadius: 13,
         paddingTop: 10,
         marginTop: 20,
+        
     },
     nome_rota: {
         textAlign: 'center',
         color: 'white',
         fontSize: 20
+    },
+    btnViewContainer:{
+        display: 'flex',
+        flexDirection:'row',
+        zIndex: 9,
+        width: '90%',
+        height: '10%',
+        justifyContent: 'space-around',
+        marginBottom: '6%',
+        backgroundColor: '#107878',
+        borderRadius: 30,   
+    },
+    btnContainer:{
+        width: '25%',
+        borderRadius: 30,
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center', 
+    },
+    btnRotaContainer:{
+        width: '25%',
+        height: '80%',
+        backgroundColor: '#fff',
+        borderRadius: 30,
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '2%',
+        
+    },
+    textoRota:{
+        fontSize: 20,
+        color: '#fff'
     },
 }); 

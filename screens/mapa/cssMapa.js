@@ -6,7 +6,6 @@ const cssMapa = StyleSheet.create({
         position: 'relative',
     },
     map:{
-        
         width: '100%',
         height: "100%",
         backgroundColor: '#fff',

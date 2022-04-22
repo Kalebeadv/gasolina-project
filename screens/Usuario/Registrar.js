@@ -32,7 +32,7 @@ export default function Registrar({navigation}) {
     if (ress == 'true'){
       await AsyncStorage.setItem( 'email', email);
       await AsyncStorage.setItem( 'pass', password);
-      navigation.navigate('MenuPrincipal');
+      navigation.navigate('Mapa');
       
     }else if(ress == 'false'){
       Alert.alert(

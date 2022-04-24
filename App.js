@@ -15,6 +15,7 @@ import Inicio from "./screens/Principais/Inicio";
 const Stack = createStackNavigator();
 
 // CARLOS PARA DE DELETAR A STACK DE INICIO PELO AMOR DE DEUS
+// SÓ MEU FI, É NOIS
 function MyStack() {
   return (
     <Stack.Navigator>

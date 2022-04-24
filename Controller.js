@@ -56,6 +56,7 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
         }
     });
     id = JSON.stringify(id, ["id"]);
+
     id = id.split(':');
     id = id[1]
     id = id.split("}")
@@ -77,6 +78,28 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
 app.post('/station',async(req,res)=>{
     let objetoGasStation = await model.Gasstation.findAll({})
     res.send(JSON.stringify(objetoGasStation))
+});
+
+
+
+app.post('/carros',async(req,res)=>{
+    let user = await model.User.findAll({
+        where: {
+            email: req.body.email,
+        }
+    })
+    let id = JSON.stringify(user, ["id"]);
+    id = id.split(':');
+    id = id[1]
+    id = id.split("}")
+    id = id[0]
+
+    let objetoCarros = await model.Vehicle.findAll({
+        where: {
+            idUser : id
+        }
+    })
+    res.send(JSON.stringify(objetoCarros))
 });
 
 /*

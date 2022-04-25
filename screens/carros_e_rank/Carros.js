@@ -59,6 +59,7 @@ export default function Carros({ navigation }) {
 
     return (
         <View style={styles.container}>
+
             <FlatList
                 data={DATA}
                 style={styles.item}
@@ -70,7 +71,8 @@ export default function Carros({ navigation }) {
 
             {//-------------------------------- BOTOES DA INTERFACE -------------------------
             }
-            <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("CadastroVeiculo")}>
+            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
+
                 <Text style={styles.nome_rota}>
                     Cadastrar Veículo
                 </Text>
@@ -78,18 +80,17 @@ export default function Carros({ navigation }) {
 
             <View style={styles.btnViewContainer}>
                 <TouchableOpacity style={styles.btnContainer} onPress={Rank}>
-                    <Text><Icon name="trophy" size={25} color="#fff" /></Text>
+                    <Text><Icon name="trophy" size={25} color="#fff"/></Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnContainer} onPress={Mapa}>
-                    <Text style={styles.textoRota}>Rota <Icon name="dollar" size={25} color="#fff"></Icon></Text>
+                    <Text style={styles.textoRota}>Mapa</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnRotaContainer}>
-                    <Text><Icon name="car" style={styles.iconContainer} size={25} color="#000" /></Text>
+                    <Text><Icon name="car" style={styles.iconContainer} size={25} color="#000"/></Text>
                 </TouchableOpacity>
             </View>
-
         </View>
     )
 }
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
         color: '#107878',
         marginTop: '50%' // mudar apenas aqui para emplementar o select dos carros
     },
-    rota: {
+    cadastroVeiculos: {
         backgroundColor: '#107878',
         width: '90%',
         height: 50,
@@ -120,7 +121,6 @@ const styles = StyleSheet.create({
         borderRadius: 13,
         paddingTop: 10,
         marginTop: 20,
-
     },
     nome_rota: {
         textAlign: 'center',

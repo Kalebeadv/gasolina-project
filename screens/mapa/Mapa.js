@@ -153,26 +153,25 @@ export default function Mapa({ navigation }) {
 						location: `${region.latitude}, ${region.longitude}`
 					}}
 					styles={{
-						container: {
-							width: "100%",
-							zIndex: 1,
-							marginTop: '7%'
-						},
-						listView: {
-						},
-						textInput: {
-							backgroundColor: "#fff",
-							fontSize: 20,
-							borderStyle: 'solid',
-							borderColor: '#107878',
-							borderRadius: 8,
-							borderWidth: 1,
-							borderRightWidth: 1,
-							borderBottomWidth: 3,
-						},
-						textInputContainer: {
-						},
-					}}
+							container: { 
+								width: "85%", 
+								zIndex: 1,
+								marginTop: '15%'	
+							},
+							listView: { 
+							},
+							textInput: { 
+								fontSize: 20,
+								borderStyle: 'solid',
+    							borderColor: '#107878',
+								borderRadius: 8,
+    							borderWidth: 1,
+    							borderRightWidth: 1,
+    							borderBottomWidth: 3,
+								textAlign: 'center',
+								color: '#000'
+							},
+						}}
 				/>
 
 				<View style={cssMapa.btnViewContainer}>
@@ -181,7 +180,7 @@ export default function Mapa({ navigation }) {
 					</TouchableOpacity>
 
 					<TouchableOpacity style={cssMapa.btnRotaContainer} onPress={() => { comparaDistancia() }}>
-						<Text style={cssMapa.textoRota}>Rota <Icon name="dollar" size={25} color="#107878"></Icon></Text>
+						<Text style={cssMapa.textoRota}>Economizar <Icon name="dollar" size={25} color="#107878"></Icon></Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Carros') }}>
@@ -198,7 +197,7 @@ export default function Mapa({ navigation }) {
 				showsUserLocation={true}
 				loadingEnabled={true}
 				customMapStyle={newMap}
-				showsMyLocationButton={true}
+				showsMyLocationButton={false}
 			>
 				{region &&
 					<MapViewDirections

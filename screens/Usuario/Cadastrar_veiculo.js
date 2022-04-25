@@ -7,8 +7,6 @@ import FuelTypeButton from "../../src/components/FuelTypeButton";
 
 
 export default function CadastrarVeiculo({ navigation }) {
-
-  
   const [modelo, setModelo] = useState(null);
   const [marca, setMarca] = useState(null);
   const [consumo, setConsumo] = useState(null);
@@ -24,7 +22,21 @@ export default function CadastrarVeiculo({ navigation }) {
     getUser();
   }, []);
 
-
+  async function getVeiculos() {
+    let userEmail = await AsyncStorage.getItem("email")
+    let reqs = await fetch(config.urlRootNode + 'carros', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: userEmail
+      })
+    })
+    let ress = await reqs.json();
+    await AsyncStorage.setItem("CarrosUser", JSON.stringify(ress));
+  }
 
   async function Cadastrar() {
     var reqs = await fetch(config.urlRootNode + 'cadastrarVeiculo', {
@@ -50,6 +62,7 @@ export default function CadastrarVeiculo({ navigation }) {
         "Concluido",
         "O cadastro do veiculo foi concluido com sucesso"
       )
+      getVeiculos()
       navigation.navigate('Mapa')
     }
 
@@ -101,7 +114,7 @@ export default function CadastrarVeiculo({ navigation }) {
         <View style={styles.inputIcon}>
           <Icon name="tint" size={25} color="#107878" />
           <FuelTypeButton
-            funcao={setCombustivel} 
+            funcao={setCombustivel}
           />
         </View>
 

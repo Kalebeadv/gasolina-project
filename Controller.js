@@ -76,10 +76,15 @@ app.post('/cadastrarVeiculo',async(req,res)=>{
 });
 
 app.post('/station',async(req,res)=>{
-    let objetoGasStation = await model.Gasstation.findAll({})
-    res.send(JSON.stringify(objetoGasStation))
+    let objetoGasStation = await model.Gasstation.findAll({});
+    res.send(JSON.stringify(objetoGasStation));
 });
 
+app.post("/fuel",async(req,res)=>{
+    let objFuel = await model.Fuel.findAll({});
+    res.send(JSON.stringify(objFuel));
+
+});
 
 
 app.post('/carros',async(req,res)=>{

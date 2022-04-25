@@ -11,7 +11,7 @@ export default function Carros({navigation}){
                 Nenhum carro adicionado!
             </Text>
             
-            <TouchableOpacity style={styles.rota} onPress={() => navigation.navigate("CadastroVeiculo")}>
+            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
                 <Text style={styles.nome_rota}>
                   Cadastrar Veículo
                 </Text>
@@ -23,7 +23,7 @@ export default function Carros({navigation}){
        			</TouchableOpacity>
     
 				<TouchableOpacity style={styles.btnContainer} onPress={() => { navigation.navigate('Mapa') }}>
-					<Text style={styles.textoRota}>Rota <Icon name="dollar" size={25} color="#fff"></Icon></Text>
+					<Text style={styles.textoRota}>Mapa</Text>
 				</TouchableOpacity>
     
 				<TouchableOpacity style={styles.btnRotaContainer} onPress={() => {navigation.navigate('Carros')}}>
@@ -51,15 +51,14 @@ const styles = StyleSheet.create({
         color: '#107878',
         marginTop: '50%' // mudar apenas aqui para emplementar o select dos carros
     },
-    rota: {
+    cadastroVeiculos: {
         backgroundColor: '#107878',
         width: '90%',
         height: 50,
         marginBottom: '50%',
         borderRadius: 13,
         paddingTop: 10,
-        marginTop: 20,
-        
+        marginTop: 20,  
     },
     nome_rota: {
         textAlign: 'center',

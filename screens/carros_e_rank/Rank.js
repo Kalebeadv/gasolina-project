@@ -17,7 +17,7 @@ export default function Rank({navigation}){
        			</TouchableOpacity>
     
 				<TouchableOpacity style={styles.btnContainer} onPress={() => { navigation.navigate('Mapa') }}>
-					<Text style={styles.textoRota}>Rota <Icon name="dollar" size={25} color="#fff"></Icon></Text>
+					<Text style={styles.textoRota}>Mapa</Text>
 				</TouchableOpacity>
     
 				<TouchableOpacity style={styles.btnContainer} onPress={() => {navigation.navigate('Carros')}}>

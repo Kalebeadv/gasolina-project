@@ -27,7 +27,7 @@ const cssMapa = StyleSheet.create({
         width: '90%',
         height: '10%',
         justifyContent: 'space-around',
-        marginBottom: '6%',
+        marginBottom: '8%',
         backgroundColor: '#107878',
         borderRadius: 30,
     },

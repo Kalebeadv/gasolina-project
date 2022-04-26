@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const gasstation = require('./gasstation');
 module.exports = (sequelize, DataTypes) => {
   class Fuel extends Model {
     /**
@@ -15,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Fuel.init({
     type: DataTypes.STRING,
-    valor: DataTypes.FLOAT
+    valor: DataTypes.FLOAT,
+    idGasstation: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Fuel',

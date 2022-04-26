@@ -11,6 +11,7 @@ import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
 import Carros from "./screens/carros_e_rank/Carros";
 import Rank from "./screens/carros_e_rank/Rank";
 import Inicio from "./screens/Principais/Inicio";
+import Splash from "./screens/splash";
 
 const Stack = createStackNavigator();
 
@@ -18,52 +19,57 @@ const Stack = createStackNavigator();
 // SÓ MEU FI, É NOIS
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen name="Inicio" component={Inicio} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
+      <Stack.Screen name="Splash" component={Splash} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
       <Stack.Screen name="Entrar" component={Login} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
       <Stack.Screen name="Registrar" component={Registrar} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
       <Stack.Screen name="Mapa" component={Mapa} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
       <Stack.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
       <Stack.Screen name="LoginComGoogle" component={LoginComGoogle} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
       <Stack.Screen name="CadastroVeiculo" component={CadastrarVeiculo} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
       <Stack.Screen name="Carros" component={Carros} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
       <Stack.Screen name="Rank" component={Rank} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
-        }}/>
+      }}/>
     </Stack.Navigator>
   );
 }

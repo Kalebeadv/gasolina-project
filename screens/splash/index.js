@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LottieView from 'lottie-react-native';
 
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, BackHandler } from 'react-native';
+
 
 export default function Splash({ navigation }){
 
     function telaLogin(){
         navigation.navigate('Entrar')
     }
+
+    // comando para nao deixar volta para a tela anterior
+    useEffect(() => { 
+        BackHandler.addEventListener('hardwareBackPress', () => {
+            return true
+        })
+       
+    }, [])
 
     return (
         <View style={styles.container}>

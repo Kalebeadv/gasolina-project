@@ -2,7 +2,7 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 import React, { useState, useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import config from "../../config/config.json"
 
 
 export default function Carros({ navigation }) {
@@ -11,15 +11,15 @@ export default function Carros({ navigation }) {
 
     const Item = ({ item, onPress, backgroundColor, textColor }) => (
         <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-            <Text style={[styles.title, textColor]}>{item.model +" "+ item.year}</Text>
+            <Text style={[styles.title, textColor]}>{item.model + " " + item.year}</Text>
         </TouchableOpacity>
     );
     const [selectedId, setSelectedId] = useState(null);
-    
+
     const renderItem = ({ item }) => {
         const backgroundColor = item.id == selectedId ? "#107878" : "#23cdcd";
         const color = item.id == selectedId ? 'white' : 'black';
-        
+
 
         return (
             <Item
@@ -30,27 +30,45 @@ export default function Carros({ navigation }) {
             />
         );
     };
-
-
+        
 
 
     useEffect(() => {
         async function getCars() {
+            let userEmail = await AsyncStorage.getItem("email")
             let carros = await AsyncStorage.getItem("CarrosUser");
             let id = await AsyncStorage.getItem("VeiculoSelecionado")
-            setCars(JSON.parse(carros))
-            setSelectedId(id)
-            console.log(id)
+            if (typeof(carros) != "string") {
+                let reqs = await fetch(config.urlRootNode + 'carros', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: userEmail
+                    })
+                })
+                let ress = await reqs.json();
+                await AsyncStorage.setItem("CarrosUser", JSON.stringify(ress));
+                setCars(ress)
+                return;
+            }else{
+                setCars(JSON.parse(carros))
+                setSelectedId(id)
+            }
         }
         getCars();
+        
+
     }, []);
     //------------------------- Navigate ---------------
-    function Mapa(){
+    function Mapa() {
         AsyncStorage.setItem("VeiculoSelecionado", String(selectedId));
-        navigation.navigate('Mapa');
+        navigation.navigate('Mapa', {id : selectedId});
     }
 
-    function Rank(){
+    function Rank() {
         AsyncStorage.setItem("VeiculoSelecionado", String(selectedId));
         navigation.navigate('Rank');
     }
@@ -59,14 +77,15 @@ export default function Carros({ navigation }) {
 
     return (
         <View style={styles.container}>
-
-            <FlatList
-                data={DATA}
-                style={styles.item}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                extraData={selectedId}
-            />
+            {DATA != [] &&
+                <FlatList
+                    data={DATA}
+                    style={styles.item}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
+                    extraData={selectedId}
+                />
+            }
 
 
             {//-------------------------------- BOTOES DA INTERFACE -------------------------
@@ -80,7 +99,7 @@ export default function Carros({ navigation }) {
 
             <View style={styles.btnViewContainer}>
                 <TouchableOpacity style={styles.btnContainer} onPress={Rank}>
-                    <Text><Icon name="trophy" size={25} color="#fff"/></Text>
+                    <Text><Icon name="trophy" size={25} color="#fff" /></Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnContainer} onPress={Mapa}>
@@ -88,7 +107,7 @@ export default function Carros({ navigation }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnRotaContainer}>
-                    <Text><Icon name="car" style={styles.iconContainer} size={25} color="#000"/></Text>
+                    <Text><Icon name="car" style={styles.iconContainer} size={25} color="#000" /></Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -98,8 +117,8 @@ export default function Carros({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width:"100%",
-        marginTop:"30%",
+        width: "100%",
+        marginTop: "30%",
         backgroundColor: '#fff',
         position: 'relative',
         display: 'flex',
@@ -161,12 +180,12 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     item: {
-        width:"100%",
+        width: "100%",
         padding: 20,
-        paddingBottom:10,
-        paddingTop:10,
+        paddingBottom: 10,
+        paddingTop: 10,
         marginVertical: 8,
-        borderRadius:16,
+        borderRadius: 16,
     },
     title: {
         fontSize: 24,

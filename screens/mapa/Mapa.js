@@ -9,31 +9,38 @@ import { urlRootNode } from '../../config/config.json'
 import MapViewDirections from 'react-native-maps-directions';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Carros from '../carros_e_rank/Carros';
 
 
 
-export default function Mapa({ navigation }) {
+export default function Mapa({ route, navigation }) {
 
 	var distlist = []
-	const [distancias, setDistancias] = useState([])
-	const [fuel, setFuel] = useState([])
+	const [initialLocation, setInitialLocation] = useState({
+		latitude: -9.96860362889137,
+		longitude: -67.8291926515884,
+		latitudeDelta: 0.1,
+		longitudeDelta: 0.1
+	}) 
 	const [origin, setOrigin] = useState({
 		latitude: 0,
 		longitude: 0,
 		latitudeDelta: 0,
 		longitudeDelta: 0
 	});
-	const [distance, setDistance] = useState(null);
 	const [region, setRegion] = useState({
 		latitude: 0,
 		longitude: 0,
 		latitudeDelta: 0,
 		longitudeDelta: 0
 	})
+	const [distance, setDistance] = useState(null);
+	const [distancias, setDistancias] = useState([])
+	const [fuel, setFuel] = useState([])
 	const [postos, setPostos] = useState([])
 	const [distanciaOriginPosto, setDistanciaOriginPosto] = useState([])
 	const [cars, setCars] = useState([]);
-	const [selectedId, setSelectedId] = useState(null);
+	const [selectedId, setSelectedId] = useState(route.id);
 
 	async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
@@ -44,7 +51,7 @@ export default function Mapa({ navigation }) {
 			},
 		});
 		let ress = await reqs.json();
-		
+
 		setPostos(ress);
 	}
 
@@ -59,7 +66,7 @@ export default function Mapa({ navigation }) {
 		let ress = await reqs.json();
 		setFuel(ress);
 	}
-	async function getCars(){
+	async function getCars() {
 		let carros = await AsyncStorage.getItem("CarrosUser");
 		let id = await AsyncStorage.getItem("VeiculoSelecionado")
 		setCars(JSON.parse(carros))
@@ -77,40 +84,47 @@ export default function Mapa({ navigation }) {
 					latitudeDelta: 0.000922,
 					longitudeDelta: 0.000421
 				})
+				console.log(origin)
 			} else {
 				throw new Error('Location permission not granted');
 			}
 		}
-		)( getPosto() );
+		)(getCars());
 	}, []);
 
-	async function comparaDistancia() {
+	useEffect(() => {
 		getFuel()
-		getCars()
+		getPosto()
+	}, [selectedId])
+
+	async function comparaDistancia() {
 		let selecionado;
 		let calc;
 		let menor = 0;
 		let econ;
 		let combustivel;
-		for (let i = 0; i < cars.length; i++){
-			if(cars[i].id == selectedId){
+		console.log(distancias)
+		for (let i = 0; i < cars.length; i++) {
+			if (cars[i].id == selectedId) {
 				selecionado = cars[i]
-				console.log(selecionado.consumo)
+				console.log(selecionado)
 			}
 		}
 
-		for (let i = 0; i < postos.length; i++){
-			for (let j = 0; j < fuel.length; j++){
-				if (fuel[j].idGasstation == postos[i].id){
+		for (let i = 0; i < postos.length; i++) {
+			for (let j = 0; j < fuel.length; j++) {
+				console.log(fuel[j].idGasstation + " " + postos[i].id)
+				if (fuel[j].idGasstation == postos[i].id) {
 					combustivel = fuel[j]
-				} 
+				}
 			}
-			calc = (Number(combustivel.valor) * Number(distancias[i]))/Number(selecionado.consumo)
-			
-			if (menor == 0){
+			console.log(selecionado)
+			calc = (Number(combustivel.valor) * Number(distancias[i])) / Number(selecionado.consumo)
+
+			if (menor == 0) {
 				menor = calc
 				econ = postos[i]
-			}else if (calc < menor){
+			} else if (calc < menor) {
 				menor = calc
 				econ = postos[i]
 			}
@@ -153,25 +167,25 @@ export default function Mapa({ navigation }) {
 						location: `${region.latitude}, ${region.longitude}`
 					}}
 					styles={{
-							container: { 
-								width: "85%", 
-								zIndex: 1,
-								marginTop: '15%'	
-							},
-							listView: { 
-							},
-							textInput: { 
-								fontSize: 20,
-								borderStyle: 'solid',
-    							borderColor: '#107878',
-								borderRadius: 8,
-    							borderWidth: 1,
-    							borderRightWidth: 1,
-    							borderBottomWidth: 3,
-								textAlign: 'center',
-								color: '#000'
-							},
-						}}
+						container: {
+							width: "85%",
+							zIndex: 1,
+							marginTop: '15%'
+						},
+						listView: {
+						},
+						textInput: {
+							fontSize: 20,
+							borderStyle: 'solid',
+							borderColor: '#107878',
+							borderRadius: 8,
+							borderWidth: 1,
+							borderRightWidth: 1,
+							borderBottomWidth: 3,
+							textAlign: 'center',
+							color: '#000'
+						},
+					}}
 				/>
 
 				<View style={cssMapa.btnViewContainer}>
@@ -189,15 +203,15 @@ export default function Mapa({ navigation }) {
 				</View>
 			</View>
 
-
+			
 			<MapView
 				style={cssMapa.map}
-				initialRegion={origin}
+				initialRegion={initialLocation}
 				provider="google"
 				showsUserLocation={true}
 				loadingEnabled={true}
 				customMapStyle={newMap}
-				showsMyLocationButton={false}
+				showsMyLocationButton={true}
 			>
 				{region &&
 					<MapViewDirections
@@ -228,7 +242,7 @@ export default function Mapa({ navigation }) {
 
 				{postos.length > 0 &&
 					postos.map((m2) => {
-						return(
+						return (
 							<MapViewDirections
 								origin={origin}
 								destination={{
@@ -237,7 +251,6 @@ export default function Mapa({ navigation }) {
 									latitudeDelta: 0.000922,
 									longitudeDelta: 0.000421
 								}}
-								resetOnChange={true}
 								apikey={keys.googleMapKey}
 								strokeWidth={0}
 								onReady={result => {

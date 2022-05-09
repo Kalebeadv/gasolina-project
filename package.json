@@ -65,7 +65,8 @@
     "react-native-web-maps": "^0.3.0",
     "react-native-woodpicker": "^0.3.17",
     "sequelize": "^6.17.0",
-    "throttle-debounce": "^3.0.1"
+    "throttle-debounce": "^3.0.1",
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

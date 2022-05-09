@@ -35,7 +35,7 @@ export default function Login({ navigation }) {
     if (ress || ress == null) {
       await AsyncStorage.setItem( 'email', email);
       await AsyncStorage.setItem( 'pass', password);
-      navigation.navigate("Mapa");
+      navigation.navigate("Mapa", {id : 0});
     } else {
       Alert.alert(
         "Algo inesperado",

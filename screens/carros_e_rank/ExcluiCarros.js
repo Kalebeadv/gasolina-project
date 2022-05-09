@@ -5,9 +5,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import config from "../../config/config.json"
 
 
-export default function Carros({ route, navigation }) {
+export default function Carros({ navigation }) {
 
     const [DATA, setCars] = useState([]);
+    const [userEmail, setUserEmail] = useState(null)
 
     const Item = ({ item, onPress, backgroundColor, textColor }) => (
         <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
@@ -31,53 +32,45 @@ export default function Carros({ route, navigation }) {
         );
     };
         
-
+    async function exclui(){
+        let reqs = await fetch(config.urlRootNode + 'excluiCarros', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: userEmail,
+                carId: selectedId
+            })
+        })
+        let ress = await reqs.json();
+        await AsyncStorage.setItem("CarrosUser", JSON.stringify(ress));
+        setCars(ress)
+        Mapa()
+        return;
+    }
 
     useEffect(() => {
         async function getCars() {
-            let userEmail = await AsyncStorage.getItem("email")
+            let userEm = await AsyncStorage.getItem("email");
             let carros = await AsyncStorage.getItem("CarrosUser");
-            let id = await AsyncStorage.getItem("VeiculoSelecionado")
-            if (typeof(carros) != "string") {
-                let reqs = await fetch(config.urlRootNode + 'carros', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: userEmail
-                    })
-                })
-                let ress = await reqs.json();
-                await AsyncStorage.setItem("CarrosUser", JSON.stringify(ress));
-                setCars(ress)
-                return;
-            }else{
-                setCars(JSON.parse(carros))
-                setSelectedId(id)
-            }
+            let id = await AsyncStorage.getItem("VeiculoSelecionado");
+            setCars(JSON.parse(carros))
+            setSelectedId(id)
+            setUserEmail(userEm)
         }
         getCars();
-        
-
-    }, [selectedId]);
-
+    }, []);
     //------------------------- Navigate ---------------
     function Mapa() {
         AsyncStorage.setItem("VeiculoSelecionado", String(selectedId));
-        navigation.navigate('Mapa', {id : selectedId});
-    }
-
-    function Rank() {
-        AsyncStorage.setItem("VeiculoSelecionado", String(selectedId));
-        navigation.navigate('Rank');
+        navigation.navigate('Mapa', {id : 0});
     }
 
     //--------------------------------------------------
 
     return (
-
         <View style={styles.container}>
             {DATA != [] &&
                 <FlatList
@@ -93,29 +86,10 @@ export default function Carros({ route, navigation }) {
             {//-------------------------------- BOTOES DA INTERFACE -------------------------
             }
             <View style={styles.cadastraEExclui}>
-            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
-                <Icon name="car" style={styles.icone} size={25} color="#fff" />
-                <Icon name="plus" style={styles.icone} size={25} color="#fff" />
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("ExcluiCarros")}>
-                <Icon name="car" style={styles.icone} size={25} color="#fff" />
+            <TouchableOpacity style={styles.cadastroVeiculos} onPress={exclui}>
+                <Icon name="trash" style={styles.icone} size={25} color="#fff" />
                 <Icon name="minus" style={styles.icone} size={25} color="#fff" />
             </TouchableOpacity>
-            </View>
-
-            <View style={styles.btnViewContainer}>
-                <TouchableOpacity style={styles.btnContainer} onPress={Rank}>
-                    <Text><Icon name="trophy" size={25} color="#fff" /></Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.btnContainer} onPress={Mapa}>
-                    <Text style={styles.textoRota}>Mapa</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.btnRotaContainer}>
-                    <Text><Icon name="car" style={styles.iconContainer} size={25} color="#000" /></Text>
-                </TouchableOpacity>
             </View>
         </View>
     )
@@ -146,7 +120,7 @@ const styles = StyleSheet.create({
     cadastroVeiculos: {
         justifyContent:"center",
         backgroundColor: '#107878',
-        width: '40%',
+        width: '90%',
         height: 50,
         marginBottom: '5%',
         marginLeft:"5%",

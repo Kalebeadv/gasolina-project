@@ -14,8 +14,8 @@ export default class FuelTypeButton extends Component {
             <View style={styles.container}>
                 <Picker
                     style={styles.texto}
-                    selectedValue= {this.state.user}
-                    onValueChange={this.updateUser}
+                    selectedValue = {this.state.user}
+                    onValueChange = {this.updateUser}
                 >
                     <Picker.Item label="Flex" value="flex" />
                     <Picker.Item label="Gasolina" value="gasolina" />

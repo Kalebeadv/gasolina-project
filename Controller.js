@@ -107,6 +107,34 @@ app.post('/carros',async(req,res)=>{
     res.send(JSON.stringify(objetoCarros))
 });
 
+app.post('/excluiCarros',async(req,res)=>{
+    let user = await model.User.findAll({
+        where: {
+            email: req.body.email,
+        }
+    })
+    let id = JSON.stringify(user, ["id"]);
+    id = id.split(':');
+    id = id[1]
+    id = id.split("}")
+    id = id[0]
+
+    b = model.Vehicle.destroy({
+        where: {
+          idUser: id,
+          id : req.body.carId
+        }
+      });
+
+    let objetoCarros = await model.Vehicle.findAll({
+        where: {
+            idUser : id
+        }
+    })
+    res.send(JSON.stringify(objetoCarros))
+});
+
+
 /*
 app.post('/registrar',async(req,res)=>{
     let reqs = await model.User.create({

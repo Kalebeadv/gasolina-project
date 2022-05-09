@@ -9,7 +9,6 @@ import { urlRootNode } from '../../config/config.json'
 import MapViewDirections from 'react-native-maps-directions';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Carros from '../carros_e_rank/Carros';
 
 
 

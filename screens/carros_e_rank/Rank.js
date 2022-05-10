@@ -21,7 +21,7 @@ export default function Rank({navigation}){
 				</TouchableOpacity>
     
 				<TouchableOpacity style={styles.btnContainer} onPress={() => {navigation.navigate('Carros')}}>
-          			<Text><Icon name="car" style={styles.iconContainer} size={25} color="#fff"/></Text>
+          			<Text><Icon name="car" style={styles.iconContainer} size={25} color="#FF8A76"/></Text>
        			</TouchableOpacity>	
             </View>
         </View>
@@ -31,7 +31,7 @@ export default function Rank({navigation}){
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#D1D2D3',
         position: 'relative',
         display:'flex',
         flexDirection: 'column',
@@ -44,29 +44,27 @@ const styles = StyleSheet.create({
         color: '#107878',
         marginTop: '50%' // mudar apenas aqui para emplementar o select dos carros
     },
-    btnViewContainer:{
+    btnViewContainer: {
         display: 'flex',
         flexDirection:'row',
         zIndex: 9,
         width: '90%',
         height: '10%',
         justifyContent: 'space-around',
-        marginBottom: '6%',
-        backgroundColor: '#107878',
-        borderRadius: 30,   
+        marginBottom: '8%',
+        backgroundColor: '#757F7A',
     },
-    btnContainer:{
+    btnContainer: {
         width: '25%',
         borderRadius: 30,
         alignContent: 'center',
         alignItems: 'center',
-        justifyContent: 'center', 
+        justifyContent: 'center',
     },
-    btnRotaContainer:{
+    btnRotaContainer: {
         width: '25%',
         height: '80%',
         backgroundColor: '#fff',
-        borderRadius: 30,
         alignContent: 'center',
         alignItems: 'center',
         justifyContent: 'center',
@@ -74,6 +72,6 @@ const styles = StyleSheet.create({
     },
     textoRota:{
         fontSize: 20,
-        color: '#fff'
+        color: '#FF8A76'
     },
 }); 

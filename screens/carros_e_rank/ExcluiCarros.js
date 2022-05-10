@@ -86,9 +86,9 @@ export default function Carros({ navigation }) {
             {//-------------------------------- BOTOES DA INTERFACE -------------------------
             }
             <View style={styles.cadastraEExclui}>
-            <TouchableOpacity style={styles.cadastroVeiculos} onPress={exclui}>
-                <Icon name="trash" style={styles.icone} size={25} color="#fff" />
-                <Icon name="minus" style={styles.icone} size={25} color="#fff" />
+            <TouchableOpacity style={styles.excluiVeiculo} onPress={exclui}>
+                <Icon name="trash" style={styles.icone} size={25} color="#FF8A76" />
+                <Icon name="minus" style={styles.icone} size={25} color="#FF8A76" />
             </TouchableOpacity>
             </View>
         </View>
@@ -117,18 +117,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent:"center",
     },
-    cadastroVeiculos: {
+    excluiVeiculo: {
         justifyContent:"center",
-        backgroundColor: '#107878',
-        width: '90%',
+        backgroundColor: '#757F7A',
+        width: '25%',
         height: 50,
         marginBottom: '5%',
-        marginLeft:"5%",
+        marginLeft:"65%",
         marginRight:"5%",
-        borderRadius: 13,
         paddingTop: 10,
         marginTop: 20,
         flexDirection: 'row',
+        paddingRight: 5
     },
     nome_rota: {
         textAlign: 'center',

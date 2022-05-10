@@ -77,36 +77,37 @@ export default function Carros({ route, navigation }) {
     //--------------------------------------------------
 
     return (
-
         <View style={styles.container}>
-            {DATA != [] &&
-                <FlatList
-                    data={DATA}
-                    style={styles.item}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
-                    extraData={selectedId}
-                />
-            }
+            <View style={styles.carrosContainer}>
+                {DATA != [] &&
+                    <FlatList
+                        data={DATA}
+                        style={styles.item}
+                        renderItem={renderItem}
+                        keyExtractor={(item) => item.id}
+                        extraData={selectedId}
+                    />
+                }
+            </View>
 
 
             {//-------------------------------- BOTOES DA INTERFACE -------------------------
             }
             <View style={styles.cadastraEExclui}>
-            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
-                <Icon name="car" style={styles.icone} size={25} color="#fff" />
-                <Icon name="plus" style={styles.icone} size={25} color="#fff" />
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
+                    <Icon name="car" style={styles.icone} size={25} color="#FF8A76" />
+                    <Icon name="plus" style={styles.icone} size={25} color="#FF8A76" />
+                </TouchableOpacity>
 
-            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("ExcluiCarros")}>
-                <Icon name="car" style={styles.icone} size={25} color="#fff" />
-                <Icon name="minus" style={styles.icone} size={25} color="#fff" />
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("ExcluiCarros")}>
+                    <Icon name="car" style={styles.icone} size={25} color="#FF8A76" />
+                    <Icon name="minus" style={styles.icone} size={25} color="#FF8A76" />
+                </TouchableOpacity>
             </View>
 
             <View style={styles.btnViewContainer}>
                 <TouchableOpacity style={styles.btnContainer} onPress={Rank}>
-                    <Text><Icon name="trophy" size={25} color="#fff" /></Text>
+                    <Text><Icon name="trophy" size={25} color="#FF8A76" /></Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnContainer} onPress={Mapa}>
@@ -125,14 +126,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: "100%",
-        marginTop: "20%",
-        backgroundColor: '#fff',
+        backgroundColor: '#D1D2D3',
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignContent: 'center',
         alignItems: 'center',
+    },
+    carrosContainer: {
+        flex: 1,
+        position: 'absolute',
+        backgroundColor: '#fff',
+        marginTop: '10%',
+        width: '90%',
+        height: '60%'
     },
     texto: { // trocar o nome quando colocar o select de carros
         fontSize: 15,
@@ -142,16 +150,16 @@ const styles = StyleSheet.create({
     cadastraEExclui:{
         flexDirection: 'row',
         justifyContent:"center",
+        marginTop: '115%'
     },
     cadastroVeiculos: {
         justifyContent:"center",
-        backgroundColor: '#107878',
-        width: '40%',
+        backgroundColor: '#757F7A',
+        width: '20%',
         height: 50,
         marginBottom: '5%',
         marginLeft:"5%",
         marginRight:"5%",
-        borderRadius: 13,
         paddingTop: 10,
         marginTop: 20,
         flexDirection: 'row',
@@ -163,14 +171,13 @@ const styles = StyleSheet.create({
     },
     btnViewContainer: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection:'row',
         zIndex: 9,
         width: '90%',
         height: '10%',
         justifyContent: 'space-around',
-        marginBottom: '6%',
-        backgroundColor: '#107878',
-        borderRadius: 30,
+        marginBottom: '8%',
+        backgroundColor: '#757F7A',
     },
     btnContainer: {
         width: '25%',
@@ -183,16 +190,14 @@ const styles = StyleSheet.create({
         width: '25%',
         height: '80%',
         backgroundColor: '#fff',
-        borderRadius: 30,
         alignContent: 'center',
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '2%',
-
     },
     textoRota: {
         fontSize: 20,
-        color: '#fff'
+        color: '#FF8A76'
     },
     item: {
         width: "100%",

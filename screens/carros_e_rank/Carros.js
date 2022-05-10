@@ -17,8 +17,8 @@ export default function Carros({ route, navigation }) {
     const [selectedId, setSelectedId] = useState(null);
 
     const renderItem = ({ item }) => {
-        const backgroundColor = item.id == selectedId ? "#107878" : "#23cdcd";
-        const color = item.id == selectedId ? 'white' : 'black';
+        const backgroundColor = item.id == selectedId ? "#FF8A76" : "#757F7A";
+        const color = item.id == selectedId ? 'white' : 'white';
 
 
         return (
@@ -204,8 +204,7 @@ const styles = StyleSheet.create({
         padding: 20,
         paddingBottom: 10,
         paddingTop: 10,
-        marginVertical: 8,
-        borderRadius: 16,
+        marginTop: '3%'
     },
     title: {
         fontSize: 24,

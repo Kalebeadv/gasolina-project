@@ -70,7 +70,10 @@ export default function Login({ navigation }) {
         <Image style={styles.imagemLogo}
           source={require("../../assets/images/LogoVerde.png")}
         />
-        <Text style={styles.gasolina}>Ga$olina</Text>
+        <Image style={styles.backgroundLogin}
+          source={require("../../assets/images/backgroundLogin2.jpg")}
+        />
+        <Text style={styles.tanqueo}>Tanquiô</Text>
       </View>
 
       <View style={styles.inputContainer}>
@@ -78,9 +81,9 @@ export default function Login({ navigation }) {
         {message && (
           <Text>{message}</Text>
         )}
-        <Text style={styles.textoES}>E-Mail</Text>
+        <Text style={styles.textoES}>E-mail</Text>
         <View style={styles.loginEmail}>
-          <Icon name="envelope-o" size={25} color="#107878" />
+          <Icon name="envelope-o" size={25} color="#757F7A" />
           <TextInput
             style={styles.textInput}
             autoCorrect={false}
@@ -91,7 +94,7 @@ export default function Login({ navigation }) {
 
         <Text style={styles.textoES}>Senha</Text>
         <View style={styles.loginPass}>
-          <Icon name="lock" size={25} color="#107878" />
+          <Icon name="lock" size={25} color="#757F7A" />
           <TextInput
             style={styles.textInput}
             autoCorrect={false}
@@ -129,70 +132,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffffff'
-  },
-  inputContainer: {
-    alignItems: 'center',
-    width:"90%",
-    marginBottom: "20%",
-    fontSize: 50
-  },
-  esqueci_senha: {
-    color: '#2178B6',
-    marginLeft: "40%",
-    marginTop: 4,
-  },
-  registro: {
-    color: '#107878',
-    fontSize: 15,
-    marginTop: 20,
-  },
-  nome_registro: {
-    color: '#2178B6',
-  },
-  btnEntrar: {
-    backgroundColor: '#107878',
-    borderStyle: 'solid',
-    width: '90%',
-    height: 50,
-    marginBottom: "5%",
-    marginTop:"8%",
-    borderRadius: 8,
-    paddingTop: 10,
-  },
-  btnTexto: {
-    textAlign: 'center',
-    color: '#ffffff',
-    fontSize: 20
-  },
-  loginEmail: {
-    width: '90%',
-    height: 50,
-    fontSize: 20,
-    borderStyle: 'solid',
-    borderColor: '#107878',
-    borderWidth: 1,
-    borderRadius: 8,
-    borderRightWidth: 1,
-    borderBottomWidth: 3,
-    padding: 10,
-    color: '#107878',
-    flexDirection: "row",
-    marginBottom: "5%"
-  },
-  loginPass: {
-    width: '90%',
-    height: 50,
-    fontSize: 20,
-    borderStyle: 'solid',
-    borderColor: '#107878',
-    borderWidth: 1,
-    borderRadius: 8,
-    borderRightWidth: 1,
-    borderBottomWidth: 3,
-    padding: 10,
-    color: '#107878',
-    flexDirection: "row"
+    backgroundColor: '#262626',
   },
   logoContainer: {
     alignItems: 'center',
@@ -201,22 +141,99 @@ const styles = StyleSheet.create({
     marginTop: "8%"
   },
   imagemLogo: {
-    width:80,
-    height:120,
-    marginTop: "10%",
+    width:70,
+    height:100,
+    marginTop: "15%",
+    zIndex: 9
   },
-  gasolina: {
+  backgroundLogin: {
+    position:'absolute',
+    width: '100%',
+    height: 300
+  },
+  tanqueo: {
     textAlign: "center",
-    fontSize: 30,
-    color: '#107878'
+    fontSize: 35,
+    color: '#107878',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
   },
-  btnGoogle:{
-    justifyContent:"center",
-    backgroundColor: '#107878',
+  inputContainer: {
+    alignItems: 'center',
+    width:"90%",
+    height: '70%',
+    marginBottom: "20%",
+    fontSize: 50,
+    paddingTop: 25,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    position: 'relative'
+  },
+  textoES:{
+    color:'#107878',
+    fontSize:15,
+    marginRight:"75%",
+  },
+  loginEmail: {
+    width: '90%',
+    height: 50,
+    fontSize: 20,
+    borderStyle: 'solid',
+    borderColor: '#107878',
+    borderWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    padding: 10,
+    color: '#107878',
+    flexDirection: "row",
+    marginBottom: "5%"
+  },
+  esqueci_senha: {
+    color: '#FF8A76',
+    marginLeft: "40%",
+    marginTop: 4,
+  },
+  registro: {
+    color: '#000',
+    fontSize: 15,
+    marginTop: 20,
+  },
+  nome_registro: {
+    color: '#FF8A76',
+  },
+  btnEntrar: {
+    backgroundColor: '#757F7A',
     borderStyle: 'solid',
     width: '90%',
     height: 50,
-    borderRadius: 8,
+    marginBottom: "5%",
+    marginTop:"8%",
+    paddingTop: 10,
+  },
+  btnTexto: {
+    textAlign: 'center',
+    color: '#ffffff',
+    fontSize: 20
+  },
+  loginPass: {
+    width: '90%',
+    height: 50,
+    fontSize: 20,
+    borderStyle: 'solid',
+    borderColor: '#107878',
+    borderWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    padding: 10,
+    color: '#107878',
+    flexDirection: "row"
+  },
+  btnGoogle:{
+    justifyContent:"center",
+    backgroundColor: '#757F7A',
+    borderStyle: 'solid',
+    width: '90%',
+    height: 50,
     flexDirection: "row",
     paddingTop: 10,
   },
@@ -225,15 +242,10 @@ const styles = StyleSheet.create({
     color:'#107878',
     marginBottom:"5%"
   },
-  textoES:{
-    color:'#107878',
-    fontSize:15,
-    marginRight:"75%",
-  },
   textInput:{
     fontSize:17,
     width:"90%",
-    color:'#107878',
+    color:'#757F7A',
     marginLeft:"2%"
   },
 })

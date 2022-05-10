@@ -8,7 +8,10 @@ export default function EsqueciMinhaSenha(){
         <KeyboardAvoidingView style={styles.background}>
             <View style={styles.logoContainer}>
                 <Image style={styles.imagemLogo}
-                source={require("../../assets/images/LogoVerde.png")}
+                    source={require("../../assets/images/LogoVerde.png")}
+                />
+                <Image style={styles.backgroundLogin}
+                    source={require("../../assets/images/backgroundLogin2.jpg")}
                 />
             </View>
 
@@ -24,20 +27,23 @@ export default function EsqueciMinhaSenha(){
 
                 <Text style={styles.textIntroducao}>Informe o seu e-mail para que possamos lhe enviar um código de verificação, mas pode ficar tranquilo, é 99.999999% seguro.
                 </Text>
-            </View>
+            
 
-            <View style={styles.inputContainer}>
-                <View style={styles.loginEmail}>
-                    <Icon name="envelope-o" size={25} color="#107878" />
-                    <TextInput
-                      style={styles.textInput}
-                      autoCorrect={false}
-                      //onChangeText={(text) => setEmail(text)}
-                    />
+                <View style={styles.inputContainer}>
+                    <View style={styles.loginEmail}>
+                        <Icon name="envelope-o" size={25} color="#757F7A" />
+                        <TextInput
+                          style={styles.textInput}
+                          autoCorrect={false}
+                          placeholder=" E-mail"
+                          placeholderTextColor={'#757F7A'}
+                          //onChangeText={(text) => setEmail(text)}
+                        />
+                    </View>
+                    <TouchableOpacity style={styles.btnEnviar}>
+                        <Text style={styles.btnTexto}>Enviar</Text>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.btnEnviar}>
-                    <Text style={styles.btnTexto}>Enviar</Text>
-                </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     );
@@ -48,21 +54,35 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#ffffff'
+        backgroundColor: '#262626',
     },
     logoContainer: {
-        alignItems: 'center',
-        alignContent: "center",
-        marginBottom: "2%",
-        marginTop: "2%"
+      alignItems: 'center',
+      alignContent: "center",
+      marginBottom: "10%",
+      marginTop: "12%"
     },
     imagemLogo: {
-        width:80,
-        height:120,
-        marginTop: "10%",
+      width:70,
+      height:100,
+      marginTop: "15%",
+      zIndex: 9
+    },
+    backgroundLogin: {
+      position:'absolute',
+      width: '100%',
+      height: 300
     },
     container: {
-        width: '80%',
+        alignItems: 'center',
+        width:"90%",
+        height: '70%',
+        marginBottom: "20%",
+        fontSize: 50,
+        paddingTop: 25,
+        borderRadius: 8,
+        backgroundColor: '#fff',
+        position: 'relative'
     },
     textRecuperacao:{
         textAlign: "center",
@@ -73,7 +93,8 @@ const styles = StyleSheet.create({
     textIntroducao:{
         fontSize: 15,
         color: '#107878',
-        marginBottom: "5%"
+        marginBottom: "5%",
+        width: '90%'
     },
     textCodRecuperacao:{
         fontSize: 23,
@@ -82,9 +103,9 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         alignItems: 'center',
-        width:"90%",
+        width:"100%",
         marginBottom: "20%",
-        fontSize: 50
+        fontSize: 50,
     },
     loginEmail: {
         width: '90%',
@@ -93,9 +114,8 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderColor: '#107878',
         borderWidth: 1,
-        borderRadius: 8,
         borderRightWidth: 1,
-        borderBottomWidth: 3,
+        borderBottomWidth: 1,
         padding: 10,
         color: '#107878',
         flexDirection: "row",
@@ -108,13 +128,12 @@ const styles = StyleSheet.create({
         marginLeft:"2%"
     },
     btnEnviar: {
-        backgroundColor: '#107878',
+        backgroundColor: '#757F7A',
         borderStyle: 'solid',
         width: '90%',
         height: 50,
         marginBottom: "5%",
-        marginTop:"2%",
-        borderRadius: 8,
+        marginTop:"1%",
         paddingTop: 10,
     },
     btnTexto: {

@@ -10,8 +10,8 @@ export default function Registrar({navigation}) {
   const [email,setEmail]=useState(null);
   const [password,setPassword]=useState(null);
   const [message,setMessage]=useState(null);
-  function forLogin() {
-    navigation.navigate('Login');
+  function fazLogin() {
+    navigation.navigate('Entrar');
   }
   async function registerUser() {
     var reqs = await fetch(config.urlRootNode+'registrar',{
@@ -58,31 +58,32 @@ export default function Registrar({navigation}) {
         <Image style={styles.imagemLogo}
           source={require("../../assets/images/LogoVerde.png")}
         />
-        <Text style={styles.texto_logo}>
-          Ga$olina
-        </Text>
+        <Image style={styles.backgroundLogin}
+          source={require("../../assets/images/backgroundLogin2.jpg")}
+        />
       </View>
+
       <View style={styles.loginContainer}>
         {message && (
           <Text>{message}</Text>
         )}
         <View style={styles.inputIcon}>
-          <Icon name="user" size={25} color="#107878" />
+          <Icon name="user" size={25} color="#757F7A" />
           <TextInput 
             style={styles.imputs}
             placeholder=" Nome"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             onChangeText={(text)=>setNome(text)}
           />
         </View>
         
         <View style={styles.inputIcon}>
-          <Icon name="envelope" size={25} color="#107878" />
+          <Icon name="envelope" size={25} color="#757F7A" />
           <TextInput 
             style={styles.imputs}
             placeholder=" Email"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             autoCapitalize={"none"}
             onChangeText={(text)=>setEmail(text)}
@@ -90,11 +91,11 @@ export default function Registrar({navigation}) {
         </View>
         
         <View style={styles.inputIcon}>
-          <Icon name="lock" size={25} color="#107878" />
+          <Icon name="lock" size={25} color="#757F7A" />
           <TextInput 
             style={styles.imputs}
             placeholder=" Senha"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             autoCapitalize={"none"}
             secureTextEntry={true}
@@ -103,11 +104,11 @@ export default function Registrar({navigation}) {
         </View>
         
         <View style={styles.inputIcon}>
-          <Icon name="expeditedssl" size={25} color="#107878"/>
+          <Icon name="expeditedssl" size={25} color="#757F7A"/>
           <TextInput 
             style={styles.imputs}
             placeholder=" Confirmar senha"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             secureTextEntry={true}
             autoCapitalize={"none"}
@@ -115,12 +116,12 @@ export default function Registrar({navigation}) {
           />
         </View>
         
-        <TouchableOpacity style={styles.btnEntrar} onPress={registerUser}>
-          <Text style={styles.btnEntrar_texto}>REGISTRAR</Text>
+        <TouchableOpacity style={styles.btnRegistrar} onPress={registerUser}>
+          <Text style={styles.btnRegistrar_texto}>REGISTRAR</Text>
         </TouchableOpacity>
 
         <Text style={styles.login}>
-          Já possui uma conta? <Text onPress={forLogin} style={styles.nome_Login}>Entrar</Text>
+          Já possui uma conta? <Text onPress={fazLogin} style={styles.nome_Login}>Entrar</Text>
         </Text>
       </View>
     </KeyboardAvoidingView>
@@ -131,69 +132,76 @@ const styles = StyleSheet.create({
   background:{
     alignItems:'center',
     justifyContent:'center',
-    backgroundColor:'#ffffff'
-  },
-  texto_logo: {
-    fontSize: 35,
-    color: '#107878',
-  },  
-  loginContainer:{
-    alignItems:'center',
-    width:'90%',
-    marginBottom: 70,
-    marginTop: "10%"
-  },
-  imputs: {
-    fontSize: 17,
-    marginLeft:"2%",
-    width:'90%',
-    color:'#107878'
-  },
-  btnEntrar:{
-    backgroundColor:'#107878',
-    width:'90%',
-    height:50,
-    marginTop: 20,
-    marginBottom: 10,
-    borderRadius: 8,
-    paddingTop: 10
-  },
-  btnEntrar_texto:{
-    textAlign:'center',
-    color:'#ffffff',
-    fontSize: 20
-  },
-  imagemLogo: {
-    width:84,
-    height:120,
+    backgroundColor:'#262626'
   },
   logoContainer: {
     alignItems: 'center',
     alignContent: "center",
-    paddingBottom: "5%",
-    marginTop: "10%"
+    marginBottom: "10%",
+    marginTop: "12%"
   },
-  login: {
-    color: '#107878',
-    fontSize: 15,
-    marginTop: 10,
+  imagemLogo: {
+    width:70,
+    height:100,
+    marginTop: "15%",
+    zIndex: 9
   },
-  nome_Login: {
-    color: '#2178B6',
+  backgroundLogin: {
+    position:'absolute',
+    width: '100%',
+    height: 300
+  },
+  loginContainer: {
+    alignItems: 'center',
+    width:"90%",
+    height: '63%',
+    marginBottom: "40%",
+    fontSize: 50,
+    paddingTop: 25,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    position: 'relative'
   },
   inputIcon:{
     width: '90%',
     height: 50,
     fontSize: 20,
-    marginBottom:"3%",
     borderStyle: 'solid',
     borderColor: '#107878',
     borderWidth: 1,
-    borderRadius: 8,
     borderRightWidth: 1,
-    borderBottomWidth: 3,
+    borderBottomWidth: 1,
     padding: 10,
     color: '#107878',
-    flexDirection: "row"
-  }
+    flexDirection: "row",
+    marginBottom: "5%"
+  },
+  imputs: {
+    fontSize:17,
+    width:"90%",
+    color:'#107878',
+    marginLeft:"2%"
+  },
+  btnRegistrar:{
+    backgroundColor: '#757F7A',
+    borderStyle: 'solid',
+    width: '90%',
+    height: 50,
+    marginBottom: "2%",
+    marginTop:"5%",
+    paddingTop: 10,
+  },
+  btnRegistrar_texto:{
+    textAlign:'center',
+    color:'#ffffff',
+    fontSize: 20
+  },
+  login: {
+    color: '#000',
+    fontSize: 15,
+    marginTop: 10,
+  },
+  nome_Login: {
+    color: '#FF8A76',
+  },
 });

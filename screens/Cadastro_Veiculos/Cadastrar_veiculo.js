@@ -4,6 +4,7 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FuelTypeButton from "../../src/components/FuelTypeButton";
+import { styles } from "./css"
 
 
 export default function CadastrarVeiculo({ navigation }) {
@@ -70,40 +71,41 @@ export default function CadastrarVeiculo({ navigation }) {
   }
   return (
     <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.logoContainer}>
-        <Text style={styles.texto_logo}>
-          Cadastro de Veículos
+      <View style={styles.textoInicioContainer}>
+        <Text style={styles.textoInicio}>
+          Cadastro Seu Veículos
         </Text>
       </View>
+
       <View style={styles.loginContainer}>
         <View style={styles.inputIcon}>
-          <Icon name="car" size={25} color="#107878" />
+          <Icon name="car" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Modelo"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             onChangeText={(text) => setModelo(text)}
           />
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="star" size={25} color="#107878" />
+          <Icon name="star" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Marca"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             onChangeText={(text) => setMarca(text)}
           />
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="road" size={25} color="#107878" />
+          <Icon name="road" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Consumo médio"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             keyboardType="numeric"
             autoCorrect={false}
 
@@ -112,18 +114,18 @@ export default function CadastrarVeiculo({ navigation }) {
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="tint" size={25} color="#107878" />
+          <Icon name="tint" size={25} color="#757F7A" />
           <FuelTypeButton
             funcao={setCombustivel}
           />
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="calendar" size={25} color="#107878" />
+          <Icon name="calendar" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Ano"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             keyboardType="numeric"
             onChangeText={(text) => setAno(text)}
@@ -139,65 +141,3 @@ export default function CadastrarVeiculo({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  background: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffff'
-  },
-  loginContainer: {
-    alignItems: 'center',
-    width: '90%',
-    marginBottom: 70
-  },
-  inputs: {
-    fontSize: 17,
-    marginLeft: "2%",
-    width: '90%',
-    color: '#107878'
-  },
-  btnEntrar: {
-    backgroundColor: '#107878',
-    width: '90%',
-    height: 50,
-    marginTop: 20,
-    marginBottom: 10,
-    borderRadius: 8,
-    paddingTop: 10
-  },
-  btnEntrar_texto: {
-    textAlign: 'center',
-    color: '#ffffff',
-    fontSize: 20
-  },
-  imagemLogo: {
-    width: 84,
-    height: 120,
-  },
-  logoContainer: {
-    alignItems: 'center',
-    alignContent: "center",
-    paddingBottom: "5%",
-  },
-  inputIcon: {
-    width: '90%',
-    height: 50,
-    fontSize: 20,
-    marginBottom: "3%",
-    borderStyle: 'solid',
-    borderColor: '#107878',
-    borderWidth: 1,
-    borderRadius: 8,
-    borderRightWidth: 1,
-    borderBottomWidth: 3,
-    padding: 10,
-    paddingRight: 2,
-    color: '#107878',
-    flexDirection: "row"
-  },
-  texto_logo: {
-    fontSize: 30,
-    color: '#107878',
-    marginTop: "20%"
-  },
-});

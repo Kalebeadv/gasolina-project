@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
-import { cssMapa } from "./cssMapa";
+import { cssMapa, newMap } from "./cssMapa";
 import MapView, { Callout, Circle, Marker } from "react-native-maps"
 import * as Location from 'expo-location';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -167,7 +167,7 @@ export default function Mapa({ route, navigation }) {
 					}}
 					styles={{
 						container: {
-							width: "85%",
+							width: "90%",
 							zIndex: 1,
 							marginTop: '15%'
 						},
@@ -176,11 +176,10 @@ export default function Mapa({ route, navigation }) {
 						textInput: {
 							fontSize: 20,
 							borderStyle: 'solid',
-							borderColor: '#107878',
-							borderRadius: 8,
+							borderColor: '#FF8A76',
 							borderWidth: 1,
 							borderRightWidth: 1,
-							borderBottomWidth: 3,
+							borderBottomWidth: 1,
 							textAlign: 'center',
 							color: '#000'
 						},
@@ -189,15 +188,15 @@ export default function Mapa({ route, navigation }) {
 
 				<View style={cssMapa.btnViewContainer}>
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Rank') }}>
-						<Text><Icon name="trophy" size={25} color="#fff" /></Text>
+						<Text><Icon name="trophy" size={25} color="#FF8A76" /></Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity style={cssMapa.btnRotaContainer} onPress={() => { comparaDistancia() }}>
-						<Text style={cssMapa.textoRota}>Economizar <Icon name="dollar" size={25} color="#107878"></Icon></Text>
+						<Text style={cssMapa.textoRota}>Economizar <Icon name="dollar" size={25} color="#FF8A76"></Icon></Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Carros') }}>
-						<Text><Icon name="car" style={cssMapa.iconContainer} size={25} color="#fff" /></Text>
+						<Text><Icon name="car" style={cssMapa.iconContainer} size={25} color="#FF8A76" /></Text>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -276,267 +275,3 @@ export default function Mapa({ route, navigation }) {
 
 	)
 }
-
-const newMap = [
-	{
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#c9c5c5"
-			},
-			{
-				"visibility": "on"
-			}
-		]
-	},
-	{
-		"elementType": "labels.text.fill",
-		"stylers": [
-			{
-				"color": "#523735"
-			}
-		]
-	},
-	{
-		"elementType": "labels.text.stroke",
-		"stylers": [
-			{
-				"color": "#f5f1e6"
-			}
-		]
-	},
-	{
-		"featureType": "administrative",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"visibility": "off"
-			}
-		]
-	},
-	{
-		"featureType": "administrative",
-		"elementType": "geometry.stroke",
-		"stylers": [
-			{
-				"color": "#c9b2a6"
-			}
-		]
-	},
-	{
-		"featureType": "administrative.land_parcel",
-		"elementType": "geometry.stroke",
-		"stylers": [
-			{
-				"color": "#c8c9cb"
-			}
-		]
-	},
-	{
-		"featureType": "administrative.land_parcel",
-		"elementType": "labels.text.fill",
-		"stylers": [
-			{
-				"color": "#000000"
-			}
-		]
-	},
-	{
-		"featureType": "landscape.natural",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#c9cfc9"
-			}
-		]
-	},
-	{
-		"featureType": "poi",
-		"stylers": [
-			{
-				"visibility": "off"
-			}
-		]
-	},
-	{
-		"featureType": "poi",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#dfd2ae"
-			}
-		]
-	},
-	{
-		"featureType": "poi",
-		"elementType": "labels.text.fill",
-		"stylers": [
-			{
-				"color": "#93817c"
-			}
-		]
-	},
-	{
-		"featureType": "poi.park",
-		"elementType": "geometry.fill",
-		"stylers": [
-			{
-				"color": "#a5b076"
-			}
-		]
-	},
-	{
-		"featureType": "poi.park",
-		"elementType": "labels.text.fill",
-		"stylers": [
-			{
-				"color": "#447530"
-			}
-		]
-	},
-	{
-		"featureType": "road",
-		"stylers": [
-			{
-				"visibility": "simplified"
-			}
-		]
-	},
-	{
-		"featureType": "road",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#fffefa"
-			},
-			{
-				"visibility": "on"
-			}
-		]
-	},
-	{
-		"featureType": "road",
-		"elementType": "labels.icon",
-		"stylers": [
-			{
-				"visibility": "off"
-			}
-		]
-	},
-	{
-		"featureType": "road.arterial",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#fdfcf8"
-			}
-		]
-	},
-	{
-		"featureType": "road.highway",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#cabc91"
-			}
-		]
-	},
-	{
-		"featureType": "road.highway",
-		"elementType": "geometry.stroke",
-		"stylers": [
-			{
-				"color": "#e9bc62"
-			}
-		]
-	},
-	{
-		"featureType": "road.highway.controlled_access",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#e98d58"
-			}
-		]
-	},
-	{
-		"featureType": "road.highway.controlled_access",
-		"elementType": "geometry.stroke",
-		"stylers": [
-			{
-				"color": "#db8555"
-			}
-		]
-	},
-	{
-		"featureType": "road.local",
-		"elementType": "labels.text.fill",
-		"stylers": [
-			{
-				"color": "#806b63"
-			}
-		]
-	},
-	{
-		"featureType": "transit",
-		"stylers": [
-			{
-				"visibility": "off"
-			}
-		]
-	},
-	{
-		"featureType": "transit.line",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#dfd2ae"
-			}
-		]
-	},
-	{
-		"featureType": "transit.line",
-		"elementType": "labels.text.fill",
-		"stylers": [
-			{
-				"color": "#8f7d77"
-			}
-		]
-	},
-	{
-		"featureType": "transit.line",
-		"elementType": "labels.text.stroke",
-		"stylers": [
-			{
-				"color": "#ebe3cd"
-			}
-		]
-	},
-	{
-		"featureType": "transit.station",
-		"elementType": "geometry",
-		"stylers": [
-			{
-				"color": "#dfd2ae"
-			}
-		]
-	},
-	{
-		"featureType": "water",
-		"elementType": "geometry.fill",
-		"stylers": [
-			{
-				"color": "#4285f4"
-			}
-		]
-	},
-	{
-		"featureType": "water",
-		"elementType": "labels.text.fill",
-		"stylers": [
-			{
-				"color": "#92998d"
-			}
-		]
-	}
-]

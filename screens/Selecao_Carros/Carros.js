@@ -2,7 +2,8 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 import React, { useState, useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import config from "../../config/config.json"
+import config from "../../config/config.json";
+import { styles } from "./css"
 
 
 export default function Carros({ route, navigation }) {
@@ -17,8 +18,8 @@ export default function Carros({ route, navigation }) {
     const [selectedId, setSelectedId] = useState(null);
 
     const renderItem = ({ item }) => {
-        const backgroundColor = item.id == selectedId ? "#107878" : "#23cdcd";
-        const color = item.id == selectedId ? 'white' : 'black';
+        const backgroundColor = item.id == selectedId ? "#FF8A76" : "#757F7A";
+        const color = item.id == selectedId ? 'white' : 'white';
 
 
         return (
@@ -77,36 +78,37 @@ export default function Carros({ route, navigation }) {
     //--------------------------------------------------
 
     return (
-
         <View style={styles.container}>
-            {DATA != [] &&
-                <FlatList
-                    data={DATA}
-                    style={styles.item}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
-                    extraData={selectedId}
-                />
-            }
+            <View style={styles.carrosContainer}>
+                {DATA != [] &&
+                    <FlatList
+                        data={DATA}
+                        style={styles.item}
+                        renderItem={renderItem}
+                        keyExtractor={(item) => item.id}
+                        extraData={selectedId}
+                    />
+                }
+            </View>
 
 
             {//-------------------------------- BOTOES DA INTERFACE -------------------------
             }
             <View style={styles.cadastraEExclui}>
-            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
-                <Icon name="car" style={styles.icone} size={25} color="#fff" />
-                <Icon name="plus" style={styles.icone} size={25} color="#fff" />
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
+                    <Icon name="car" style={styles.icone} size={25} color="#FF8A76" />
+                    <Icon name="plus" style={styles.icone} size={25} color="#FF8A76" />
+                </TouchableOpacity>
 
-            <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("ExcluiCarros")}>
-                <Icon name="car" style={styles.icone} size={25} color="#fff" />
-                <Icon name="minus" style={styles.icone} size={25} color="#fff" />
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("ExcluiCarros")}>
+                    <Icon name="car" style={styles.icone} size={25} color="#FF8A76" />
+                    <Icon name="minus" style={styles.icone} size={25} color="#FF8A76" />
+                </TouchableOpacity>
             </View>
 
             <View style={styles.btnViewContainer}>
                 <TouchableOpacity style={styles.btnContainer} onPress={Rank}>
-                    <Text><Icon name="trophy" size={25} color="#fff" /></Text>
+                    <Text><Icon name="trophy" size={25} color="#FF8A76" /></Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.btnContainer} onPress={Mapa}>
@@ -121,91 +123,3 @@ export default function Carros({ route, navigation }) {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: "100%",
-        marginTop: "20%",
-        backgroundColor: '#fff',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignContent: 'center',
-        alignItems: 'center',
-    },
-    texto: { // trocar o nome quando colocar o select de carros
-        fontSize: 15,
-        color: '#107878',
-        marginTop: '50%' // mudar apenas aqui para emplementar o select dos carros
-    },
-    cadastraEExclui:{
-        flexDirection: 'row',
-        justifyContent:"center",
-    },
-    cadastroVeiculos: {
-        justifyContent:"center",
-        backgroundColor: '#107878',
-        width: '40%',
-        height: 50,
-        marginBottom: '5%',
-        marginLeft:"5%",
-        marginRight:"5%",
-        borderRadius: 13,
-        paddingTop: 10,
-        marginTop: 20,
-        flexDirection: 'row',
-    },
-    nome_rota: {
-        textAlign: 'center',
-        color: 'white',
-        fontSize: 20
-    },
-    btnViewContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        zIndex: 9,
-        width: '90%',
-        height: '10%',
-        justifyContent: 'space-around',
-        marginBottom: '6%',
-        backgroundColor: '#107878',
-        borderRadius: 30,
-    },
-    btnContainer: {
-        width: '25%',
-        borderRadius: 30,
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    btnRotaContainer: {
-        width: '25%',
-        height: '80%',
-        backgroundColor: '#fff',
-        borderRadius: 30,
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '2%',
-
-    },
-    textoRota: {
-        fontSize: 20,
-        color: '#fff'
-    },
-    item: {
-        width: "100%",
-        padding: 20,
-        paddingBottom: 10,
-        paddingTop: 10,
-        marginVertical: 8,
-        borderRadius: 16,
-    },
-    title: {
-        fontSize: 24,
-    },
-    icone:{
-        paddingLeft: "5%"
-    }
-}); 

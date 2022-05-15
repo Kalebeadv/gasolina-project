@@ -1,18 +1,20 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from "./screens/Usuario/Login";
-import Registrar from "./screens/Usuario/Registrar";
-import Mapa from "./screens/mapa/Mapa";
 import 'react-native-gesture-handler';
-import EsqueciMinhaSenha from "./screens/Usuario/Esqueci_senha";
-import LoginComGoogle from "./screens/Usuario/LoginComGoogle";
-import CadastrarVeiculo from "./screens/Usuario/Cadastrar_veiculo";
-import Carros from "./screens/carros_e_rank/Carros";
-import Rank from "./screens/carros_e_rank/Rank";
-import Inicio from "./screens/Principais/Inicio";
+
+// ----------- Telas ----------------
+import Login from "./screens/Login/Login";
+import Registrar from "./screens/Registrar/Registrar";
+import Mapa from "./screens/mapa/Mapa";
+import EsqueciMinhaSenha from "./screens/Esqueci_Senha/Esqueci_senha";
+import LoginComGoogle from "./screens/Login_Google/LoginComGoogle";
+import CadastrarVeiculo from "./screens/Cadastro_Veiculos/Cadastrar_veiculo";
+import Carros from "./screens/Selecao_Carros/Carros";
+import Rank from "./screens/Rank/Rank";
+import Inicio from "./screens/Loading/Inicio";
 import Splash from "./screens/splash";
-import ExcluiCarros from "./screens/carros_e_rank/ExcluiCarros"
+import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros"
 
 const Stack = createStackNavigator();
 

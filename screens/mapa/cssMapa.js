@@ -28,8 +28,7 @@ const cssMapa = StyleSheet.create({
         height: '10%',
         justifyContent: 'space-around',
         marginBottom: '8%',
-        backgroundColor: '#107878',
-        borderRadius: 30,
+        backgroundColor: '#757F7A',
     },
     btnContainer:{
        width: '25%',
@@ -42,7 +41,6 @@ const cssMapa = StyleSheet.create({
        width: '45%',
        height: '80%',
        backgroundColor: '#fff',
-       borderRadius: 30,
        alignContent: 'center',
        alignItems: 'center',
        justifyContent: 'center',

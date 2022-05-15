@@ -70,40 +70,41 @@ export default function CadastrarVeiculo({ navigation }) {
   }
   return (
     <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.logoContainer}>
-        <Text style={styles.texto_logo}>
-          Cadastro de Veículos
+      <View style={styles.textoInicioContainer}>
+        <Text style={styles.textoInicio}>
+          Cadastro Seu Veículos
         </Text>
       </View>
+
       <View style={styles.loginContainer}>
         <View style={styles.inputIcon}>
-          <Icon name="car" size={25} color="#107878" />
+          <Icon name="car" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Modelo"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             onChangeText={(text) => setModelo(text)}
           />
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="star" size={25} color="#107878" />
+          <Icon name="star" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Marca"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             onChangeText={(text) => setMarca(text)}
           />
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="road" size={25} color="#107878" />
+          <Icon name="road" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Consumo médio"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             keyboardType="numeric"
             autoCorrect={false}
 
@@ -112,18 +113,18 @@ export default function CadastrarVeiculo({ navigation }) {
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="tint" size={25} color="#107878" />
+          <Icon name="tint" size={25} color="#757F7A" />
           <FuelTypeButton
             funcao={setCombustivel}
           />
         </View>
 
         <View style={styles.inputIcon}>
-          <Icon name="calendar" size={25} color="#107878" />
+          <Icon name="calendar" size={25} color="#757F7A" />
           <TextInput
             style={styles.inputs}
             placeholder="Ano"
-            placeholderTextColor={'#107878'}
+            placeholderTextColor={'#757F7A'}
             autoCorrect={false}
             keyboardType="numeric"
             onChangeText={(text) => setAno(text)}
@@ -157,12 +158,11 @@ const styles = StyleSheet.create({
     color: '#107878'
   },
   btnEntrar: {
-    backgroundColor: '#107878',
+    backgroundColor: '#757F7A',
     width: '90%',
     height: 50,
     marginTop: 20,
     marginBottom: 10,
-    borderRadius: 8,
     paddingTop: 10
   },
   btnEntrar_texto: {
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     width: 84,
     height: 120,
   },
-  logoContainer: {
+  textoInicioContainer: {
     alignItems: 'center',
     alignContent: "center",
     paddingBottom: "5%",
@@ -183,21 +183,20 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 50,
     fontSize: 20,
-    marginBottom: "3%",
+    marginBottom: "5%",
     borderStyle: 'solid',
     borderColor: '#107878',
     borderWidth: 1,
-    borderRadius: 8,
     borderRightWidth: 1,
-    borderBottomWidth: 3,
+    borderBottomWidth: 1,
     padding: 10,
     paddingRight: 2,
     color: '#107878',
     flexDirection: "row"
   },
-  texto_logo: {
+  textoInicio: {
     fontSize: 30,
-    color: '#107878',
+    color: '#FF8A76',
     marginTop: "20%"
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   FlatList,
@@ -9,59 +9,60 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import {urlRootNode} from "../../config/config.json"
+
 
 export default function Rank({ navigation }) {
-  const gasstation = {
-    name: "isaurao",
-    preco: "6,75",
-    tipo: "Gasolina",
-    name: "Kalebe auto-gatas",
-    preco: "7,75",
-    tipo: "Alcool",
-    name: "Petrobrás",
-    preco: "8,75",
-    tipo: "Deasel",
-  };
+  const [posto, setPostos] = useState([]);
+  const [DATA, setFuel] = useState([])
 
-  const DATA = [
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      title: "Isaurão",
-      fuelType: "Gasolina",
-      price: "8,56",
-    },
-    {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      title: "Kalebe auto-gatas",
-      fuelType: "Gasolina",
-      price: "5,56",
-    },
-    {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      title: "Petrorás",
-      fuelType: "Gasolina",
-      price: "8,56",
-    },
-  ];
+  async function getPosto() {
+		var reqs = await fetch(urlRootNode + 'station', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+		});
+		let ress = await reqs.json();
+    console.log(ress)
+		setPostos(ress);
+	}
 
-  const Item = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-      <Text style={[styles.title, textColor]}>{"Posto: " + item.title + "\nCombustivel: " + item.fuelType + "\nPreço: " + item.price}</Text>
+	async function getFuel() {
+		var reqs = await fetch(urlRootNode + 'fuel', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+		});
+		let ress = await reqs.json();
+    console.log(ress)
+		setFuel(ress);
+	}
+
+  useEffect(() => {
+    getFuel()
+    getPosto()
+    for (let i = 0; i < DATA.length; i++){
+      
+    }
+  },[])
+
+  const Item = ({ fuel, onPress }) => (
+    <TouchableOpacity onPress={onPress} style={[styles.item2]}>
+      <Text style={[styles.title]}>{"Posto: " + fuel.idGasstation + "\nCombustivel: "+ fuel.type  + "\nPreço: " + fuel.valor }</Text>
     </TouchableOpacity>
   );
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#107878" : "#23cdcd";
-    const color = item.id === selectedId ? "white" : "black";
-    const centralizacao =  "center"
 
     return (
       <Item
-        item={item}
+        fuel ={item}
         onPress={() => setSelectedId(item.id)}
-        backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
         style={styles.item}
       />
     );
@@ -169,12 +170,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#fff",
   },
-    item: {
-        width: "100%",
-        padding: 20,
-        paddingBottom: 10,
-        paddingTop: 10,
-        marginVertical: 8,
-        borderRadius: 16,
-    },
+  item: {
+      width: "100%",        
+      padding: 20,
+      paddingBottom: 10,
+      paddingTop: 10,
+      marginVertical: 8,
+      borderRadius: 16,
+      color:"#107878"
+  },
+  item2:{
+    width: "100%",
+    padding: 20,
+    paddingBottom: 10,
+    paddingTop: 10,
+    marginVertical: 8,
+    borderRadius: 16,
+    color:"#107878"
+  }
 });

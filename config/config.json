@@ -21,8 +21,8 @@
     "dialect": "mysql"
   },
 
-  "urlRootNode":"http://192.168.100.5:3000/",
-  "urlRootPhp": "http://192.168.100.5:8080/"
+  "urlRootNode":"http://192.168.100.4:3000/",
+  "urlRootPhp": "http://192.168.100.4:8080/"
 
 } 
 

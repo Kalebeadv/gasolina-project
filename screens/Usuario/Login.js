@@ -68,12 +68,12 @@ export default function Login({ navigation }) {
 
       <View style={styles.logoContainer}>
         <Image style={styles.imagemLogo}
-          source={require("../../assets/images/LogoVerde.png")}
+          source={require("../../assets/images/Logo.png")}
         />
         <Image style={styles.backgroundLogin}
           source={require("../../assets/images/backgroundLogin2.jpg")}
         />
-        <Text style={styles.tanqueo}>Tanquiô</Text>
+        <Text style={styles.tanqueo}>Ga$olina</Text>
       </View>
 
       <View style={styles.inputContainer}>
@@ -154,7 +154,9 @@ const styles = StyleSheet.create({
   tanqueo: {
     textAlign: "center",
     fontSize: 35,
-    color: '#107878',
+    color: '#ffffff',
+    textShadowColor:"#000",
+    textShadowRadius:6,
     fontStyle: 'normal',
     fontWeight: 'bold',
   },

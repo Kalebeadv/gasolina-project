@@ -1,4 +1,5 @@
 import { Text, View, StyleSheet } from 'react-native';
+import { styles } from "./css"
 
 export default function Perfil(){
     return(
@@ -9,14 +10,3 @@ export default function Perfil(){
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    texto:{
-        fontSize: 25
-    }
-}); 

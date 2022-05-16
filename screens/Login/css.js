@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-
+ 
 const styles = StyleSheet.create({
     background: {
       flex: 1,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
       position:"absolute",
       left:"-0.8%",
       top: "-15%",
-    },
+    }, 
     inputContainer:{
       justifyContent:"center",
       alignItems:"center",

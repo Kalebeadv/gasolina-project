@@ -4,12 +4,26 @@ const cssMapa = StyleSheet.create({
     container: {
         flex: 0,
         position: 'relative',
+		
     },
     map:{
         width: '100%',
         height: "100%",
         backgroundColor: '#fff',
     },
+	home:{
+		display: 'flex',
+        flexDirection:'row',
+        zIndex: 9,
+        width: '25%',
+        height: '10%',
+        justifyContent: 'space-around',
+        marginBottom: '8%',
+        backgroundColor: '#757F7A',
+		alignContent: 'center',
+       alignItems: 'center',
+       justifyContent: 'center',
+	},
     placeholderArea:{
         display: 'flex',
         flexDirection: 'column',

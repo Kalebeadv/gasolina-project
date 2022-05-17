@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
  
 const styles = StyleSheet.create({
     background:{
+      flex:1,
       alignItems:'center',
       justifyContent:'center',
       
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
       top:"2%"
     },
     inputIcon:{
-      width: '90%',
+      width: '100%',
       height: 50,
       fontSize: 20,
       borderStyle: 'solid',
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     btnRegistrar:{
       backgroundColor: '#757F7A',
       borderStyle: 'solid',
-      width: '90%',
+      width: '100%',
       height: 50,
       marginBottom: "2%",
       marginTop:"5%",
@@ -66,12 +67,12 @@ const styles = StyleSheet.create({
     },
     svgBack:{
       position:"absolute",
-      top:"4%",
+      top:"6%",
       left:"-2.5%",
     },
     googleContainer:{
       flexDirection : "row",
-      left:"-1%",
+      left:"-3%",
       top:"5%"
     },
     btnGoogleTexto:{
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
       shadowRadius:10
     },
     registrarContainer:{
-      left:"50%"
+      left:"70%"
     },
     tanqueo: {
       textAlign: "left",
@@ -105,8 +106,9 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     EntrarContainer: {
-      width: '80%',
+      width: '90%',
       marginTop:"90%"
+
     },
   });
   

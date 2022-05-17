@@ -14,7 +14,8 @@ import Carros from "./screens/Selecao_Carros/Carros";
 import Rank from "./screens/Rank/Rank";
 import Inicio from "./screens/Loading/Inicio";
 import Splash from "./screens/splash";
-import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros"
+import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros";
+import HomePage from "./screens/HomePage/HomePage";
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,11 @@ function MyStack() {
         headerShown: false
       }}/>
       <Stack.Screen name="Splash" component={Splash} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="HomePage" component={HomePage} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

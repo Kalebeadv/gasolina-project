@@ -6,8 +6,8 @@ import { View, StyleSheet, Image, BackHandler } from 'react-native';
 
 export default function Splash({ navigation }){
 
-    function telaLogin(){
-        navigation.navigate('Entrar')
+    function HomePage(){
+        navigation.navigate('HomePage')
     }
 
     // comando para nao deixar volta para a tela anterior
@@ -34,7 +34,7 @@ export default function Splash({ navigation }){
                         autoSize
                         resizeMode='contain'
                         speed={0.7}
-                        onAnimationFinish={telaLogin}
+                        onAnimationFinish={HomePage}
                     />
                 </View>
             </View>
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: "100%",
-        backgroundColor: '#fff',
         justifyContent: 'center',
         alignContent:'center',
         alignItems: 'center',

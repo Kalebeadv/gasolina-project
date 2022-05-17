@@ -1,27 +1,16 @@
 import { StyleSheet } from "react-native";
-
+ 
 const styles = StyleSheet.create({
     background:{
+      flex:1,
       alignItems:'center',
       justifyContent:'center',
-      backgroundColor:'#262626'
+      
     },
-    logoContainer: {
+    backContainer: {
       alignItems: 'center',
       alignContent: "center",
-      marginBottom: "10%",
-      marginTop: "12%"
-    },
-    imagemLogo: {
-      width:70,
-      height:100,
-      marginTop: "15%",
-      zIndex: 9
-    },
-    backgroundLogin: {
-      position:'absolute',
-      width: '100%',
-      height: 300
+      width:"100%"
     },
     loginContainer: {
       alignItems: 'center',
@@ -29,39 +18,39 @@ const styles = StyleSheet.create({
       height: '63%',
       marginBottom: "40%",
       fontSize: 50,
-      paddingTop: 25,
-      borderRadius: 8,
-      backgroundColor: '#fff',
-      position: 'relative'
+      position: 'relative',
+      top:"2%"
     },
     inputIcon:{
-      width: '90%',
+      width: '100%',
       height: 50,
       fontSize: 20,
       borderStyle: 'solid',
-      borderColor: '#107878',
+      borderColor: '#ffffff',
       borderWidth: 1,
       borderRightWidth: 1,
       borderBottomWidth: 1,
       padding: 10,
-      color: '#107878',
+      color: '#ffffff',
       flexDirection: "row",
-      marginBottom: "5%"
+      marginBottom: "4%",
+      borderRadius:100
     },
     imputs: {
       fontSize:17,
       width:"90%",
-      color:'#107878',
+      color:'#ffffff',
       marginLeft:"2%"
     },
     btnRegistrar:{
       backgroundColor: '#757F7A',
       borderStyle: 'solid',
-      width: '90%',
+      width: '100%',
       height: 50,
       marginBottom: "2%",
       marginTop:"5%",
       paddingTop: 10,
+      borderRadius:100
     },
     btnRegistrar_texto:{
       textAlign:'center',
@@ -69,12 +58,57 @@ const styles = StyleSheet.create({
       fontSize: 20
     },
     login: {
-      color: '#000',
+      color: '#ffffff',
       fontSize: 15,
-      marginTop: 10,
     },
     nome_Login: {
-      color: '#FF8A76',
+      color: '#ffffff',
+      fontWeight: 'bold',
+    },
+    svgBack:{
+      position:"absolute",
+      top:"6%",
+      left:"-2.5%",
+    },
+    googleContainer:{
+      flexDirection : "row",
+      left:"-3%",
+      top:"5%"
+    },
+    btnGoogleTexto:{
+      textAlign: 'center',
+      color: '#000',
+      fontSize: 13
+    },
+    btnGoogle:{
+      justifyContent:"center",
+      backgroundColor: '#ffffff',
+      borderStyle: 'solid',
+      width: '50%',
+      height: 40,
+      flexDirection: "row",
+      paddingTop: 10,
+      borderRadius:5,
+      elevation:5,
+      shadowOffset:{ width: 10, height: 10},
+      shadowColor:"#000",
+      shadowOpacity:0.5,
+      shadowRadius:10
+    },
+    registrarContainer:{
+      left:"70%"
+    },
+    tanqueo: {
+      textAlign: "left",
+      fontSize: 28,
+      color: '#ffffff',
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+    },
+    EntrarContainer: {
+      width: '90%',
+      marginTop:"90%"
+
     },
   });
   

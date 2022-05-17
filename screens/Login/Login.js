@@ -48,7 +48,7 @@ export default function Login({ navigation }) {
 
   //fim ----------------------------------------------------------------------
 
-
+ 
 
   // paginas do navigate  *****************************************************
   function registrar() {

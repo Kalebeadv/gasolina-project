@@ -16,7 +16,7 @@ import Inicio from "./screens/Loading/Inicio";
 import Splash from "./screens/splash";
 import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros";
 import HomePage from "./screens/HomePage/HomePage";
-import Home from "./screens/Pre_Home_Page/Home"
+import Home from "./screens/Home/Home"
 const Stack = createStackNavigator();
 
 // CARLOS PARA DE DELETAR A STACK DE INICIO PELO AMOR DE DEUS

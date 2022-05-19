@@ -72,54 +72,41 @@ export default function Rank({ navigation }) {
     );
   };
 
+  // funcoes do navigation 
+  function go_to_mapa(){ navigation.navigate("Mapa") }
+  function selecionaCarro(){ navigation.navigate("Carros") }
+  function Rank(){ navigation.navigate("Rank") }
+  function Mapa(){ navigation.navigate("Mapa") }
+
   return (
     <SafeAreaView style={styles.container}>
        {DATA != [] &&
-                <FlatList
-                    data={DATA}
-                    style={styles.item}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
-                    extraData={selectedId}
-                />
-            }
+          <FlatList
+              data={DATA}
+              style={styles.item}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              extraData={selectedId}
+          />
+        }
 
       <View style={styles.btnViewContainer}>
-        <TouchableOpacity
-          style={styles.btnRotaContainer}
-          onPress={() => {
-            navigation.navigate("Rank");
-          }}
-        >
-          <Text>
-            <Icon name="trophy" size={25} color="#000" />
-          </Text>
-        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.btnScreans}
+          onPress={Rank}>
+            <Icon name="line-chart" size={20} color="#ffffff" />
+          </TouchableOpacity>
 
+          <TouchableOpacity 
+          style={styles.btnScreans}
+          onPress={Mapa}>
+            <Icon name="map-marker" size={20} color="#ffffff" />
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.btnContainer}
-          onPress={() => {
-            navigation.navigate("Mapa");
-          }}
-        >
-          <Text style={styles.textoRota}>Mapa</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.btnContainer}
-          onPress={() => {
-            navigation.navigate("Carros");
-          }}
-        >
-          <Text>
-            <Icon
-              name="car"
-              style={styles.iconContainer}
-              size={25}
-              color="#FF8A76"
-            />
-          </Text>
+          <TouchableOpacity 
+          style={styles.btnScreans}
+          onPress={selecionaCarro}>
+            <Icon name="car" size={20} color="#ffffff" />
         </TouchableOpacity>
       </View>
       <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />

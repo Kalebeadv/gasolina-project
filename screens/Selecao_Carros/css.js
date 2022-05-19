@@ -34,13 +34,12 @@ const styles = StyleSheet.create({
     cadastroVeiculos: {
         justifyContent:"center",
         backgroundColor: '#757F7A',
-        width: '20%',
-        height: 50,
-        marginBottom: '5%',
-        marginLeft:"5%",
-        marginRight:"5%",
-        paddingTop: 10,
-        marginTop: 20,
+        height: 40,
+        marginBottom: "5%",
+        backgroundColor: "#107878",
+        borderRadius: 12,
+        marginHorizontal:"10%",
+        top:"2.5%",
         flexDirection: 'row',
     },
     nome_rota: {
@@ -49,34 +48,25 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     btnViewContainer: {
-        display: 'flex',
-        flexDirection:'row',
-        zIndex: 9,
-        width: '90%',
-        height: '10%',
-        justifyContent: 'space-around',
-        marginBottom: '8%',
-        backgroundColor: '#757F7A',
+        width: "90%",
+        backgroundColor: "#ffffff",
+        flexDirection: "row",
+        borderRadius: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        bottom: '5%',
+        zIndex: 9
     },
-    btnContainer: {
-        width: '25%',
-        borderRadius: 30,
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    btnRotaContainer: {
-        width: '25%',
-        height: '80%',
-        backgroundColor: '#fff',
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '2%',
-    },
-    textoRota: {
-        fontSize: 20,
-        color: '#FF8A76'
+    btnScreans: {
+        justifyContent: "center",
+        alignItems:"center",
+        width: "15%",
+        height: 40,
+        marginBottom: "5%",
+        backgroundColor: "#107878",
+        borderRadius: 12,
+        marginHorizontal:"10%",
+        top:"2.5%"
     },
     item: {
         width: "100%",

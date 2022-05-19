@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import config from "../../config/config.json";
 import {
   View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity,
-  Text, StyleSheet, Keyboard, Alert, Dimensions
+  Text, Keyboard, Alert, Dimensions
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';

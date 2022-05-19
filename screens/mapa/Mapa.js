@@ -11,7 +11,6 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-
 export default function Mapa({ route, navigation }) {
 
 	var distlist = []
@@ -167,22 +166,20 @@ export default function Mapa({ route, navigation }) {
 					}}
 					styles={{
 						container: {
-							width: "90%",
+							width: "80%",
 							zIndex: 1,
-							marginTop: '15%'
+							marginTop: '15%',
+							marginRight: '15%',
 						},
 						listView: {
 						},
 						textInput: {
 							fontSize: 20,
-							borderStyle: 'solid',
-							borderColor: '#FF8A76',
-							borderWidth: 1,
-							borderRightWidth: 1,
-							borderBottomWidth: 1,
-							textAlign: 'center',
-							color: '#000'
+							color: '#fffsdsd',
+							borderRadius: 20,
+							backgroundColor: '#127679'
 						},
+						
 					}}
 				/>
 
@@ -209,7 +206,7 @@ export default function Mapa({ route, navigation }) {
 				showsUserLocation={true}
 				loadingEnabled={true}
 				customMapStyle={newMap}
-				showsMyLocationButton={true}
+				showsMyLocationButton={false}
 			>
 				{region &&
 					<MapViewDirections

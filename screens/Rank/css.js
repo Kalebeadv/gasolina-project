@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: "#D1D2D3",
-      position: "relative",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
@@ -27,7 +26,11 @@ const styles = StyleSheet.create({
       marginBottom: '8%',
       backgroundColor: '#757F7A',
   },
-  btnContainer: {
+    svgBack:{
+      position: 'absolute',
+      width: '100%', 
+    }, 
+    btnContainer: {
       width: '25%',
       borderRadius: 30,
       alignContent: 'center',
@@ -53,16 +56,16 @@ const styles = StyleSheet.create({
       padding: 20,
       paddingBottom: 10,
       paddingTop: 10,
-      marginTop: '3%'
+      marginTop: '3%',
     },
     item: {
-        width: "100%",        
-        padding: 20,
-        paddingBottom: 10,
-        paddingTop: 10,
-        marginVertical: 8,
-        borderRadius: 16,
-        color:"#107878"
+      width: "100%",        
+      padding: 20,
+      paddingBottom: 10,
+      paddingTop: 10,
+      marginVertical: 8,
+      borderRadius: 16,
+      color:"#107878"
     },
     item2:{
       width: "100%",

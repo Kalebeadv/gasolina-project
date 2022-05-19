@@ -7,11 +7,12 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Dimensions
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {urlRootNode} from "../../config/config.json";
 import {styles} from "./css"
-
+import Background from "../../assets/SvgImages/cars_rank.svg"
 
 export default function Rank({ navigation }) {
   const [posto, setPostos] = useState([]);
@@ -121,6 +122,7 @@ export default function Rank({ navigation }) {
           </Text>
         </TouchableOpacity>
       </View>
+      <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />
     </SafeAreaView>
   );
 }

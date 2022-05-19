@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     carrosContainer: {
         flex: 1,
         position: 'absolute',
-        backgroundColor: '#fff',
-        marginTop: '10%',
+        marginTop: '13%',
         width: '90%',
-        height: '60%'
+        height: '70%',
+        zIndex: 9
     },
     texto: { // trocar o nome quando colocar o select de carros
         fontSize: 15,
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     cadastraEExclui:{
         flexDirection: 'row',
         justifyContent:"center",
-        marginTop: '115%'
+        top: '150%',
+        zIndex: 9
     },
     cadastroVeiculos: {
         justifyContent:"center",
@@ -89,7 +90,11 @@ const styles = StyleSheet.create({
     },
     icone:{
         paddingLeft: "5%"
-    }
+    },
+    svgBack:{
+        position: 'absolute',
+        width: '100%', 
+    }, 
 }); 
 
 export {styles};

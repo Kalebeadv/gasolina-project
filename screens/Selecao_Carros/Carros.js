@@ -1,10 +1,21 @@
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, FlatList } from "react-native";
+import { 
+    View, 
+    KeyboardAvoidingView, 
+    Image, 
+    TextInput, 
+    TouchableOpacity, 
+    Text, 
+    FlatList,
+    Dimensions
+} from "react-native";
+
 import React, { useState, useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import config from "../../config/config.json";
 import { styles } from "./css"
 
+import Background from "../../assets/SvgImages/cars_rank.svg"
 
 export default function Carros({ route, navigation }) {
 
@@ -119,6 +130,8 @@ export default function Carros({ route, navigation }) {
                     <Text><Icon name="car" style={styles.iconContainer} size={25} color="#000" /></Text>
                 </TouchableOpacity>
             </View>
+            
+            <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />
         </View>
     )
 }

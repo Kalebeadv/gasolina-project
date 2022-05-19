@@ -135,12 +135,17 @@ export default function Mapa({ route, navigation }) {
 			longitudeDelta: 0.000421
 		})
 	}
-
+	function buscar_icon()
+	{
+		return <Icon name="trophy" size={25} color="#FF8A76"/>
+	}
 	return (
 		<View style={cssMapa.container}>
 			<View style={cssMapa.placeholderArea}>
+				
 				<GooglePlacesAutocomplete
 					placeholder="Buscar"
+					icon={"trophy"}
 					fetchDetails={true}
 					GooglePlacesSearchQuery={{
 						rankby: "distance"
@@ -182,7 +187,8 @@ export default function Mapa({ route, navigation }) {
 						
 					}}
 				/>
-
+		
+	
 				<View style={cssMapa.btnViewContainer}>
 					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Rank') }}>
 						<Text><Icon name="trophy" size={25} color="#FF8A76" /></Text>

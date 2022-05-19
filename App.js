@@ -14,8 +14,9 @@ import Carros from "./screens/Selecao_Carros/Carros";
 import Rank from "./screens/Rank/Rank";
 import Inicio from "./screens/Loading/Inicio";
 import Splash from "./screens/splash";
-import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros"
-
+import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros";
+import HomePage from "./screens/HomePage/HomePage";
+import Home from "./screens/Home/Home"
 const Stack = createStackNavigator();
 
 // CARLOS PARA DE DELETAR A STACK DE INICIO PELO AMOR DE DEUS
@@ -33,12 +34,22 @@ function MyStack() {
         headerTransparent: true,
         headerShown: false
       }}/>
+      <Stack.Screen name="HomePage" component={HomePage} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
       <Stack.Screen name="Entrar" component={Login} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
       }}/>
       <Stack.Screen name="Registrar" component={Registrar} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="Home" component={Home} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

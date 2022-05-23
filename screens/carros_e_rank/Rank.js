@@ -59,10 +59,7 @@ export default function Rank({ navigation }) {
     return (
         <View style={styles.container}>
             <View>
-
-           <Text>{rank}</Text>
-            
-            
+                <Text>{rank}</Text>
             </View>
 
 

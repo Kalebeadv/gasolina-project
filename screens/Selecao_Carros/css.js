@@ -79,7 +79,9 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },
     icone:{
-        paddingLeft: "5%"
+        paddingLeft: "5%",
+        marginTop: 10,
+        marginRight: 5
     },
     svgBack:{
         position: 'absolute',

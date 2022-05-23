@@ -88,8 +88,8 @@ export default function Carros({ navigation }) {
             }
             <View style={styles.cadastraEExclui}>
             <TouchableOpacity style={styles.excluiVeiculo} onPress={exclui}>
-                <Icon name="trash" style={styles.icone} size={25} color="#FF8A76" />
-                <Icon name="minus" style={styles.icone} size={25} color="#FF8A76" />
+                <Icon name="trash" style={styles.icone} size={25} color="#fff" />
+                <Icon name="minus" style={styles.icone} size={25} color="#fff" />
             </TouchableOpacity>
             </View>
         </View>

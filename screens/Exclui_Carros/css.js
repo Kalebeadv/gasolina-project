@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     excluiVeiculo: {
         justifyContent:"center",
-        backgroundColor: '#757F7A',
+        backgroundColor: '#107878',
         width: '25%',
         height: 50,
         marginBottom: '5%',
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         marginTop: 20,
         flexDirection: 'row',
-        paddingRight: 5
+        paddingRight: 5,
+        borderRadius: 100
     },
     nome_rota: {
         textAlign: 'center',

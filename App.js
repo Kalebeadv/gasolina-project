@@ -23,7 +23,7 @@ const Stack = createStackNavigator();
 // SÓ MEU FI, É NOIS
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="Mapa">
       <Stack.Screen name="Inicio" component={Inicio} options={{
         title: "",
         headerTransparent: true,

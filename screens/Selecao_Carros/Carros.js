@@ -135,7 +135,7 @@ export default function Carros({ route, navigation }) {
                     onPress={Mapa}>
                       <Icon name="map-marker" size={20} color="#ffffff" />
                 </TouchableOpacity>
-        
+
                 <TouchableOpacity 
                     style={styles.btnScreans}
                     onPress={selecionaCarro}>

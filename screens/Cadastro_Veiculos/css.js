@@ -18,15 +18,16 @@ const styles = StyleSheet.create({
       width: '90%',
       color: '#107878'
     },
-    btnEntrar: {
-      backgroundColor: '#757F7A',
+    btnCadastro: {
+      backgroundColor: '#107878',
       width: '90%',
       height: 50,
       marginTop: 20,
       marginBottom: 10,
-      paddingTop: 10
+      paddingTop: 10,
+      borderRadius: 100
     },
-    btnEntrar_texto: {
+    btnCadastro_texto: {
       textAlign: 'center',
       color: '#ffffff',
       fontSize: 20
@@ -53,11 +54,12 @@ const styles = StyleSheet.create({
       padding: 10,
       paddingRight: 2,
       color: '#107878',
-      flexDirection: "row"
+      flexDirection: "row",
+      borderRadius: 100
     },
     textoInicio: {
       fontSize: 30,
-      color: '#FF8A76',
+      color: '#107878',
       marginTop: "20%"
     },
   });

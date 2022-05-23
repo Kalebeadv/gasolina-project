@@ -6,7 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import FuelTypeButton from "../../src/components/FuelTypeButton";
 import { styles } from "./css"
 
-
 export default function CadastrarVeiculo({ navigation }) {
   const [modelo, setModelo] = useState(null);
   const [marca, setMarca] = useState(null);
@@ -132,10 +131,9 @@ export default function CadastrarVeiculo({ navigation }) {
           />
         </View>
 
-        <TouchableOpacity style={styles.btnEntrar} onPress={Cadastrar}>
-          <Text style={styles.btnEntrar_texto}>Cadastrar Novo Veículo</Text>
+        <TouchableOpacity style={styles.btnCadastro} onPress={Cadastrar}>
+          <Text style={styles.btnCadastro_texto}>Cadastrar Novo Veículo</Text>
         </TouchableOpacity>
-
       </View>
     </KeyboardAvoidingView>
   );

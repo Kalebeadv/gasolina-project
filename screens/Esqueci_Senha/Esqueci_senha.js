@@ -11,9 +11,6 @@ export default function EsqueciMinhaSenha(){
                 <Image style={styles.imagemLogo}
                     source={require("../../assets/images/LogoVerde.png")}
                 />
-                <Image style={styles.backgroundLogin}
-                    source={require("../../assets/images/backgroundLogin2.jpg")}
-                />
             </View>
 
 
@@ -37,7 +34,7 @@ export default function EsqueciMinhaSenha(){
                           style={styles.textInput}
                           autoCorrect={false}
                           placeholder=" E-mail"
-                          placeholderTextColor={'#757F7A'}
+                          placeholderTextColor={'#107878'}
                           //onChangeText={(text) => setEmail(text)}
                         />
                     </View>

@@ -139,6 +139,12 @@ export default function Mapa({ route, navigation }) {
 	{
 		return <Icon name="trophy" size={25} color="#FF8A76"/>
 	}
+
+	function go_to_mapa(){ navigation.navigate("Mapa") }
+  	function selecionaCarro(){ navigation.navigate("Carros") }
+  	function Rank(){ navigation.navigate("Rank") }
+  	function Mapa(){ navigation.navigate("Mapa") }
+
 	return (
 		<View style={cssMapa.container}>
 			<View style={cssMapa.placeholderArea}>
@@ -171,18 +177,17 @@ export default function Mapa({ route, navigation }) {
 					}}
 					styles={{
 						container: {
-							width: "80%",
+							width: "90%",
 							zIndex: 1,
 							marginTop: '15%',
-							marginRight: '15%',
 						},
 						listView: {
 						},
 						textInput: {
 							fontSize: 20,
-							color: '#fffsdsd',
-							borderRadius: 20,
-							backgroundColor: '#127679'
+							borderRadius: 10,
+							backgroundColor: '#fff',
+							color: 'black'
 						},
 						
 					}}
@@ -190,18 +195,24 @@ export default function Mapa({ route, navigation }) {
 		
 	
 				<View style={cssMapa.btnViewContainer}>
-					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Rank') }}>
-						<Text><Icon name="trophy" size={25} color="#FF8A76" /></Text>
-					</TouchableOpacity>
+        			<TouchableOpacity 
+        			  	style={cssMapa.btnScreans}
+        			  	onPress={Rank}>
+        			    <Icon name="line-chart" size={20} color="#ffffff" />
+        			</TouchableOpacity>
 
-					<TouchableOpacity style={cssMapa.btnRotaContainer} onPress={() => { comparaDistancia() }}>
-						<Text style={cssMapa.textoRota}>Economizar <Icon name="dollar" size={25} color="#FF8A76"></Icon></Text>
-					</TouchableOpacity>
+        			<TouchableOpacity 
+        			  	style={cssMapa.btnScreans}
+        			  	onPress={Mapa}>
+        			    <Icon name="map-marker" size={20} color="#ffffff" />
+        			</TouchableOpacity>
 
-					<TouchableOpacity style={cssMapa.btnContainer} onPress={() => { navigation.navigate('Carros') }}>
-						<Text><Icon name="car" style={cssMapa.iconContainer} size={25} color="#FF8A76" /></Text>
-					</TouchableOpacity>
-				</View>
+        			<TouchableOpacity 
+        				style={cssMapa.btnScreans}
+        			  	onPress={selecionaCarro}>
+        				<Icon name="car" size={20} color="#ffffff" />
+        			</TouchableOpacity>
+      			</View>
 			</View>
 
 			

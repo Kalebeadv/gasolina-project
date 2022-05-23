@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#262626',
     },
     logoContainer: {
       alignItems: 'center',
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
         fontSize: 50,
         paddingTop: 25,
         borderRadius: 8,
-        backgroundColor: '#fff',
         position: 'relative'
     },
     textRecuperacao:{
@@ -70,7 +68,8 @@ const styles = StyleSheet.create({
         padding: 10,
         color: '#107878',
         flexDirection: "row",
-        marginBottom: "5%"
+        marginBottom: "5%",
+        borderRadius: 100
     },
     textInput:{
         fontSize:17,
@@ -79,13 +78,14 @@ const styles = StyleSheet.create({
         marginLeft:"2%"
     },
     btnEnviar: {
-        backgroundColor: '#757F7A',
+        backgroundColor: '#107878',
         borderStyle: 'solid',
         width: '90%',
         height: 50,
         marginBottom: "5%",
         marginTop:"1%",
         paddingTop: 10,
+        borderRadius: 100
     },
     btnTexto: {
         textAlign: 'center',

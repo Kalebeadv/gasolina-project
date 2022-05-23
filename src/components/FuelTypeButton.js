@@ -17,6 +17,7 @@ export default class FuelTypeButton extends Component {
                     selectedValue = {this.state.user}
                     onValueChange = {this.updateUser}
                 >
+                    <Picker.Item label="Tipo de Combustível" value="" />
                     <Picker.Item label="Flex" value="flex" />
                     <Picker.Item label="Gasolina" value="gasolina" />
                     <Picker.Item label="Alcool" value="alcool" />
@@ -31,7 +32,6 @@ export default class FuelTypeButton extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#ffffff",
         alignItems: 'center',
         justifyContent: "center",
     },

@@ -23,7 +23,11 @@ export default function Carros({ route, navigation }) {
 
     const Item = ({ item, onPress, backgroundColor, textColor }) => (
         <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-            <Text style={[styles.title, textColor]}>{item.brand +" "+ item.model + "\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typefuel}</Text>
+            <View style={styles.itemContainer}>
+                <Text style={[styles.title, textColor]}>{item.brand +" "+ item.model}</Text>
+                <Icon style={styles.pincelIcon} onPress={() => navigation.navigate("ExcluiCarros")} name="pencil" size={20} color="#ffffff" />
+            </View>
+            <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typefuel}</Text>
         </TouchableOpacity>
     );
     const [selectedId, setSelectedId] = useState(null);

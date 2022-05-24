@@ -54,7 +54,7 @@ export default function Rank({ navigation }) {
 
   const Item = ({ fuel, onPress }) => (
     <TouchableOpacity onPress={onPress} style={[styles.item2]}>
-      <Text style={[styles.title]}>{"Posto: " + fuel.idGasstation + "\nCombustivel: "+ fuel.type  + "\nPreço: " + fuel.valor }</Text>
+      <Text style={[styles.item]}>{ fuel.idGasstation + "\n"+ fuel.type  + "\nR$ " + fuel.valor +""}</Text>
     </TouchableOpacity>
   );
   const [selectedId, setSelectedId] = useState(null);
@@ -85,7 +85,7 @@ export default function Rank({ navigation }) {
        {DATA != [] &&
           <FlatList
               data={DATA}
-              style={styles.item}
+              style={styles.item2}
               renderItem={renderItem}
               keyExtractor={(item) => item.id}
               extraData={selectedId}

@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
+        fontWeight: 'bold',
     },
     icone:{
         paddingLeft: "5%",
@@ -86,7 +87,20 @@ const styles = StyleSheet.create({
     svgBack:{
         position: 'absolute',
         width: '100%', 
-    }, 
+    },
+    info:{
+        fontSize:16,
+        top:"-15%",
+        left:"5%"
+    },
+    itemContainer:{
+        flexDirection:"row"
+    },
+    pincelIcon:{
+        position:"absolute",
+        left:"95%",
+        top:"15%"
+    }
 }); 
 
 export {styles};

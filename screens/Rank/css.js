@@ -39,29 +39,21 @@ const styles = StyleSheet.create({
       top:"2.5%"
     },
     item: {
-      width: "100%",
-      padding: 20,
-      paddingBottom: 10,
-      paddingTop: 10,
-      marginTop: '3%',
-    },
-    item: {
       width: "100%",        
       padding: 20,
       paddingBottom: 10,
       paddingTop: 10,
-      marginVertical: 8,
       borderRadius: 16,
-      color:"#107878"
+      color:"#000",
+      backgroundColor:"#ffffff",
     },
     item2:{
       width: "100%",
       padding: 20,
       paddingBottom: 10,
       paddingTop: 10,
-      marginVertical: 8,
-      borderRadius: 16,
-      color:"#107878"
+      color:"#107878",
+      top:"5%"
     },
     svgBack:{
       position: 'absolute',

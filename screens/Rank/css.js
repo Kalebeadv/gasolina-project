@@ -18,9 +18,10 @@ const styles = StyleSheet.create({
     },
     btnViewContainer: {
       width: "90%",
+      height:"10%",
       backgroundColor: "#ffffff",
       flexDirection: "row",
-      borderRadius: 100,
+      borderRadius: 12,
       justifyContent: "center",
       alignItems: "center",
       bottom: '5%',
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
     btnScreans: {
       justifyContent: "center",
       alignItems:"center",
-      width: "15%",
-      height: 40,
+      width: "16%",
+      height: "70%",
       marginBottom: "5%",
       backgroundColor: "#107878",
       borderRadius: 12,

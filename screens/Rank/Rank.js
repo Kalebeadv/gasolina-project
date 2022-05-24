@@ -79,7 +79,9 @@ export default function Rank({ navigation }) {
   function Mapa(){ navigation.navigate("Mapa") }
 
   return (
+    
     <SafeAreaView style={styles.container}>
+    <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />
        {DATA != [] &&
           <FlatList
               data={DATA}
@@ -94,22 +96,21 @@ export default function Rank({ navigation }) {
         <TouchableOpacity 
           style={styles.btnScreans}
           onPress={Rank}>
-            <Icon name="line-chart" size={20} color="#ffffff" />
+            <Icon name="rotate-right" size={25} color="#ffffff" />
           </TouchableOpacity>
 
           <TouchableOpacity 
           style={styles.btnScreans}
           onPress={Mapa}>
-            <Icon name="map-marker" size={20} color="#ffffff" />
+            <Icon name="map-marker" size={30} color="#ffffff" />
           </TouchableOpacity>
 
           <TouchableOpacity 
           style={styles.btnScreans}
           onPress={selecionaCarro}>
-            <Icon name="car" size={20} color="#ffffff" />
+            <Icon name="car" size={25} color="#ffffff" />
         </TouchableOpacity>
       </View>
-      <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />
     </SafeAreaView>
   );
 }

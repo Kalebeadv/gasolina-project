@@ -67,7 +67,7 @@ export default function Inicio({ navigation }) {
     let ress = await reqs.json();
 
     if (ress || ress == null) {
-      navigation.navigate("Mapa");
+      navigation.navigate("Home", {id: 0 });
       return;
     } else {
       navigation.navigate("Entrar");

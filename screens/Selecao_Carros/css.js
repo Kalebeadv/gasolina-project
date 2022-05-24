@@ -63,11 +63,10 @@ const styles = StyleSheet.create({
 		alignItems:"center",
 		width: "16%",
 		height: "70%",
-		marginBottom: "5%",
 		backgroundColor: "#107878",
 		borderRadius: 12,
 		marginHorizontal:"10%",
-		top:"2.5%"
+        flexDirection:"row",
 	},
     item: {
         width: "100%",
@@ -81,9 +80,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     icone:{
-        paddingLeft: "5%",
-        marginTop: 10,
-        marginRight: 5
+        marginTop: "5%",
+        marginLeft: "8%"
     },
     svgBack:{
         position: 'absolute',
@@ -99,7 +97,7 @@ const styles = StyleSheet.create({
     },
     pincelIcon:{
         position:"absolute",
-        left:"95%",
+        left:"93%",
         top:"15%"
     }
 }); 

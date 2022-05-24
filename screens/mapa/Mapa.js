@@ -20,7 +20,7 @@ export default function Mapa({ route, navigation }) {
 		latitudeDelta: 0.1,
 		longitudeDelta: 0.1
 	}) 
-	const [origin, setOrigin] = useState({
+	const [originA, setOrigin] = useState({
 		latitude: 0,
 		longitude: 0,
 		latitudeDelta: 0,
@@ -36,7 +36,12 @@ export default function Mapa({ route, navigation }) {
 	const [distancias, setDistancias] = useState([])
 	const [fuel, setFuel] = useState([])
 	const [postos, setPostos] = useState([])
-	const [distanciaOriginPosto, setDistanciaOriginPosto] = useState([])
+	const [distanciaOriginPosto, setDistanciaOriginPosto] = useState({
+		latitude: Number(route.lati),
+		longitude: Number(route.long),
+		latitudeDelta: 0.1,
+		longitudeDelta: 0.1
+	})
 	const [cars, setCars] = useState([]);
 	const [selectedId, setSelectedId] = useState(route.id);
 
@@ -82,7 +87,7 @@ export default function Mapa({ route, navigation }) {
 					latitudeDelta: 0.000922,
 					longitudeDelta: 0.000421
 				})
-				console.log(origin)
+				console.log(originA)
 			} else {
 				throw new Error('Location permission not granted');
 			}
@@ -95,46 +100,6 @@ export default function Mapa({ route, navigation }) {
 		getPosto()
 	}, [selectedId])
 
-	async function comparaDistancia() {
-		let selecionado;
-		let calc;
-		let menor = 0;
-		let econ;
-		let combustivel;
-		console.log(distancias)
-		for (let i = 0; i < cars.length; i++) {
-			if (cars[i].id == selectedId) {
-				selecionado = cars[i]
-				console.log(selecionado)
-			}
-		}
-
-		for (let i = 0; i < postos.length; i++) {
-			for (let j = 0; j < fuel.length; j++) {
-				console.log(fuel[j].idGasstation + " " + postos[i].id)
-				if (fuel[j].idGasstation == postos[i].id) {
-					combustivel = fuel[j]
-				}
-			}
-			console.log(selecionado)
-			calc = (Number(combustivel.valor) * Number(distancias[i])) / Number(selecionado.consumo)
-
-			if (menor == 0) {
-				menor = calc
-				econ = postos[i]
-			} else if (calc < menor) {
-				menor = calc
-				econ = postos[i]
-			}
-		}
-
-		setDistanciaOriginPosto({
-			latitude: Number(econ.latitude),
-			longitude: Number(econ.longitude),
-			latitudeDelta: 0.000922,
-			longitudeDelta: 0.000421
-		})
-	}
 	function buscar_icon()
 	{
 		return <Icon name="trophy" size={25} color="#FF8A76"/>
@@ -143,7 +108,7 @@ export default function Mapa({ route, navigation }) {
 	function go_to_mapa(){ navigation.navigate("Mapa") }
   	function selecionaCarro(){ navigation.navigate("Carros") }
   	function Rank(){ navigation.navigate("Rank") }
-  	function Mapa(){ navigation.navigate("Mapa") }
+  	function HomeA(){ navigation.navigate("Home", {id : selectedId}) }
 
 	return (
 		<View style={cssMapa.container}>
@@ -200,19 +165,19 @@ export default function Mapa({ route, navigation }) {
         			<TouchableOpacity 
         			  	style={cssMapa.btnScreans}
         			  	onPress={Rank}>
-        			    <Icon name="line-chart" size={20} color="#ffffff" />
+        			    <Icon name="line-chart" size={25} color="#ffffff" />
         			</TouchableOpacity>
 
         			<TouchableOpacity 
         			  	style={cssMapa.btnScreans}
-        			  	onPress={Mapa}>
-        			    <Icon name="map-marker" size={20} color="#ffffff" />
+        			  	onPress={HomeA}>
+        			    <Icon name="home" size={30} color="#ffffff" />
         			</TouchableOpacity>
 
         			<TouchableOpacity 
         				style={cssMapa.btnScreans}
         			  	onPress={selecionaCarro}>
-        				<Icon name="car" size={20} color="#ffffff" />
+        				<Icon name="car" size={25} color="#ffffff" />
         			</TouchableOpacity>
       			</View>
 			</View>
@@ -229,7 +194,7 @@ export default function Mapa({ route, navigation }) {
 			>
 				{region &&
 					<MapViewDirections
-						origin={origin}
+						origin={originA}
 						destination={region}
 						apikey={keys.googleMapKey}
 						strokeWidth={4}
@@ -254,30 +219,9 @@ export default function Mapa({ route, navigation }) {
 						);
 					})}
 
-				{postos.length > 0 &&
-					postos.map((m2) => {
-						return (
-							<MapViewDirections
-								origin={origin}
-								destination={{
-									latitude: Number(m2.latitude),
-									longitude: Number(m2.longitude),
-									latitudeDelta: 0.000922,
-									longitudeDelta: 0.000421
-								}}
-								apikey={keys.googleMapKey}
-								strokeWidth={0}
-								onReady={result => {
-									distlist.push(result.distance)
-									setDistancias(distlist)
-								}}
-							/>
-						)
-					})
-				}
-				{region &&
+				{originA &&
 					<MapViewDirections
-						origin={origin}
+						origin={originA}
 						destination={distanciaOriginPosto}
 						apikey={keys.googleMapKey}
 						strokeWidth={4}

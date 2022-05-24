@@ -25,7 +25,7 @@ export default function Carros({ route, navigation }) {
         <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
             <View style={styles.itemContainer}>
                 <Text style={[styles.title, textColor]}>{item.brand +" "+ item.model}</Text>
-                <Icon style={styles.pincelIcon} onPress={() => navigation.navigate("ExcluiCarros")} name="pencil" size={20} color="#ffffff" />
+                <Icon style={styles.pincelIcon} onPress={() => navigation.navigate("ExcluiCarros")} name="pencil" size={25} color="#ffffff" />
             </View>
             <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typefuel}</Text>
         </TouchableOpacity>
@@ -92,7 +92,7 @@ export default function Carros({ route, navigation }) {
 
     // funcoes do navigation 
     function go_to_mapa(){ navigation.navigate("Mapa") }
-    function selecionaCarro(){ navigation.navigate("Carros") }
+    function CadastraCarro(){ navigation.navigate("CadastroVeiculo") }
     function Rank(){ navigation.navigate("Rank") }
     function Mapa(){ navigation.navigate("Mapa") }
 
@@ -131,19 +131,20 @@ export default function Carros({ route, navigation }) {
                 <TouchableOpacity 
                     style={styles.btnScreans}
                     onPress={Rank}>
-                      <Icon name="line-chart" size={20} color="#ffffff" />
+                      <Icon name="line-chart" size={25} color="#ffffff" />
                 </TouchableOpacity>
         
                 <TouchableOpacity 
                     style={styles.btnScreans}
                     onPress={Mapa}>
-                      <Icon name="map-marker" size={20} color="#ffffff" />
+                      <Icon name="map-marker" size={30} color="#ffffff" />
                 </TouchableOpacity>
 
                 <TouchableOpacity 
                     style={styles.btnScreans}
-                    onPress={selecionaCarro}>
+                    onPress={CadastraCarro}>
                       <Icon name="car" size={20} color="#ffffff" />
+                      <Icon name="plus" style={styles.icone} size={18} color="#ffffff" />
                 </TouchableOpacity>
              </View>
             

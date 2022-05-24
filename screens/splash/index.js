@@ -7,7 +7,7 @@ import { View, StyleSheet, Image, BackHandler } from 'react-native';
 export default function Splash({ navigation }){
 
     function HomePage(){
-        navigation.navigate('HomePage')
+        navigation.navigate('Inicio')
     }
 
     // comando para nao deixar volta para a tela anterior

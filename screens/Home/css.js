@@ -26,22 +26,22 @@ const styles = StyleSheet.create({
     },
     btnRoute: {
         justifyContent: "center",
-        alignItems:"center",
+        alignItems: "center",
         backgroundColor: "#107878",
         borderRadius: 100,
         width: "70%",
         height: 40,
         marginBottom: "5%",
-        flexDirection:"row",
+        flexDirection: "row",
     },
     btnCar: {
         justifyContent: "center",
-        alignItems:"center",
+        alignItems: "center",
         backgroundColor: "#D7E2FF",
         borderRadius: 100,
         height: 50,
         marginBottom: "5%",
-        flexDirection:"row"
+        flexDirection: "row"
     },
     carsContainer: {
         width: "90%",
@@ -51,23 +51,24 @@ const styles = StyleSheet.create({
     },
     screansContainer: {
         width: "90%",
-        top: "30%",
+        height:"15%",
+        top: "20%",
         backgroundColor: "#ffffff",
         flexDirection: "row",
-        borderRadius: 100,
+        borderRadius: 12,
         justifyContent: "center",
         alignItems: "center"
     },
     btnScreans: {
         justifyContent: "center",
-        alignItems:"center",
-        width: "15%",
-        height: 40,
+        alignItems: "center",
+        width: "16%",
+        height: "70%",
         marginBottom: "5%",
         backgroundColor: "#107878",
         borderRadius: 12,
-        marginHorizontal:"10%",
-        top:"2.5%"
+        marginHorizontal: "10%",
+        top: "2.5%"
     },
     svgBack: {
         position: "absolute",
@@ -75,20 +76,20 @@ const styles = StyleSheet.create({
         marginTop: "auto",
         left: "0.1%"
     },
-    allContainer:{
-        top:"25%",
+    allContainer: {
+        top: "25%",
         justifyContent: 'center',
-        alignItems:"center",
+        alignItems: "center",
     },
-    btnRoute_text:{
-        color:"#ffffff",
-        marginEnd:"5%",
-        fontSize:20
+    btnRoute_text: {
+        color: "#ffffff",
+        marginEnd: "5%",
+        fontSize: 20
     },
-    btnCar_text:{
-        color:"#107878",
-        marginStart:"5%",
-        fontSize:25
+    btnCar_text: {
+        color: "#107878",
+        marginStart: "5%",
+        fontSize: 25
     }
 
 });

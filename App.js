@@ -24,12 +24,12 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Inicio" component={Mapa} options={{
+      <Stack.Screen name="Splash" component={Splash} options={{
         title: "",
         headerTransparent: true,
         headerShown: false
       }}/>
-      <Stack.Screen name="Splash" component={Splash} options={{
+      <Stack.Screen name="Inicio" component={Inicio} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

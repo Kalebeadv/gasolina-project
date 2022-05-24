@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
       alignItems: "center",
     },
     texto: {
-      
       fontSize: 15,
       color: "#107878",
       marginTop: "50%", 
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
       borderRadius: 12,
       justifyContent: "center",
       alignItems: "center",
-      bottom: '5%',
+      bottom: '8%',
       zIndex: 9
     },
     btnScreans: {

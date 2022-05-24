@@ -48,26 +48,27 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     btnViewContainer: {
-        width: "90%",
-        backgroundColor: "#ffffff",
-        flexDirection: "row",
-        borderRadius: 100,
-        justifyContent: "center",
-        alignItems: "center",
-        bottom: '5%',
-        zIndex: 9
-    },
-    btnScreans: {
-        justifyContent: "center",
-        alignItems:"center",
-        width: "15%",
-        height: 40,
-        marginBottom: "5%",
-        backgroundColor: "#107878",
-        borderRadius: 12,
-        marginHorizontal:"10%",
-        top:"2.5%"
-    },
+		width: "90%",
+		height:"10%",
+		backgroundColor: "#ffffff",
+		flexDirection: "row",
+		borderRadius: 12,
+		justifyContent: "center",
+		alignItems: "center",
+		bottom: '8%',
+		zIndex: 9
+	},
+	btnScreans: {
+		justifyContent: "center",
+		alignItems:"center",
+		width: "16%",
+		height: "70%",
+		marginBottom: "5%",
+		backgroundColor: "#107878",
+		borderRadius: 12,
+		marginHorizontal:"10%",
+		top:"2.5%"
+	},
     item: {
         width: "100%",
         padding: 20,

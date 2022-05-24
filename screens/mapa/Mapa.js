@@ -187,7 +187,9 @@ export default function Mapa({ route, navigation }) {
 							fontSize: 20,
 							borderRadius: 10,
 							backgroundColor: '#fff',
-							color: 'black'
+							color: 'black',
+							borderWidth: 1,
+							borderColor: "#107878"
 						},
 						
 					}}

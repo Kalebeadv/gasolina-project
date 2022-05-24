@@ -4,7 +4,6 @@ const cssMapa = StyleSheet.create({
     container: {
         flex: 0,
         position: 'relative',
-		
     },
     map:{
         width: '100%',
@@ -34,21 +33,22 @@ const cssMapa = StyleSheet.create({
         alignContent:'center',
         alignItems: 'center',
     },
-    btnViewContainer:{
-    	width: "90%",
-      	backgroundColor: "#ffffff",
-      	flexDirection: "row",
-      	borderRadius: 100,
-      	justifyContent: "center",
-      	alignItems: "center",
-      	bottom: '5%',
-      	zIndex: 9
-    },
-    btnScreans: {
+    btnViewContainer: {
+		width: "90%",
+		height:"10%",
+		backgroundColor: "#ffffff",
+		flexDirection: "row",
+		borderRadius: 12,
+		justifyContent: "center",
+		alignItems: "center",
+		bottom: '8%',
+		zIndex: 9
+	},
+	btnScreans: {
 		justifyContent: "center",
 		alignItems:"center",
-		width: "15%",
-		height: 40,
+		width: "16%",
+		height: "70%",
 		marginBottom: "5%",
 		backgroundColor: "#107878",
 		borderRadius: 12,

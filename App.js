@@ -24,7 +24,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Inicio" component={Inicio} options={{
+      <Stack.Screen name="Inicio" component={Mapa} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

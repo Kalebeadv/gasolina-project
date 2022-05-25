@@ -30,17 +30,17 @@ export default function Carros({ route, navigation }) {
             <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typefuel}</Text>
         </TouchableOpacity>
     );
-    const [selectedId, setSelectedId] = useState(null);
+    const [selectedId, setSelectedId] = useState([]);
 
     const renderItem = ({ item }) => {
-        const backgroundColor = item.id == selectedId ? "#FF8A76" : "#757F7A";
-        const color = item.id == selectedId ? 'white' : 'white';
-
+        const backgroundColor = item.id == selectedId.id ? "#FF8A76" : "#757F7A";
+        const color = item.id == selectedId.id ? 'white' : 'white';
+        AsyncStorage.setItem("VeiculoSelecionado", JSON.stringify(item));
 
         return (
             <Item
                 item={item}
-                onPress={() => setSelectedId(item.id)}
+                onPress={() => setSelectedId(item)}
                 backgroundColor={{ backgroundColor }}
                 textColor={{ color }}
             />
@@ -71,7 +71,7 @@ export default function Carros({ route, navigation }) {
                 return;
             }else{
                 setCars(JSON.parse(carros))
-                setSelectedId(id)
+                setSelectedId(JSON.stringify(id))
             }
         }
         getCars();
@@ -81,12 +81,10 @@ export default function Carros({ route, navigation }) {
 
     //------------------------- Navigate ---------------
     function Mapa() {
-        AsyncStorage.setItem("VeiculoSelecionado", String(selectedId));
-        navigation.navigate('Mapa', {id : selectedId});
+        navigation.navigate('Mapa', {car : selectedId});
     }
 
     function Rank() {
-        AsyncStorage.setItem("VeiculoSelecionado", String(selectedId));
         navigation.navigate('Rank');
     }
 
@@ -107,7 +105,7 @@ export default function Carros({ route, navigation }) {
                         style={styles.item}
                         renderItem={renderItem}
                         keyExtractor={(item) => item.id}
-                        extraData={selectedId}
+                        extraData={selectedId.id}
                     />
                 }
             </View>

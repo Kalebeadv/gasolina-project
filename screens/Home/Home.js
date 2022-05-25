@@ -99,28 +99,22 @@ export default function Home({ route, navigation }) {
 		let carros = await AsyncStorage.getItem("CarrosUser");
 		let id = await AsyncStorage.getItem("VeiculoSelecionado")
 		setCars(JSON.parse(carros))
-		setSelectedId(id)
+		setSelectedId(JSON.parse(id))
+		console.log(id)
 	}
 
   async function comparaDistancia() {
-		let selecionado;
+		let selecionado = selectedId;
 		let calc;
 		let menor = 0;
 		let econ;
 		let combustivel;
-    let combuEco;
-    let distan;
+    	let combuEco;
+    	let distan;
 		console.log(distancias)
-		for (let i = 0; i < cars.length; i++) {
-			if (cars[i].id == selectedId) {
-				selecionado = cars[i]
-				console.log(selecionado)
-			}
-		}
 
 		for (let i = 0; i < postos.length; i++) {
 			for (let j = 0; j < fuel.length; j++) {
-				console.log(fuel[j].idGasstation + " " + postos[i].id)
 				if (fuel[j].idGasstation == postos[i].id) {
 					combustivel = fuel[j]
 				}
@@ -179,7 +173,7 @@ export default function Home({ route, navigation }) {
           style={styles.btnCar}
           onPress={selecionaCarro}>
             <Icon name="car" size={30} color="#107878" />
-            <Text style={styles.btnCar_text}>Ford Ka 2002</Text>
+            <Text style={styles.btnCar_text}>{selectedId && selectedId.brand + " " + selectedId.model}</Text>
           </TouchableOpacity>
         </View>
 

@@ -43,7 +43,7 @@ export default function Mapa({ route, navigation }) {
 		longitudeDelta: 0.1
 	})
 	const [cars, setCars] = useState([]);
-	const [selectedId, setSelectedId] = useState(route.id);
+	const [selectedId, setSelectedId] = useState(route.car);
 
 	async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
@@ -71,9 +71,9 @@ export default function Mapa({ route, navigation }) {
 	}
 	async function getCars() {
 		let carros = await AsyncStorage.getItem("CarrosUser");
-		let id = await AsyncStorage.getItem("VeiculoSelecionado")
+		let car = await AsyncStorage.getItem("VeiculoSelecionado")
 		setCars(JSON.parse(carros))
-		setSelectedId(id)
+		setSelectedId(JSON.parse(car))
 	}
 
 	useEffect(() => {

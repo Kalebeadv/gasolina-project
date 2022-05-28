@@ -9,31 +9,32 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 //include database and object files
 include_once("../config/database.php");
-include_once("../objects/product.php");
+include_once("../objects/gasStations.php");
 
-//instantiating database and product objects
+//instantiating database and gasstations objects
 $database = new Database;
 $db = $database->getConnection();
-$product = new Product($db);
+$gasstations = new Gasstations($db);
 
-//get product id to be edited
+//get gasstations id to be edited
 $data = json_decode(file_get_contents("php://input"));
 
-//set ID property of product to be edited
-$product->id = $data->id;
-$product->name = $data->name;
-$product->description = $data->description;
-$product->price = $data->price;
-$product->category_id = $data->category_id;
+//set ID property of gasstations to be edited
+$gasstations->id = $data->id;
+$gasstations->name = $data->name;
+$gasstations->cnpj = $data->cnpj;
+$gasstations->address = $data->address;
+$gasstations->latitude = $data->latitude;
+$gasstations->longitude = $data->longitude;
 
-//update the product
-if ($product->update()) {
+//update the gasstations
+if ($gasstations->update()) {
     echo json_encode(
-        array("message"=>"Product was updated.")
+        array("message"=>"gasstations was updated.")
     );
 } else { // if unable to do so
     echo json_encode(
-        array("message"=>"Unable to update product.")
+        array("message"=>"Unable to update gasstations.")
     );
 }
 

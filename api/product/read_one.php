@@ -9,29 +9,29 @@ header("Content-Type: application/json; charset=UTF-8");
 
 //include datbase config and objects
 include_once("../config/database.php");
-include_once("../objects/product.php");
+include_once("../objects/gasStations.php");
 
 //instantiating objects
 $database = new Database;
 $db = $database->getConnection();
-$product = new Product($db);
+$gassations = new Gassations($db);
 
-// set id of product
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+// set id of gassations
+$gassations->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-//read product details
-$product->readOne();
+//read gassations details
+$gassations->readOne();
 
-//create product array
-$product_arr = array (
-    "id"=> $product->id,
-    "name"=> $product->name,
-    "description"=>$product->description,
-    "price"=>$product->price,
-    "category_id"=>$product->category_id,
-    "category_name"=>$product->category_name
+//create gassations array
+$gassations_arr = array (
+    "id"=> $gassations->id,
+    "name"=> $gassations->name,
+    "cnpj"=>$gassations->cnpj,
+    "addres"=>$gassations->addres,
+    "latitude"=>$gassations->latitude,
+    "longitude"=>$gassations->longitude
 );
 
 //make it json encoded
-print_r(json_encode($product_arr));
+print_r(json_encode($gassations_arr));
 ?>

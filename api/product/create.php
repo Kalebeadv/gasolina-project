@@ -9,33 +9,34 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 date_default_timezone_set("Brazil/brasilia");
 
-//get database connection and product object
+//get database connection and gasstations object
 include_once("../config/database.php");
-include_once("../objects/product.php");
+include_once("../objects/gasStatios.php");
 
 //instantiate new objects
 $database = new Database();
 $db = $database->getConnection();
-$product = new Product($db);
+$gasstations = new Gasstations($db);
 
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-//set product property values
-$product->name = $data->name;
-$product->description = $data->description;
-$product->price = $data->price;
-$product->category_id = $data->category_id;
-$product->created = date('Y-m-d H:i:s');
+//set gasstations property values
+$gasstations->name = $data->name;
+$gasstations->cnpj = $data->cnpj;
+$gasstations->addres = $data->addres;
+$gasstations->latitude = $data->latitude;
+$gasstations->longitude = $data->longitude;
+$gasstations->createdAt = date('Y-m-d H:i:s');
 
-//lets create product now
-if($product->create()) {
+//lets create gasstations now
+if($gasstations->create()) {
     echo json_encode(
-        array("message"=>"Product was created.")
+        array("message"=>"gasstations was created.")
     );
-} else { // if unable to create product, notify user
+} else { // if unable to create gasstations, notify user
     echo json_encode(
-        array("message"=>"Unable to create product.")
+        array("message"=>"Unable to create gasstations.")
     );
 }
 

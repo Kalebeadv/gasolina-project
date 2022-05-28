@@ -1,0 +1,18 @@
+#formContainer {
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 50%;
+    background-color: #107878;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#formContainer label {
+    font-size: 20px;
+}
+
+#cabecalho {
+    text-align: center;
+}

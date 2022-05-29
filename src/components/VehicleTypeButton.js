@@ -3,7 +3,7 @@ import { View, Text, StyleSheet,} from "react-native";
 import {Picker} from '@react-native-picker/picker';
 
 
-export default class FuelTypeButton extends Component {
+export default class VehicleTypeButton extends Component {
     state = {user:''}
     updateUser = (user) =>{
         this.setState({user: user})
@@ -17,7 +17,7 @@ export default class FuelTypeButton extends Component {
                     selectedValue = {this.state.user}
                     onValueChange = {this.updateUser}
                 >
-                    <Picker.Item label="Tipo de Combustível" value="" />
+                    <Picker.Item label="Tipo do veiculo" value="" />
                     <Picker.Item label="Moto" value="moto" />
                     <Picker.Item label="Carro" value="carro" />
                 </Picker>

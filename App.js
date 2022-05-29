@@ -16,7 +16,10 @@ import Inicio from "./screens/Loading/Inicio";
 import Splash from "./screens/splash";
 import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros";
 import HomePage from "./screens/HomePage/HomePage";
-import Home from "./screens/Home/Home"
+import Home from "./screens/Home/Home";
+import CodigoVerificacao from "./screens/CodigoVerificacao/CodigoVerificacao";
+
+
 const Stack = createStackNavigator();
 
 // CARLOS PARA DE DELETAR A STACK DE INICIO PELO AMOR DE DEUS
@@ -85,6 +88,11 @@ function MyStack() {
         headerShown: false
       }}/>
       <Stack.Screen name="Rank" component={Rank} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="CodigoVerificacao" component={CodigoVerificacao} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

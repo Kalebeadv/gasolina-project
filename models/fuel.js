@@ -2,7 +2,6 @@
 const {
   Model
 } = require('sequelize');
-const gasstation = require('./gasstation');
 module.exports = (sequelize, DataTypes) => {
   class Fuel extends Model {
     /**
@@ -11,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Fuel.belongsTo(models.Gasstation)
+      Fuel.belongsTo(models.Gasstation);
     }
   }
   Fuel.init({
+    idGasstation: DataTypes.INTEGER,
     type: DataTypes.STRING,
-    valor: DataTypes.FLOAT,
-    idGasstation: DataTypes.INTEGER
+    price: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'Fuel',

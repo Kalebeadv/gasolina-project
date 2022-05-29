@@ -2,7 +2,6 @@ import {StyleSheet} from "react-native";
 
 const cssMapa = StyleSheet.create({
     container: {
-        flex: 0,
         position: 'relative',
     },
     map:{

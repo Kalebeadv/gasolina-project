@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Gasstation.hasMany(models.Fuel);
+      Gasstation.hasMany(models.Fuel)
     }
   }
   Gasstation.init({
     cnpj: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    address: DataTypes.STRING,
+    adress: DataTypes.STRING,
     latitude: DataTypes.STRING,
-    longitude: DataTypes.STRING,
+    longitude: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Gasstation',

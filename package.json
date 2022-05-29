@@ -14,6 +14,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "@expo/vector-icons": "^12.0.0",
     "@react-google-maps/api": "^2.7.0",
     "@react-native-async-storage/async-storage": "~1.15.0",
@@ -26,6 +27,7 @@
     "babel-plugin-macros": "^3.1.0",
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
+    "emailjs": "^4.0.0",
     "expo": "~44.0.0",
     "expo-application": "^4.0.2",
     "expo-asset": "~8.4.6",
@@ -45,6 +47,7 @@
     "lottie-ios": "^3.2.3",
     "lottie-react-native": "^5.0.1",
     "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.5",
     "nodemon": "^2.0.16",
     "package.json": "^2.0.1",
     "react": "17.0.1",
@@ -58,6 +61,7 @@
     "react-native-modalize": "^2.0.13",
     "react-native-navigation": "^7.26.0",
     "react-native-picker-select": "^8.0.4",
+    "react-native-restart": "^0.0.24",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-svg": "^12.3.0",

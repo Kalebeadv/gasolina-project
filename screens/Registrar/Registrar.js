@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import config from "../../config/config.json";
 import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, Alert, Dimensions } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from "./css"
 import Background from "../../assets/SvgImages/RegisterBackground.svg"
+
 
 export default function Registrar({ navigation }) {
   const [nome, setNome] = useState(null);
@@ -13,6 +13,25 @@ export default function Registrar({ navigation }) {
   const [password, setPassword] = useState(null);
   const [message, setMessage] = useState(null);
 
+  function registerUser() {
+    if (password == passwordConfirm){
+      let userc = {
+        nome : nome,
+        password : password,
+        email : email
+      }
+      console.log(userc);
+
+      
+      AsyncStorage.setItem('userConfig', JSON.stringify(userc));
+      navigation.navigate("CodigoVerificacao");
+    } else {
+      Alert.alert(
+        "Algo inesperado",
+        "As senhas estão diferentes"
+      );
+    }
+  }
 
   function fazLogin() {
     console.log("foi")
@@ -20,45 +39,6 @@ export default function Registrar({ navigation }) {
   }
   function login_com_o_google() {
     navigation.navigate('LoginComGoogle')
-  }
-
-  async function registerUser() {
-    var reqs = await fetch(config.urlRootNode + 'registrar', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        stNameUser: nome,
-        emailUser: email,
-        passwordUser: password,
-        passwordConfirmUser: passwordConfirm
-      })
-    });
-    let ress = await reqs.json();
-
-    if (ress == 'true') {
-      await AsyncStorage.setItem('email', email);
-      await AsyncStorage.setItem('pass', password);
-      navigation.navigate('Mapa');
-
-    } else if (ress == 'false') {
-      Alert.alert(
-        "Algo inesperado",
-        "Usuário já existe"
-      );
-    } else if (ress == 'Email Invalido') {
-      Alert.alert(
-        "Algo inesperado",
-        "Email Invalido"
-      );
-    } else if (ress == 'Senha Divergente') {
-      Alert.alert(
-        "Algo inesperado",
-        "As senhas estão diferentes"
-      );
-    }
   }
 
   return (
@@ -124,7 +104,7 @@ export default function Registrar({ navigation }) {
             <Text style={styles.btnRegistrar_texto}>REGISTRAR</Text>
           </TouchableOpacity>
 
-          
+
 
           <View style={styles.googleContainer}>
             <TouchableOpacity style={styles.btnGoogle} onPress={login_com_o_google}>
@@ -136,7 +116,7 @@ export default function Registrar({ navigation }) {
               <Text onPress={fazLogin} style={styles.nome_Login}>Entrar</Text>
             </View>
           </View>
-      </View>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

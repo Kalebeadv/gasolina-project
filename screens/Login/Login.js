@@ -40,7 +40,7 @@ export default function Login({ navigation }) {
       navigation.navigate("Home", { id: 0 });
     } else {
       Alert.alert(
-        "Algo inesperado",
+        "Ocorreu um erro",
         "Email ou Senha invalido"
       )
     }

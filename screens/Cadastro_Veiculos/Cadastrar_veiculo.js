@@ -4,6 +4,7 @@ import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, S
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FuelTypeButton from "../../src/components/FuelTypeButton";
+import VehicleTypeButton from "../../src/components/VehicleTypeButton";
 import { styles } from "./css"
 
 export default function CadastrarVeiculo({ navigation }) {
@@ -13,6 +14,7 @@ export default function CadastrarVeiculo({ navigation }) {
   const [combustivel, setCombustivel] = useState(null);
   const [ano, setAno] = useState(null);
   const [email, setEmail] = useState(null);
+  const [typeVehicle, setTypeVehicle] = useState(null)
 
   useEffect(() => {
     async function getUser() {
@@ -51,7 +53,8 @@ export default function CadastrarVeiculo({ navigation }) {
         consumoVeiculo: consumo,
         combustivelVeiculo: combustivel,
         anoVeiculo: ano,
-        emailUser: email
+        emailUser: email,
+        typeVeh: typeVehicle
       })
     });
 
@@ -76,7 +79,15 @@ export default function CadastrarVeiculo({ navigation }) {
         </Text>
       </View>
 
+
       <View style={styles.loginContainer}>
+        <View style={styles.inputIcon}>
+          <Icon name="tint" size={25} color="#757F7A" />
+          <VehicleTypeButton
+            funcao={setTypeVehicle}
+          />
+        </View>
+
         <View style={styles.inputIcon}>
           <Icon name="car" size={25} color="#757F7A" />
           <TextInput

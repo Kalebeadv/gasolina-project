@@ -3,7 +3,6 @@ import Colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         padding: 8,
         width: "100%"
     },
@@ -90,8 +89,16 @@ const styles = StyleSheet.create({
         color: "#107878",
         marginStart: "5%",
         fontSize: 25
-    }
-
+    },
+    container: {
+        flex: 1,
+      },
+      scrollView: {
+        flex: 1,
+        backgroundColor: 'pink',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
 });
 
 export { styles }

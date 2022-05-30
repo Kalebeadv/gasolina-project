@@ -22,34 +22,32 @@ $(document).on('click', '.update', function (e) {
 	var id = $(this).attr("data-id");
 	var cnpj = $(this).attr("data-cnpj");
 	var name = $(this).attr("data-name");
-	var address = $(this).attr("data-address");
 	var latitude = $(this).attr("data-latitude");
 	var longitude = $(this).attr("data-longitude");
 	$('#id_u').val(id);
 	$('#cnpj_u').val(cnpj);
 	$('#name_u').val(name);
-	$('#address_u').val(address);
 	$('#latitude_u').val(latitude);
 	$('#longitude_u').val(longitude);
 
 });
 //update
-$(document).on('click', '#update', function (e) {
+$(document).on('click','#update',function(e) {
 	var data = $("#update_form").serialize();
 	$.ajax({
 		data: data,
 		type: "post",
 		url: "backend/save.php",
-		success: function (dataResult) {
-			var dataResult = JSON.parse(dataResult);
-			if (dataResult.statusCode == 200) {
-				$('#editEmployeeModal').modal('hide');
-				alert('Data updated successfully !');
-				location.reload();
-			}
-			else if (dataResult.statusCode == 201) {
-				alert(dataResult);
-			}
+		success: function(dataResult){
+				var dataResult = JSON.parse(dataResult);
+				if(dataResult.statusCode==200){
+					$('#editEmployeeModal').modal('hide');
+					alert('Data updated successfully !'); 
+					location.reload();						
+				}
+				else if(dataResult.statusCode==201){
+				   alert(dataResult);
+				}
 		}
 	});
 });

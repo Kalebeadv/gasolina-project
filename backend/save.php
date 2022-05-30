@@ -5,11 +5,10 @@ if(count($_POST)>0){
 	if($_POST['type']==1){
 		$cnpj=$_POST['cnpj'];
 		$name=$_POST['name'];
-		$addres=$_POST['addres'];
 		$latitude=$_POST['latitude'];
 		$longitude=$_POST['longitude'];
-		$sql = "INSERT INTO `gasstations`(`cnpj`, `name`, `address`, `latitude`, `longitude`) 
-		VALUES ('$cnpj','$name','$addres','$latitude','$longitude')";
+		$sql = "INSERT INTO `gasstations`(`cnpj`, `name`, `latitude`, `longitude`) 
+		VALUES ('$cnpj','$name','$latitude','$longitude')";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
@@ -24,11 +23,10 @@ if(count($_POST)>0){
 		$id=$_POST['id'];
 		$cnpj=$_POST['cnpj'];
 		$name=$_POST['name'];
-		$addres=$_POST['addres'];
 		$latitude=$_POST['latitude'];
 		$longitude=$_POST['longitude'];
-		$sql = "UPDATE `gasstations` SET `id`='$id',`cnpj`='$cnpj',`name`='$name',`address`='$addres'
-				,`latitude`='$latitude',`longitude`='$longitude' WHERE 1";
+		$sql = "UPDATE `gasstations` SET `id`='$id',`cnpj`='$cnpj',`name`='$name'
+				,`latitude`='$latitude',`longitude`='$longitude' WHERE `id`='$id'";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 

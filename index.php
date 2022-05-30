@@ -44,7 +44,6 @@ include 'backend/database.php';
 						<th>ID</th>
                         <th>CNPJ</th>
                         <th>NAME</th>
-						<th>ADDRESS</th>
                         <th>LATITUDE</th>
                         <th>LONGITUDE</th>
                     </tr>
@@ -66,7 +65,6 @@ include 'backend/database.php';
 					<td><?php echo $i; ?></td>
 					<td><?php echo $row["cnpj"]; ?></td>
 					<td><?php echo $row["name"]; ?></td>
-					<td><?php echo $row["address"]; ?></td>
 					<td><?php echo $row["latitude"]; ?></td>
 					<td><?php echo $row["longitude"]; ?></td>
 					<td>
@@ -75,7 +73,6 @@ include 'backend/database.php';
 							data-id="<?php echo $row["id"]; ?>"
 							data-cnpj="<?php echo $row["cnpj"]; ?>"
 							data-name="<?php echo $row["name"]; ?>"
-							data-address="<?php echo $row["address"]; ?>"
 							data-longitude="<?php echo $row["longitude"]; ?>"
 							data-latitude="<?php echo $row["latitude"]; ?>"
 							title="Edit">&#xE254;</i>
@@ -110,10 +107,6 @@ include 'backend/database.php';
 						<div class="form-group">
 							<label>NAME</label>
 							<input type="text" id="name" name="name" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>ADDRESS</label>
-							<input type="text" id="addres" name="addres" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>LATITUDE</label>
@@ -151,10 +144,6 @@ include 'backend/database.php';
 						<div class="form-group">
 							<label>NAME</label>
 							<input type="text" id="name_u" name="name" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>ADDRESS</label>
-							<input type="text" id="address_u" name="adress" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>LATITUDE</label>

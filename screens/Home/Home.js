@@ -43,18 +43,7 @@ export default function Home({ route, navigation }) {
 	const [selectedId, setSelectedId] = useState(route.id);
 	const [combustivelEconomico, setCombustivelEconomico] = useState(null);
 	const [distanciaPosto, setDistanciaPosto] = useState(null)
-	const [refreshing, setRefreshing] = React.useState(false);
-	const wait = (timeout) => {
-		return new Promise(resolve => setTimeout(resolve, timeout));
-	  }
-	const onRefresh = React.useCallback(() => {
-		setRefreshing(true);
-		getFuel()
-		getPosto()
-		comparaDistancia()
-		wait(2000).then(() => setRefreshing(false));
-	}, []);
-
+	
 	useEffect(() => {
 		(async function () {
 			const { status } = await Location.requestForegroundPermissionsAsync();
@@ -79,8 +68,8 @@ export default function Home({ route, navigation }) {
 		getPosto()
 	}, [selectedId])
 
-	useEffect(() => {
-		comparaDistancia()
+	useEffect(async () => {
+		await comparaDistancia()
 	})
 
 	async function getPosto() {
@@ -161,9 +150,6 @@ export default function Home({ route, navigation }) {
 
 	return (
 		<View style={styles.container}>
-			<RefreshControl 
-			refreshing={refreshing}
-            onRefresh={onRefresh}/>
 			<Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />
 			<View>
 				<Text style={styles.gasolina}>Ga$olina</Text>
@@ -206,9 +192,7 @@ export default function Home({ route, navigation }) {
 						<Icon name="map-marker" size={30} color="#ffffff" />
 					</TouchableOpacity>
 
-					<TouchableOpacity
-						style={styles.btnScreans}
-						onPress={onRefresh}>
+					<TouchableOpacity style={styles.btnScreans}>
 						<Icon name="map-marker" size={25} color="#ffffff" />
 					</TouchableOpacity>
 				</View>

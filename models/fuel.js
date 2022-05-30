@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Fuel.init({
-    idGasstation: DataTypes.INTEGER,
+    gasstationID: DataTypes.INTEGER,
     type: DataTypes.STRING,
     price: DataTypes.FLOAT
   }, {

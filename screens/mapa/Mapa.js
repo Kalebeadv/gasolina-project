@@ -44,7 +44,12 @@ export default function Mapa({ route, navigation }) {
 	})
 	const [cars, setCars] = useState([]);
 	const [selectedId, setSelectedId] = useState(route.car);
+	const [reload, setReload] = useState(route.reload);
+	const wait = (timeout) => {
+		return new Promise(resolve => setTimeout(resolve, timeout));
+	  }
 
+	
 	async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
 			method: 'POST',
@@ -94,11 +99,10 @@ export default function Mapa({ route, navigation }) {
 		}
 		)(getCars());
 	}, []);
-
 	useEffect(() => {
-		getFuel()
-		getPosto()
-	}, [selectedId])
+		getPosto();
+	})
+
 
 	function buscar_icon()
 	{
@@ -109,6 +113,8 @@ export default function Mapa({ route, navigation }) {
   	function selecionaCarro(){ navigation.navigate("Carros") }
   	function Rank(){ navigation.navigate("Rank") }
   	function HomeA(){ navigation.navigate("Home", {id : selectedId}) }
+	
+	  
 
 	return (
 		<View style={cssMapa.container}>

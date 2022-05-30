@@ -16,7 +16,10 @@ import Background from "../../assets/SvgImages/cars_rank.svg"
 
 export default function Rank({ navigation }) {
   const [posto, setPostos] = useState([]);
-  const [DATA, setFuel] = useState([])
+  const [DATA, setFuel] = useState([]);
+  const wait = (timeout) => {
+		return new Promise(resolve => setTimeout(resolve, timeout));
+	  }
 
   async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
@@ -27,12 +30,11 @@ export default function Rank({ navigation }) {
 			},
 		});
 		let ress = await reqs.json();
-    console.log(ress)
 		setPostos(ress);
 	}
 
 	async function getFuel() {
-		var reqs = await fetch(urlRootNode + 'fuel', {
+		var reqs = await fetch(urlRootNode + 'rankFuel', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -40,29 +42,41 @@ export default function Rank({ navigation }) {
 			},
 		});
 		let ress = await reqs.json();
-    console.log(ress)
 		setFuel(ress);
 	}
 
-  useEffect(() => {
-    getFuel()
-    getPosto()
+  function atualizaFuel(){
     for (let i = 0; i < DATA.length; i++){
-      
+      for (let j = 0; j < posto.length; j++){
+        if (DATA[i].gasstationID == posto[j].id){
+          console.log(posto[j].name)
+          DATA[i]['gasstation'] = posto[j].name
+        }
+      }
     }
-  },[])
+  }
+
+  useEffect(async () => {
+    getPosto();
+    getFuel();
+    atualizaFuel();
+  }, [])
+
+  function reloadPage(){
+    getPosto();
+    getFuel();
+    setInterval(function(){
+      atualizaFuel();
+    }, 2000);
+  }
 
   const Item = ({ fuel, onPress }) => (
     <TouchableOpacity onPress={onPress} style={[styles.item2]}>
-      <Text style={[styles.item]}>{ fuel.idGasstation + "\n"+ fuel.type  + "\nR$ " + fuel.valor +""}</Text>
+      <Text style={[styles.item]}>{ fuel.gasstation + "\n"+ fuel.type  + "\nR$ " + fuel.price +""}</Text>
     </TouchableOpacity>
   );
-  const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#FF8A76" : "#757F7A";
-    const color = item.id === selectedId ? "white" : "white";
-    const centralizacao =  "center"
     return (
       <Item
         fuel ={item}
@@ -86,16 +100,15 @@ export default function Rank({ navigation }) {
           <FlatList
               data={DATA}
               style={styles.item2}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              extraData={selectedId}
+              renderItem={renderItem}             
+              extraData={posto}
           />
         }
 
       <View style={styles.btnViewContainer}>
         <TouchableOpacity 
           style={styles.btnScreans}
-          onPress={Rank}>
+          onPress={reloadPage}>
             <Icon name="rotate-right" size={25} color="#ffffff" />
           </TouchableOpacity>
 

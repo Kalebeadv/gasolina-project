@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const model = require('./models');
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 
 
 
@@ -55,7 +55,7 @@ app.post('/cadastrarVeiculo', async (req, res) => {
         'consumo': req.body.consumoVeiculo,
         'typefuel': req.body.combustivelVeiculo,
         'year': req.body.anoVeiculo,
-        'idUser': id,
+        'userID': id,
         'typeVehicle': req.body.typeVehicle,
         'createdAt': new Date(),
         'updatedAt': new Date()
@@ -70,6 +70,15 @@ app.post('/station', async (req, res) => {
 
 app.post("/fuel", async (req, res) => {
     let objFuel = await model.Fuel.findAll({});
+    res.send(JSON.stringify(objFuel));
+
+});
+
+app.post("/rankFuel", async (req, res) => {
+    let objFuel = await model.Fuel.findAll({
+        order: [['price', 'ASC']],
+        limit: 5
+    });
     res.send(JSON.stringify(objFuel));
 
 });
@@ -89,7 +98,7 @@ app.post('/carros', async (req, res) => {
 
     let objetoCarros = await model.Vehicle.findAll({
         where: {
-            idUser: id
+            userID: id
         }
     })
     res.send(JSON.stringify(objetoCarros))
@@ -109,14 +118,14 @@ app.post('/excluiCarros', async (req, res) => {
 
     b = model.Vehicle.destroy({
         where: {
-            idUser: id,
+            userID: id,
             id: req.body.carId
         }
     });
 
     let objetoCarros = await model.Vehicle.findAll({
         where: {
-            idUser: id
+            userID: id
         }
     })
     res.send(JSON.stringify(objetoCarros))

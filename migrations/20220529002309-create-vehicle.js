@@ -26,7 +26,7 @@ module.exports = {
       typeVehicle:{
         type: Sequelize.STRING
       },
-      idUser: {
+      userID: {
         type: Sequelize.INTEGER,
         references:{
           model:'users',

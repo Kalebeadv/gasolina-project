@@ -53,7 +53,7 @@ export default function Carros({ route, navigation }) {
         async function getCars() {
             let userEmail = await AsyncStorage.getItem("email")
             let carros = await AsyncStorage.getItem("CarrosUser");
-            let id = await AsyncStorage.getItem("VeiculoSelecionado")
+            let id = await JSON.parse(AsyncStorage.getItem("VeiculoSelecionado"))
             if (typeof(carros) != "string") {
                 let reqs = await fetch(config.urlRootNode + 'carros', {
                     method: 'POST',

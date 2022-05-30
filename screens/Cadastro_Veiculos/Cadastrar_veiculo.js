@@ -25,7 +25,6 @@ export default function CadastrarVeiculo({ navigation }) {
   }, []);
 
   async function getVeiculos() {
-    let userEmail = await AsyncStorage.getItem("email")
     let reqs = await fetch(config.urlRootNode + 'carros', {
       method: 'POST',
       headers: {
@@ -33,7 +32,7 @@ export default function CadastrarVeiculo({ navigation }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: userEmail
+        email: email
       })
     })
     let ress = await reqs.json();
@@ -66,7 +65,7 @@ export default function CadastrarVeiculo({ navigation }) {
         "O cadastro do veiculo foi concluido com sucesso"
       )
       getVeiculos()
-      navigation.navigate('Mapa')
+      navigation.navigate('Mapa', {reload : "true"})
     }
 
 

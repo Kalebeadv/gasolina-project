@@ -33,27 +33,47 @@ const cssMapa = StyleSheet.create({
         alignContent:'center',
         alignItems: 'center',
     },
+	fazRotaContainer:{
+        flexDirection: 'row',
+        justifyContent:"center",
+        
+        zIndex: 9,
+        width: '100%'
+    },
+    fazRota: {
+        justifyContent:"center",
+        alignContent: 'center',
+        alignItems: 'center',
+        backgroundColor: "#fff",
+        width: 70,
+        height: 70,
+        borderRadius: 100,
+        paddingRight: 2,
+        marginLeft: '75%',
+        marginBottom: '5%',
+    },
     btnViewContainer: {
-		width: "90%",
+		width: "100%",
 		height:"10%",
-		backgroundColor: "#ffffff",
+		backgroundColor: "#fff",
 		flexDirection: "row",
-		borderRadius: 12,
 		justifyContent: "center",
 		alignItems: "center",
-		bottom: '8%',
 		zIndex: 9
-	},
+	  },
 	btnScreans: {
 		justifyContent: "center",
 		alignItems:"center",
 		width: "16%",
 		height: "70%",
 		marginBottom: "5%",
-		backgroundColor: "#107878",
 		borderRadius: 12,
-		marginHorizontal:"10%",
-		top:"2.5%"
+		marginHorizontal:"5%",
+		top:"2.5%",
+		
+	 },
+	textoIcones: {
+		color: "#107878",
 	},
     textoRota:{
         fontSize: 20,

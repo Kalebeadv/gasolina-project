@@ -25,22 +25,24 @@ const styles = StyleSheet.create({
         color: '#107878',
         marginTop: '50%' // mudar apenas aqui para emplementar o select dos carros
     },
-    cadastraEExclui:{
+    cadastraVeiculoContainer:{
         flexDirection: 'row',
         justifyContent:"center",
-        top: '150%',
-        zIndex: 9
+        top: '160%',
+        zIndex: 9,
+        width: '100%'
     },
     cadastroVeiculos: {
         justifyContent:"center",
-        backgroundColor: '#757F7A',
-        height: 40,
-        marginBottom: "5%",
-        backgroundColor: "#107878",
-        borderRadius: 12,
-        marginHorizontal:"10%",
-        top:"2.5%",
-        flexDirection: 'row',
+        alignContent: 'center',
+        alignItems: 'center',
+        backgroundColor: "#fff",
+        width: 70,
+        height: 70,
+        borderRadius: 100,
+        paddingRight: 5,
+        marginLeft: '75%',
+        marginBottom: '5%'
     },
     nome_rota: {
         textAlign: 'center',
@@ -48,26 +50,27 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     btnViewContainer: {
-		width: "90%",
-		height:"10%",
-		backgroundColor: "#ffffff",
-		flexDirection: "row",
-		borderRadius: 12,
-		justifyContent: "center",
-		alignItems: "center",
-		bottom: '8%',
-		zIndex: 9
-	},
-	btnScreans: {
-		justifyContent: "center",
-		alignItems:"center",
-		width: "16%",
-		height: "70%",
-		backgroundColor: "#107878",
-		borderRadius: 12,
-		marginHorizontal:"10%",
-        flexDirection:"row",
-	},
+        width: "100%",
+        height:"10%",
+        backgroundColor: "#fff",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 9
+    },
+    btnScreans: {
+        justifyContent: "center",
+        alignItems:"center",
+        width: "16%",
+        height: "70%",
+        marginBottom: "5%",
+        borderRadius: 12,
+        marginHorizontal:"5%",
+        top:"2.5%",
+    },
+    textoIcones: {
+        color: "#107878",
+    },
     item: {
         width: "100%",
         padding: 20,

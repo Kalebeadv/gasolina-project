@@ -109,12 +109,11 @@ export default function Mapa({ route, navigation }) {
 		return <Icon name="trophy" size={25} color="#FF8A76"/>
 	}
 
-	function go_to_mapa(){ navigation.navigate("Mapa") }
   	function selecionaCarro(){ navigation.navigate("Carros") }
   	function Rank(){ navigation.navigate("Rank") }
-  	function HomeA(){ navigation.navigate("Home", {id : selectedId}) }
-	
-	  
+
+	function Home(){ navigation.navigate("Home")}
+	function Mapa(){ navigation.navigate("Mapa")}
 
 	return (
 		<View style={cssMapa.container}>
@@ -148,7 +147,7 @@ export default function Mapa({ route, navigation }) {
 					}}
 					styles={{
 						container: {
-							width: "90%",
+							width: "95%",
 							zIndex: 1,
 							marginTop: '15%',
 						},
@@ -165,25 +164,40 @@ export default function Mapa({ route, navigation }) {
 						
 					}}
 				/>
-		
-	
+				
+				<View style={cssMapa.fazRotaContainer}>
+                	<TouchableOpacity style={cssMapa.fazRota}>
+                	    <Icon name="dollar" size={40} color="#107878" />
+                	</TouchableOpacity>
+           	 	</View>
+
 				<View style={cssMapa.btnViewContainer}>
         			<TouchableOpacity 
-        			  	style={cssMapa.btnScreans}
-        			  	onPress={Rank}>
-        			    <Icon name="line-chart" size={25} color="#ffffff" />
+        			style={cssMapa.btnScreans}
+        			onPress={Rank}>
+        			    <Icon name="line-chart" size={25} color="#107878" />
+						<Text style={cssMapa.textoIcones}>Ranking</Text>
+        			</TouchableOpacity>
+
+					<TouchableOpacity 
+					style={cssMapa.btnScreans}
+          			onPress={Home}>
+            			<Icon name="home" size={30} color="#107878" />
+            			<Text style={cssMapa.textoIcones}>Inicio</Text>
+          			</TouchableOpacity>
+
+        			<TouchableOpacity 
+        			style={cssMapa.btnScreans}
+        			onPress={Mapa}>
+        			    <Icon name="map-marker" size={30} color="#107878" />
+						<Text style={cssMapa.textoIcones}>Mapa</Text>
         			</TouchableOpacity>
 
         			<TouchableOpacity 
-        			  	style={cssMapa.btnScreans}
-        			  	onPress={HomeA}>
-        			    <Icon name="home" size={30} color="#ffffff" />
-        			</TouchableOpacity>
-
-        			<TouchableOpacity 
-        				style={cssMapa.btnScreans}
-        			  	onPress={selecionaCarro}>
-        				<Icon name="car" size={25} color="#ffffff" />
+        			style={cssMapa.btnScreans}
+        			onPress={selecionaCarro}>
+        				<Icon name="car" size={25} color="#107878" />
+						<Text style={cssMapa.textoIcones}>Carros</Text>
         			</TouchableOpacity>
       			</View>
 			</View>

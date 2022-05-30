@@ -89,10 +89,10 @@ export default function Carros({ route, navigation }) {
     }
 
     // funcoes do navigation 
-    function go_to_mapa(){ navigation.navigate("Mapa") }
-    function CadastraCarro(){ navigation.navigate("CadastroVeiculo") }
     function Rank(){ navigation.navigate("Rank") }
+    function Home(){ navigation.navigate("Home")}
     function Mapa(){ navigation.navigate("Mapa") }
+    function selecionaCarro(){ navigation.navigate("Carros") }
 
     //--------------------------------------------------
 
@@ -113,15 +113,10 @@ export default function Carros({ route, navigation }) {
 
             {//-------------------------------- BOTOES DA INTERFACE -------------------------
             }
-            <View style={styles.cadastraEExclui}>
+      
+            <View style={styles.cadastraVeiculoContainer}>
                 <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("CadastroVeiculo")}>
-                    <Icon name="car" style={styles.icone} size={20} color="#ffffff" />
-                    <Icon name="plus" style={styles.icone} size={20} color="#ffffff" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.cadastroVeiculos} onPress={() => navigation.navigate("ExcluiCarros")}>
-                    <Icon name="car" style={styles.icone} size={20} color="#ffffff" />
-                    <Icon name="minus" style={styles.icone} size={20} color="#ffffff" />
+                    <Icon name="plus" style={styles.icone} size={40} color="#107878" />
                 </TouchableOpacity>
             </View>
 
@@ -129,24 +124,34 @@ export default function Carros({ route, navigation }) {
                 <TouchableOpacity 
                     style={styles.btnScreans}
                     onPress={Rank}>
-                      <Icon name="line-chart" size={25} color="#ffffff" />
+                      <Icon name="line-chart" size={25} color="#107878" />
+                      <Text style={styles.textoIcones}>Ranking</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                style={styles.btnScreans}
+                onPress={Home}>
+                    <Icon name="home" size={30} color="#107878" />
+                    <Text style={styles.textoIcones}>Inicio</Text>
                 </TouchableOpacity>
         
                 <TouchableOpacity 
                     style={styles.btnScreans}
                     onPress={Mapa}>
-                      <Icon name="map-marker" size={30} color="#ffffff" />
+                      <Icon name="map-marker" size={30} color="#107878" />
+                      <Text style={styles.textoIcones}>Mapa</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity 
                     style={styles.btnScreans}
-                    onPress={CadastraCarro}>
-                      <Icon name="car" size={20} color="#ffffff" />
-                      <Icon name="plus" style={styles.icone} size={18} color="#ffffff" />
+                    onPress={selecionaCarro}>
+                      <Icon name="car" size={25} color="#107878" />
+                      <Text style={styles.textoIcones}>Carros</Text>
                 </TouchableOpacity>
+                
              </View>
             
-            <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />
+            <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height} />
         </View>
     )
 }

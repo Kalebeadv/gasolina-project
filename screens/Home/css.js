@@ -3,8 +3,7 @@ import Colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
     container: {
-        padding: 8,
-        width: "100%"
+        flex: 1,
     },
     melhorContainer: {
         justifyContent: "center",
@@ -12,16 +11,25 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         borderRadius: 10,
         width: "90%",
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+        elevation: 24,
     },
     gasolina: {
         top: "90%",
-        fontSize: 40,
+        fontSize: 45,
         fontStyle: "italic",
-        color: "#ffffff"
+        color: "#ffffff",
+        marginLeft: 15
     },
     image: {
         fontSize: 50,
-        marginBottom: "10%"
+        marginBottom: "10%",
     },
     btnRoute: {
         justifyContent: "center",
@@ -40,34 +48,44 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         height: 50,
         marginBottom: "5%",
-        flexDirection: "row"
+        flexDirection: "row",
     },
     carsContainer: {
         width: "90%",
         marginHorizontal: "auto",
         marginVertical: "auto",
-        top: "10%"
+        top: "10%",
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+        elevation: 24,
     },
-    screansContainer: {
-        width: "90%",
-        height:"15%",
-        top: "20%",
-        backgroundColor: "#ffffff",
+    btnViewContainer: {
+        width: "100%",
+        height:"18%",
+        backgroundColor: "#fff",
         flexDirection: "row",
-        borderRadius: 12,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        zIndex: 9,
+        top: "27%",
     },
     btnScreans: {
         justifyContent: "center",
-        alignItems: "center",
+        alignItems:"center",
         width: "16%",
         height: "70%",
         marginBottom: "5%",
-        backgroundColor: "#107878",
         borderRadius: 12,
-        marginHorizontal: "10%",
-        top: "2.5%"
+        marginHorizontal:"5%",
+        top:"2.5%",
+    },
+    textoIcones: {
+       color: "#107878",
     },
     svgBack: {
         position: "absolute",
@@ -92,13 +110,13 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-      },
-      scrollView: {
+    },
+    scrollView: {
         flex: 1,
         backgroundColor: 'pink',
         alignItems: 'center',
         justifyContent: 'center',
-      },
+    },
 });
 
 export { styles }

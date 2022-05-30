@@ -45,6 +45,7 @@ include 'backend/database.php';
 						</th>
 						<th>ID</th>
 						<th>IDGASSTATION</th>
+						<th>IDGASSTATION</th>
 						<th>TYPE</th>
 						<th>VALUE</th>
 					</tr>
@@ -52,7 +53,7 @@ include 'backend/database.php';
 				<tbody>
 
 					<?php
-					$result = mysqli_query($conn, "SELECT * FROM `fuel` WHERE 1");
+					$result = mysqli_query($conn, "SELECT `id`,`idGasstation`,`type`,`valor` FROM `fuel` WHERE 1");
 					$i = 1;
 					while ($row = mysqli_fetch_array($result)) {
 					?>

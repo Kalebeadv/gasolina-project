@@ -76,12 +76,12 @@ body {
 
 .lefter {
   transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
-  background-image: url(https://cdn0.iconfinder.com/data/icons/energy-free/32/Energy_Energy_Oil_Water_Drop_Fuel-512.png);
+  background-image: url(img/fuel.png);
 }
 
 .left {
   transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
-  background-image: url(https://cdn0.iconfinder.com/data/icons/energy-free/32/Energy_Energy_Oil_Water_Drop_Fuel-512.png);
+  background-image: url(img/fuel.png);
 }
 
 .center {
@@ -91,7 +91,7 @@ body {
 
 .right {
   transform: translateX(30px) translateZ(-25px) rotateY(5deg);
-  background-image: url(https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_fuel-512.png);
+  background-image: url(img/gasstation.png);
 }
 
 .righter {

@@ -7,6 +7,7 @@ $(document).on('click', '#btn-add', function (e) {
 		url: "backend/save.php",
 		success: function (dataResult) {
 			var dataResult = JSON.parse(dataResult);
+			console.log(statusCode)
 			if (dataResult.statusCode == 200) {
 				$('#addEmployeeModal').modal('hide');
 				alert('Data added successfully !');
@@ -20,13 +21,13 @@ $(document).on('click', '#btn-add', function (e) {
 });
 $(document).on('click', '.update', function (e) {
 	var id = $(this).attr("data-id");
-	var idGasstation = $(this).attr("data-idGasstation");
-	var type = $(this).attr("data-type");
-	var valor = $(this).attr("data-valor");
+	var gasstationid = $(this).attr("data-gasstationid");
+	var tyype = $(this).attr("data-tyype");
+	var price = $(this).attr("data-price");
 	$('#id_u').val(id);
-	$('#idGasstation_u').val(idGasstation);
-	$('#type_u').val(type);
-	$('#valor_u').val(valor);
+	$('#gasstationid_u').val(gasstationid);
+	$('#tyype_u').val(tyype);
+	$('#price_u').val(price);
 	
 
 });

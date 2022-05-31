@@ -3,12 +3,11 @@ include 'database.php';
 
 if(count($_POST)>0){
 	if($_POST['type']==1){
-		$idGasstation=$_POST['idGasstation'];
-		$type=$_POST['type'];
-		$valor=$_POST['	valor'];
+		$gasstationid=$_POST['gasstationid'];
+		$tyype=$_POST['tyype'];
+		$price=$_POST['	price'];
 		
-		$sql = "INSERT INTO `fuel`(`idGasstation`, `type`, `valor`) 
-		VALUES ('$idGasstation','$type','$valor')";
+		$sql = "INSERT INTO `fuel`(`gasstationid`, `tyype`, `price`) VALUES ('$gasstationid','$tyype','$price') ";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
@@ -21,12 +20,12 @@ if(count($_POST)>0){
 if(count($_POST)>0){
 	if($_POST['type']==2){
 		$id=$_POST['id'];
-		$idGasstation=$_POST['idGasstation'];
-		$type=$_POST['type'];
-		$valor=$_POST['	valor'];
+		$gasstationid=$_POST['gasstationid'];
+		$tyype=$_POST['tyype'];
+		$price=$_POST['price'];
 
-		$sql = "UPDATE `fuel` SET `id`='$id',`idGasstation`='$idGasstation',`type`='$type'
-				,`valor`='$valor' WHERE `id`='$id'";
+		$sql = "UPDATE `fuel` SET `gasstationid`='$gasstationid',`tyype`='$tyype'
+				,`price`='$price' WHERE `id`='$id'";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
@@ -39,7 +38,7 @@ if(count($_POST)>0){
 if(count($_POST)>0){
 	if($_POST['type']==3){
 		$id=$_POST['id'];
-		$sql = "DELETE FROM `gasstations` WHERE id=$id ";
+		$sql = "DELETE FROM `fuel` WHERE id=$id ";
 		if (mysqli_query($conn, $sql)) {
 			echo $id;
 		} 
@@ -52,7 +51,7 @@ if(count($_POST)>0){
 if(count($_POST)>0){
 	if($_POST['type']==4){
 		$id=$_POST['id'];
-		$sql = "DELETE FROM gasstations WHERE id in ($id)";
+		$sql = "DELETE FROM `fuel` WHERE id in ($id)";
 		if (mysqli_query($conn, $sql)) {
 			echo $id;
 		} 

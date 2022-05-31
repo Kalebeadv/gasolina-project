@@ -39,8 +39,8 @@ export default function Home({ route, navigation }) {
 	const [fuel, setFuel] = useState([])
 	const [postos, setPostos] = useState([])
 	const [postoMaisEconomico, setPostoMaisEconomico] = useState([]);
-	const [cars, setCars] = useState([]);
-	const [selectedId, setSelectedId] = useState(route.id);
+	const [car, setCar] = useState([]);
+	const [selectedId, setSelectedId] = useState(null);
 	const [combustivelEconomico, setCombustivelEconomico] = useState(null);
 	const [distanciaPosto, setDistanciaPosto] = useState(null)
 	
@@ -66,7 +66,7 @@ export default function Home({ route, navigation }) {
 	useEffect(() => {
 		getFuel()
 		getPosto()
-	}, [selectedId])
+	}, [])
 
 	useEffect(async () => {
 		await comparaDistancia()
@@ -99,13 +99,16 @@ export default function Home({ route, navigation }) {
 	async function getCars() {
 		let carros = await AsyncStorage.getItem("CarrosUser");
 		let id = await AsyncStorage.getItem("VeiculoSelecionado")
-		setCars(JSON.parse(carros))
-		setSelectedId(JSON.parse(id))
-		console.log(id)
+		carros = JSON.parse(carros)
+		for (let i = 0; i < carros.length; i++){
+			if (carros[i].id == id){
+				setCar(carros[i])
+				console.log(carros[i])
+			}
+		}
 	}
 
 	async function comparaDistancia() {
-		let selecionado = selectedId;
 		let calc;
 		let menor = 0;
 		let econ;
@@ -175,7 +178,7 @@ export default function Home({ route, navigation }) {
 						style={styles.btnCar}
 						onPress={selecionaCarro}>
 						<Icon name="car" size={30} color="#107878" />
-						<Text style={styles.btnCar_text}>{selectedId && selectedId.brand + " " + selectedId.model}</Text>
+						<Text style={styles.btnCar_text}>{car && car.brand + " " + car.model}</Text>
 					</TouchableOpacity>
 				</View>
 

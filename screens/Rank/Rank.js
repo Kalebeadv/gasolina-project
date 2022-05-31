@@ -13,13 +13,18 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { urlRootNode } from "../../config/config.json";
 import { styles } from "./css"
 import Background from "../../assets/SvgImages/cars_rank.svg"
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import FuelTypeRank from "../../src/components/FuelTypeRank";
 
 export default function Rank({ navigation }) {
   const [posto, setPostos] = useState([]);
   const [DATA, setFuel] = useState([]);
-  const wait = (timeout) => {
-		return new Promise(resolve => setTimeout(resolve, timeout));
-	  }
+  const [selectFuel, setSelectFuel] = useState("gasolina")
+
+  function atualizaFuel(fuel){
+    
+    return fuel;
+  }
 
   async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
@@ -40,47 +45,46 @@ export default function Rank({ navigation }) {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 			},
+      body: JSON.stringify({
+        combus: selectFuel
+      }),
 		});
 		let ress = await reqs.json();
-		setFuel(ress);
-	}
-
-  function atualizaFuel(){
-    for (let i = 0; i < DATA.length; i++){
+    for (let i = 0; i < ress.length; i++){
       for (let j = 0; j < posto.length; j++){
-        if (DATA[i].gasstationID == posto[j].id){
-          console.log(posto[j].name)
-          DATA[i]['gasstation'] = posto[j].name
+        if (ress[i].gasstationID == posto[j].id){
+          ress[i]['gasstation'] = posto[j].name
         }
       }
     }
-  }
+
+		setFuel(ress);
+	}
+  
+
 
   useEffect(async () => {
-    getPosto();
+    await getPosto();
     getFuel();
-    atualizaFuel();
-  }, [])
+  }, [selectFuel])
 
-  function reloadPage(){
-    getPosto();
+
+  async function reloadPage(){
+    await getPosto();
     getFuel();
-    setInterval(function(){
-      atualizaFuel();
-    }, 2000);
   }
 
-  const Item = ({ fuel, onPress }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.item2]}>
-      <Text style={[styles.item]}>{ fuel.gasstation + "\n"+ fuel.type  + "\nR$ " + fuel.price +""}</Text>
-
-    </TouchableOpacity>
+  const Item = ({ item  }) => (
+    <View style={[styles.item2]}>
+      <Text style={[styles.item]}>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
+    </View>
   );
 
   const renderItem = ({ item }) => {
+    console.log(item)
     return (
       <Item
-        fuel={item}
+        item={item}
         onPress={() => setSelectedId(item.id)}
         style={styles.item}
       />
@@ -102,13 +106,14 @@ export default function Rank({ navigation }) {
           style={styles.item2}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
-          extraData={posto}
         />
       }
 
       <View>
         <TouchableOpacity style={styles.atualizarLista}>
-          <Icon name="rotate-right" size={30} color="#107878" />
+          <FuelTypeRank
+            funcao={setSelectFuel}
+          />
         </TouchableOpacity>
       </View>
 

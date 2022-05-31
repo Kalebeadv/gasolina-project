@@ -53,10 +53,10 @@ app.post('/cadastrarVeiculo', async (req, res) => {
         'model': req.body.modeloVeiculo,
         'brand': req.body.marcaVeiculo,
         'consumo': req.body.consumoVeiculo,
-        'typefuel': req.body.combustivelVeiculo,
+        'typeFuel': req.body.combustivelVeiculo,
         'year': req.body.anoVeiculo,
         'userID': id,
-        'typeVehicle': req.body.typeVehicle,
+        'typeVehicle': req.body.typeVeh,
         'createdAt': new Date(),
         'updatedAt': new Date()
     })
@@ -75,7 +75,11 @@ app.post("/fuel", async (req, res) => {
 });
 
 app.post("/rankFuel", async (req, res) => {
+    
     let objFuel = await model.Fuel.findAll({
+        where:{
+            type: req.body.combus
+        },
         order: [['price', 'ASC']],
         limit: 5
     });

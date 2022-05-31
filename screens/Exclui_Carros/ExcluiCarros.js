@@ -4,36 +4,25 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import config from "../../config/config.json"
 import { styles } from "./css"
+import FuelTypeButton from "../../src/components/FuelTypeButton";
+import VehicleTypeButton from "../../src/components/VehicleTypeButton";
 
 
-export default function Carros({ navigation }) {
+export default function Carros({ route, navigation }) {
 
-    const [DATA, setCars] = useState([]);
-    const [userEmail, setUserEmail] = useState(null)
+    const [modelo, setModelo] = useState(null);
+    const [marca, setMarca] = useState(null);
+    const [consumo, setConsumo] = useState(null);
+    const [combustivel, setCombustivel] = useState(null);
+    const [ano, setAno] = useState(null);
+    const [typeVehicle, setTypeVehicle] = useState(null)
 
-    const Item = ({ item, onPress, backgroundColor, textColor }) => (
-        <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-            <Text style={[styles.title, textColor]}>{item.brand +" "+ item.model + "\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typefuel}</Text>
-        </TouchableOpacity>
-    );
+    const [carros, setCars] = useState([]);
+    const [car, setCar] = useState([]);
+    const [userEmail, setUserEmail] = useState(null);
     const [selectedId, setSelectedId] = useState(null);
 
-    const renderItem = ({ item }) => {
-        const backgroundColor = item.id == selectedId ? "#107878" : "#23cdcd";
-        const color = item.id == selectedId ? 'white' : 'black';
-
-
-        return (
-            <Item
-                item={item}
-                onPress={() => setSelectedId(item.id)}
-                backgroundColor={{ backgroundColor }}
-                textColor={{ color }}
-            />
-        );
-    };
-        
-    async function exclui(){
+    async function exclui() {
         let reqs = await fetch(config.urlRootNode + 'excluiCarros', {
             method: 'POST',
             headers: {
@@ -42,7 +31,7 @@ export default function Carros({ navigation }) {
             },
             body: JSON.stringify({
                 email: userEmail,
-                carId: selectedId
+                carId: route.carid
             })
         })
         let ress = await reqs.json();
@@ -55,43 +44,118 @@ export default function Carros({ navigation }) {
     useEffect(() => {
         async function getCars() {
             let userEm = await AsyncStorage.getItem("email");
-            let carros = await AsyncStorage.getItem("CarrosUser");
-            let id = await AsyncStorage.getItem("VeiculoSelecionado");
-            setCars(JSON.parse(carros))
-            setSelectedId(id)
-            setUserEmail(userEm)
+            let carro = await AsyncStorage.getItem("CarrosUser");
+            
+            
+            setCars(JSON.parse(carro));
+            setUserEmail(userEm);
         }
         getCars();
-    }, []);
+    }, [selectedId]);
+
+    useEffect(async () => {
+        let id = await AsyncStorage.getItem("editVeiculo");
+        let carro;
+        console.log(carros + " ===== " + id);
+        for (let i = 0; i < carros.length; i++ ){
+            if (carros[i].id == id){
+                carro = carros[i]
+            }
+        }
+        console.log(carro)
+        setSelectedId(id);
+        setCar(carro);
+    }, [carros])
+
     //------------------------- Navigate ---------------
     function Mapa() {
-        AsyncStorage.setItem("VeiculoSelecionado", String(selectedId));
-        navigation.navigate('Mapa', {id : 0});
+        AsyncStorage.setItem("VeiculoSelecionado", JSON.stringify(carros));
+        navigation.navigate('Mapa', { id: 0 });
     }
 
     //--------------------------------------------------
 
     return (
-        <View style={styles.container}>
-            {DATA != [] &&
-                <FlatList
-                    data={DATA}
-                    style={styles.item}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
-                    extraData={selectedId}
-                />
-            }
-
-
-            {//-------------------------------- BOTOES DA INTERFACE -------------------------
-            }
-            <View style={styles.cadastraEExclui}>
-            <TouchableOpacity style={styles.excluiVeiculo} onPress={exclui}>
-                <Icon name="trash" style={styles.icone} size={25} color="#fff" />
-                <Icon name="minus" style={styles.icone} size={25} color="#fff" />
-            </TouchableOpacity>
+        <KeyboardAvoidingView style={styles.container}>
+            <View style={styles.textoInicioContainer}>
+                <Text style={styles.textoInicio}>
+                    Editar Veículo
+                </Text>
             </View>
-        </View>
+
+            
+            {car && <View style={styles.loginContainer}>
+                <View style={styles.inputIcon}>
+                    <Icon name="tint" size={25} color="#757F7A" />
+                    <VehicleTypeButton
+                        funcao={setTypeVehicle}
+                    />
+                </View>
+
+                <View style={styles.inputIcon}>
+                    <Icon name="car" size={25} color="#757F7A" />
+                    <TextInput
+                        style={styles.inputs}
+                        defaultValue={car.model}
+                        placeholderTextColor={'#757F7A'}
+                        autoCorrect={false}
+                        onChangeText={(text) => setModelo(text)}
+                    />
+                </View>
+
+                <View style={styles.inputIcon}>
+                    <Icon name="star" size={25} color="#757F7A" />
+                    <TextInput
+                        style={styles.inputs}
+                        defaultValue={car.brand}
+                        placeholderTextColor={'#757F7A'}
+                        autoCorrect={false}
+                        onChangeText={(text) => setMarca(text)}
+                    />
+                </View>
+
+                <View style={styles.inputIcon}>
+                    <Icon name="road" size={25} color="#757F7A" />
+                    <TextInput
+                        style={styles.inputs}
+                        defaultValue={String(car.consumo)}
+                        placeholderTextColor={'#757F7A'}
+                        keyboardType="numeric"
+                        autoCorrect={false}
+                        onChangeText={(text) => setConsumo(text)}
+                    />
+                </View>
+
+                <View style={styles.inputIcon}>
+                    <Icon name="tint" size={25} color="#757F7A" />
+                    <FuelTypeButton
+                        funcao={setCombustivel}
+                    />
+                </View>
+
+                <View style={styles.inputIcon}>
+                    <Icon name="calendar" size={25} color="#757F7A" />
+                    <TextInput
+                        style={styles.inputs}
+                        defaultValue={String(car.year)}
+                        placeholderTextColor={'#757F7A'}
+                        autoCorrect={false}
+                        keyboardType="numeric"
+                        onChangeText={(text) => setAno(text)}
+                    />
+                </View>
+            </View>}
+
+            <View style={styles.loginContainer}>
+                {//-------------------------------- BOTOES DA INTERFACE -------------------------
+                }
+                <View style={styles.cadastraEExclui}>
+                    <TouchableOpacity style={styles.excluiVeiculo} onPress={exclui}>
+                        <Icon name="trash" style={styles.icone} size={25} color="#fff" />
+                        <Icon name="minus" style={styles.icone} size={25} color="#fff" />
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </KeyboardAvoidingView>
     )
 }

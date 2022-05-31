@@ -45,9 +45,6 @@ export default function Mapa({ route, navigation }) {
 	const [cars, setCars] = useState([]);
 	const [selectedId, setSelectedId] = useState(route.car);
 	const [reload, setReload] = useState(route.reload);
-	const wait = (timeout) => {
-		return new Promise(resolve => setTimeout(resolve, timeout));
-	  }
 
 	
 	async function getPosto() {
@@ -99,6 +96,7 @@ export default function Mapa({ route, navigation }) {
 		}
 		)(getCars());
 	}, []);
+	
 	useEffect(() => {
 		getPosto();
 	})

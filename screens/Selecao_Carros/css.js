@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     },
     pincelIcon:{
         position:"absolute",
-        left:"93%",
+        left:"100%",
         top:"15%"
     }
 }); 

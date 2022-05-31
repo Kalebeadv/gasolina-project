@@ -44,7 +44,7 @@ include 'backend/database.php';
 							</span>
 						</th>
 						<th>ID</th>
-						<th>IDGASSTATION</th>
+						
 						<th>IDGASSTATION</th>
 						<th>TYPE</th>
 						<th>VALUE</th>
@@ -53,7 +53,7 @@ include 'backend/database.php';
 				<tbody>
 
 					<?php
-					$result = mysqli_query($conn, "SELECT `id`,`idGasstation`,`type`,`valor` FROM `fuel` WHERE 1");
+					$result = mysqli_query($conn, "SELECT * FROM `fuel` WHERE 1");
 					$i = 1;
 					while ($row = mysqli_fetch_array($result)) {
 					?>
@@ -64,7 +64,7 @@ include 'backend/database.php';
 									<label for="checkbox2"></label>
 								</span>
 							</td>
-							<td><?php echo $i; ?></td>
+					
 							<td><?php echo $row["id"]; ?></td>
 							<td><?php echo $row["idGasstation"]; ?></td>
 							<td><?php echo $row["type"]; ?></td>

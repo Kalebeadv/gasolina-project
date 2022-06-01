@@ -66,6 +66,7 @@ export default function Rank({ navigation }) {
   useEffect(async () => {
     await getPosto();
     getFuel();
+    reloadPage();
   }, [selectFuel])
 
 
@@ -100,7 +101,7 @@ export default function Rank({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height} />
-      {DATA != [] &&
+      {DATA !=  [] &&
         <FlatList
           data={DATA}
           style={styles.item2}

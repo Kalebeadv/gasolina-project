@@ -58,7 +58,7 @@ export default function Carros({ route, navigation }) {
             
             console.log(userEmail + "==============" + id)
 
-            if (selectedId == null || typeof(carros) != "string") {
+            if (id == 'null' || typeof(carros) != "string") {
                 console.log("banco")
                 let reqs = await fetch(config.urlRootNode + 'carros', {
                     method: 'POST',

@@ -26,7 +26,7 @@ const Stack = createStackNavigator();
 // SÓ MEU FI, É NOIS
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="Entrar">
       <Stack.Screen name="Splash" component={Splash} options={{
         title: "",
         headerTransparent: true,

@@ -31,7 +31,7 @@ export default function Carros({ route, navigation }) {
             },
             body: JSON.stringify({
                 email: userEmail,
-                carId: route.carid
+                carId: selectedId
             })
         })
         let ress = await reqs.json();
@@ -39,6 +39,28 @@ export default function Carros({ route, navigation }) {
         setCars(ress)
         Mapa()
         return;
+    }
+    async function Atualizar() {
+        let reqs = await fetch(config.urlRootNode + 'atualizaCarros', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            modeloVeiculo: modelo,
+            marcaVeiculo: marca,
+            consumoVeiculo: consumo,
+            combustivelVeiculo: combustivel,
+            anoVeiculo: ano,
+            emailUser: userEmail,
+            typeVeh: typeVehicle,
+            carId: selectedId,
+          })
+        });
+        let ress = await reqs.json()
+        await AsyncStorage.setItem("CarrosUser", JSON.stringify(ress));
+        Mapa();
     }
 
     useEffect(() => {
@@ -62,14 +84,22 @@ export default function Carros({ route, navigation }) {
                 carro = carros[i]
             }
         }
+
+        setModelo(carro.model);
+        setAno(carro.year);
+        setTypeVehicle(carro.typeVehicle);
+        setConsumo(carro.consumo);
+        setMarca(carro.brand);
+        setCombustivel(carro.typeFuel)
         console.log(carro)
         setSelectedId(id);
         setCar(carro);
+
     }, [carros])
 
     //------------------------- Navigate ---------------
-    function Mapa() {
-        AsyncStorage.setItem("VeiculoSelecionado", JSON.stringify(carros));
+    async function Mapa() {
+        await AsyncStorage.setItem("VeiSelect", 'null');
         navigation.navigate('Mapa', { id: 0 });
     }
 
@@ -146,13 +176,16 @@ export default function Carros({ route, navigation }) {
                 </View>
             </View>}
 
-            <View style={styles.loginContainer}>
+            <View style={styles.btnContainer}>
                 {//-------------------------------- BOTOES DA INTERFACE -------------------------
                 }
                 <View style={styles.cadastraEExclui}>
+                    <TouchableOpacity style={styles.excluiVeiculo} onPress={Atualizar}>
+                        <Icon name="save" style={styles.icone} size={25} color="#fff" />
+                    </TouchableOpacity>
+
                     <TouchableOpacity style={styles.excluiVeiculo} onPress={exclui}>
                         <Icon name="trash" style={styles.icone} size={25} color="#fff" />
-                        <Icon name="minus" style={styles.icone} size={25} color="#fff" />
                     </TouchableOpacity>
                 </View>
             </View>

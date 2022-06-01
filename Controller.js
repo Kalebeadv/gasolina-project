@@ -135,6 +135,44 @@ app.post('/excluiCarros', async (req, res) => {
     res.send(JSON.stringify(objetoCarros))
 });
 
+app.post('/atualizaCarros', async (req, res) => {
+    let user = await model.User.findAll({
+        where: {
+            email: req.body.emailUser,
+        }
+    })
+    let id = JSON.stringify(user, ["id"]);
+    id = id.split(':');
+    id = id[1]
+    id = id.split("}")
+    id = id[0]
+
+    b = model.Vehicle.update({
+            model: req.body.modeloVeiculo,
+            brand: req.body.marcaVeiculo,
+            consumo: req.body.consumoVeiculo,
+            typeFuel: req.body.combustivelVeiculo,
+            year: req.body.anoVeiculo,
+            userID: id,
+            typeVehicle: req.body.typeVeh,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },
+        {
+        where: {
+            userID: id,
+            id: req.body.carId
+        }
+    });
+
+    let objetoCarros = await model.Vehicle.findAll({
+        where: {
+            userID: id
+        }
+    })
+    res.send(JSON.stringify(objetoCarros))
+});
+
 app.post("/enviaEmail", async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",

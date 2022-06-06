@@ -79,13 +79,21 @@ app.post("/fuel", async (req, res) => {
 
 app.post("/rankFuel", async (req, res) => {
     
-    let objFuel = await model.Fuel.findAll({
-        where:{
-            type: req.body.combus
-        },
-        order: [['price', 'ASC']],
-        limit: 5
-    });
+    if (req.body.combus == "todos"){
+        let objFuel = await model.Fuel.findAll({
+            order: [['price', 'ASC']],
+            limit: 5
+        });
+    }else{
+        let objFuel = await model.Fuel.findAll({
+            where:{
+                type: req.body.combus
+            },
+            order: [['price', 'ASC']],
+            limit: 5
+        });
+    }
+    
     res.send(JSON.stringify(objFuel));
 
 });

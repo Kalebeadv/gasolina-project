@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         borderRadius: 10,
         width: "90%",
+        height:"50%",
         shadowColor: "#000",
         shadowOffset: {
 	        width: 0,
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
         elevation: 24,
+        
     },
     gasolina: {
         top: "90%",
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         zIndex: 9,
-        top: "27%",
+        top: "24%",
     },
     btnScreans: {
         justifyContent: "center",
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
         left: "0.1%"
     },
     allContainer: {
-        top: "25%",
+        top:"13%",
         justifyContent: 'center',
         alignItems: "center",
     },

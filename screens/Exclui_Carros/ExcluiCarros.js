@@ -100,7 +100,7 @@ export default function Carros({ route, navigation }) {
     //------------------------- Navigate ---------------
     async function Mapa() {
         await AsyncStorage.setItem("VeiSelect", 'null');
-        navigation.navigate('Mapa', { id: 0 });
+        navigation.navigate('Home', { id: 0 });
     }
 
     //--------------------------------------------------

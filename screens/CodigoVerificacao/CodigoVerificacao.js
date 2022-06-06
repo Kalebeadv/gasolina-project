@@ -5,7 +5,7 @@ import { styles } from "./css";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function CodigoVerificacao({ navigation }) {
+export default function CodigoVerificacao({ route, navigation }) {
     const [nome, setNome] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -14,19 +14,23 @@ export default function CodigoVerificacao({ navigation }) {
 
 
     useEffect(async () => {
+        let cod;
         if (codigo == null) {
-            setCodigo(generateRandomInt(10000, 99999))
+            cod = generateRandomInt(10000, 99999)
+            setCodigo(cod)
+        }else{
+            cod = codigo
         }
 
 
-        let userc = await AsyncStorage.getItem('userConfig');
+        let userc = route.params.userc;
         userc = JSON.parse(userc);
         console.log(userc)
 
         
         setEmail(userc.email);
         setPassword(userc.password);
-        setNome(userc.nome);
+        setNome(userc.name);
 
         var reqs = await fetch(config.urlRootNode + "enviaEmail", {
             method: "POST",
@@ -35,8 +39,8 @@ export default function CodigoVerificacao({ navigation }) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                emailDeEnvio: email,
-                cod: codigo
+                emailDeEnvio: userc.email,
+                cod: cod
             })
         })
     }, [])

@@ -25,8 +25,12 @@ export default function Carros({ route, navigation }) {
 
     const Item = ({ item, onPress, backgroundColor, textColor }) => (
         <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-            <Icon style={styles.pincelIcon} onPress={async () => {navigation.navigate("ExcluiCarros"); await AsyncStorage.setItem("editVeiculo", String(item.id))}} name="pencil" size={25} color="#ffffff" />
+            <Icon style={styles.pincelIcon} onPress={async () => {navigation.navigate("ExcluiCarros"); await AsyncStorage.setItem("editVeiculo", String(item.id))}} name="pencil-square" size={25} color="#ffffff" />
             <View style={styles.itemContainer}>
+                {item.typeVehicle == 'carro' ?
+                <Icon style={styles.vehiIcon} name="car" size={21} color="#ffffff" /> :
+                <Icon style={styles.vehiIcon} name="motorcycle" size={21} color="#ffffff" />
+                }
                 <Text style={[styles.title, textColor]}>{item.brand +" "+ item.model}</Text>
             </View>
             <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typeFuel}</Text>

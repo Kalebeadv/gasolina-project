@@ -16,10 +16,12 @@ import Background from "../../assets/SvgImages/cars_rank.svg"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FuelTypeRank from "../../src/components/FuelTypeRank";
 
+
 export default function Rank({ navigation }) {
   const [posto, setPostos] = useState([]);
   const [DATA, setFuel] = useState([]);
   const [selectFuel, setSelectFuel] = useState("gasolina")
+  const [reload, setReload] = useState(null)
 
   function atualizaFuel(fuel){
     
@@ -75,6 +77,12 @@ export default function Rank({ navigation }) {
     getFuel();
   }
 
+  useEffect(() =>{
+		if (reload < 5){
+			setReload(reload + 1);
+		}
+	},[reload])
+
   const Item = ({ item  }) => (
     <View style={[styles.item2]}>
       <Text style={[styles.item]}>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
@@ -91,6 +99,7 @@ export default function Rank({ navigation }) {
       />
     );
   };
+
 
   // funcoes do navigation 
   function Rank() { navigation.navigate("Rank") }

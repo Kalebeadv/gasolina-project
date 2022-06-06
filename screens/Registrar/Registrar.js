@@ -24,7 +24,7 @@ export default function Registrar({ navigation }) {
 
       
       await AsyncStorage.setItem('userConfig', JSON.stringify(userc));
-      navigation.navigate("CodigoVerificacao");
+      navigation.navigate("CodigoVerificacao", {userc: JSON.stringify(userc)});
     } else {
       Alert.alert(
         "Algo inesperado",

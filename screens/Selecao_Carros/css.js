@@ -102,6 +102,10 @@ const styles = StyleSheet.create({
         position:"absolute",
         left:"100%",
         top:"15%"
+    },
+    vehiIcon:{
+        top:"2%",
+        marginRight:"2%"
     }
 }); 
 

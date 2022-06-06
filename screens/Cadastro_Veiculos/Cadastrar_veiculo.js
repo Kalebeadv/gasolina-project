@@ -65,7 +65,7 @@ export default function CadastrarVeiculo({ navigation }) {
         "O cadastro do veiculo foi concluido com sucesso"
       )
       await getVeiculos()
-      navigation.navigate('Mapa', {reload : "true"})
+      navigation.navigate('Home', {reload : "true"})
     }
 
 

@@ -39,7 +39,7 @@ export default function Carros({ route, navigation }) {
     const [selectedId, setSelectedId] = useState([]);
 
     const renderItem = ({ item }) => {
-        const backgroundColor = item.id == selectedId ? "#FF8A76" : "#757F7A";
+        const backgroundColor = item.id == selectedId ? "#FF8A76" : "#107878";
         const color = item.id == selectedId ? 'white' : 'white';
 
         return (
@@ -159,9 +159,9 @@ export default function Carros({ route, navigation }) {
 
                 <TouchableOpacity 
                     style={styles.btnScreans}
-                    onPress={reloadPage}>
-                      <Icon name="car" size={25} color="#107878" />
-                      <Text style={styles.textoIcones}>Carros</Text>
+                    onPress={selecionaCarro}>
+                      <Icon name="car" size={25} color="#A9A9A9" />
+                      <Text style={styles.textoIconesSelecao}>Carros</Text>
                 </TouchableOpacity>
                 
              </View>

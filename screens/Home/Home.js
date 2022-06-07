@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Dimensions, RefreshControl } 
 import MapView, { Callout, Circle, Marker } from "react-native-maps"
 import { styles } from './css';
 import Icon from "react-native-vector-icons/FontAwesome";
-import Background from "../../assets/SvgImages/BackgroundHome.svg"
+import Background from "../../assets/SvgImages/RegisterBackground.svg"
 import BombaDeGasolina from "../../assets/SvgImages/Bomba de Gasolina.svg"
 import MapViewDirections from 'react-native-maps-directions';
 import keys from '../../config/googleConfig.json';
@@ -230,7 +230,7 @@ export default function Home({ route, navigation }) {
 
 	return (
 		<View style={styles.container}>
-			<Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height + 20} />
+			<Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height} />
 
 			<View>
 				<Text style={styles.gasolina}>Ga$olina</Text>
@@ -286,11 +286,11 @@ export default function Home({ route, navigation }) {
 						<Text style={styles.textoIcones}>Ranking</Text>
 					</TouchableOpacity>
 
-					<TouchableOpacity
-						style={styles.btnScreans}
-						onPress={reloadPage}>
-						<Icon name="home" size={30} color="#107878" />
-						<Text style={styles.textoIcones}>Inicio</Text>
+					<TouchableOpacity 
+					style={styles.btnScreans}
+					onPress={Home}>
+						<Icon name="home" size={30} color="#A9A9A9" />
+						<Text style={styles.textoIconesSelecao}>Inicio</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity

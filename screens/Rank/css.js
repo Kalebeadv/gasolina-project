@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
     textoIcones: {
       color: "#107878",
     },
+    textoIconesSelecao: {
+      color: '#A9A9A9'
+    },
     item: {
       width: "100%",       
       padding: 20,

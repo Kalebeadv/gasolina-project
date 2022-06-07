@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     melhorContainer: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#ffffff",
+        backgroundColor: "#D3D3D3",
         borderRadius: 10,
         width: "90%",
         height:"50%",
@@ -46,17 +46,11 @@ const styles = StyleSheet.create({
     btnCar: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#D7E2FF",
+        backgroundColor: "#D3D3D3",
         borderRadius: 100,
         height: 50,
         marginBottom: "5%",
         flexDirection: "row",
-    },
-    carsContainer: {
-        width: "90%",
-        marginHorizontal: "auto",
-        marginVertical: "auto",
-        top: "10%",
         shadowColor: "#000",
         shadowOffset: {
 	        width: 0,
@@ -66,6 +60,12 @@ const styles = StyleSheet.create({
         shadowRadius: 16.00,
         elevation: 24,
     },
+    carsContainer: {
+        width: "90%",
+        marginHorizontal: "auto",
+        marginVertical: "auto",
+        top: "10%",
+    },
     btnViewContainer: {
         width: "100%",
         height:"18%",
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         zIndex: 9,
-        top: "24%",
+        top: "50%",
     },
     btnScreans: {
         justifyContent: "center",
@@ -88,6 +88,10 @@ const styles = StyleSheet.create({
     },
     textoIcones: {
        color: "#107878",
+    },
+    textoIconesSelecao: {
+        color: "#A9A9A9",
+
     },
     svgBack: {
         position: "absolute",

@@ -188,9 +188,9 @@ export default function Mapa({ route, navigation }) {
 
         			<TouchableOpacity 
         			style={cssMapa.btnScreans}
-        			onPress={reloadPage}>
-        			    <Icon name="map-marker" size={30} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Mapa</Text>
+        			onPress={Mapa}>
+        			    <Icon name="map-marker" size={30} color="#A9A9A9" />
+						<Text style={cssMapa.textoIconesSelecao}>Mapa</Text>
         			</TouchableOpacity>
 
         			<TouchableOpacity 

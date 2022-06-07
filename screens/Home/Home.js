@@ -275,6 +275,13 @@ export default function Home({ route, navigation }) {
 							<Text style={styles.btnCar_text}>{car.brand + " " + car.model}</Text>
 						</TouchableOpacity>
 					</View>
+				 	<View>
+        					<TouchableOpacity style={styles.atualizarLista}>
+         		 				<FuelTypeRank
+            							funcao={setSelectFuel}
+          						/>
+        					</TouchableOpacity>
+      					</View>
 				}
 
 				<View style={styles.btnViewContainer}>

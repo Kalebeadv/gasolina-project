@@ -12,6 +12,7 @@ import { urlRootNode } from '../../config/config.json'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from 'expo-location';
 import RNRestart from 'react-native-restart';
+import FlexSelect from "../../src/components/FlexSelectButton";
 
 
 export default function Home({ route, navigation }) {
@@ -277,7 +278,7 @@ export default function Home({ route, navigation }) {
 					</View>
 				 	<View>
         					<TouchableOpacity style={styles.atualizarLista}>
-         		 				<FuelTypeRank
+         		 				<FlexSelect
             							funcao={setSelectFuel}
           						/>
         					</TouchableOpacity>

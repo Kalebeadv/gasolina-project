@@ -75,6 +75,9 @@ const cssMapa = StyleSheet.create({
 	textoIcones: {
 		color: "#107878",
 	},
+	textoIconesSelecao: {
+		color: "#A9A9A9"
+	},
     textoRota:{
         fontSize: 20,
         color: '#000'

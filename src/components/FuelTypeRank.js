@@ -3,8 +3,8 @@ import { View, Text, StyleSheet,} from "react-native";
 import {Picker} from '@react-native-picker/picker';
 
 
-export default class FuelTypeButton extends Component {
-    state = {user:'tipo'}
+export default class FuelTypeRank extends Component {
+    state = {user:'gasolina'}
     updateUser = (user) =>{
         this.setState({user: user})
     }
@@ -17,8 +17,7 @@ export default class FuelTypeButton extends Component {
                     selectedValue = {this.state.user}
                     onValueChange = {this.updateUser}
                 >
-                    <Picker.Item label="Tipo de Combustível" value="tipo" />
-                    <Picker.Item label="Flex" value="flex" />
+                    <Picker.Item label="Tudo" value="tudo" />
                     <Picker.Item label="Gasolina" value="gasolina" />
                     <Picker.Item label="Alcool" value="alcool" />
                     <Picker.Item label="Disel" value="disel" />
@@ -37,9 +36,8 @@ const styles = StyleSheet.create({
     },
     texto: {
         textAlign: 'center',
-        color: '#757F7A',
+        color: '#107878',
         height: "100%", 
         width: "100%",
-        
     },
 })

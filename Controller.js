@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const model = require('./models');
 const nodemailer = require("nodemailer");
+const bcrypt = require('bcryptjs');
+
 
 
 
@@ -13,7 +15,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 //Rotas
 app.post('/registrar', async (req, res) => {
     let reqs = await model.User.findAll({
@@ -21,11 +22,13 @@ app.post('/registrar', async (req, res) => {
             email: req.body.emailUser,
         }
     });
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(req.body.passwordUser, salt);   
     if (reqs == '') {
         reqs = await model.User.create({
             'stName': req.body.stNameUser,
             'email': req.body.emailUser,
-            'password': req.body.passwordUser,
+            'password': hash,
             'createdAt': new Date(),
             'updatedAt': new Date()
         })
@@ -53,10 +56,10 @@ app.post('/cadastrarVeiculo', async (req, res) => {
         'model': req.body.modeloVeiculo,
         'brand': req.body.marcaVeiculo,
         'consumo': req.body.consumoVeiculo,
-        'typefuel': req.body.combustivelVeiculo,
+        'typeFuel': req.body.combustivelVeiculo,
         'year': req.body.anoVeiculo,
         'userID': id,
-        'typeVehicle': req.body.typeVehicle,
+        'typeVehicle': req.body.typeVeh,
         'createdAt': new Date(),
         'updatedAt': new Date()
     })
@@ -75,13 +78,69 @@ app.post("/fuel", async (req, res) => {
 });
 
 app.post("/rankFuel", async (req, res) => {
+    
+    if (req.body.combus == "tudo"){
+        let objFuel = await model.Fuel.findAll({
+            order: [['price', 'ASC']],
+            limit: 5
+        });
+    }else{
+        let objFuel = await model.Fuel.findAll({
+            where:{
+                type: req.body.combus
+            },
+            order: [['price', 'ASC']],
+            limit: 5
+        });
+    }
+    
+    res.send(JSON.stringify(objFuel));
+
+});
+
+app.post("/homeFuel", async (req, res) => {
+    let c;
+    if (req.body.combus == "undefined"){
+        c = req.body.combus;
+    }else{
+        c = "gasolina"
+    }
     let objFuel = await model.Fuel.findAll({
-        order: [['price', 'ASC']],
-        limit: 5
+        where:{
+            type: c
+        },
     });
     res.send(JSON.stringify(objFuel));
 
 });
+
+app.post('/login', async (req, res) => {
+
+    let user = await model.User.findAll({
+        where: {
+            email: req.body.emailUser,
+        }
+    })
+
+    if (user.length > 0){
+        bcrypt.compare(req.body.passwordUser, user[0].password).then((ress) => {
+            res.send(JSON.stringify("sucesso")
+        )});
+    }else{
+        console.log("falha")
+        res.send(JSON.stringify("falha"))
+    }
+/*
+    console.log(user[0].password)
+    if (user.length > 0){
+        console.log("sucesso")
+        res.send(JSON.stringify("sucesso"))
+    }else{
+        console.log("falha")
+        res.send(JSON.stringify("falha"))
+    }
+*/
+})
 
 
 app.post('/carros', async (req, res) => {
@@ -117,6 +176,44 @@ app.post('/excluiCarros', async (req, res) => {
     id = id[0]
 
     b = model.Vehicle.destroy({
+        where: {
+            userID: id,
+            id: req.body.carId
+        }
+    });
+
+    let objetoCarros = await model.Vehicle.findAll({
+        where: {
+            userID: id
+        }
+    })
+    res.send(JSON.stringify(objetoCarros))
+});
+
+app.post('/atualizaCarros', async (req, res) => {
+    let user = await model.User.findAll({
+        where: {
+            email: req.body.emailUser,
+        }
+    })
+    let id = JSON.stringify(user, ["id"]);
+    id = id.split(':');
+    id = id[1]
+    id = id.split("}")
+    id = id[0]
+
+    b = model.Vehicle.update({
+            model: req.body.modeloVeiculo,
+            brand: req.body.marcaVeiculo,
+            consumo: req.body.consumoVeiculo,
+            typeFuel: req.body.combustivelVeiculo,
+            year: req.body.anoVeiculo,
+            userID: id,
+            typeVehicle: req.body.typeVeh,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },
+        {
         where: {
             userID: id,
             id: req.body.carId

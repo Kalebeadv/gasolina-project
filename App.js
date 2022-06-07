@@ -7,6 +7,7 @@ import 'react-native-gesture-handler';
 import Login from "./screens/Login/Login";
 import Registrar from "./screens/Registrar/Registrar";
 import Mapa from "./screens/mapa/Mapa";
+import Mapa2 from "./screens/mapa/Mapa2";
 import EsqueciMinhaSenha from "./screens/Esqueci_Senha/Esqueci_senha";
 import LoginComGoogle from "./screens/Login_Google/LoginComGoogle";
 import CadastrarVeiculo from "./screens/Cadastro_Veiculos/Cadastrar_veiculo";
@@ -26,7 +27,7 @@ const Stack = createStackNavigator();
 // SÓ MEU FI, É NOIS
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName="HomePage">
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Splash" component={Splash} options={{
         title: "",
         headerTransparent: true,
@@ -93,6 +94,11 @@ function MyStack() {
         headerShown: false
       }}/>
       <Stack.Screen name="CodigoVerificacao" component={CodigoVerificacao} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="Mapa2" component={Mapa2} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

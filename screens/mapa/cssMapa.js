@@ -36,7 +36,6 @@ const cssMapa = StyleSheet.create({
 	fazRotaContainer:{
         flexDirection: 'row',
         justifyContent:"center",
-        
         zIndex: 9,
         width: '100%'
     },

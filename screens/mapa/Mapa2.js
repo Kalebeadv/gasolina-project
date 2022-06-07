@@ -45,8 +45,6 @@ export default function Mapa({ route, navigation }) {
 	const [cars, setCars] = useState([]);
 	const [selectedId, setSelectedId] = useState(null);
 	const [reload, setReload] = useState(null);
-	const [left, setLeft] = useState('60%')
-	const [postoSelecionado, setPostoSelecionado] = useState([])
 
 	async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
@@ -65,19 +63,6 @@ export default function Mapa({ route, navigation }) {
 		for (let i = reload; i <= reload + 1; i++) {
 			setReload(i)
 		}
-	}
-	function btnInfo(posto){
-		setLeft("0%")
-		setPostoSelecionado(posto)
-	}
-
-	function trassarRota(){
-		setDistanciaOriginPosto({
-			latitude: Number(postoSelecionado.latitude),
-			longitude: Number(postoSelecionado.longitude),
-			latitudeDelta: 0.3,
-			longitudeDelta: 0.3
-		})
 	}
 
 	useEffect(async () => {
@@ -99,8 +84,17 @@ export default function Mapa({ route, navigation }) {
 		},[reload])
 
 	useEffect(() => {
-		getPosto()
-	},[reload])
+        let psoto = JSON.parse(route.params.posto)
+        console.log(psoto)
+
+        setPostos(psoto);
+		setDistanciaOriginPosto({
+            latitude: Number(psoto.latitude),
+            longitude: Number(psoto.longitude),
+            latitudeDelta: 0.000922,
+            longitudeDelta: 0.000421
+        })
+	},[originA])
 	
 
 
@@ -117,57 +111,12 @@ export default function Mapa({ route, navigation }) {
 
 	return (
 		<View style={cssMapa.container}>
-			<View style={cssMapa.placeholderArea}>
+			<View style={[cssMapa.placeholderArea, {top: "39%"}]}>
 				
-				<GooglePlacesAutocomplete
-					placeholder="Buscar"
-					icon={"trophy"}
-					fetchDetails={true}
-					GooglePlacesSearchQuery={{
-						rankby: "distance"
-					}}
-					onPress={(data, details = null) => {
-						// 'details' is provided when fetchDetails = true
-						console.log(data, details)
-						setRegion({
-							latitude: details.geometry.location.lat,
-							longitude: details.geometry.location.lng,
-							latitudeDelta: 0.0922,
-							longitudeDelta: 0.0421
-						})
-					}}
-					query={{
-						useEffect,
-						key: "AIzaSyDkPz3CZtdL0jjmvHU0FQap1s7ktTwvWrM",
-						language: "pt-br",
-						components: "country:br",
-						types: "establishment",
-						radius: 30000,
-						location: `${region.latitude}, ${region.longitude}`
-					}}
-					styles={{
-						container: {
-							width: "95%",
-							zIndex: 1,
-							marginTop: '15%',
-						},
-						listView: {
-						},
-						textInput: {
-							fontSize: 20,
-							borderRadius: 10,
-							backgroundColor: '#fff',
-							color: 'black',
-							borderWidth: 1,
-							borderColor: "#107878"
-						},
-						
-					}}
-				/>
 				
-				<View style={[cssMapa.fazRotaContainer, {left}]}>
-                	<TouchableOpacity style={cssMapa.fazRota} onPress={trassarRota}>
-                	    <Icon name="share" size={40} color="#107878" />
+				<View style={cssMapa.fazRotaContainer}>
+                	<TouchableOpacity style={cssMapa.fazRota}>
+                	    <Icon name="dollar" size={40} color="#107878" />
                 	</TouchableOpacity>
            	 	</View>
 
@@ -189,8 +138,8 @@ export default function Mapa({ route, navigation }) {
         			<TouchableOpacity 
         			style={cssMapa.btnScreans}
         			onPress={Mapa}>
-        			    <Icon name="map-marker" size={30} color="#A9A9A9" />
-						<Text style={cssMapa.textoIconesSelecao}>Mapa</Text>
+        			    <Icon name="map-marker" size={30} color="#107878" />
+						<Text style={cssMapa.textoIcones}>Mapa</Text>
         			</TouchableOpacity>
 
         			<TouchableOpacity 
@@ -223,22 +172,18 @@ export default function Mapa({ route, navigation }) {
 						}
 						}
 					/>}
-				{postos.length > 0 &&
-					postos.map((m) => {
-						return (
-							<Marker coordinate={{
-								latitude: Number(m.latitude),
-								longitude: Number(m.longitude),
-								latitudeDelta: 0.000922,
-								longitudeDelta: 0.000421
-							}}
-								key={m.id}
-								title={m.name}
-								description={m.adress}
-								onPress={() => {btnInfo(m)}}
+				{postos &&
+						<Marker coordinate={{
+							latitude: Number(postos.latitude),
+							longitude: Number(postos.longitude),
+							latitudeDelta: 0.000922,
+							longitudeDelta: 0.000421
+						}}
+							key={postos.id}
+							title={postos.name}
+							description={postos.adress}
 							/>
-						);
-					})}
+					}
 
 				{originA &&
 					<MapViewDirections

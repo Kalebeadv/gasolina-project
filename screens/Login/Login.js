@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
   // função de login -----------------------------------------------
 
   async function fazLogin() {
-    let reqs = await fetch(config.urlRootPhp + 'Controller.php', {
+    let reqs = await fetch(config.urlRootNode + 'login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -33,11 +33,11 @@ export default function Login({ navigation }) {
       })
     });
     let ress = await reqs.json();
-    Keyboard.dismiss();
-    if (ress || ress == null) {
+    
+    if (ress == 'sucesso') {
       await AsyncStorage.setItem('email', email);
       await AsyncStorage.setItem('pass', password);
-      navigation.navigate("Home", { id: 0 });
+      navigation.navigate("Home");
     } else {
       Alert.alert(
         "Ocorreu um erro",

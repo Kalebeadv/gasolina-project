@@ -17,44 +17,53 @@ import { styles } from "./css"
 
 import Background from "../../assets/SvgImages/cars_rank.svg"
 
+
 export default function Carros({ route, navigation }) {
 
     const [DATA, setCars] = useState([]);
+    const [reload, setReload] = useState(0);
 
     const Item = ({ item, onPress, backgroundColor, textColor }) => (
         <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+            <Icon style={styles.pincelIcon} onPress={async () => {navigation.navigate("ExcluiCarros"); await AsyncStorage.setItem("editVeiculo", String(item.id))}} name="pencil-square" size={25} color="#ffffff" />
             <View style={styles.itemContainer}>
+                {item.typeVehicle == 'carro' ?
+                <Icon style={styles.vehiIcon} name="car" size={21} color="#ffffff" /> :
+                <Icon style={styles.vehiIcon} name="motorcycle" size={21} color="#ffffff" />
+                }
                 <Text style={[styles.title, textColor]}>{item.brand +" "+ item.model}</Text>
-                <Icon style={styles.pincelIcon} onPress={() => navigation.navigate("ExcluiCarros")} name="pencil" size={25} color="#ffffff" />
             </View>
-            <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typefuel}</Text>
+            <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typeFuel}</Text>
         </TouchableOpacity>
     );
     const [selectedId, setSelectedId] = useState([]);
 
     const renderItem = ({ item }) => {
-        const backgroundColor = item.id == selectedId.id ? "#FF8A76" : "#757F7A";
-        const color = item.id == selectedId.id ? 'white' : 'white';
-        AsyncStorage.setItem("VeiculoSelecionado", JSON.stringify(item));
+        const backgroundColor = item.id == selectedId ? "#FF8A76" : "#107878";
+        const color = item.id == selectedId ? 'white' : 'white';
 
         return (
             <Item
                 item={item}
-                onPress={() => setSelectedId(item)}
+                onPress={async () => {await AsyncStorage.setItem("VeiSelect", String(item.id)); setSelectedId(item.id)}}
                 backgroundColor={{ backgroundColor }}
                 textColor={{ color }}
             />
         );
     };
         
-
+    
 
     useEffect(() => {
         async function getCars() {
-            let userEmail = await AsyncStorage.getItem("email")
+            let userEmail = await AsyncStorage.getItem("email");
             let carros = await AsyncStorage.getItem("CarrosUser");
-            let id = await JSON.parse(AsyncStorage.getItem("VeiculoSelecionado"))
-            if (typeof(carros) != "string") {
+            let id = await AsyncStorage.getItem("VeiSelect");
+            
+            console.log(userEmail + "==============" + id)
+
+            if (id == 'null' || typeof(carros) != "string") {
+                console.log("banco")
                 let reqs = await fetch(config.urlRootNode + 'carros', {
                     method: 'POST',
                     headers: {
@@ -68,16 +77,22 @@ export default function Carros({ route, navigation }) {
                 let ress = await reqs.json();
                 await AsyncStorage.setItem("CarrosUser", JSON.stringify(ress));
                 setCars(ress)
+                setSelectedId(ress[0].id)
                 return;
             }else{
+                console.log("memoria")
                 setCars(JSON.parse(carros))
-                setSelectedId(JSON.stringify(id))
+                setSelectedId(id)
             }
         }
         getCars();
-        
+    }, [reload]);
 
-    }, []);
+    function reloadPage(){
+        for (let i = reload ; i <= reload + 1 ; i++){
+            setReload(i)
+        }
+    }
 
     //------------------------- Navigate ---------------
     function Mapa() {
@@ -105,7 +120,7 @@ export default function Carros({ route, navigation }) {
                         style={styles.item}
                         renderItem={renderItem}
                         keyExtractor={(item) => item.id}
-                        extraData={selectedId.id}
+                        extraData={selectedId}
                     />
                 }
             </View>

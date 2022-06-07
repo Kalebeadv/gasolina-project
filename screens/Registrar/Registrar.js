@@ -13,7 +13,7 @@ export default function Registrar({ navigation }) {
   const [password, setPassword] = useState(null);
   const [message, setMessage] = useState(null);
 
-  function registerUser() {
+  async function registerUser() {
     if (password == passwordConfirm){
       let userc = {
         nome : nome,
@@ -23,8 +23,8 @@ export default function Registrar({ navigation }) {
       console.log(userc);
 
       
-      AsyncStorage.setItem('userConfig', JSON.stringify(userc));
-      navigation.navigate("CodigoVerificacao");
+      await AsyncStorage.setItem('userConfig', JSON.stringify(userc));
+      navigation.navigate("CodigoVerificacao", {userc: JSON.stringify(userc)});
     } else {
       Alert.alert(
         "Algo inesperado",

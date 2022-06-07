@@ -129,7 +129,25 @@ const styles = StyleSheet.create({
     },
     txtRotaPrice:{
         fontSize:17
-    }
+    },
+    atualizarLista: {
+      width: '40%',
+      height: 50,
+      fontSize: 20,
+      marginBottom: "5%",
+      borderStyle: 'solid',
+      borderColor: '#ffffff',
+      borderWidth: 1,
+      borderRightWidth: 1,
+      borderBottomWidth: 1,
+      padding: 10,
+      paddingRight: 2,
+      backgroundColor:"#ffffff",
+      flexDirection: "row",
+      borderRadius: 100,
+      marginLeft: '55%',
+      position: "absolute",
+    },
 });
 
 export { styles }

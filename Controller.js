@@ -26,7 +26,7 @@ app.post('/registrar', async (req, res) => {
     let hash = bcrypt.hashSync(req.body.passwordUser, salt);   
     if (reqs == '') {
         reqs = await model.User.create({
-            'stName': req.body.stNameUser,
+            'name': req.body.stNameUser,
             'email': req.body.emailUser,
             'password': hash,
             'createdAt': new Date(),

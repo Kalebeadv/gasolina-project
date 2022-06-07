@@ -55,26 +55,31 @@ const styles = StyleSheet.create({
       color: "#107878",
     },
     item: {
-      width: "100%",        
+      width: "100%",       
       padding: 20,
       paddingBottom: 10,
       paddingTop: 10,
       borderRadius: 16,
       color:"#000",
       backgroundColor:"#ffffff",
+      flexDirection:"row",
     },
     item2:{
-      width: "100%",
-      padding: 20,
-      paddingBottom: 10,
-      paddingTop: 10,
-      color:"#107878",
-      top:"5%"
+        width: "100%",
+        padding: 20,
+        paddingBottom: 10,
+        paddingTop: 10,
+        marginTop: '3%'
     },
     svgBack:{
       position: 'absolute',
       width: '100%', 
-    }, 
+    },
+    icon:{
+      position:"absolute",
+      left:"95%",
+      top:"40%"
+    }
   });
 
 export {styles};

@@ -63,7 +63,15 @@ export default function Rank({ navigation }) {
 		setFuel(ress);
 	}
   
-
+  function go_to_mapa(m){
+    let post;
+    for (let i = 0; i < posto.length; i++){
+      if (m == posto[i].id){
+        post = posto[i]
+      }
+    }
+    navigation.navigate("Mapa2", {posto : JSON.stringify(post)});
+  }
 
   useEffect(async () => {
     await getPosto();
@@ -83,9 +91,12 @@ export default function Rank({ navigation }) {
 		}
 	},[reload])
 
-  const Item = ({ item  }) => (
-    <View style={[styles.item2]}>
-      <Text style={[styles.item]}>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
+  const Item = ({ item, onPress }) => (
+    <View style={[styles.item2]}> 
+      <View style={styles.item}>
+        <Text>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
+        <Icon onPress={onPress} style={styles.icon} name="share" size={30} color="#107878" />
+      </View>
     </View>
   );
 
@@ -94,7 +105,7 @@ export default function Rank({ navigation }) {
     return (
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={() => go_to_mapa(item.gasstationID)}
         style={styles.item}
       />
     );

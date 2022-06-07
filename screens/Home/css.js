@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     melhorContainer: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#D3D3D3",
+        backgroundColor: "#ffffff",
         borderRadius: 10,
         width: "90%",
         height:"50%",
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         top: "90%",
         fontSize: 45,
         fontStyle: "italic",
-        color: "#ffffff",
+        fontWeight:"bold",
+        color: "#808080",
         marginLeft: 15
     },
     image: {
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         zIndex: 9,
-        top: "50%",
+        top: "25%",
     },
     btnScreans: {
         justifyContent: "center",
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         marginHorizontal: "auto",
         marginTop: "auto",
-        left: "0.1%"
+        left: "-8%"
     },
     allContainer: {
         top:"13%",
@@ -123,6 +124,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    txtRotaTitle:{
+        fontSize:20,
+    },
+    txtRotaPrice:{
+        fontSize:17
+    }
 });
 
 export { styles }

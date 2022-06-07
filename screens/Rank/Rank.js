@@ -94,7 +94,7 @@ export default function Rank({ navigation }) {
   const Item = ({ item, onPress }) => (
     <View style={[styles.item2]}> 
       <View style={styles.item}>
-        <Text>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
+        <Text style={styles.txtItem}>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
         <Icon onPress={onPress} style={styles.icon} name="share" size={30} color="#107878" />
       </View>
     </View>
@@ -121,14 +121,17 @@ export default function Rank({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height} />
-      {DATA !=  [] &&
-        <FlatList
-          data={DATA}
-          style={styles.item2}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      }
+
+      <View style={styles.rankContainer}>
+        {DATA !=  [] &&
+          <FlatList
+            data={DATA}
+            style={styles.item2}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        }
+      </View>
 
       <View>
         <TouchableOpacity style={styles.atualizarLista}>

@@ -64,6 +64,9 @@ export default function Mapa({ route, navigation }) {
 			setReload(i)
 		}
 	}
+	function infoPosto(){
+		navigation.navigate("InfoPosto", {posto: JSON.stringify(postos)})
+	}
 
 	useEffect(async () => {
 		
@@ -86,7 +89,6 @@ export default function Mapa({ route, navigation }) {
 	useEffect(() => {
         let psoto = JSON.parse(route.params.posto)
         console.log(psoto)
-
         setPostos(psoto);
 		setDistanciaOriginPosto({
             latitude: Number(psoto.latitude),
@@ -111,12 +113,15 @@ export default function Mapa({ route, navigation }) {
 
 	return (
 		<View style={cssMapa.container}>
-			<View style={[cssMapa.placeholderArea, {top: "39%"}]}>
+			<View style={[cssMapa.placeholderArea, {top: "35%"}]}>
 				
 				
-				<View style={cssMapa.fazRotaContainer}>
-                	<TouchableOpacity style={cssMapa.fazRota}>
-                	    <Icon name="dollar" size={40} color="#107878" />
+				<View style={[cssMapa.fazRotaContainer]}>
+                	<TouchableOpacity style={[cssMapa.fazRota, {width: 60, height: 60} ]} onPress={infoPosto}>
+                	    <Icon name="info" size={34} color="#107878" />
+                	</TouchableOpacity>
+                	<TouchableOpacity style={cssMapa.fazRota} onPress={reloadPage}>
+                	    <Icon name="refresh" size={40} color="#107878" />
                 	</TouchableOpacity>
            	 	</View>
 

@@ -98,6 +98,18 @@ app.post("/rankFuel", async (req, res) => {
 
 });
 
+app.post("/infoFuel", async (req, res) => {
+    
+    let objFuel = await model.Fuel.findAll({
+            where:{
+                gasstationId: req.body.idPosto
+            },
+        });
+    
+    res.send(JSON.stringify(objFuel));
+
+});
+
 app.post("/homeFuel", async (req, res) => {
     let c;
     if (req.body.combus == "undefined"){

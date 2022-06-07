@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Dimensions, RefreshControl } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import MapView, { Callout, Circle, Marker } from "react-native-maps"
 import { styles } from './css';
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -230,7 +230,7 @@ export default function Home({ route, navigation }) {
 
 	return (
 		<View style={styles.container}>
-			<Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height} />
+			<Background style={styles.svgBack} width={Dimensions.get("screen").width + 50} height={Dimensions.get("screen").height + 50} />
 
 			<View>
 				<Text style={styles.gasolina}>Ga$olina</Text>
@@ -252,8 +252,8 @@ export default function Home({ route, navigation }) {
 
 					<BombaDeGasolina fill={"#107878"} width={160} height={160} />
 
-					<Text>{postoMaisEconomico && postoMaisEconomico.name}</Text>
-					<Text>{combustivelEconomico && "Distancia: " + distanciaPosto + "Km R$ " + combustivelEconomico.price + ""}</Text>
+					<Text style={styles.txtRotaTitle}>{postoMaisEconomico && postoMaisEconomico.name}</Text>
+					<Text style={styles.txtRotaPrice}>{combustivelEconomico && "Distância: " + distanciaPosto + "Km R$ " + combustivelEconomico.price + ""}</Text>
 
 					<TouchableOpacity style={styles.btnRoute} onPress={go_to_mapa}>
 						<Text style={styles.btnRoute_text}>Traçar Rota</Text>
@@ -288,7 +288,7 @@ export default function Home({ route, navigation }) {
 
 					<TouchableOpacity 
 					style={styles.btnScreans}
-					onPress={Home}>
+					onPress={reloadPage}>
 						<Icon name="home" size={30} color="#A9A9A9" />
 						<Text style={styles.textoIconesSelecao}>Inicio</Text>
 					</TouchableOpacity>

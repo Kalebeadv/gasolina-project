@@ -116,14 +116,14 @@ export default function Carros({ route, navigation }) {
             
             {car && <View style={styles.loginContainer}>
                 <View style={styles.inputIcon}>
-                    <Icon name="tint" size={25} color="#757F7A" />
+                    <Icon name="dashboard" size={25} color="#757F7A" />
                     <VehicleTypeButton
                         funcao={setTypeVehicle}
                     />
                 </View>
 
                 <View style={styles.inputIcon}>
-                    <Icon name="car" size={25} color="#757F7A" />
+                    <Icon name="gear" size={25} color="#757F7A" />
                     <TextInput
                         style={styles.inputs}
                         defaultValue={car.model}

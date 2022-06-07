@@ -19,6 +19,7 @@ import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros";
 import HomePage from "./screens/HomePage/HomePage";
 import Home from "./screens/Home/Home";
 import CodigoVerificacao from "./screens/CodigoVerificacao/CodigoVerificacao";
+import InfoPosto from "./screens/InfoPosto/infoPosto";
 
 
 const Stack = createStackNavigator();
@@ -99,6 +100,11 @@ function MyStack() {
         headerShown: false
       }}/>
       <Stack.Screen name="Mapa2" component={Mapa2} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="InfoPosto" component={InfoPosto} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

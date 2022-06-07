@@ -11,15 +11,18 @@ const styles = StyleSheet.create({
       alignItems: "center",
     },
     texto: {
-      fontSize: 15,
+      fontSize: 23,
       color: "#107878",
-      marginTop: "50%", 
+      marginTop: "10%", 
     },
-    atualizarLista: {
-      width: '40%',
-      height: 50,
-      fontSize: 20,
-      marginBottom: "5%",
+    texto2: {
+      fontSize: 18,
+      color: "#107878",
+      marginTop: "2%", 
+    },
+    postoContainer: {
+      width: '100%',
+      height: "30%",
       borderStyle: 'solid',
       borderColor: '#ffffff',
       borderWidth: 1,
@@ -28,9 +31,7 @@ const styles = StyleSheet.create({
       padding: 10,
       paddingRight: 2,
       backgroundColor:"#ffffff",
-      flexDirection: "row",
-      borderRadius: 100,
-      marginLeft: '55%',
+      justifyContent:"center",
     },
     btnViewContainer: {
       width: "100%",
@@ -88,11 +89,11 @@ const styles = StyleSheet.create({
     },
     txtItem:{
       color:"#ffffff",
-      fontSize:17,
+      fontSize:25,
     },
     rankContainer:{
       width: "100%",
-      top:"10%",
+      top:"5%",
       height:"80%"
     }
   });

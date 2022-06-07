@@ -16,7 +16,7 @@ export default function CodigoVerificacao({ route, navigation }) {
     useEffect(async () => {
         let cod;
         if (codigo == null) {
-            cod = generateRandomInt(10000, 99999)
+            cod = 55
             setCodigo(cod)
         }else{
             cod = codigo

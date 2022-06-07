@@ -10,8 +10,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-export default function Mapa({ route, navigation }) {
+export default function Mapa({ navigation }) {
 
 	var distlist = []
 	const [initialLocation, setInitialLocation] = useState({
@@ -65,6 +64,10 @@ export default function Mapa({ route, navigation }) {
 		for (let i = reload; i <= reload + 1; i++) {
 			setReload(i)
 		}
+	}
+
+	function infoPosto(){
+		navigation.navigate("InfoPosto", {posto: JSON.stringify(postoSelecionado)})
 	}
 	function btnInfo(posto){
 		setLeft("0%")
@@ -166,6 +169,9 @@ export default function Mapa({ route, navigation }) {
 				/>
 				
 				<View style={[cssMapa.fazRotaContainer, {left}]}>
+                	<TouchableOpacity style={[cssMapa.fazRota, {width: 60, height: 60} ]} onPress={infoPosto}>
+                	    <Icon name="info" size={34} color="#107878" />
+                	</TouchableOpacity>
                 	<TouchableOpacity style={cssMapa.fazRota} onPress={trassarRota}>
                 	    <Icon name="share" size={40} color="#107878" />
                 	</TouchableOpacity>
@@ -188,7 +194,7 @@ export default function Mapa({ route, navigation }) {
 
         			<TouchableOpacity 
         			style={cssMapa.btnScreans}
-        			onPress={Mapa}>
+        			onPress={reloadPage}>
         			    <Icon name="map-marker" size={30} color="#A9A9A9" />
 						<Text style={cssMapa.textoIconesSelecao}>Mapa</Text>
         			</TouchableOpacity>
@@ -232,7 +238,6 @@ export default function Mapa({ route, navigation }) {
 								latitudeDelta: 0.000922,
 								longitudeDelta: 0.000421
 							}}
-								key={m.id}
 								title={m.name}
 								description={m.adress}
 								onPress={() => {btnInfo(m)}}

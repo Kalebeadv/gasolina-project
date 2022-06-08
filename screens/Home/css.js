@@ -132,9 +132,8 @@ const styles = StyleSheet.create({
     },
     atualizarLista: {
       width: '40%',
-      height: 50,
+      height: 40,
       fontSize: 20,
-      marginBottom: "5%",
       borderStyle: 'solid',
       borderColor: '#ffffff',
       borderWidth: 1,
@@ -147,6 +146,7 @@ const styles = StyleSheet.create({
       borderRadius: 100,
       marginLeft: '55%',
       position: "absolute",
+      top:"78%"
     },
 });
 

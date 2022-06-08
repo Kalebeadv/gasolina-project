@@ -45,8 +45,9 @@ export default function Home({ route, navigation }) {
 	const [combustivelEconomico, setCombustivelEconomico] = useState(null);
 	const [distanciaPosto, setDistanciaPosto] = useState(null);
 	const [reload, setReload] = useState(null);
-	const [selectedId, setSelectedId] = useState(null);
+	const [FlexFuel, setFlexFuel] = useState(null);
 	const [encontrar, setEncontrar] = useState(true);
+	const [hide, setHide] = useState("80%")
 
 	function reloadPage() {
 		for (let i = reload; i <= reload + 1; i++) {
@@ -84,7 +85,7 @@ export default function Home({ route, navigation }) {
 		car ? comb = car.typeFuel : comb = "gasolina"
 
 		if (comb == 'flex') {
-			comb = "gasolina"
+			comb = FlexFuel
 		}
 
 		var reqs = await fetch(urlRootNode + 'homeFuel', {
@@ -115,8 +116,12 @@ export default function Home({ route, navigation }) {
 				if (fuel[j].gasstationID == postos[i].id) {
 					combustivel = fuel[j]
 					break
-				}
 			}
+		}
+			if (combustivel == undefined){
+				break
+			}
+
 			for (let c = 0; c < distancias.length; c++) {
 				if (distancias[c].id == postos[i].id) {
 					dis1 = distancias[c].distance
@@ -184,12 +189,11 @@ export default function Home({ route, navigation }) {
 				let ress = await reqs.json();
 				await AsyncStorage.setItem("CarrosUser", JSON.stringify(ress));
 				setCars(ress)
-				setSelectedId(ress[0].id)
 				return;
 			} else {
 				console.log("memoria")
-				setCars(JSON.parse(carros))
-				setSelectedId(id)
+				carros = JSON.parse(carros)
+				setCars(carros)
 			}
 		}
 		getCars();
@@ -204,7 +208,11 @@ export default function Home({ route, navigation }) {
 				carro = cars[i]
 			}
 		}
-
+		if (carro.typeFuel == "flex"){
+			setHide("0%")
+		}else{
+			setHide("80%")
+		}
 		setCar(carro)
 	}, [cars])
 
@@ -216,6 +224,10 @@ export default function Home({ route, navigation }) {
 	useEffect(() => {
 		comparaDistancia()
 	}, [fuel, distancias])
+
+	useEffect(() => {
+		setReload(0);
+	},[FlexFuel])
 
 
 
@@ -275,14 +287,13 @@ export default function Home({ route, navigation }) {
 
 							<Text style={styles.btnCar_text}>{car.brand + " " + car.model}</Text>
 						</TouchableOpacity>
-					</View>
-				 	<View>
-        					<TouchableOpacity style={styles.atualizarLista}>
+        					<TouchableOpacity style={[styles.atualizarLista, {left : hide}]}>
          		 				<FlexSelect
-            							funcao={setSelectFuel}
+            							funcao={setFlexFuel}
           						/>
         					</TouchableOpacity>
-      					</View>
+      					
+					</View>
 				}
 
 				<View style={styles.btnViewContainer}>

@@ -26,7 +26,7 @@ app.post('/registrar', async (req, res) => {
     let hash = bcrypt.hashSync(req.body.passwordUser, salt);   
     if (reqs == '') {
         reqs = await model.User.create({
-            'name': req.body.stNameUser,
+            'name': req.body.name,
             'email': req.body.emailUser,
             'password': hash,
             'createdAt': new Date(),
@@ -46,10 +46,10 @@ app.post('/cadastrarVeiculo', async (req, res) => {
         }
     });
     id = JSON.stringify(id, ["id"]);
-
+    console.log(id)
     id = id.split(':');
     id = id[1]
-    id = id.split("}")
+    id = id.split("}");
     id = id[0]
 
     let reqs = await model.Vehicle.create({
@@ -112,11 +112,13 @@ app.post("/infoFuel", async (req, res) => {
 
 app.post("/homeFuel", async (req, res) => {
     let c;
-    if (req.body.combus == "undefined"){
-        c = req.body.combus;
-    }else{
+    if (req.body.combus == undefined){
         c = "gasolina"
+    }else{
+        c = req.body.combus;
     }
+    
+    
     let objFuel = await model.Fuel.findAll({
         where:{
             type: c
@@ -161,7 +163,9 @@ app.post('/carros', async (req, res) => {
             email: req.body.email,
         }
     })
+    
     let id = JSON.stringify(user, ["id"]);
+    console.log(id)
     id = id.split(':');
     id = id[1]
     id = id.split("}")

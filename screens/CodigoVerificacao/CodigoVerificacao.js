@@ -30,7 +30,7 @@ export default function CodigoVerificacao({ route, navigation }) {
         
         setEmail(userc.email);
         setPassword(userc.password);
-        setNome(userc.name);
+        setNome(userc.nome);
 
         var reqs = await fetch(config.urlRootNode + "enviaEmail", {
             method: "POST",
@@ -60,7 +60,7 @@ export default function CodigoVerificacao({ route, navigation }) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    stNameUser: nome,
+                    name: nome,
                     emailUser: email,
                     passwordUser: password,
                 })

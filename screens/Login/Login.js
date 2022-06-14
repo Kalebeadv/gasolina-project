@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
     } else {
       Alert.alert(
         "Ocorreu um erro",
-        "Email ou Senha invalido"
+        "E-mail ou Senha invalido"
       )
     }
   }
@@ -98,7 +98,7 @@ export default function Login({ navigation }) {
           </View>
 
           <Text style={styles.esqueci_senha} onPress={esqueci_senha}>
-            Esqueci minha senha
+            Esqueci a minha senha
           </Text>
 
           <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>

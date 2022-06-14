@@ -66,7 +66,7 @@ export default function Registrar({ navigation }) {
             <Icon name="envelope" size={25} color="#ffffff" />
             <TextInput
               style={styles.imputs}
-              placeholder=" Email"
+              placeholder=" E-mail"
               placeholderTextColor={'#ffffff'}
               autoCorrect={false}
               autoCapitalize={"none"}

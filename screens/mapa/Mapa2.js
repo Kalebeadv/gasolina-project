@@ -151,7 +151,7 @@ export default function Mapa({ route, navigation }) {
         			style={cssMapa.btnScreans}
         			onPress={selecionaCarro}>
         				<Icon name="car" size={25} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Carros</Text>
+						<Text style={cssMapa.textoIcones}>Veículos</Text>
         			</TouchableOpacity>
       			</View>
 			</View>

@@ -21,7 +21,7 @@ export default class FuelTypeButton extends Component {
                     <Picker.Item label="Flex" value="flex" />
                     <Picker.Item label="Gasolina" value="gasolina" />
                     <Picker.Item label="Alcool" value="alcool" />
-                    <Picker.Item label="Disel" value="disel" />
+                    <Picker.Item label="Diesel" value="diesel" />
                 </Picker>
             </View>
         );

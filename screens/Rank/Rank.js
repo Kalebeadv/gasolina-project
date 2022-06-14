@@ -94,7 +94,7 @@ export default function Rank({ navigation }) {
   const Item = ({ item, onPress }) => (
     <View style={[styles.item2]}> 
       <View style={styles.item}>
-        <Text style={styles.txtItem}>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
+        <Text style={styles.txtItem}>{ item.gasstation + "\n"+ item.type.toUpperCase()  + "\nR$ " + item.price +""}</Text>
         <Icon onPress={onPress} style={styles.icon} name="share" size={30} color="#107878" />
       </View>
     </View>
@@ -168,7 +168,7 @@ export default function Rank({ navigation }) {
           style={styles.btnScreans}
           onPress={selecionaCarro}>
           <Icon name="car" size={25} color="#107878" />
-          <Text style={styles.textoIcones}>Carros</Text>
+          <Text style={styles.textoIcones}>Veículos</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

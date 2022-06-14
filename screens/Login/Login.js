@@ -33,10 +33,12 @@ export default function Login({ navigation }) {
       })
     });
     let ress = await reqs.json();
-    
-    if (ress == 'sucesso') {
+    console.log(ress)
+    if (ress[0].email == email) {
+      await AsyncStorage.setItem('userConfig', JSON.stringify(ress[0]));
       await AsyncStorage.setItem('email', email);
       await AsyncStorage.setItem('pass', password);
+
       navigation.navigate("Home");
     } else {
       Alert.alert(

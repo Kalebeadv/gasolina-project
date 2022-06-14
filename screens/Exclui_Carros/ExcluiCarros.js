@@ -1,4 +1,4 @@
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, FlatList } from "react-native";
+import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, FlatList, Alert } from "react-native";
 import React, { useState, useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -22,7 +22,7 @@ export default function Carros({ route, navigation }) {
     const [userEmail, setUserEmail] = useState(null);
     const [selectedId, setSelectedId] = useState(null);
 
-    async function exclui() {
+    async function confirmado() {
         let reqs = await fetch(config.urlRootNode + 'excluiCarros', {
             method: 'POST',
             headers: {
@@ -40,7 +40,32 @@ export default function Carros({ route, navigation }) {
         Mapa()
         return;
     }
-    async function Atualizar() {
+
+    function exclui(){
+        Alert.alert(
+            'Excluir o Veículo',
+            'Deseja realmente excluir o veículo',
+            [
+                { text: 'Não', onPress: () => console.log("Não") },
+                { text: 'Sim', onPress: () => confirmado() }
+            ],
+            { cancelable: false }
+        )
+    }
+
+    function Atualizar(){
+        Alert.alert(
+            'Editar o Veículo',
+            'Deseja guardar as alterações',
+            [
+                { text: 'Não', onPress: () => console.log("Não") },
+                { text: 'Sim', onPress: () => confirAtualizar() }
+            ],
+            { cancelable: false }
+        )
+    }
+
+    async function confirAtualizar() {
         let reqs = await fetch(config.urlRootNode + 'atualizaCarros', {
           method: 'POST',
           headers: {

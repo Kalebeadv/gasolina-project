@@ -138,7 +138,7 @@ app.post('/login', async (req, res) => {
 
     if (user.length > 0){
         bcrypt.compare(req.body.passwordUser, user[0].password).then((ress) => {
-            res.send(JSON.stringify("sucesso")
+            res.send(JSON.stringify(user)
         )});
     }else{
         console.log("falha")

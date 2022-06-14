@@ -11,7 +11,6 @@ import { cssMapa, newMap } from "./cssMapa";
 import { urlRootNode } from '../../config/config.json'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from 'expo-location';
-import RNRestart from 'react-native-restart';
 import FlexSelect from "../../src/components/FlexSelectButton";
 
 
@@ -48,6 +47,7 @@ export default function Home({ route, navigation }) {
 	const [FlexFuel, setFlexFuel] = useState(null);
 	const [encontrar, setEncontrar] = useState(true);
 	const [hide, setHide] = useState("80%")
+	const [usuario, setUser] = useState([])
 
 	function reloadPage() {
 		for (let i = reload; i <= reload + 1; i++) {
@@ -171,8 +171,11 @@ export default function Home({ route, navigation }) {
 			let userEmail = await AsyncStorage.getItem("email");
 			let carros = await AsyncStorage.getItem("CarrosUser");
 			let id = await AsyncStorage.getItem("VeiSelect");
+			let userc = await AsyncStorage.getItem("userConfig");
 
 			console.log(userEmail + "==============" + id)
+			console.log(userc);
+			setUser(JSON.parse(userc))
 
 			if (id == 'null' || typeof (carros) != "string") {
 				console.log("banco")
@@ -229,11 +232,6 @@ export default function Home({ route, navigation }) {
 		setReload(0);
 	},[FlexFuel])
 
-
-
-
-
-
 	//------------------------- Navigate -------------------
 	function go_to_mapa() { navigation.navigate("Mapa2", { posto: JSON.stringify(postoMaisEconomico) }) }
 	function Rank() { navigation.navigate("Rank") }
@@ -252,21 +250,21 @@ export default function Home({ route, navigation }) {
 			<View style={styles.allContainer}>
 			{encontrar == true?
 				<View style={styles.melhorContainer}>
-
-					<Icon name="search" size={120} color="#107878" />
-					<Text></Text>
-					<Text></Text>
+					<Text style={styles.txtBemVindo}>Bem Vindo!</Text>
+					<Text style={styles.txtQuest}>Quer encontrar o posto mais econômico?</Text>
 					<TouchableOpacity style={styles.btnRoute} onPress={reloadPage}>
 						<Text style={styles.btnRoute_text}>Encontrar</Text>
+						<Icon name="search" size={20} color="#ffffff" />
 					</TouchableOpacity>
-				</View>:
-
+				</View>
+				:
 				<View style={styles.melhorContainer}>
-
-					<BombaDeGasolina fill={"#107878"} width={160} height={160} />
-
-					<Text style={styles.txtRotaTitle}>{postoMaisEconomico && postoMaisEconomico.name}</Text>
-					<Text style={styles.txtRotaPrice}>{combustivelEconomico && "Distância: " + distanciaPosto + "Km R$ " + combustivelEconomico.price + ""}</Text>
+					<View style={styles.infoContainer}>
+						<BombaDeGasolina style={styles.bomba} fill={"#107878"} width={120} height={120} />
+						<Text style={styles.txtRotaTitle}>{postoMaisEconomico && postoMaisEconomico.name}</Text>
+						<Text style={styles.txtRotaPrice}>{combustivelEconomico && combustivelEconomico.type.toLocaleUpperCase() + ": \n                R$ " + combustivelEconomico.price + ""}</Text>
+						<Text style={styles.txtRotaDistance}>{distanciaPosto && "DISTÂNCIA: \n                " + distanciaPosto + "Km"}</Text>
+					</View>
 
 					<TouchableOpacity style={styles.btnRoute} onPress={go_to_mapa}>
 						<Text style={styles.btnRoute_text}>Traçar Rota</Text>
@@ -274,7 +272,6 @@ export default function Home({ route, navigation }) {
 					</TouchableOpacity>
 				</View>
 			}
-
 				{car &&
 					<View style={styles.carsContainer}>
 						<TouchableOpacity
@@ -323,7 +320,7 @@ export default function Home({ route, navigation }) {
 						style={styles.btnScreans}
 						onPress={selecionaCarro}>
 						<Icon name="car" size={25} color="#107878" />
-						<Text style={styles.textoIcones}>Carros</Text>
+						<Text style={styles.textoIcones}>Veiculos</Text>
 					</TouchableOpacity>
 				</View>
 
@@ -352,7 +349,7 @@ export default function Home({ route, navigation }) {
 							);
 						})}
 
-					{postos.length > 0 &&
+					{origin && postos.length > 0 &&
 						postos.map((m2) => {
 							return (
 								<MapViewDirections

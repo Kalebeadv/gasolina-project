@@ -182,14 +182,14 @@ export default function Mapa({ navigation }) {
         			style={cssMapa.btnScreans}
         			onPress={Rank}>
         			    <Icon name="line-chart" size={25} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Ranking</Text>
+						<Text style={cssMapa.textoIcones}>Ranque</Text>
         			</TouchableOpacity>
 
 					<TouchableOpacity 
 					style={cssMapa.btnScreans}
           			onPress={Home}>
             			<Icon name="home" size={30} color="#107878" />
-            			<Text style={cssMapa.textoIcones}>Inicio</Text>
+            			<Text style={cssMapa.textoIcones}>Início</Text>
           			</TouchableOpacity>
 
         			<TouchableOpacity 

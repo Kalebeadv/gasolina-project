@@ -250,7 +250,7 @@ export default function Home({ route, navigation }) {
 			<View style={styles.allContainer}>
 			{encontrar == true?
 				<View style={styles.melhorContainer}>
-					<Text style={styles.txtBemVindo}>Bem Vindo!</Text>
+					<Text style={styles.txtBemVindo}>Bem vindo/a!</Text>
 					<Text style={styles.txtQuest}>Quer encontrar o posto mais econômico?</Text>
 					<TouchableOpacity style={styles.btnRoute} onPress={reloadPage}>
 						<Text style={styles.btnRoute_text}>Encontrar</Text>
@@ -299,14 +299,14 @@ export default function Home({ route, navigation }) {
 						style={styles.btnScreans}
 						onPress={Rank}>
 						<Icon name="line-chart" size={25} color="#107878" />
-						<Text style={styles.textoIcones}>Ranking</Text>
+						<Text style={styles.textoIcones}>Ranque</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity 
 					style={styles.btnScreans}
 					onPress={reloadPage}>
 						<Icon name="home" size={30} color="#A9A9A9" />
-						<Text style={styles.textoIconesSelecao}>Inicio</Text>
+						<Text style={styles.textoIconesSelecao}>Início</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity
@@ -320,7 +320,7 @@ export default function Home({ route, navigation }) {
 						style={styles.btnScreans}
 						onPress={selecionaCarro}>
 						<Icon name="car" size={25} color="#107878" />
-						<Text style={styles.textoIcones}>Veiculos</Text>
+						<Text style={styles.textoIcones}>Veículos</Text>
 					</TouchableOpacity>
 				</View>
 

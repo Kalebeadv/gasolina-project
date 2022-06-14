@@ -134,7 +134,7 @@ export default function Carros({ route, navigation }) {
         <KeyboardAvoidingView style={styles.container}>
             <View style={styles.textoInicioContainer}>
                 <Text style={styles.textoInicio}>
-                    Editar Veículo
+                    Editar veículo
                 </Text>
             </View>
 

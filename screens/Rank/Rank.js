@@ -146,7 +146,7 @@ export default function Rank({ navigation }) {
           style={styles.btnScreans}
           onPress={reloadPage}>
           <Icon name="line-chart" size={25} color="#A9A9A9" />
-          <Text style={styles.textoIconesSelecao}>Ranking</Text>
+          <Text style={styles.textoIconesSelecao}>Ranque</Text>
         </TouchableOpacity>
 
 

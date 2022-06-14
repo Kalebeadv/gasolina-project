@@ -74,7 +74,7 @@ export default function CadastrarVeiculo({ navigation }) {
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.textoInicioContainer}>
         <Text style={styles.textoInicio}>
-          Cadastro Seu Veículos
+          Cadastre o seu Veículo
         </Text>
       </View>
 
@@ -142,7 +142,7 @@ export default function CadastrarVeiculo({ navigation }) {
         </View>
 
         <TouchableOpacity style={styles.btnCadastro} onPress={Cadastrar}>
-          <Text style={styles.btnCadastro_texto}>Cadastrar Novo Veículo</Text>
+          <Text style={styles.btnCadastro_texto}>Cadastrar novo veículo</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>

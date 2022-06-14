@@ -140,7 +140,7 @@ export default function Carros({ route, navigation }) {
                     style={styles.btnScreans}
                     onPress={Rank}>
                       <Icon name="line-chart" size={25} color="#107878" />
-                      <Text style={styles.textoIcones}>Ranking</Text>
+                      <Text style={styles.textoIcones}>Ranque</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity 

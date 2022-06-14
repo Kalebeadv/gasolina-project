@@ -130,7 +130,7 @@ export default function Mapa({ route, navigation }) {
         			style={cssMapa.btnScreans}
         			onPress={Rank}>
         			    <Icon name="line-chart" size={25} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Ranking</Text>
+						<Text style={cssMapa.textoIcones}>Ranque</Text>
         			</TouchableOpacity>
 
 					<TouchableOpacity 

@@ -96,7 +96,7 @@ export default function CodigoVerificacao({ route, navigation }) {
 
 
             <View style={styles.container}>
-                <Text style={styles.textRecuperacao}>Código de Verificação</Text>
+                <Text style={styles.textRecuperacao}>Código de verificação</Text>
 
                 <Text style={styles.textIntroducao}>Para ajudar a proteger sua conta, precisamos
                     confirmar se é realmente você que está tentando fazer cadastro.

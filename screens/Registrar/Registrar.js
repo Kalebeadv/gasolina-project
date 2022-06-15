@@ -101,7 +101,7 @@ export default function Registrar({ navigation }) {
           </View>
 
           <TouchableOpacity style={styles.btnRegistrar} onPress={registerUser}>
-            <Text style={styles.btnRegistrar_texto}>REGISTRAR</Text>
+            <Text style={styles.btnRegistrar_texto}>Registrar</Text>
           </TouchableOpacity>
 
 

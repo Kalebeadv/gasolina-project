@@ -125,7 +125,7 @@ export default function Carros({ route, navigation }) {
     //------------------------- Navigate ---------------
     async function Mapa() {
         await AsyncStorage.setItem("VeiSelect", 'null');
-        navigation.navigate('Home', { id: 0 });
+        navigation.navigate('Carros', { id: 0 });
     }
 
     //--------------------------------------------------

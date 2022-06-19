@@ -44,7 +44,7 @@ include 'backend/database.php';
 						</th>
 						<th>id</th>
                         <th>id do posto de combústivel</th>
-                        <th>Tipo de combustível</th>
+                        <th>tipo de combustível</th>
                         <th>preço</th>
                     </tr>
                 </thead>

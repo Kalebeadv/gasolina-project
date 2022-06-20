@@ -72,7 +72,7 @@ export default function InfoPosto({ route, navigation }) {
     const Item = ({ item, onPress }) => (
         <View style={[styles.item2]}>
             <View style={styles.item}>
-                <Text style={styles.txtItem}>{"Tipo: " + item.type + "\nValor: R$ " + item.price + ""}</Text>
+                <Text style={styles.txtItem}>{item && "Tipo: " + item.type.toUpperCase() + "\nValor: R$ " + String(item.price).toUpperCase() + ""}</Text>
             </View>
         </View>
     );

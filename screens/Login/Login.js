@@ -39,7 +39,7 @@ export default function Login({ navigation }) {
       await AsyncStorage.setItem('email', email);
       await AsyncStorage.setItem('pass', password);
 
-      navigation.navigate("Home");
+      navigation.navigate("Carros");
     } else {
       Alert.alert(
         "Ocorreu um erro",

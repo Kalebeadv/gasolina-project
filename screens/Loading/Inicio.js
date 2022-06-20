@@ -65,13 +65,8 @@ export default function Inicio({ navigation }) {
     });
 
     let ress = await reqs.json();
-
-    if (ress || ress == null) {
-      navigation.navigate("Home", {id: 0 });
-      return;
-    } else {
-      navigation.navigate("Entrar");
-      return;
+    if (ress[0].email == email) {
+      navigation.navigate("Home");
     }
   }
 

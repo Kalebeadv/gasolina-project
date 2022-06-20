@@ -167,7 +167,7 @@ export default function Rank({ navigation }) {
         <TouchableOpacity
           style={styles.btnScreans}
           onPress={selecionaCarro}>
-          <Icon name="car" size={25} color="#107878" />
+          <Icon name="dashboard" size={25} color="#107878" />
           <Text style={styles.textoIcones}>Veículos</Text>
         </TouchableOpacity>
       </View>

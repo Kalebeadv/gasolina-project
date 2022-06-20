@@ -160,7 +160,7 @@ export default function Carros({ route, navigation }) {
                 <TouchableOpacity 
                     style={styles.btnScreans}
                     onPress={reloadPage}>
-                      <Icon name="car" size={25} color="#A9A9A9" />
+                      <Icon name="dashboard" size={30} color="#A9A9A9" />
                       <Text style={styles.textoIconesSelecao}>Veículos</Text>
                 </TouchableOpacity>
                 

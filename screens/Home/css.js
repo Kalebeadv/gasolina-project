@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         borderRadius: 10,
         width: "90%",
-        height: "50%",
+        height: "55%",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -71,12 +71,13 @@ const styles = StyleSheet.create({
     btnViewContainer: {
         width: "100%",
         height: "18%",
+        position:"absolute",
         backgroundColor: "#fff",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         zIndex: 9,
-        top: "25%",
+        top: "107%",
     },
     btnScreans: {
         justifyContent: "center",
@@ -93,7 +94,6 @@ const styles = StyleSheet.create({
     },
     textoIconesSelecao: {
         color: "#A9A9A9",
-
     },
     svgBack: {
         position: "absolute",

@@ -17,7 +17,7 @@ export default class VehicleTypeButton extends Component {
                     selectedValue = {this.state.user}
                     onValueChange = {this.updateUser}
                 >
-                    <Picker.Item label="Tipo do veiculo" value="tipo" />
+                    <Picker.Item label="Tipo do Veiculo" value="tipo" />
                     <Picker.Item label="Moto" value="moto" />
                     <Picker.Item label="Carro" value="carro" />
                 </Picker>

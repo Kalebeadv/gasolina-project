@@ -5,9 +5,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FuelTypeButton from "../../src/components/FuelTypeButton";
 import VehicleTypeButton from "../../src/components/VehicleTypeButton";
-import { styles } from "./css"
+import { styles } from "./css2"
 
-export default function CadastrarVeiculo({ navigation }) {
+export default function PrimeiroVeiculo({ navigation }) {
   const [modelo, setModelo] = useState(null);
   const [marca, setMarca] = useState(null);
   const [consumo, setConsumo] = useState(null);
@@ -72,10 +72,6 @@ export default function CadastrarVeiculo({ navigation }) {
   }
   return (
     <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.voltarContainer}>
-        <Icon name="arrow-left" size={25} color="#757F7A" onPress={() => navigation.navigate("Carros")}/>
-      </View>
-
       <View style={styles.textoInicioContainer}>
         <Text style={styles.textoInicio}>
           Cadastre o seu Veículo

@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
 
     },
     gasolina: {
-        top: "90%",
         fontSize: 45,
         fontStyle: "italic",
         fontWeight: "bold",
@@ -182,6 +181,14 @@ const styles = StyleSheet.create({
         top:"-10%",
         color:"#107878",
         fontWeight: "bold",
+    },
+    gasolinaContainer:{
+        flexDirection:"row",
+        top:"10%"
+    },
+    siginOut:{
+        left:"250%",
+        top:"4%"
     }
 });
 

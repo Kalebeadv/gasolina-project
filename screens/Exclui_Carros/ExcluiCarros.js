@@ -132,9 +132,13 @@ export default function Carros({ route, navigation }) {
 
     return (
         <KeyboardAvoidingView style={styles.container}>
+            <View style={styles.voltarContainer}>
+                <Icon name="arrow-left" size={25} color="#757F7A" onPress={() => navigation.navigate("Carros")}/>
+            </View>
+
             <View style={styles.textoInicioContainer}>
                 <Text style={styles.textoInicio}>
-                    Editar veículo
+                    Editar Veículo
                 </Text>
             </View>
 

@@ -70,7 +70,7 @@ export default function CodigoVerificacao({ route, navigation }) {
             if (ress == 'true') {
                 await AsyncStorage.setItem('email', email);
                 await AsyncStorage.setItem('pass', password);
-                navigation.navigate('CadastroVeiculo');
+                navigation.navigate('PrimeiroVeiculo');
 
             } else if (ress == 'false') {
                 Alert.alert(

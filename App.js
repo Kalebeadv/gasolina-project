@@ -20,6 +20,7 @@ import HomePage from "./screens/HomePage/HomePage";
 import Home from "./screens/Home/Home";
 import CodigoVerificacao from "./screens/CodigoVerificacao/CodigoVerificacao";
 import InfoPosto from "./screens/InfoPosto/infoPosto";
+import PrimeiroVeiculo from "./screens/Cadastro_Veiculos/PrimeiroCadastro";
 
 
 const Stack = createStackNavigator();
@@ -105,6 +106,11 @@ function MyStack() {
         headerShown: false
       }}/>
       <Stack.Screen name="InfoPosto" component={InfoPosto} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="PrimeiroVeiculo" component={PrimeiroVeiculo} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

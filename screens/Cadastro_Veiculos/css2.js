@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       alignContent: "center",
       paddingBottom: "5%",
+      marginTop:"20%"
     },
     inputIcon: {
       width: '90%',

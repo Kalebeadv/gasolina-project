@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Alert } from 'react-native';
 import MapView, { Callout, Circle, Marker } from "react-native-maps"
 import { styles } from './css';
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -100,6 +100,17 @@ export default function Home({ route, navigation }) {
 		});
 		let ress = await reqs.json();
 		setFuel(ress);
+	}
+	function entrar(){
+		Alert.alert(
+            'Sair',
+            'Deseja sair da sua conta',
+            [
+                { text: 'Não', onPress: () => console.log("Não") },
+                { text: 'Sim', onPress: () => navigation.navigate("Entrar", {atualizar : "true"})}
+            ],
+            { cancelable: false }
+        )
 	}
 
 	async function comparaDistancia() {
@@ -243,8 +254,9 @@ export default function Home({ route, navigation }) {
 		<View style={styles.container}>
 			<Background style={styles.svgBack} width={Dimensions.get("screen").width + 50} height={Dimensions.get("screen").height + 50} />
 
-			<View>
+			<View style={styles.gasolinaContainer}>
 				<Text style={styles.gasolina}>Ga$olina</Text>
+				<Icon name="sign-out" size={40} color="#000" style={styles.siginOut} onPress={entrar}/>
 			</View>
 
 			<View style={styles.allContainer}>

@@ -9,18 +9,18 @@
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "gasolina_project",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
+    "database": "gasolina_project",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
+  "urlRootNode":"http://10.0.0.107:3000/",
+  "urlRootPhp": "http://10.0.0.107:80/"
 
-  "urlRootNode":"http://10.0.0.104:3000/",
-  "urlRootPhp": "http://10.0.0.104:80/"
 } 

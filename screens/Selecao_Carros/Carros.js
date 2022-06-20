@@ -31,9 +31,9 @@ export default function Carros({ route, navigation }) {
                 <Icon style={styles.vehiIcon} name="car" size={21} color="#ffffff" /> :
                 <Icon style={styles.vehiIcon} name="motorcycle" size={21} color="#ffffff" />
                 }
-                <Text style={[styles.title, textColor]}>{item.brand +" "+ item.model}</Text>
+                <Text style={[styles.title, textColor]}>{item.brand.toUpperCase() +" "+ item.model.toUpperCase()}</Text>
             </View>
-            <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typeFuel}</Text>
+            <Text style={[styles.info, textColor]}>{"\n Ano: " + item.year + "\n Consumo: " + item.consumo + "\n Combustível: " + item.typeFuel.toUpperCase() }</Text>
         </TouchableOpacity>
     );
     const [selectedId, setSelectedId] = useState([]);
@@ -140,7 +140,7 @@ export default function Carros({ route, navigation }) {
                     style={styles.btnScreans}
                     onPress={Rank}>
                       <Icon name="line-chart" size={25} color="#107878" />
-                      <Text style={styles.textoIcones}>Ranking</Text>
+                      <Text style={styles.textoIcones}>Ranque</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity 
@@ -154,14 +154,14 @@ export default function Carros({ route, navigation }) {
                     style={styles.btnScreans}
                     onPress={Mapa}>
                       <Icon name="map-marker" size={30} color="#107878" />
-                      <Text style={styles.textoIcones}>Mapa</Text>
+                      <Text style={styles.textoIcones}>Postos</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity 
                     style={styles.btnScreans}
-                    onPress={selecionaCarro}>
-                      <Icon name="car" size={25} color="#A9A9A9" />
-                      <Text style={styles.textoIconesSelecao}>Carros</Text>
+                    onPress={reloadPage}>
+                      <Icon name="dashboard" size={30} color="#A9A9A9" />
+                      <Text style={styles.textoIconesSelecao}>Veículos</Text>
                 </TouchableOpacity>
                 
              </View>

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Gasstation.init({
-    cnpj: DataTypes.INTEGER,
+    cnpj: DataTypes.STRING,
     name: DataTypes.STRING,
     adress: DataTypes.STRING,
     latitude: DataTypes.STRING,

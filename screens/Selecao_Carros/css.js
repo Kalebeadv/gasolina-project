@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     cadastraVeiculoContainer:{
         flexDirection: 'row',
         justifyContent:"center",
-        top: '160%',
+        top: '157%',
         zIndex: 9,
         width: '100%'
     },
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         paddingRight: 5,
         marginLeft: '75%',
-        marginBottom: '5%'
+        marginBottom: '10%'
     },
     nome_rota: {
         textAlign: 'center',

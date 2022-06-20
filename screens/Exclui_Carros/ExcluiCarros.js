@@ -1,4 +1,4 @@
-import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, FlatList } from "react-native";
+import { View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text, StyleSheet, FlatList, Alert } from "react-native";
 import React, { useState, useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -22,7 +22,7 @@ export default function Carros({ route, navigation }) {
     const [userEmail, setUserEmail] = useState(null);
     const [selectedId, setSelectedId] = useState(null);
 
-    async function exclui() {
+    async function confirmado() {
         let reqs = await fetch(config.urlRootNode + 'excluiCarros', {
             method: 'POST',
             headers: {
@@ -40,7 +40,32 @@ export default function Carros({ route, navigation }) {
         Mapa()
         return;
     }
-    async function Atualizar() {
+
+    function exclui(){
+        Alert.alert(
+            'Excluir o Veículo',
+            'Deseja realmente excluir o veículo',
+            [
+                { text: 'Não', onPress: () => console.log("Não") },
+                { text: 'Sim', onPress: () => confirmado() }
+            ],
+            { cancelable: false }
+        )
+    }
+
+    function Atualizar(){
+        Alert.alert(
+            'Editar o Veículo',
+            'Deseja guardar as alterações',
+            [
+                { text: 'Não', onPress: () => console.log("Não") },
+                { text: 'Sim', onPress: () => confirAtualizar() }
+            ],
+            { cancelable: false }
+        )
+    }
+
+    async function confirAtualizar() {
         let reqs = await fetch(config.urlRootNode + 'atualizaCarros', {
           method: 'POST',
           headers: {
@@ -100,13 +125,17 @@ export default function Carros({ route, navigation }) {
     //------------------------- Navigate ---------------
     async function Mapa() {
         await AsyncStorage.setItem("VeiSelect", 'null');
-        navigation.navigate('Home', { id: 0 });
+        navigation.navigate('Carros', { id: 0 });
     }
 
     //--------------------------------------------------
 
     return (
         <KeyboardAvoidingView style={styles.container}>
+            <View style={styles.voltarContainer}>
+                <Icon name="arrow-left" size={25} color="#757F7A" onPress={() => navigation.navigate("Carros")}/>
+            </View>
+
             <View style={styles.textoInicioContainer}>
                 <Text style={styles.textoInicio}>
                     Editar Veículo
@@ -116,14 +145,14 @@ export default function Carros({ route, navigation }) {
             
             {car && <View style={styles.loginContainer}>
                 <View style={styles.inputIcon}>
-                    <Icon name="tint" size={25} color="#757F7A" />
+                    <Icon name="dashboard" size={25} color="#757F7A" />
                     <VehicleTypeButton
                         funcao={setTypeVehicle}
                     />
                 </View>
 
                 <View style={styles.inputIcon}>
-                    <Icon name="car" size={25} color="#757F7A" />
+                    <Icon name="gear" size={25} color="#757F7A" />
                     <TextInput
                         style={styles.inputs}
                         defaultValue={car.model}

@@ -63,7 +63,15 @@ export default function Rank({ navigation }) {
 		setFuel(ress);
 	}
   
-
+  function go_to_mapa(m){
+    let post;
+    for (let i = 0; i < posto.length; i++){
+      if (m == posto[i].id){
+        post = posto[i]
+      }
+    }
+    navigation.navigate("Mapa2", {posto : JSON.stringify(post)});
+  }
 
   useEffect(async () => {
     await getPosto();
@@ -83,9 +91,12 @@ export default function Rank({ navigation }) {
 		}
 	},[reload])
 
-  const Item = ({ item  }) => (
-    <View style={[styles.item2]}>
-      <Text style={[styles.item]}>{ item.gasstation + "\n"+ item.type  + "\nR$ " + item.price +""}</Text>
+  const Item = ({ item, onPress }) => (
+    <View style={[styles.item2]}> 
+      <View style={styles.item}>
+        <Text style={styles.txtItem}>{ item.gasstation + "\n"+ item.type.toUpperCase()  + "\nR$ " + item.price +""}</Text>
+        <Icon onPress={onPress} style={styles.icon} name="share" size={30} color="#107878" />
+      </View>
     </View>
   );
 
@@ -94,7 +105,7 @@ export default function Rank({ navigation }) {
     return (
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={() => go_to_mapa(item.gasstationID)}
         style={styles.item}
       />
     );
@@ -110,14 +121,17 @@ export default function Rank({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Background style={styles.svgBack} width={Dimensions.get("screen").width} height={Dimensions.get("screen").height} />
-      {DATA !=  [] &&
-        <FlatList
-          data={DATA}
-          style={styles.item2}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      }
+
+      <View style={styles.rankContainer}>
+        {DATA !=  [] &&
+          <FlatList
+            data={DATA}
+            style={styles.item2}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        }
+      </View>
 
       <View>
         <TouchableOpacity style={styles.atualizarLista}>
@@ -132,7 +146,7 @@ export default function Rank({ navigation }) {
           style={styles.btnScreans}
           onPress={reloadPage}>
           <Icon name="line-chart" size={25} color="#A9A9A9" />
-          <Text style={styles.textoIconesSelecao}>Ranking</Text>
+          <Text style={styles.textoIconesSelecao}>Ranque</Text>
         </TouchableOpacity>
 
 
@@ -147,14 +161,14 @@ export default function Rank({ navigation }) {
           style={styles.btnScreans}
           onPress={Mapa}>
           <Icon name="map-marker" size={30} color="#107878" />
-          <Text style={styles.textoIcones}>Mapa</Text>
+          <Text style={styles.textoIcones}>Postos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.btnScreans}
           onPress={selecionaCarro}>
-          <Icon name="car" size={25} color="#107878" />
-          <Text style={styles.textoIcones}>Carros</Text>
+          <Icon name="dashboard" size={25} color="#107878" />
+          <Text style={styles.textoIcones}>Veículos</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

@@ -9,9 +9,9 @@ import { urlRootNode } from '../../config/config.json'
 import MapViewDirections from 'react-native-maps-directions';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DirectForGoogle from "../../src/components/Directions"
 
-
-export default function Mapa({ route, navigation }) {
+export default function Mapa({ navigation }) {
 
 	var distlist = []
 	const [initialLocation, setInitialLocation] = useState({
@@ -33,8 +33,6 @@ export default function Mapa({ route, navigation }) {
 		longitudeDelta: 0
 	})
 	const [distance, setDistance] = useState(null);
-	const [distancias, setDistancias] = useState([])
-	const [fuel, setFuel] = useState([])
 	const [postos, setPostos] = useState([])
 	const [distanciaOriginPosto, setDistanciaOriginPosto] = useState({
 		latitude: 0,
@@ -42,11 +40,11 @@ export default function Mapa({ route, navigation }) {
 		latitudeDelta: 0.1,
 		longitudeDelta: 0.1
 	})
-	const [cars, setCars] = useState([]);
-	const [selectedId, setSelectedId] = useState(null);
 	const [reload, setReload] = useState(null);
 	const [left, setLeft] = useState('60%')
 	const [postoSelecionado, setPostoSelecionado] = useState([])
+	const [googleOn, setGoogleOn] = useState(null)
+
 
 	async function getPosto() {
 		var reqs = await fetch(urlRootNode + 'station', {
@@ -66,6 +64,10 @@ export default function Mapa({ route, navigation }) {
 			setReload(i)
 		}
 	}
+
+	function infoPosto(){
+		navigation.navigate("InfoPosto", {posto: JSON.stringify(postoSelecionado)})
+	}
 	function btnInfo(posto){
 		setLeft("0%")
 		setPostoSelecionado(posto)
@@ -78,6 +80,7 @@ export default function Mapa({ route, navigation }) {
 			latitudeDelta: 0.3,
 			longitudeDelta: 0.3
 		})
+		setGoogleOn(false)
 	}
 
 	useEffect(async () => {
@@ -101,6 +104,10 @@ export default function Mapa({ route, navigation }) {
 	useEffect(() => {
 		getPosto()
 	},[reload])
+
+	useEffect(() => {
+		setGoogleOn(true)
+	}, [postoSelecionado])
 	
 
 
@@ -166,9 +173,24 @@ export default function Mapa({ route, navigation }) {
 				/>
 				
 				<View style={[cssMapa.fazRotaContainer, {left}]}>
+                	<TouchableOpacity style={[cssMapa.fazRota, {width: 60, height: 60} ]} onPress={infoPosto}>
+                	    <Icon name="info" size={34} color="#107878" />
+                	</TouchableOpacity>
+				{googleOn == true?
                 	<TouchableOpacity style={cssMapa.fazRota} onPress={trassarRota}>
                 	    <Icon name="share" size={40} color="#107878" />
+                	</TouchableOpacity>:
+
+					<TouchableOpacity style={cssMapa.fazRota} onPress={infoPosto}>
+                	    <DirectForGoogle 
+							start={originA}
+							end={{
+								latitude : Number(postoSelecionado.latitude),
+								longitude : Number(postoSelecionado.longitude)
+								}}
+						/>
                 	</TouchableOpacity>
+				}
            	 	</View>
 
 				<View style={cssMapa.btnViewContainer}>
@@ -176,28 +198,28 @@ export default function Mapa({ route, navigation }) {
         			style={cssMapa.btnScreans}
         			onPress={Rank}>
         			    <Icon name="line-chart" size={25} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Ranking</Text>
+						<Text style={cssMapa.textoIcones}>Ranque</Text>
         			</TouchableOpacity>
 
 					<TouchableOpacity 
 					style={cssMapa.btnScreans}
           			onPress={Home}>
             			<Icon name="home" size={30} color="#107878" />
-            			<Text style={cssMapa.textoIcones}>Inicio</Text>
+            			<Text style={cssMapa.textoIcones}>Início</Text>
           			</TouchableOpacity>
 
         			<TouchableOpacity 
         			style={cssMapa.btnScreans}
-        			onPress={Mapa}>
+        			onPress={reloadPage}>
         			    <Icon name="map-marker" size={30} color="#A9A9A9" />
-						<Text style={cssMapa.textoIconesSelecao}>Mapa</Text>
+						<Text style={cssMapa.textoIconesSelecao}>Postos</Text>
         			</TouchableOpacity>
 
         			<TouchableOpacity 
         			style={cssMapa.btnScreans}
         			onPress={selecionaCarro}>
-        				<Icon name="car" size={25} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Carros</Text>
+        				<Icon name="dashboard" size={25} color="#107878" />
+						<Text style={cssMapa.textoIcones}>Veículos</Text>
         			</TouchableOpacity>
       			</View>
 			</View>
@@ -232,7 +254,6 @@ export default function Mapa({ route, navigation }) {
 								latitudeDelta: 0.000922,
 								longitudeDelta: 0.000421
 							}}
-								key={m.id}
 								title={m.name}
 								description={m.adress}
 								onPress={() => {btnInfo(m)}}

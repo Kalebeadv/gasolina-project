@@ -3,8 +3,8 @@ import { View, Text, StyleSheet,} from "react-native";
 import {Picker} from '@react-native-picker/picker';
 
 
-export default class VehicleTypeButton extends Component {
-    state = {user:'tipo'}
+export default class FlexSelect extends Component {
+    state = {user:'gasolina'}
     updateUser = (user) =>{
         this.setState({user: user})
     }
@@ -17,9 +17,8 @@ export default class VehicleTypeButton extends Component {
                     selectedValue = {this.state.user}
                     onValueChange = {this.updateUser}
                 >
-                    <Picker.Item label="Tipo do Veiculo" value="tipo" />
-                    <Picker.Item label="Moto" value="moto" />
-                    <Picker.Item label="Carro" value="carro" />
+                    <Picker.Item label="Gasolina" value="gasolina" />
+                    <Picker.Item label="Alcool" value="alcool" />
                 </Picker>
             </View>
         );

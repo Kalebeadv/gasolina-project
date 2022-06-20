@@ -33,15 +33,17 @@ export default function Login({ navigation }) {
       })
     });
     let ress = await reqs.json();
-    
-    if (ress == 'sucesso') {
+    console.log(ress)
+    if (ress[0].email == email) {
+      await AsyncStorage.setItem('userConfig', JSON.stringify(ress[0]));
       await AsyncStorage.setItem('email', email);
       await AsyncStorage.setItem('pass', password);
-      navigation.navigate("Home");
+
+      navigation.navigate("Carros");
     } else {
       Alert.alert(
         "Ocorreu um erro",
-        "Email ou Senha invalido"
+        "E-mail ou Senha invalido"
       )
     }
   }
@@ -96,7 +98,7 @@ export default function Login({ navigation }) {
           </View>
 
           <Text style={styles.esqueci_senha} onPress={esqueci_senha}>
-            Esqueci minha senha
+            Esqueci a minha senha
           </Text>
 
           <TouchableOpacity style={styles.btnEntrar} onPress={fazLogin}>

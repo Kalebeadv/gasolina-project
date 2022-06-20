@@ -19,6 +19,8 @@ import ExcluiCarros from "./screens/Exclui_Carros/ExcluiCarros";
 import HomePage from "./screens/HomePage/HomePage";
 import Home from "./screens/Home/Home";
 import CodigoVerificacao from "./screens/CodigoVerificacao/CodigoVerificacao";
+import InfoPosto from "./screens/InfoPosto/infoPosto";
+import PrimeiroVeiculo from "./screens/Cadastro_Veiculos/PrimeiroCadastro";
 
 
 const Stack = createStackNavigator();
@@ -27,7 +29,7 @@ const Stack = createStackNavigator();
 // SÓ MEU FI, É NOIS
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="HomePage">
       <Stack.Screen name="Splash" component={Splash} options={{
         title: "",
         headerTransparent: true,
@@ -99,6 +101,16 @@ function MyStack() {
         headerShown: false
       }}/>
       <Stack.Screen name="Mapa2" component={Mapa2} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="InfoPosto" component={InfoPosto} options={{
+        title: "",
+        headerTransparent: true,
+        headerShown: false
+      }}/>
+      <Stack.Screen name="PrimeiroVeiculo" component={PrimeiroVeiculo} options={{
         title: "",
         headerTransparent: true,
         headerShown: false

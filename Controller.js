@@ -26,7 +26,7 @@ app.post('/registrar', async (req, res) => {
     let hash = bcrypt.hashSync(req.body.passwordUser, salt);   
     if (reqs == '') {
         reqs = await model.User.create({
-            'stName': req.body.stNameUser,
+            'name': req.body.name,
             'email': req.body.emailUser,
             'password': hash,
             'createdAt': new Date(),
@@ -46,10 +46,10 @@ app.post('/cadastrarVeiculo', async (req, res) => {
         }
     });
     id = JSON.stringify(id, ["id"]);
-
+    console.log(id)
     id = id.split(':');
     id = id[1]
-    id = id.split("}")
+    id = id.split("}");
     id = id[0]
 
     let reqs = await model.Vehicle.create({
@@ -78,14 +78,14 @@ app.post("/fuel", async (req, res) => {
 });
 
 app.post("/rankFuel", async (req, res) => {
-    
+    let objFuel
     if (req.body.combus == "tudo"){
-        let objFuel = await model.Fuel.findAll({
+        objFuel = await model.Fuel.findAll({
             order: [['price', 'ASC']],
             limit: 5
         });
     }else{
-        let objFuel = await model.Fuel.findAll({
+        objFuel = await model.Fuel.findAll({
             where:{
                 type: req.body.combus
             },
@@ -98,13 +98,27 @@ app.post("/rankFuel", async (req, res) => {
 
 });
 
+app.post("/infoFuel", async (req, res) => {
+    
+    let objFuel = await model.Fuel.findAll({
+            where:{
+                gasstationId: req.body.idPosto
+            },
+        });
+    
+    res.send(JSON.stringify(objFuel));
+
+});
+
 app.post("/homeFuel", async (req, res) => {
     let c;
-    if (req.body.combus == "undefined"){
-        c = req.body.combus;
-    }else{
+    if (req.body.combus == undefined){
         c = "gasolina"
+    }else{
+        c = req.body.combus;
     }
+    
+    
     let objFuel = await model.Fuel.findAll({
         where:{
             type: c
@@ -124,7 +138,7 @@ app.post('/login', async (req, res) => {
 
     if (user.length > 0){
         bcrypt.compare(req.body.passwordUser, user[0].password).then((ress) => {
-            res.send(JSON.stringify("sucesso")
+            res.send(JSON.stringify(user)
         )});
     }else{
         console.log("falha")
@@ -149,7 +163,9 @@ app.post('/carros', async (req, res) => {
             email: req.body.email,
         }
     })
+    
     let id = JSON.stringify(user, ["id"]);
+    console.log(id)
     id = id.split(':');
     id = id[1]
     id = id.split("}")

@@ -39,7 +39,7 @@ export default function LoginComGoogle() {
       return (
         <View style={styles.userInfo}>
           <Image source={{uri: userInfo.picture}} style={styles.profilePic} />
-          <Text>Welcome {userInfo.name}</Text>
+          <Text>Seja bem vindo/a {userInfo.name}</Text>
           <Text>{userInfo.email}</Text>
         </View>
       );

@@ -34,10 +34,11 @@ const cssMapa = StyleSheet.create({
         alignItems: 'center',
     },
 	fazRotaContainer:{
-        flexDirection: 'row',
         justifyContent:"center",
+		alignItems:"center",
         zIndex: 9,
-        width: '100%'
+        width: '100%',
+		marginBottom:"2%"
     },
     fazRota: {
         justifyContent:"center",
@@ -48,8 +49,8 @@ const cssMapa = StyleSheet.create({
         height: 70,
         borderRadius: 100,
         paddingRight: 2,
-        marginLeft: '75%',
-        marginBottom: '5%',
+        marginLeft: '76%',
+        marginBottom: '2%',
     },
     btnViewContainer: {
 		width: "100%",

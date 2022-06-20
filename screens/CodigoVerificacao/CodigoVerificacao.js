@@ -16,7 +16,7 @@ export default function CodigoVerificacao({ route, navigation }) {
     useEffect(async () => {
         let cod;
         if (codigo == null) {
-            cod = generateRandomInt(10000, 99999)
+            cod = 55
             setCodigo(cod)
         }else{
             cod = codigo
@@ -30,7 +30,7 @@ export default function CodigoVerificacao({ route, navigation }) {
         
         setEmail(userc.email);
         setPassword(userc.password);
-        setNome(userc.name);
+        setNome(userc.nome);
 
         var reqs = await fetch(config.urlRootNode + "enviaEmail", {
             method: "POST",
@@ -60,7 +60,7 @@ export default function CodigoVerificacao({ route, navigation }) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    stNameUser: nome,
+                    name: nome,
                     emailUser: email,
                     passwordUser: password,
                 })
@@ -70,7 +70,7 @@ export default function CodigoVerificacao({ route, navigation }) {
             if (ress == 'true') {
                 await AsyncStorage.setItem('email', email);
                 await AsyncStorage.setItem('pass', password);
-                navigation.navigate('CadastroVeiculo');
+                navigation.navigate('PrimeiroVeiculo');
 
             } else if (ress == 'false') {
                 Alert.alert(
@@ -96,7 +96,7 @@ export default function CodigoVerificacao({ route, navigation }) {
 
 
             <View style={styles.container}>
-                <Text style={styles.textRecuperacao}>Código de Verificação</Text>
+                <Text style={styles.textRecuperacao}>Código de verificação</Text>
 
                 <Text style={styles.textIntroducao}>Para ajudar a proteger sua conta, precisamos
                     confirmar se é realmente você que está tentando fazer cadastro.

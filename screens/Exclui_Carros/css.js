@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   textoInicio: {
     fontSize: 30,
     color: '#107878',
-    marginTop: "20%"
+    marginTop: "5%"
   },
   btnContainer: {
     alignItems: 'center',
@@ -104,6 +104,10 @@ const styles = StyleSheet.create({
     marginBottom: 70,
     flexDirection: "row"
   },
+  voltarContainer:{
+    marginTop:"10%",
+    right:"40%"
+  }
 });
 
 export { styles };

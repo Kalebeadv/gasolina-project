@@ -9,7 +9,7 @@ import { urlRootNode } from '../../config/config.json'
 import MapViewDirections from 'react-native-maps-directions';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import DirectForGoogle from "../../src/components/Directions"
 
 export default function Mapa({ route, navigation }) {
 
@@ -64,6 +64,9 @@ export default function Mapa({ route, navigation }) {
 			setReload(i)
 		}
 	}
+	function infoPosto(){
+		navigation.navigate("InfoPosto", {posto: JSON.stringify(postos)})
+	}
 
 	useEffect(async () => {
 		
@@ -86,7 +89,6 @@ export default function Mapa({ route, navigation }) {
 	useEffect(() => {
         let psoto = JSON.parse(route.params.posto)
         console.log(psoto)
-
         setPostos(psoto);
 		setDistanciaOriginPosto({
             latitude: Number(psoto.latitude),
@@ -111,12 +113,21 @@ export default function Mapa({ route, navigation }) {
 
 	return (
 		<View style={cssMapa.container}>
-			<View style={[cssMapa.placeholderArea, {top: "39%"}]}>
+			<View style={[cssMapa.placeholderArea, {top: "35%"}]}>
 				
 				
-				<View style={cssMapa.fazRotaContainer}>
-                	<TouchableOpacity style={cssMapa.fazRota}>
-                	    <Icon name="dollar" size={40} color="#107878" />
+				<View style={[cssMapa.fazRotaContainer]}>
+                	<TouchableOpacity style={[cssMapa.fazRota, {width: 60, height: 60} ]} onPress={infoPosto}>
+                	    <Icon name="info" size={34} color="#107878" />
+                	</TouchableOpacity>
+					<TouchableOpacity style={cssMapa.fazRota} onPress={infoPosto}>
+                	    <DirectForGoogle 
+							start={originA}
+							end={{
+								latitude : Number(postos.latitude),
+								longitude : Number(postos.longitude)
+								}}
+						/>
                 	</TouchableOpacity>
            	 	</View>
 
@@ -125,7 +136,7 @@ export default function Mapa({ route, navigation }) {
         			style={cssMapa.btnScreans}
         			onPress={Rank}>
         			    <Icon name="line-chart" size={25} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Ranking</Text>
+						<Text style={cssMapa.textoIcones}>Ranque</Text>
         			</TouchableOpacity>
 
 					<TouchableOpacity 
@@ -145,8 +156,8 @@ export default function Mapa({ route, navigation }) {
         			<TouchableOpacity 
         			style={cssMapa.btnScreans}
         			onPress={selecionaCarro}>
-        				<Icon name="car" size={25} color="#107878" />
-						<Text style={cssMapa.textoIcones}>Carros</Text>
+        				<Icon name="dashboard" size={25} color="#107878" />
+						<Text style={cssMapa.textoIcones}>Veículos</Text>
         			</TouchableOpacity>
       			</View>
 			</View>

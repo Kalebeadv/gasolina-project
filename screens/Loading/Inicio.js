@@ -5,7 +5,7 @@ import {
   Text, StyleSheet, Button, ImageBackground,
 }
   from "react-native";
-import { urlRootPhp } from "../../config/config.json";
+import { urlRootNode } from "../../config/config.json";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -52,7 +52,7 @@ export default function Inicio({ navigation }) {
   }, []);
 
   async function fazLogin() {
-    let reqs = await fetch(urlRootPhp + 'Controller.php', {
+    let reqs = await fetch(urlRootNode + 'login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -65,13 +65,8 @@ export default function Inicio({ navigation }) {
     });
 
     let ress = await reqs.json();
-
-    if (ress || ress == null) {
-      navigation.navigate("Home", {id: 0 });
-      return;
-    } else {
-      navigation.navigate("Entrar");
-      return;
+    if (ress[0].email == email) {
+      navigation.navigate("Home");
     }
   }
 

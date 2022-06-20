@@ -74,7 +74,7 @@ export default function CadastrarVeiculo({ navigation }) {
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.textoInicioContainer}>
         <Text style={styles.textoInicio}>
-          Cadastro Seu Veículos
+          Cadastre Seu Veículos
         </Text>
       </View>
 

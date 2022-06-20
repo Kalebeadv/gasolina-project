@@ -59,7 +59,7 @@ const cssMapa = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		zIndex: 9
-	  },
+	},
 	btnScreans: {
 		justifyContent: "center",
 		alignItems:"center",
@@ -68,9 +68,8 @@ const cssMapa = StyleSheet.create({
 		marginBottom: "5%",
 		borderRadius: 12,
 		marginHorizontal:"5%",
-		top:"2.5%",
-		
-	 },
+		top:"2.5%",	
+	},
 	textoIcones: {
 		color: "#107878",
 	},
@@ -369,4 +368,3 @@ const newMap = [
 ]
 
 export {cssMapa, newMap};
-

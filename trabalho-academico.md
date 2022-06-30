@@ -11,9 +11,9 @@ No Brasil, o preço dos combustíveis, nas refinarias e terminais nacionais é b
 
 Os distribuidores acrescentam uma taxa em cima de cada categoria de combustível e ainda existe a carga tributária e outros custos da intermediação dos importadores, distribuidores, revendedores e produtores de biocombustíveis. Fatores sobre os quais a PETROBRAS não tem mais o controle, visto que está em vigor no Brasil o regime de liberdade de preços em todos os segmentos (produção, distribuição e revenda) do mercado de combustíveis e derivados de petróleo desde 2002. Isso significa que não há nenhuma categoria de tabelamento nem fixação de valores máximos e mínimos, ou qualquer exigência de autorização oficial prévia para reajustes. Nenhuma das mega empresas privadas reduziria o preço dos derivados produzidos frente a uma ociosidade ou excessos de ofertas localizadas. O que ocorre no mercado mundial do petróleo, quando o refino fica ocioso, por recessão ou por outros fatores (pandemia atual) é o fechamento de refinarias ou alienações como estão previstas no Brasil. Se os preços caem porque a demanda se reduz ou a oferta se amplia, os países que são grandes produtores e refinadores acertam quotas e buscam manter o preço, visto que, normalmente, os preços sempre são rígidos para baixo. Entretanto, o preço pago pelos consumidores brasileiros para a gasolina que sai da refinaria equipara-se aos preços internacionais, notadamente nos países cujos mercados de refinados são abertos à competição. Pequenas diferenças ocorrem em função do ambiente regulatório, estrutura tributária, eventuais subsídios governamentais, e da velocidade do repasse, automaticamente ou não, relativamente às variações dos preços internacionais do barril de petróleo e das variações cambiais refletidas nos preços internos. Frente ao aumento imparável do preço dos combustíveis, tentamos encontrar a melhor forma de facilitar a vida dos nossos usuários, infelizmente não podemos afetar a cadeia de produção para conseguir combustíveis mais baratos, então tivemos a ideia de criar um aplicativo que ajuda o usuário na busca por combustíveis mais baratos, desta forma gerando economia para o consumidor (inicialmente apenas em Rio Branco).
 
-## Escopo da solução proposta
+# Escopo da solução proposta
 
-O escopo do projeto engloba o desenvolvimento de um aplicativo, denominada Ga$olina (abreviada como GA$OLINA), cujo produto final é um aplicativo que ajuda o usuário na busca por um local com maior custo benefício para abastecer seu veículo, desta forma gerando economia para o consumidor. 
+O escopo do projeto engloba o desenvolvimento de um aplicativo, denominada Ga$olina, cujo produto final é um aplicativo que ajuda o usuário na busca por um local com maior custo benefício para abastecer seu veículo, desta forma gerando economia para o consumidor. 
 O aplicativo tem um funcionamento que se assemelha à experiência obtida com o Completai, Waze, GASNOL, CompletaAI, Gaso..
 Nós escolhemos o Completai para falar mais detalhadamente, pois é o aplicativo que mais se assemelha ao nosso objetivo final. Para facilitar o entendimento acerca do Ga$, criamos uma lista de semelhanças e diferenças entre ele e o Completai.
 
@@ -27,14 +27,15 @@ Nós escolhemos o Completai para falar mais detalhadamente, pois é o aplicativo
 2. Diferencas
     - O nosso aplicativo fará o cálculo da rota até o posto escolhido, fazendo uma comparação de custo, considerando o consumo do veículo que o usuário possui, a distância de ida e volta até o posto escolhido, e o preço do combustível praticado no posto de destino, com isso o usuário terá uma base mais precisa para decidir onde seria o local ideal para abastecer.
 
-## Requisitos do sistema
+# Requisitos do sistema
 
 \begin{quadro}[htb]
 \ABNTEXfontereduzida{%
   \caption{Requisitos funcionais}
   \label{tab:71532}
 }{%
-  \begin{tabular}{p{3.0cm}|p{11.0cm}}
+  \begin{tabular}{|p{3.0cm}|p{11.0cm}|}
+  \toprule
   Requisito & Descricao \\
   \toprule
   Adicionar veiculo & O usuário poderá adicionar quantos veiculos quiser seja moto ou carro  \\
@@ -63,14 +64,13 @@ Nós escolhemos o Completai para falar mais detalhadamente, pois é o aplicativo
 }
 \end{quadro}
 
-
-
 \begin{quadro}[htb]
 \ABNTEXfontereduzida{%
   \caption{Requisitos não funcionais.}%
   \label{tab:71532}
 }{%
-  \begin{tabular}{p{5.0cm}|p{7.0cm}}
+  \begin{tabular}{|p{5.0cm}|p{7.0cm}|}
+  \toprule
   Requisito & Descricao \\
   \toprule
   Arquitetura do sistema & MVC  \\
@@ -107,8 +107,7 @@ Nós escolhemos o Completai para falar mais detalhadamente, pois é o aplicativo
 }
 \end{quadro}
 
-
-## Cronograma do sistema
+# Cronograma do sistema
 
 ![Cronograma](imagens/cronograma.jpeg){#cronograma  escala=0.3 largura=150%}
 
@@ -116,7 +115,7 @@ Fonte: Própria dos autores.
 
 Ver autoref{cronograma}
 
-## Objetivos gerais e específicos
+# Objetivos gerais e específicos
 
 O objetivo deste projeto é criar um aplicativo para auxiliar os usuários a encontrar o melhor preço do combustível na sua região. Nossos objetivos específicos são: 
     - Mostra o preço do combustível na região de Rio Branco. 

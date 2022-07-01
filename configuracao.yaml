@@ -41,7 +41,7 @@ tipo_do_trabalho: Monografia
 incluir_ficha_catalografica: false
 folha_de_aprovacao: false
 projeto: true
-apendices: false
+apendices: true
 anexos: false
 errata: false
 referencias_sistema: alf

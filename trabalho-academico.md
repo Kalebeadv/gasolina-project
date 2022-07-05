@@ -2,13 +2,9 @@
 
 Atualmente, o Brasil enfrenta uma grande crise econômica, e uma das consequências dessa crise, está ligada ao preço do combustível, que apresenta grande instabilidade e aumentos expressivos. Para entender mais sobre o tema deste projeto, se faz necessário entender como é composto o preço dos combustíveis e como isso pode influenciar na vida dos brasileiros.
 
-Em um mercado aberto, com preços concorrenciais (produto interno concorrendo com o produto importado), quando a produção interna de petróleo, gás ou derivados é inferior à demanda, tem-se um elo adicional, o do importador. O óleo cru nacional ou importado precisa chegar até uma refinaria em território nacional. /*  https://blog.clubpetro.com/composicao-precos-paridade-combustiveis-brasil/  */ Segundo Marcelo Gauto, “No Brasil, 95% dessa produção é offshore, então, o petróleo costuma ser transportado em navios do ponto de produção até um terminal de armazenamento, antes de chegar a uma refinaria. A fração de petróleo ou derivado importada faz caminho semelhante, sendo trazida de outros países por intermédio de um navio até um porto, onde ocorrerá a descarga e internalização do insumo. Depois de processados esses óleos nas refinarias, as distribuidoras recebem os derivados e dão capilaridade e eles, entregando os produtos nos milhares de pontos de revenda espalhados pelo país.”
+Em um mercado aberto, com preços concorrenciais (produto interno concorrendo com o produto importado), quando a produção interna de petróleo, gás ou derivados é inferior à demanda, tem-se um elo adicional, o do importador. O óleo cru nacional ou importado precisa chegar até uma refinaria em território nacional.Segundo Marcelo Gauto, "No Brasil, 95% dessa produção é offshore, então, o petróleo costuma ser transportado em navios do ponto de produção até um terminal de armazenamento, antes de chegar a uma refinaria. A fração de petróleo ou derivado importada faz caminho semelhante, sendo trazida de outros países por intermédio de um navio até um porto, onde ocorrerá a descarga e internalização do insumo. Depois de processados esses óleos nas refinarias, as distribuidoras recebem os derivados e dão capilaridade e eles, entregando os produtos nos milhares de pontos de revenda espalhados pelo país" \cite[]{marceloreferencia}. 
 
-/*    	segunda citação 	
-https://blog.clubpetro.com/composicao-precos-paridade-combustiveis-brasil/
-*/
-
-Segundo Marcelo Gauto, “a flutuação de preços de todos os elos reflete, de modo geral, as cotações do petróleo. O petróleo é uma commodity cuja cotação internacional é referenciada ao petróleo Brent negociado na Bolsa de Londres, cotado em dólares por barril. Os petróleos brasileiros são referenciados no Brent, com valores levemente acima ou abaixo dele, dependendo da qualidade do óleo produzido em questão (vide Petróleo: qualidades físico-químicas, preços e mercados: o caso das correntes nacionais)”.
+Segundo Marcelo Gauto, “a flutuação de preços de todos os elos reflete, de modo geral, as cotações do petróleo. O petróleo é uma commodity cuja cotação internacional é referenciada ao petróleo Brent negociado na Bolsa de Londres, cotado em dólares por barril. Os petróleos brasileiros são referenciados no Brent, com valores levemente acima ou abaixo dele, dependendo da qualidade do óleo produzido em questão (vide Petróleo: qualidades físico-químicas, preços e mercados: o caso das correntes nacionais)”\cite[]{marceloreferencia}.
 
 Aqui entra a primeira questão importante sobre o funcionamento da precificação desse mercado: diz respeito à variação dos preços dos combustíveis locais que dependem da cotação do petróleo e da taxa de câmbio, do valor da moeda local frente ao dólar. Quando há aumento do barril de petróleo ou aumento da taxa de câmbio (desvalorização da moeda), os preços dos combustíveis sobem, assim como eles caem quando essas duas variáveis flutuam no sentido oposto.
 
@@ -22,7 +18,7 @@ O que ocorre no mercado mundial do petróleo, quando o refino fica ocioso, por r
 
 O escopo do projeto engloba o desenvolvimento de um aplicativo, denominada Ga$olina, cujo produto final é um aplicativo que ajuda o usuário na busca por um local com maior custo benefício para abastecer seu veículo, desta forma gerando economia para o consumidor.
 
-O aplicativo tem um funcionamento que se assemelha à experiência obtida com o Completai, Waze, GASNOL, CompletaAI. Nós escolhemos o Completai para falar mais detalhadamente, pois é o aplicativo que mais se assemelha ao nosso objetivo final. Para facilitar o entendimento acerca do Ga$olina, criamos uma lista de semelhanças e diferenças entre ele e o Completai.
+O aplicativo tem um funcionamento que se assemelha à experiência obtida com o Completai, Waze, GASNOL, CompletaAI. Nós escolhemos o Completai para falar mais detalhadamente, pois é o aplicativo que mais se assemelha ao nosso objetivo final. Para facilitar o entendimento acerca do Ga$olina, criamos uma lista de semelhanças e diferenças entre ele e o Completai \cite[]{completeai}.
 
 1. Semelhanças
     - Tabelas de preço dos postos.
@@ -123,30 +119,12 @@ Fonte: Própria dos autores.
 # Objetivos gerais e específicos
 
 O objetivo deste projeto é criar um aplicativo para auxiliar os usuários a encontrar o melhor preço do combustível na sua região. Nossos objetivos específicos são: 
+
   - Mostra o preço do combustível na região de Rio Branco. 
   - Calcular a rota até o posto escolhido. Calcular o consumo do combustível do veículo até o posto escolhido. 
   - Auxiliar na decisão do usuário na hora de escolher onde abastecer. 
   - Buscar amenizar a “dor” de não conhecer o melhor local para abastecer os veículos.
 
-## Como citar e referenciar
-
-O arquivo de referências é configurado em "configuracao.pdf", utilize-o
-para gerenciar suas referências.
-
-Veja um exemplo de citação direta e referenciação a seguir:
-
-> A ‘norma’ 6023:2000 (2) é complicada e cheia de inconsistências. Jamais será
-possível gerar um estilo bibtex totalmente consistente com a ‘norma’, até porque
-nem a ‘norma’ é compatível com ela mesma. Um bom estilo bibliográfico deve
-ter uma linha lógica para formatação de referências. Assim, com alguns poucos
-exemplos, qualquer pessoa poderia deduzir os casos omissos. Nesse sentido, a
-‘norma’ 6023 trafega pela contra-mão. É quase impossível deduzir sua linha lógica.
-O problema mais grave, no entanto, fica pela maneira de organizar nomes. A ABNT
-quebrou o sobrenome em duas partes. Normalmente se fala apenas em “*last name*”,
-mas agora temos o “*last last name*” graças à ABNT. \cite[p. 5]{abntex2cite}.
-
-Consulte o documento \citeonline{abntex2cite} para conhecer como referenciar os
-conteúdos.
 <!--
 Isto é um comentário, mesma sintaxe do HTML. Para conhecer a sintaxe
 do limarka consulte: https://github.com/abntex/limarka/wiki/Sintaxe

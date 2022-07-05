@@ -1,17 +1,17 @@
 ---
-instituicao: Universidade/Faculdade do Brasil
-author: Nome do autor
-title: Título do trabalho
-local: Cidade - UF
-date: '2019'
+instituicao: Uninorte
+author: Kalebe Silva
+title: Gasolina
+local: Rio Branco - AC
+date: '2022'
 capa_pdf_caminho: ''
-titulacao: Minha-titulação
-curso: Meu-curso
-programa: Programa de Pós-Graduação em XXX
+titulacao: bacharel
+curso: Sistemas de informação
+programa: Programa de Graduação em Sistemas
 area_de_concentracao: Computação
 linha_de_pesquisa: ''
 coorientador: ''
-orientador: Nome-do-Orientador
+orientador: Josana Nishirira e João Pedro
 referencias_caminho: referencias.bib
 proposito: ''
 resumo: ''
@@ -22,16 +22,14 @@ resumen: ''
 palabras_clave: ''
 resume: ''
 mots_cles: ''
-siglas:
-- s: ABNT
-  d: Associação Brasileira de Normas Técnicas
+siglas: false
 simbolos: 
 dedicatoria: ''
 agradecimentos: ''
 epigrafe: ''
-avaliador2: Nome-do-Prof-Convidado2
+avaliador2: Vander
 aprovacao_dia: '1'
-avaliador1: Nome-do-Prof-Convidado1
+avaliador1: João Pedro
 avaliador3: ''
 graduacao: true
 especializacao: false
